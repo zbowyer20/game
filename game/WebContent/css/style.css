@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+header {
+	background: black;
+	height: 100%;
+}
+header h1 {
+	text-align: center;
+	color: red;
+	margin: 0;
+}
+body {
+	background: black;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+canvas {
+	overflow: hidden;
+	margin: 0 auto;
+	display: block;
+}

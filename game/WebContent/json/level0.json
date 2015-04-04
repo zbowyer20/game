@@ -1,0 +1,150 @@
+{
+	"scenes": [
+		{
+			"default": true,
+			"name" : "front",
+			"id" : "bg0-front",
+			"movements": [
+				{
+					"name" : "RIGHT",
+					"destination" : "side-1"
+				},
+				{
+					"name" : "LEFT",
+					"destination" : "side-3"
+				}
+			],
+			"clickables": [
+				{
+					"location" : 
+					{
+						"x" : 100,
+						"y" : 200
+					},
+					"dimensions" :
+					{
+						"width" : 100,
+						"height" : 100
+					},
+					"type" : "EXAMINE",
+					"message" : "Looks nice...",
+					"id": "0-lamp"
+				},
+				{
+					"location" :
+					{
+						"x" : 300,
+						"y" : 400
+					},
+					"dimensions" :
+					{
+						"width" : 200,
+						"height" : 100
+					},
+					"type" : "ITEM",
+					"id" : "0-table",
+					"message" : "Picked up tables",
+					"persist" : false,
+					"cutscenes" : [
+						{
+							"priority" : 0,
+							"id" : "0",
+							"switchOn" : "table-cutscene-0"
+						}
+					]
+				}
+			]
+		},
+		{
+			"default": false,
+			"name" : "side-1",
+			"id" : "bg0-side1",
+			"movements": [
+				{
+					"name" : "RIGHT",
+					"destination" : "side-2"
+				},
+				{
+					"name" : "LEFT",
+					"destination" : "front"
+				}
+			],
+			"clickables": [
+				{
+					"location" : 
+					{
+						"x" : 150,
+						"y" : 200
+					},
+					"dimensions" :
+					{
+						"width" : 100,
+						"height" : 100
+					},
+					"type" : "EXAMINE",
+					"message" : "Looks nicer...",
+					"id" : "0-lamp"
+				},
+				{
+					"location" :
+					{
+						"x" : 500,
+						"y" : 400
+					},
+					"dimensions" :
+					{
+						"width" : 200,
+						"height" : 100
+					},
+					"type" : "ITEM",
+					"id" : "0-chair",
+					"message" : "Picked up chair",
+					"persist" : false,
+					"cutscenes" : [
+						{
+							"priority" : 0,
+							"requires" : [
+								{
+									"type":"item",
+									"activeItem":true,
+									"id":"0-table"
+								}
+							],
+							"id" : "1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"default": false,
+			"name" : "side-2",
+			"id" : "bg0-side2",
+			"movements" : [
+				{
+					"name" : "RIGHT",
+					"destination" : "side-3"
+				},
+				{
+					"name" : "LEFT",
+					"destination" : "side-1"
+				}
+			]
+		},
+		{
+			"default": false,
+			"name" : "side-3",
+			"id" : "bg0-side3",
+			"movements" : [
+				{
+					"name" : "RIGHT",
+					"destination" : "front"
+				},
+				{
+					"name" : "LEFT",
+					"destination" : "side-2"
+				}
+			]
+		}
+	]
+}

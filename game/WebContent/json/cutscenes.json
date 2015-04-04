@@ -1,0 +1,68 @@
+{
+	"cutscenes" : [
+		{
+			"id" : "0",
+			"scene" : [
+				{
+					"position" : "DIALOG_LEFT",
+					"character" : "ALBERT",
+					"mood" : "HAPPY",
+					"text" : "I am hungry!",
+					"audio" : {
+						"id": "living",
+						"position": 20000,
+						"volume": 0.1
+					}
+				},
+				{
+					"position" : "DIALOG_LEFT",
+					"character" : "ALBERT",
+					"text" : "I am hungry too!"
+				},
+				{
+					"position" : "DIALOG_LEFT",
+					"character" : "ZAK",
+					"text" : "Now I am hungry!"
+				},
+				{
+					"position" : "DIALOG_LEFT",
+					"character" : "ALBERT",
+					"mood" : "FLIRTATIOUS",
+					"text" : "How you doin'?"
+				}
+			]
+		},
+		{
+			"id" : "1",
+			"scene" : [
+				{
+					"position" : "DIALOG_LEFT",
+					"character" : "ALBERT",
+					"mood" : "HAPPY",
+					"text" : "I am hungry now!"
+				},
+				{
+					"position" : "DIALOG_LEFT",
+					"character" : "ALBERT",
+					"text" : "I am hungry too!",
+					"audio" : {
+						"id": "sad",
+						"position": 20000,
+						"volume": 1
+					}
+				},
+				{
+					"position" : "DIALOG_LEFT",
+					"character" : "ZAK",
+					"text" : "Now I am hungry!"
+				},
+				{
+					"position" : "DIALOG_LEFT",
+					"character" : "ALBERT",
+					"mood" : "DETERMINED",
+					"text" : "I am very angry."
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,14 @@
+{
+	"items" : [
+		{
+			"id" : "0-table",
+			"name" : "table",
+			"description" : "a very nice table"
+		},
+		{
+			"id" : "0-chair",
+			"name" : "chair",
+			"description" : "a very nice chair"
+		}
+	]
+}
