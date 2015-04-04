@@ -241,6 +241,9 @@ function validToPlay(object) {
 						return false;
 					}
 				}
+				else if (!player.hasItem(object.requires[i].id)) {
+					return false;
+				}
 			}
 		}
 		i++;

@@ -7,20 +7,29 @@ function Player() {
 	}
 	
 	this.removeItem = function(item) {
+		var index = this.itemIndexInInventory(item.id);
+		if (index != null) {
+			inventory.splice(index, 1);
+		}
+		return this;
+	}
+	
+	this.itemIndexInInventory = function(id) {
 		var foundItem = false;
 		var index = 0;
 		while ((!foundItem) && (index < inventory.length)) {
-			if (inventory[i].id == item.id) {
+			if (inventory[index].id == id) {
 				foundItem = true;
 			}
 			else {
 				index++;
 			}
 		}
-		if (foundItem) {
-			inventory.splice(index, 1);
-		}
-		return this;
+		return foundItem ? index : null;
+	}
+	
+	this.hasItem = function (itemId) {
+		return this.itemIndexInInventory(itemId) != null;
 	}
 	
 	this.getInventory = function() {

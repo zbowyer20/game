@@ -9,6 +9,11 @@
 			"id" : "0-chair",
 			"name" : "chair",
 			"description" : "a very nice chair"
+		},
+		{
+			"id" : "0-bed",
+			"name" : "bed",
+			"description" : "a lovely bed"
 		}
 	]
 }

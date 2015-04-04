@@ -106,7 +106,7 @@
 							"requires" : [
 								{
 									"type":"item",
-									"activeItem":true,
+									"activeItem": true,
 									"id":"0-table"
 								}
 							],
@@ -128,6 +128,24 @@
 				{
 					"name" : "LEFT",
 					"destination" : "side-1"
+				}
+			],
+			"clickables" : [
+				{
+					"location" :
+					{
+						"x" : 500,
+						"y" : 400
+					},
+					"dimensions" :
+					{
+						"width" : 200,
+						"height" : 100
+					},
+					"type" : "ITEM",
+					"id" : "0-bed",
+					"message" : "Picked up bed",
+					"persist" : false
 				}
 			]
 		},

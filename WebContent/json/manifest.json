@@ -29,6 +29,10 @@
 			"src": "img/sceneClickables/lamp.jpeg"
 		},
 		{
+			"id": "0-bed",
+			"src": "img/sceneClickables/bed.png"
+		},
+		{
 			"id": "albert-happy",
 			"src": "img/dialog/albert-happy.png"
 		},
