@@ -8,6 +8,6 @@ function Item(id, name, description, inventoryImage) {
 	this.name = name;
 	this.description = description;
 	this.inventoryImage = inventoryImage;
-	
+
 	return this;
 }
