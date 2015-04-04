@@ -682,9 +682,18 @@ function storeItems(json) {
 }
 
 function createItemContainer() {
-	var border = drawBorderedRectangle(60, 60, 20, stage.canvas.height - 80, "#FFFFFF");
+	var border = drawBorderedRectangle(ITEM_CONTAINER_WIDTH, ITEM_CONTAINER_HEIGHT, 20, stage.canvas.height - 80, "#FFFFFF");
 	var container = new createjs.Container();
+	
 	container.addChild(border);
+	
+	// without a hit area, the user clicking a transparent part of the image
+	// won't work
+	var hit = new createjs.Shape();
+	hit.graphics.beginFill("#000").drawRect(0,0,ITEM_CONTAINER_WIDTH,ITEM_CONTAINER_HEIGHT);
+	hit.x = 20;
+	hit.y = stage.canvas.height - 80;
+	container.hitArea = hit;
 	
 	container.addEventListener("click", function() {
 		if (checkPriority(MENU_PRIORITY) && (currentItem != null)) {
@@ -725,7 +734,7 @@ function updateItemContainer(item) {
 	backgroundBit.scaleY = itemHeight / bg.height;
 	backgroundBit.x = 25;
 	backgroundBit.y = stage.canvas.height - 75;
-	
+		
 	itemContainer.addChild(backgroundBit);
 	stage.update();
 }
