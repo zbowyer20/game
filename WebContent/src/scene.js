@@ -654,7 +654,7 @@ function storeItems(json) {
 }
 
 function createItemContainer() {
-	var border = drawBorderedRectangle(ITEM_CONTAINER_WIDTH, ITEM_CONTAINER_HEIGHT, 20, stage.canvas.height - 80, "#FFFFFF");
+	var border = drawBorderedRectangle(20, stage.canvas.height - 80, ITEM_CONTAINER_WIDTH, ITEM_CONTAINER_HEIGHT, "#FFFFFF");
 	var container = new createjs.Container();
 	
 	container.addChild(border);

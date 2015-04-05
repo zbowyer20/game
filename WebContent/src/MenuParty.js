@@ -27,7 +27,7 @@ function MenuParty() {
 	var itemHeight = stage.canvas.height;
 	
 	for (var i = 0; i < PARTY_SIZE - 1; i++) {
-		container.addChild(drawBorderedRectangle(itemWidth, itemHeight, currentWidth, currentHeight, "#000"));
+		container.addChild(drawBorderedRectangle(currentWidth, currentHeight, itemWidth, itemHeight, "#000"));
 		currentWidth += itemWidth;
 	}
 	

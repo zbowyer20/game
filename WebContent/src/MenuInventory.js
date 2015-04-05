@@ -17,7 +17,7 @@ function MenuInventory(dimensions) {
 	console.log(inventory);
 	
 	for (var i = 0; i < MAX_INVENTORY_SIZE; i++) {
-		container.addChild(drawBorderedRectangle(itemWidth, itemHeight, currentWidth, currentHeight, "#000"));
+		container.addChild(drawBorderedRectangle(currentWidth, currentHeight, itemWidth, itemHeight, "#000"));
 		if (i < inventory.length) {
 			var item = inventory[i];
 			

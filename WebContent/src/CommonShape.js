@@ -33,7 +33,7 @@ function drawArrow(colour, direction) {
 	return container;
 }
 
-function drawBorderedRectangle(width, height, x, y, colour) {
+function drawBorderedRectangle(x, y, width, height, colour) {
 	var shape = new createjs.Shape();
 	shape.graphics.beginStroke(colour);
 	shape.graphics.setStrokeStyle(1);
