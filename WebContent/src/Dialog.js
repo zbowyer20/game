@@ -54,9 +54,8 @@ function Dialog() {
 		return thisImage;
 	}
 	
-	this.createText = function(src) {
-		console.log(src);
-		var txt = new createjs.Text(src, "20px Arial", "#ffffff");
+	this.createText = function() {
+		var txt = new createjs.Text("", "20px Arial", "#ffffff");
 		txt.textBaseline = "alphabetic";
 		txt.y = image == null ? stage.canvas.height - 320 : (image.image.height * image.scaleY) * (9/16);
 		txt.x = image == null? 0 : (image.image.width * image.scaleX);
@@ -107,7 +106,7 @@ function Dialog() {
 		container = new createjs.Container();
 		image = this.createImage(dialogImage);
 		var background = this.createBackground(charName != null);
-		text = this.createText(dialog.text);
+		text = this.createText();
 		name = this.createName(charName);
 		container.addChild(background);
 		container.addChild(image);

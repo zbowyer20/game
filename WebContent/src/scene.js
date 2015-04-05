@@ -17,6 +17,7 @@ var nextBackground;
 var sceneJson;
 var itemJson;
 var cutscenes;
+var loadingText = false;
 var images = {};
 var currentDialogs = {};
 
@@ -499,6 +500,25 @@ function findCutscene(cutsceneId) {
 	}
 }
 
+function showText(target, text, index) {
+	if (index <= text.length) {
+		if (loadingText) {
+			target.text = text.substring(0, index);
+		}
+		else {
+			index = text.length;
+			target.text = text.substring(0, index);
+		}
+		stage.update();
+		setTimeout(function() {
+			showText(target, text, index+1);
+		}, 30);
+	}
+	else {
+		loadingText = false;
+	}
+}
+
 /*
  * Play a cutscene
  * @param cutscene The cutscene to play
@@ -506,13 +526,21 @@ function findCutscene(cutsceneId) {
 function playCutscene(cutscene) {
 	priority = cutscene != null ? CUTSCENE_PRIORITY: 0;
 	var current = 0;
+	loadingText = true;
 	var speech = createCutsceneDialog(cutscene.scene[current]);
 	// when the user presses space, we play the next dialog
 	document.onkeypress = function(e) {
 		if (e.keyCode == 32) {
-			playNextDialog(cutscene, current);
+			if (loadingText) {
+				loadingText = false;
+			}
+			else {
+				loadingText = true;
+				playNextDialog(cutscene, current);
+			}
 		}
 	}
+	showText(speech.text, cutscene.scene[current].text, 0);
 }
 
 /*
@@ -524,16 +552,23 @@ function playNextDialog(cutscene, current) {
 	current++;
 	// more to play in the cutscene?
 	if (cutscene.scene[current] != null) {
-		createCutsceneDialog(cutscene.scene[current]);
+		var speech = createCutsceneDialog(cutscene.scene[current]);
 		// play the next dialog on space
 		// TODO function!
 		document.onkeypress = function(e) {
 			if (e.keyCode == 32) {
 				if (checkPriority(CUTSCENE_PRIORITY)) {
-					playNextDialog(cutscene, current);
+					if (loadingText) {
+						loadingText = false;
+					}
+					else {
+						loadingText = true;
+						playNextDialog(cutscene, current);
+					}
 				}
 			}
 		}
+		showText(speech.text, cutscene.scene[current].text, 0)
 	}
 	// cutscene is done
 	else {
@@ -568,6 +603,8 @@ function createCutsceneDialog(dialog) {
 		    sound.setVolume(dialog.audio.volume);
 		}
 	}
+	
+	return txtContainer;
 }
 
 /*
