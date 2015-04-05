@@ -1,66 +1,63 @@
 {
-	"cutscenes" : [
+	"cutscenes": [
 		{
-			"id" : "0",
-			"scene" : [
+			"id": "0",
+			"scene": [
 				{
-					"position" : "DIALOG_LEFT",
-					"character" : "ALBERT",
-					"mood" : "HAPPY",
-					"text" : "I am hungry! Do you think you could get me something to eat? It'd really be good and I'd really, really appreciate it buddy.",
-					"audio" : {
+					"position": "DIALOG_LEFT",
+					"text": "Example of non-character speaking for a very long time, what could they be speaking about? Who knows really... it's a massive mystery. I don't know myself and I'm the creator!" 
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"mood": "HAPPY",
+					"text": "I am hungry! Do you think you could get me something to eat? It'd really be good and I'd really, really appreciate it buddy.",
+					"audio": {
 						"id": "living",
 						"position": 20000,
 						"volume": 0.1
 					}
-				},
-				{
-					"position" : "DIALOG_LEFT",
-					"character" : "ALBERT",
-					"text" : "I am hungry too!"
-				},
-				{
-					"position" : "DIALOG_LEFT",
-					"character" : "ZAK",
-					"text" : "Now I am hungry!"
-				},
-				{
-					"position" : "DIALOG_LEFT",
-					"character" : "ALBERT",
-					"mood" : "FLIRTATIOUS",
-					"text" : "How you doin'?"
+				}, {
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "I am hungry too!"
+				}, {
+					"position": "DIALOG_LEFT",
+					"character": "ZAK",
+					"text": "Now I am hungry!"
+				}, {
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"mood": "FLIRTATIOUS",
+					"text": "How you doin'?"
 				}
 			]
-		},
-		{
-			"id" : "1",
-			"scene" : [
+		}, {
+			"id": "1",
+			"scene": [
 				{
-					"position" : "DIALOG_LEFT",
-					"character" : "ALBERT",
-					"mood" : "HAPPY",
-					"text" : "I am hungry now!"
-				},
-				{
-					"position" : "DIALOG_LEFT",
-					"character" : "ALBERT",
-					"text" : "I am hungry too!",
-					"audio" : {
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"mood": "HAPPY",
+					"text": "I am hungry now!"
+				}, {
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "I am hungry too!",
+					"audio": {
 						"id": "sad",
 						"position": 20000,
 						"volume": 1
 					}
-				},
-				{
-					"position" : "DIALOG_LEFT",
-					"character" : "ZAK",
-					"text" : "Now I am hungry!"
-				},
-				{
-					"position" : "DIALOG_LEFT",
-					"character" : "ALBERT",
-					"mood" : "DETERMINED",
-					"text" : "I am very angry."
+				}, {
+					"position": "DIALOG_LEFT",
+					"character": "ZAK",
+					"text": "Now I am hungry!"
+				}, {
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"mood": "DETERMINED",
+					"text": "I am very angry."
 				}
 			]
 		}
