@@ -512,7 +512,7 @@ function showText(target, text, index) {
 		stage.update();
 		setTimeout(function() {
 			showText(target, text, index+1);
-		}, 30);
+		}, textSpeed);
 	}
 	else {
 		loadingText = false;
