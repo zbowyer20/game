@@ -589,7 +589,8 @@ function playNextDialog(cutscene, current) {
 function createCutsceneDialog(dialog) {
 	var position = getCutscenePosition(dialog.position);
 	var image = getCutsceneImage(dialog.character, dialog.mood);
-	var txtContainer = new Dialog().createSpeech(position, image, dialog.text);
+	var charName = CHARACTER_NAMES[dialog.character]
+	var txtContainer = new Dialog().createSpeech(position, image, dialog.text, charName);
 	updateDialogPosition(dialog.position, txtContainer.container);
 	globalContainer.addChild(txtContainer.container);
 	stage.update();

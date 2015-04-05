@@ -30,7 +30,7 @@ function Dialog() {
 		txt.textBaseline = "alphabetic";
 		txt.y = image == null ? 0 : (image.image.height * image.scaleY) * (15/32);
 		txt.x = image == null? 0 : (image.image.width * image.scaleX);
-		txt.lineWidth = stage.canvas.width - 425;
+		txt.lineWidth = stage.canvas.width - 805;
 		
 		return txt;
 	}
@@ -44,12 +44,12 @@ function Dialog() {
 		return container;
 	}
 	
-	this.createSpeech = function(placement, imageSrc, textSrc) {
+	this.createSpeech = function(placement, imageSrc, textSrc, charName) {
 		container = new createjs.Container();
 		var background = this.createBackground();
 		image = this.createImage(imageSrc);
 		text = this.createText(textSrc);
-		name = this.createName("Albert");
+		name = this.createName(charName);
 		container.addChild(background);
 		container.addChild(image);
 		container.addChild(text);
