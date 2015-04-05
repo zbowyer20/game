@@ -25,7 +25,7 @@
 				}, 
 				{
 					"position": "DIALOG_LEFT",
-					"character": "ZAK",
+					"character": "KATE",
 					"text": "Now I am hungry!"
 				}, 
 				{
@@ -33,6 +33,30 @@
 					"character": "ALBERT",
 					"mood": "FLIRTATIOUS",
 					"text": "How you doin'?"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "KATE",
+					"mood": "HAPPY",
+					"text": "Oh... you like me..."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "KATE",
+					"mood": "CURIOUS",
+					"text": "Don't you?"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"mood": "HAPPY",
+					"text": "Nah not really ya ugly"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "KATE",
+					"mood": "SAD",
+					"text": "Oh..."
 				}
 			]
 		}, 

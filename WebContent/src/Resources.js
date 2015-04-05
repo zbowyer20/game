@@ -34,6 +34,11 @@ var DIALOG_IMAGES = {};
 	DIALOG_IMAGES["ALBERT-FLIRTATIOUS"] = "albert-flirtatious";
 	DIALOG_IMAGES["ALBERT-DETERMINED"] = "albert-determined";
 	
+	DIALOG_IMAGES["KATE"] = "kate";
+	DIALOG_IMAGES["KATE-HAPPY"] = "kate-happy";
+	DIALOG_IMAGES["KATE-SAD"] = "kate-sad";
+	DIALOG_IMAGES["KATE-CURIOUS"] = "kate-curious";
+	
 	DIALOG_IMAGES["ZAK"] = "zak";
 
 var DIRECTION_LEFT = "LEFT";

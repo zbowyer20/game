@@ -49,6 +49,22 @@
 			"src" : "img/dialog/albert-flirtatious.png"
 		},
 		{
+			"id": "kate",
+			"src" : "img/dialog/kate.png"
+		},
+		{
+			"id": "kate-happy",
+			"src" : "img/dialog/kate-happy.png"
+		},
+		{
+			"id": "kate-sad",
+			"src" : "img/dialog/kate-sad.png"
+		},
+		{
+			"id": "kate-curious",
+			"src": "img/dialog/kate-curious.png"
+		},
+		{
 			"id": "zak",
 			"src": "img/dialog/zak.png"
 		},
