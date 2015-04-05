@@ -27,8 +27,13 @@
 						"height" : 100
 					},
 					"type" : "EXAMINE",
-					"message" : "Looks nice...",
-					"id": "0-lamp"
+					"id": "0-lamp",
+					"cutscenes" : [
+						{
+							"priority" : 0,
+							"id" : "2"
+						}
+					]
 				},
 				{
 					"location" :
@@ -82,8 +87,13 @@
 						"height" : 100
 					},
 					"type" : "EXAMINE",
-					"message" : "Looks nicer...",
-					"id" : "0-lamp"
+					"id" : "0-lamp",
+					"cutscenes": [
+						{
+							"priority" : 0,
+							"id" : "2"
+						}
+					]
 				},
 				{
 					"location" :

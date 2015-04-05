@@ -519,6 +519,14 @@ function showText(target, text, index) {
 	}
 }
 
+function loadClickableCutscene(clickable) {
+	var cutscene = getCutsceneToPlay(clickable.cutscenes);
+	if (cutscene != null) {
+		playCutscene(findCutscene(cutscene.id));
+		turnOnSwitch(cutscene);
+	}
+}
+
 /*
  * Play a cutscene
  * @param cutscene The cutscene to play
@@ -783,7 +791,7 @@ function createExamineClickable(clickable, movementMultiplier) {
 	clickableBit = createClickableImage(clickable, movementMultiplier);
 	clickableBit.addEventListener("click", function() {
 		if (checkPriority(ITEM_PRIORITY)) {
-			alert(clickable.message);
+			loadClickableCutscene(clickable);
 		}
 	});
 	
@@ -818,15 +826,11 @@ function createItemClickable(clickable, movementMultiplier) {
 					itemNumber++;
 				}
 			}
-			var cutscene = getCutsceneToPlay(clickable.cutscenes);
-			if (cutscene != null) {
-				playCutscene(findCutscene(cutscene.id));
-				turnOnSwitch(cutscene);
-			}
+			loadClickableCutscene(clickable);
 			if (foundItem) {
 				player.addItem(thisItem);
 				updateItemContainer(thisItem);
-			}
+			}		
 		}
 	})
 	

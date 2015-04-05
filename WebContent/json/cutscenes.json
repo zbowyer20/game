@@ -17,22 +17,26 @@
 						"position": 20000,
 						"volume": 0.1
 					}
-				}, {
+				}, 
+				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"text": "I am hungry too!"
-				}, {
+				}, 
+				{
 					"position": "DIALOG_LEFT",
 					"character": "ZAK",
 					"text": "Now I am hungry!"
-				}, {
+				}, 
+				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"mood": "FLIRTATIOUS",
 					"text": "How you doin'?"
 				}
 			]
-		}, {
+		}, 
+		{
 			"id": "1",
 			"scene": [
 				{
@@ -58,6 +62,15 @@
 					"character": "ALBERT",
 					"mood": "DETERMINED",
 					"text": "I am very angry."
+				}
+			]
+		},
+		{
+			"id": "2",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"text": "Looks nice..."
 				}
 			]
 		}
