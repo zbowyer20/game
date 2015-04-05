@@ -2,6 +2,7 @@ function Dialog() {
 	var container;
 	var image;
 	var text;
+	var name;
 	
 	this.createImage = function(src) {
 		var img = src;
@@ -14,17 +15,33 @@ function Dialog() {
 	}
 	
 	this.createText = function(src) {
+		console.log(src);
 		var txt = new createjs.Text(src, "20px Arial", "#ffffff");
 		txt.textBaseline = "alphabetic";
-		txt.y = image == null ? 0 : (image.image.height * image.scaleY) * (5/8);
+		txt.y = image == null ? 0 : (image.image.height * image.scaleY) * (9/16);
 		txt.x = image == null? 0 : (image.image.width * image.scaleX);
-		txt.lineWidth = DIALOG_WIDTH;
+		txt.lineWidth = stage.canvas.width - 425;
+		
+		return txt;
+	}
+	
+	this.createName = function(name) {
+		var txt = new createjs.Text(name, "20px Arial", "#ffffff");
+		txt.textBaseline = "alphabetic";
+		txt.y = image == null ? 0 : (image.image.height * image.scaleY) * (15/32);
+		txt.x = image == null? 0 : (image.image.width * image.scaleX);
+		txt.lineWidth = stage.canvas.width - 425;
 		
 		return txt;
 	}
 	
 	this.createBackground = function() {
-		return drawBorderedRectangle(stage.canvas.width - 220, 170, 180, stage.canvas.height - 350, "#FFFFFF");		
+		var container = new createjs.Container();
+		var nameBackground = drawBorderedRectangle(stage.canvas.width - 600, 50, 180, stage.canvas.height - 400, "#FFFFFF");
+		var textBackground = drawBorderedRectangle(stage.canvas.width - 220, 170, 180, stage.canvas.height - 350, "#FFFFFF");
+		container.addChild(nameBackground);
+		container.addChild(textBackground);
+		return container;
 	}
 	
 	this.createSpeech = function(placement, imageSrc, textSrc) {
@@ -32,9 +49,11 @@ function Dialog() {
 		var background = this.createBackground();
 		image = this.createImage(imageSrc);
 		text = this.createText(textSrc);
+		name = this.createName("Albert");
 		container.addChild(background);
 		container.addChild(image);
 		container.addChild(text);
+		container.addChild(name);
 		container.x = placement.x;
 		container.y = placement.y;
 		this.text = text;

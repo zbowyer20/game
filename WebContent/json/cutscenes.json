@@ -7,7 +7,7 @@
 					"position" : "DIALOG_LEFT",
 					"character" : "ALBERT",
 					"mood" : "HAPPY",
-					"text" : "I am hungry!",
+					"text" : "I am hungry! Do you think you could get me something to eat? It'd really be good and I'd really, really appreciate it buddy.",
 					"audio" : {
 						"id": "living",
 						"position": 20000,
