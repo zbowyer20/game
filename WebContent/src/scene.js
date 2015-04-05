@@ -125,40 +125,6 @@ function loadGame() {
     	    	
     	stage.update();
     });
-	
-	//TODO remove test code
-		var circle = new createjs.Shape();
-		circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 0.05*(window.innerWidth+window.innerHeight));
-		circle.x = 0.2*window.innerWidth;
-		circle.y = 0.2*window.innerWidth;
-		circle.regX = circle.width / 2 | 0;
-		circle.regY = circle.height / 2 | 0;
-		
-		var circleContainer = new createjs.Container();
-		circleContainer.addChild(circle);
-		
-		var circle2 = new createjs.Shape();
-		circle2.graphics.beginFill("green").drawCircle(0, 0, 20);
-		circle2.x = 300;
-		circle2.y = 300;
-		circle2.regX = circle2.width/2 | 0;
-		circle2.regY = circle2.height / 2 | 0;
-		
-		circle2.addEventListener("click", function(evt) {
-		    var sound = createjs.Sound.play("living");
-		    sound.setPosition(17000);
-		    sound.setVolume(1);
-		    player.addItem(new Item(0, "test item", "this is a test item", "src", "src"));
-		})
-		
-		circleContainer.on("pressmove", function(evt) {
-			evt.target.x = evt.stageX;
-			evt.target.y = evt.stageY;
-			stage.update();
-		});
-	
-		stage.addChild(circleContainer);
-		stage.addChild(circle2);
 
 	createjs.Ticker.on("tick", tick);
 		
