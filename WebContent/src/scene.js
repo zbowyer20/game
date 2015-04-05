@@ -587,10 +587,7 @@ function playNextDialog(cutscene, current) {
  * @param dialog The dialog to play
  */
 function createCutsceneDialog(dialog) {
-	var position = getCutscenePosition(dialog.position);
-	var image = getCutsceneImage(dialog.character, dialog.mood);
-	var charName = CHARACTER_NAMES[dialog.character]
-	var txtContainer = new Dialog().createSpeech(position, image, dialog.text, charName);
+	var txtContainer = new Dialog().createSpeech(dialog);
 	updateDialogPosition(dialog.position, txtContainer.container);
 	globalContainer.addChild(txtContainer.container);
 	stage.update();
@@ -608,26 +605,6 @@ function createCutsceneDialog(dialog) {
 }
 
 /*
- * Get the position of a cutscene dialog
- * @param position the position in string
- * @returns The coordinates for a position
- */
-function getCutscenePosition(position) {
-//	switch (position) {
-//		case "DIALOG_RIGHT":
-//			return {x: stage.canvas.width - DIALOG_WIDTH - 100, y: MENU_HEIGHT + 50};
-//			break;
-//		case "DIALOG_LEFT":
-//			return {x: 100, y: MENU_HEIGHT+50};
-//			break;
-//		case "DIALOG_CENTER":
-//			return {x: stage.canvas.width / 2 - (DIALOG_WIDTH / 2), y: MENU_HEIGHT+50};
-//			break;
-//	}
-	return {x: 10, y: stage.canvas.height - DIALOG_IMAGE_HEIGHT + 70};
-}
-
-/*
  * Update a dialog in a particular space
  * If there's already a dialog in this position, we replace it
  * @param position The dialog position to update
@@ -642,23 +619,6 @@ function updateDialogPosition(position, newDialog) {
 		// get rid of the old dialog
 		globalContainer.removeChild(currentDialogs[position]);
 		currentDialogs[position] = newDialog;
-	}
-}
-
-/*
- * Get the image for a particular dialog
- * @param character The character who's talking
- * @param mood the mood they're in
- * @returns Image the image for this particular dialog
- */
-function getCutsceneImage(character, mood) {
-	if (mood != null) {
-		return images[DIALOG_IMAGES[character + "-" + mood]];
-	}
-	// if we haven't specified a mood, return the default image for this character
-	// probably neutral
-	else {
-		return images[DIALOG_IMAGES[character]];
 	}
 }
 

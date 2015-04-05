@@ -4,6 +4,43 @@ function Dialog() {
 	var text;
 	var name;
 	
+	/*
+	 * Get the position of a cutscene dialog
+	 * @param position the position in string
+	 * @returns The coordinates for a position
+	 */
+	this.getCutscenePosition = function(position) {
+//		switch (position) {
+//			case "DIALOG_RIGHT":
+//				return {x: stage.canvas.width - DIALOG_WIDTH - 100, y: MENU_HEIGHT + 50};
+//				break;
+//			case "DIALOG_LEFT":
+//				return {x: 100, y: MENU_HEIGHT+50};
+//				break;
+//			case "DIALOG_CENTER":
+//				return {x: stage.canvas.width / 2 - (DIALOG_WIDTH / 2), y: MENU_HEIGHT+50};
+//				break;
+//		}
+		return {x: 10, y: stage.canvas.height - DIALOG_IMAGE_HEIGHT + 70};
+	}
+	
+	/*
+	 * Get the image for a particular dialog
+	 * @param character The character who's talking
+	 * @param mood the mood they're in
+	 * @returns Image the image for this particular dialog
+	 */
+	this.getCutsceneImage = function(character, mood) {
+		if (mood != null) {
+			return images[DIALOG_IMAGES[character + "-" + mood]];
+		}
+		// if we haven't specified a mood, return the default image for this character
+		// probably neutral
+		else {
+			return images[DIALOG_IMAGES[character]];
+		}
+	}
+	
 	this.createImage = function(src) {
 		var img = src;
 		var thisImage = new createjs.Bitmap(img);
@@ -44,18 +81,22 @@ function Dialog() {
 		return container;
 	}
 	
-	this.createSpeech = function(placement, imageSrc, textSrc, charName) {
+	this.createSpeech = function(dialog) {
+		var position = this.getCutscenePosition(dialog.position);
+		var dialogImage = this.getCutsceneImage(dialog.character, dialog.mood);
+		var charName = CHARACTER_NAMES[dialog.character];
+		
 		container = new createjs.Container();
 		var background = this.createBackground();
-		image = this.createImage(imageSrc);
-		text = this.createText(textSrc);
+		image = this.createImage(dialogImage);
+		text = this.createText(dialog.text);
 		name = this.createName(charName);
 		container.addChild(background);
 		container.addChild(image);
 		container.addChild(text);
 		container.addChild(name);
-		container.x = placement.x;
-		container.y = placement.y;
+		container.x = position.x;
+		container.y = position.y;
 		this.text = text;
 		this.image = image;
 		this.container = container;
