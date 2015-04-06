@@ -33,6 +33,21 @@ function MenuInventory(dimensions) {
 		}
 	}
 	
+	createInventoryMainItem = function() {
+		var currentItem = player.getHeldItem();
+		var itemViewing = convertImageToScaledBitmap(currentItem.inventoryImage, stage.canvas.width / 3, itemHeight + 20, stage.canvas.width / 3, stage.canvas.height / 3);
+		container.addChild(itemViewing);
+			
+		var itemDescriptionTxt = new createjs.Text(currentItem.description, "20px Arial", "#000000");
+			itemDescriptionTxt.textBaseline = "alphabetic";
+			itemDescriptionTxt.y = itemHeight + (stage.canvas.height / 3) + 50;
+			itemDescriptionTxt.x = (stage.canvas.width / 3);
+			itemDescriptionTxt.lineWidth = stage.canvas.width / 3;
+			
+		container.addChild(itemDescriptionTxt);
+			
+	}
+	
 	createBackArrow = function() {
 		var backArrow = drawArrow("red", DIRECTION_LEFT);
 
@@ -46,6 +61,7 @@ function MenuInventory(dimensions) {
 	
 	createInventoryBackground();
 	createInventoryItemContainers();
+	createInventoryMainItem();
 	createBackArrow();
 	
 	return container;
