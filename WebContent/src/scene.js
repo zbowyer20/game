@@ -67,10 +67,8 @@ function loadImages(manifest) {
 
 function loadAudio(audio) {
 	createjs.Sound.alternateExtensions = ["mp3"];
-	var i = 0;
-	while (i < audio.length) {
+	for (i = 0; i < audio.length; i++) {
 		createjs.Sound.registerSound({id:audio[i].id, src:audio[i].src});
-		i++;
 	}
 }
 
@@ -250,13 +248,11 @@ function createAudioContainer() {
 * @param json The backgrounds in json
 */
 function storeSceneBackgrounds(json) {
-	var sceneNumber = 0;
 	sceneJson = json;
 	// Load every scene (ie. background image)
-	while (sceneNumber < json.scenes.length) {
+	for (var sceneNumber = 0; sceneNumber < json.scenes.length; sceneNumber++) {
 		var scene = json.scenes[sceneNumber];
 		sceneBackgrounds.push(setupBackground(scene));
-		sceneNumber++;
 	}
 }
 
@@ -319,8 +315,7 @@ function setupViews(backgrounds){
 		}
 		// Loop through all the other views, checking which can be moved to
 		// TODO only supports LEFT and RIGHT
-		var j;
-		for (j = 0; j < views.length; j++) {
+		for (var j = 0; j < views.length; j++) {
 		// Get the other view
 			var compareBG = views[j].getBackground();
 			// Check through all the original scene's directions, checking if
@@ -443,10 +438,8 @@ function updateBackground(background, view) {
  * @param json The cutscenes in json
  */
 function storeCutscenes(json) {
-	var i = 0;
-	while (i < json.length) {
+	for (var i = 0; i < json.length; i++) {
 		cutscenes[json[i].id] = json[i];
-		i++;
 	}
 }
 
@@ -454,9 +447,8 @@ function getCutsceneToPlay(cutscenes) {
 	if (cutscenes == null) {
 		return null;
 	}
-	var i = 0;
 	var bestCutscene = null;
-	while (i < cutscenes.length) {
+	for (var i = 0; i < cutscenes.length; i++) {
 		if ((bestCutscene == null) || (cutscenes[i].priority >= bestCutscene.priority)) {
 			if (validToPlay(cutscenes[i])) {
 				bestCutscene = cutscenes[i];
@@ -465,7 +457,6 @@ function getCutsceneToPlay(cutscenes) {
 				console.log('not valid');
 			}
 		}
-		i++;
 	}
 	return bestCutscene;
 }
@@ -713,13 +704,11 @@ function initClickables(json) {
  * @param clickables The clickables to add
  */
 function addClickables(theseClickables, movementMultiplier) {
-	var clickableIndex = 0;
-	while (clickableIndex < theseClickables.length) {
+	for (var clickableIndex = 0; clickableIndex < theseClickables.length; clickableIndex++) {
 		var clickable = theseClickables[clickableIndex];
 		if (addClickableToStage(clickable)) {
 			clickableContainer.addChild(createClickable(clickable, movementMultiplier));
 		}
-		clickableIndex++;
 	}
 }
 
@@ -826,12 +815,10 @@ function createItemClickable(clickable, movementMultiplier) {
  * Update clickables for this scene
  */
 function updateClickables(movementMultiplier) {
-	var index = 0;
-	while (index < sceneJson.scenes.length) {
+	for (var index = 0; index < sceneJson.scenes.length; index++) {
 		if (nextBackground.name == sceneJson.scenes[index].name) {
 			addClickables(sceneJson.scenes[index].clickables, movementMultiplier);
 		}
-		index++;
 	}
 	stage.update();
 }
@@ -849,11 +836,9 @@ function tick(event) {
 	if (sliding) {
 		currentBackground.x += changeX;
 		nextBackground.x += changeX;
-		var i = 0;
-		while (i < clickableContainer.children.length) {
+		for (var i = 0; i < clickableContainer.children.length; i++) {
 			var child = clickableContainer.getChildAt(i);
 			child.x += changeX;
-			i++;
 		}
 		var finishAnimation = false;
 		if (changeX < 0) {
