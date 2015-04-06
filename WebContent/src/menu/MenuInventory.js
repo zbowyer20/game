@@ -34,7 +34,7 @@ function MenuInventory(dimensions) {
 	}
 	
 	createBackArrow = function() {
-		var backArrow = drawArrow("red", 40, canvas.height/2, 30, 180);
+		var backArrow = drawArrow("red", DIRECTION_LEFT);
 
 		backArrow.addEventListener("click", function(evt) {
 			container.removeAllChildren();
