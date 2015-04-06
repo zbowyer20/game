@@ -1,12 +1,16 @@
-//function drawArrow(colour, x, y, radius, angle) {
-//	var arrow = new createjs.Shape();
-//	arrow.graphics.beginFill(colour).drawPolyStar(x, y , radius, 3, 0.5, angle);
-//	
-//	var container = new createjs.Container();
-//	container.addChild(arrow);
-//	
-//	return container;
-//}
+function convertImageToBitmap(image, x, y) {
+	var bitmap = new createjs.Bitmap(image);
+	bitmap.x = x;
+	bitmap.y = y;
+	return bitmap;
+}
+
+function convertImageToScaledBitmap(image, x, y, width, height) {
+	var bitmap = convertImageToBitmap(image, x, y);
+	bitmap.scaleX = width / image.width;
+	bitmap.scaleY = height / image.height;
+	return bitmap;
+}
 
 function drawArrow(colour, direction) {
 	var arrow = new createjs.Shape();

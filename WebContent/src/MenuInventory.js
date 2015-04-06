@@ -21,16 +21,9 @@ function MenuInventory(dimensions) {
 		if (i < inventory.length) {
 			var item = inventory[i];
 			
-			console.log(item);
+			var itemBitmap = convertImageToScaledBitmap(item.inventoryImage, currentWidth, currentHeight, itemWidth, itemHeight);
 			
-			var bg = item.inventoryImage;
-			var backgroundBit = new createjs.Bitmap(bg);
-			backgroundBit.scaleX = itemWidth / bg.width;
-			backgroundBit.scaleY = itemHeight / bg.height;
-			backgroundBit.x = currentWidth;
-			backgroundBit.y = currentHeight;
-			
-			container.addChild(backgroundBit);
+			container.addChild(itemBitmap);
 		}
 		
 		currentWidth += itemWidth;

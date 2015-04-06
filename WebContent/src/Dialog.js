@@ -45,12 +45,8 @@ function Dialog() {
 		if (src == null) {
 			return null;
 		}
-		var img = src;
-		var thisImage = new createjs.Bitmap(img);
-		thisImage.scaleX = (DIALOG_IMAGE_WIDTH) /img.width;
-		thisImage.scaleY = (DIALOG_IMAGE_HEIGHT) / img.height;
-		thisImage.y = 0;
-			
+		
+		var thisImage = convertImageToScaledBitmap(src, 0, 0, DIALOG_IMAGE_WIDTH, DIALOG_IMAGE_HEIGHT);
 		return thisImage;
 	}
 	

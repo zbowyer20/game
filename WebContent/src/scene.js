@@ -214,27 +214,22 @@ function validToPlay(object) {
 }
 
 function createAudioContainer() {
-	var bg = images["sound-on"];
-	var thisBackground = new createjs.Bitmap(bg);
-	thisBackground.scaleX = SPEAKER_WIDTH / bg.width;
-	thisBackground.scaleY = SPEAKER_HEIGHT / bg.height;
-	thisBackground.y = MENU_HEIGHT + 10;
-	thisBackground.x = stage.canvas.width - SPEAKER_WIDTH - 10;
+	var audioSwitch = convertImageToScaledBitmap(images["sound-on"], stage.canvas.width - SPEAKER_WIDTH - 10, MENU_HEIGHT + 10, SPEAKER_WIDTH, SPEAKER_HEIGHT);
 	
-	thisBackground.addEventListener("click", function() {
+	audioSwitch.addEventListener("click", function() {
 		if (checkPriority(MUTE_PRIORITY)) {
 			if (createjs.Sound.getMute()) {
 				createjs.Sound.setMute(false);
-				thisBackground.image = images["sound-on"];
+				audioSwitch.image = images["sound-on"];
 			}
 			else {
 				createjs.Sound.setMute(true);
-				thisBackground.image = images["sound-off"];
+				audioSwitch.image = images["sound-off"];
 			}
 		}
 	});
 	
-	return thisBackground;
+	return audioSwitch;
 }
 
 ///////////////////////////////////////////////////
@@ -257,17 +252,14 @@ function storeSceneBackgrounds(json) {
 }
 
 function setupBackground(scene) {
-	var bg = images[scene.id];
-	var thisBackground = new createjs.Bitmap(bg);
-	thisBackground.scaleX = stage.canvas.width / bg.width;
-	thisBackground.scaleY = (stage.canvas.height - MENU_HEIGHT) / bg.height;
-	thisBackground.y = MENU_HEIGHT;
+	var thisBackground = convertImageToScaledBitmap(images[scene.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
 	thisBackground.name = scene.name;
 	thisBackground.movements = scene.movements;
 	
 	return thisBackground;
 }
 
+// TODO: default background
 function setCurrentBackground() {
 	currentBackground = sceneBackgrounds[0];
 }
@@ -677,14 +669,9 @@ function updateItemContainer(item) {
 	var itemWidth = 50;
 	var itemHeight = 50;
 	
-	var bg = item.inventoryImage;
-	var backgroundBit = new createjs.Bitmap(bg);
-	backgroundBit.scaleX = itemWidth / bg.width;
-	backgroundBit.scaleY = itemHeight / bg.height;
-	backgroundBit.x = 25;
-	backgroundBit.y = stage.canvas.height - 75;
+	var itemContainerImage = convertImageToScaledBitmap(item.inventoryImage, 25, stage.canvas.height - 75, itemWidth, itemHeight);
 		
-	itemContainer.addChild(backgroundBit);
+	itemContainer.addChild(itemContainerImage);
 	stage.update();
 }
 
@@ -748,12 +735,8 @@ function createClickable(clickable, movementMultiplier) {
  */
 function createClickableImage(clickable, multiplier) {
 	var clickableImage = getImageById(clickable.id);
-	var clickableBit = new createjs.Bitmap(clickableImage);
-	clickableBit.scaleX = clickable.dimensions.width / clickableImage.width;
-	clickableBit.scaleY = clickable.dimensions.height / clickableImage.height;
-	clickableBit.x = clickable.location.x + (canvas.width*multiplier);
-	clickableBit.y = clickable.location.y;
 	
+	var clickableBit = convertImageToScaledBitmap(clickableImage, clickable.location.x + (stage.canvas.width*multiplier), clickable.location.y, clickable.dimensions.width, clickable.dimensions.height);
 	return clickableBit;
 }
 
