@@ -98,7 +98,7 @@ function loadGame() {
         //     should be the default
         setCurrentBackground();
         // Designate movements for each background
-        setupViews(sceneBackgrounds);
+        setupBackgrounds(sceneBackgrounds);
         setupBackgroundContainer();
     	// The container for clickables for this scene
         initClickables(json);
@@ -281,13 +281,13 @@ function setupBackgroundContainer() {
 * Designate which scene arrows for the backgrounds will point to
 * @param backgrounds The set of backgrounds for this scene
 */
-function setupViews(backgrounds){
+function setupBackgrounds(backgrounds){
 	var views = [];
 	
 	// Create a separate view for each background
 	for (var i = 0; i < backgrounds.length; i++) {
-		views.push(new viewer());
-		views[i].createView(backgrounds[i]);
+		views.push(new Background());
+		views[i].createBackground(backgrounds[i]);
 	}
 
 	// Add movements to each background
@@ -329,6 +329,8 @@ function setupViews(backgrounds){
 
 	currentView = views[0];
 
+	console.log(currentView);
+	
 	return views;
 }
 
@@ -364,6 +366,7 @@ function getMovement(direction) {
 			break;
 		case DIRECTION_RIGHT :
 			return currentView.getRight();
+			console.log(currentView.getRight());
 			break;
 	}
 }
@@ -397,6 +400,7 @@ function moveInDirectionDelegate(direction) {
 */
 function turn(newView, movementMultiplier) {
 	var background = stage.getChildByName("backgroundContainer");
+	console.log(newView);
 	updateBackground(background, newView);
 	updateClickables(movementMultiplier);
 	stage.update();
@@ -417,6 +421,8 @@ function updateBackground(background, view) {
 	// Start animation
 	priority = FROZEN_PRIORITY;
 	sliding = true;
+	console.log('got here');
+	console.log(view);
 	currentView = view;
 }
 
