@@ -423,6 +423,7 @@ function updateBackground(background, view) {
 	backgroundContainer.addChild(backgroundBit);
 	nextBackground = backgroundBit;
 	// Start animation
+	priority = FROZEN_PRIORITY;
 	sliding = true;
 	currentView = view;
 }
@@ -849,6 +850,7 @@ function tick(event) {
 		}
 		if (finishAnimation) {
 			sliding = false;
+			priority = LOWEST_PRIORITY;
 			nextBackground.x = 0;
 			backgroundContainer.removeChild(currentBackground);
 			currentBackground = nextBackground;
