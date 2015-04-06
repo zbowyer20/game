@@ -16,7 +16,7 @@ var currentBackground;
 var nextBackground;
 var sceneJson;
 var itemJson;
-var cutscenes;
+var cutscenes = {};
 var loadingText = false;
 var images = {};
 var currentDialogs = {};
@@ -27,11 +27,8 @@ function initScene(sceneNumber, player) {
 
 function initScene0() {
 	prevWidth = window.innerWidth;
-	// TODO test audios
 	    
-	// Retrieve the JSON data for this particular scene
-	
-	
+	// Retrieve the JSON data for this particular scene	
 	$.getJSON("json/manifest.json", function(json) {
 		loadImages(json.images);
 		loadAudio(json.audio);
@@ -446,7 +443,11 @@ function updateBackground(background, view) {
  * @param json The cutscenes in json
  */
 function storeCutscenes(json) {
-	cutscenes = json;
+	var i = 0;
+	while (i < json.length) {
+		cutscenes[json[i].id] = json[i];
+		i++;
+	}
 }
 
 function getCutsceneToPlay(cutscenes) {
@@ -473,26 +474,10 @@ function getCutsceneToPlay(cutscenes) {
  * Locate a cutscene based on its id
  * @param cutsceneId the cutscene's ID
  * @returns Object the JSON object of this cutscene
- * TODO array this shit up, let's get some O(1) in there
  */
 function findCutscene(cutsceneId) {
 	if (cutsceneId != null) {
-		var cutsceneIndex = 0;
-		var foundCutscene = false;
-		var thisCutscene;
-		while ((cutsceneIndex < cutscenes.length) && (!foundCutscene)) {
-			if (cutscenes[cutsceneIndex].id == cutsceneId) {
-				foundCutscene = true;
-				thisCutscene = cutscenes[cutsceneIndex];
-			}
-			else {
-				cutsceneIndex++;
-			}
-		}
-		if (foundCutscene) {
-			return thisCutscene;
-		}
-		return null;
+		return cutscenes[cutsceneId];
 	}
 	else {
 		alert('no cutscene');
