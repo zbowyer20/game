@@ -3,7 +3,6 @@ var itemContainer;
 var backgroundContainer;
 var clickableContainer;
 var globalContainer;
-var currentItem;
 var sliding = false;
 var changeX = 0;
 var changeY = 0;
@@ -199,7 +198,8 @@ function validToPlay(object) {
 		else {
 			if (object.requires[i].type == "item") {
 				if (object.requires[i].activeItem) {
-					if ((!currentItem) || (currentItem.id != object.requires[i].id)) {
+					var heldItem = player.getHeldItem();
+					if ((!heldItem) || (heldItem.id != object.requires[i].id)) {
 						return false;
 					}
 				}
@@ -643,11 +643,12 @@ function createItemContainer() {
 	container.hitArea = hit;
 	
 	container.addEventListener("click", function() {
-		if (checkPriority(MENU_PRIORITY) && (currentItem != null)) {
+		if (checkPriority(MENU_PRIORITY) && (player.getHeldItem() != null)) {
 			var i = 0;
 			var itemToUpdate;
+			var heldItem = player.getHeldItem();
 			while (i < player.getInventory().length) {
-				if (player.getInventory()[i].id == currentItem.id) {
+				if (player.getInventory()[i].id == heldItem.id) {
 					if ((i - 1) >= 0) {
 						itemToUpdate = player.getInventory()[i-1];
 					}
@@ -671,7 +672,7 @@ function createItemContainer() {
 
 function updateItemContainer(item) {
 	itemContainer.removeChildAt(1);
-	currentItem = item;
+	player.setHeldItem(item);
 	var itemWidth = 50;
 	var itemHeight = 50;
 	
