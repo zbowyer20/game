@@ -3,9 +3,10 @@ function MenuInventory(dimensions) {
 	
 	var container;
 	var itemWidth = dimensions.width / MAX_INVENTORY_SIZE;
-	var itemHeight = window.innerHeight / 8;
+	var itemHeight = dimensions.height / 8;
 	
 	container = new createjs.Container();
+	container.y = MENU_HEIGHT;
 	
 	createInventoryBackground = function() {
 		var graphics = new createjs.Graphics().beginFill("white").drawRect(0, 0, dimensions.width, dimensions.height);
@@ -39,13 +40,13 @@ function MenuInventory(dimensions) {
 	
 	createInventoryMainItem = function(mainItemContainer) {
 		
-		var mainItemWidth = stage.canvas.width / 3;
+		var mainItemWidth = dimensions.width / 3;
 		
 		var currentItem = player.getHeldItem();
-		var itemViewing = convertImageToScaledBitmap(currentItem.inventoryImage, mainItemWidth, itemHeight + 20, mainItemWidth, stage.canvas.height / 3);
+		var itemViewing = convertImageToScaledBitmap(currentItem.inventoryImage, mainItemWidth, itemHeight + 20, mainItemWidth, dimensions.height / 3);
 		mainItemContainer.addChild(itemViewing);
 		
-		var itemDescriptionTxt = createText(currentItem.description, "#000000", mainItemWidth, itemHeight + (stage.canvas.height/3) + 50, mainItemWidth);
+		var itemDescriptionTxt = createText(currentItem.description, "#000000", mainItemWidth, itemHeight + (dimensions.height/3) + 50, mainItemWidth);
 			
 		mainItemContainer.addChild(itemDescriptionTxt);
 			
@@ -61,7 +62,6 @@ function MenuInventory(dimensions) {
 	}
 	
 	updateInventoryMainItem = function(item) {
-		console.log('reached');
 		player.setHeldItem(item);
 		
 		var mainItemContainer = container.getChildByName(VIEWING_ITEM_NAME);

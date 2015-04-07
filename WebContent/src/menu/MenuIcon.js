@@ -2,8 +2,8 @@ function MenuIcon(name, width, height) {
 	var shape = new createjs.Shape();
 
 	var dimensions = [];
-	dimensions.width = stage.canvas.width;
-	dimensions.height = stage.canvas.height;
+	dimensions.width = width;
+	dimensions.height = stage.canvas.height / 2;
 	
 	if (name === MENU_INVENTORY) {
 		shape.graphics.beginFill("green").drawRect(0, 0, width, height);
