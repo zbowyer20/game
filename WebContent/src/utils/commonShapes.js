@@ -37,6 +37,15 @@ function drawArrow(colour, direction) {
 	return container;
 }
 
+function createText(content, colour, x, y, lineWidth) {
+	var text = new createjs.Text(content, "20px Arial", colour);
+	text.textBaseline = "alphabetic";
+	text.y = y;
+	text.x = x;
+	text.lineWidth = lineWidth;
+	return text;
+}
+
 function drawBorderedRectangle(x, y, width, height, colour) {
 	var shape = new createjs.Shape();
 	shape.graphics.beginStroke(colour);

@@ -51,21 +51,22 @@ function Dialog() {
 	}
 	
 	this.createText = function() {
-		var txt = new createjs.Text("", "20px Arial", "#ffffff");
-		txt.textBaseline = "alphabetic";
-		txt.y = image == null ? stage.canvas.height - 320 : (image.image.height * image.scaleY) * (9/16);
-		txt.x = image == null? 0 : (image.image.width * image.scaleX);
-		txt.lineWidth = image == null ? stage.canvas.width - 20 : stage.canvas.width - 425;
+		var txtDimensions = {};
+		txtDimensions.y = image == null ? stage.canvas.height - 320 : (image.image.height * image.scaleY) * (9/16);
+		txtDimensions.x = image == null? 0 : (image.image.width * image.scaleX);
+		txtDimensions.lineWidth = image == null ? stage.canvas.width - 20 : stage.canvas.width - 425;
+		
+		var txt = createText("", "#FFFFFF", txtDimensions.x, txtDimensions.y, txtDimensions.lineWidth);
 		
 		return txt;
 	}
 	
 	this.createName = function(name) {
-		var txt = new createjs.Text(name, "20px Arial", "#ffffff");
-		txt.textBaseline = "alphabetic";
-		txt.y = stage.canvas.height - DIALOG_HEIGHT - (0.5 * DIALOG_NAME_HEIGHT) + 7;
-		txt.x = image == null ? 0 : (image.image.width * image.scaleX);
-		txt.lineWidth = stage.canvas.width - 805;
+		var txtDimensions = {};
+		txtDimensions.y = stage.canvas.height - DIALOG_HEIGHT - (0.5 * DIALOG_NAME_HEIGHT) + 7;
+		txtDimensions.x = image == null ? 0 : (image.image.width * image.scaleX);
+
+		var txt = createText(name, "#FFFFFF", txtDimensions.x, txtDimensions.y, stage.canvas.width - 805);
 		
 		return txt;
 	}

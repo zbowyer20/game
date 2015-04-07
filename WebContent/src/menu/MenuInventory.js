@@ -34,15 +34,13 @@ function MenuInventory(dimensions) {
 	}
 	
 	createInventoryMainItem = function() {
+		var mainItemWidth = stage.canvas.width / 3;
+		
 		var currentItem = player.getHeldItem();
-		var itemViewing = convertImageToScaledBitmap(currentItem.inventoryImage, stage.canvas.width / 3, itemHeight + 20, stage.canvas.width / 3, stage.canvas.height / 3);
+		var itemViewing = convertImageToScaledBitmap(currentItem.inventoryImage, mainItemWidth, itemHeight + 20, mainItemWidth, stage.canvas.height / 3);
 		container.addChild(itemViewing);
-			
-		var itemDescriptionTxt = new createjs.Text(currentItem.description, "20px Arial", "#000000");
-			itemDescriptionTxt.textBaseline = "alphabetic";
-			itemDescriptionTxt.y = itemHeight + (stage.canvas.height / 3) + 50;
-			itemDescriptionTxt.x = (stage.canvas.width / 3);
-			itemDescriptionTxt.lineWidth = stage.canvas.width / 3;
+		
+		var itemDescriptionTxt = createText(currentItem.description, "#000000", mainItemWidth, itemHeight + (stage.canvas.height/3) + 50, mainItemWidth);
 			
 		container.addChild(itemDescriptionTxt);
 			
