@@ -662,7 +662,8 @@ function createItemContainer() {
 				}
 			}
 			if (itemToUpdate != null) {
-				updateItemContainer(itemToUpdate);
+				player.setHeldItem(itemToUpdate);
+				updateItemContainer();
 			}
 		}
 		
@@ -670,9 +671,9 @@ function createItemContainer() {
 	return container;
 }
 
-function updateItemContainer(item) {
+function updateItemContainer() {
 	itemContainer.removeChildAt(1);
-	player.setHeldItem(item);
+	var item = player.getHeldItem();
 	var itemWidth = 50;
 	var itemHeight = 50;
 	
@@ -794,7 +795,7 @@ function createItemClickable(clickable, movementMultiplier) {
 			loadClickableCutscene(clickable);
 			if (foundItem) {
 				player.addItem(thisItem);
-				updateItemContainer(thisItem);
+				updateItemContainer();
 			}		
 		}
 	})

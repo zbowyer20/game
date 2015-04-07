@@ -1,4 +1,6 @@
 function MenuInventory(dimensions) {
+	var VIEWING_ITEM_NAME = "viewingItem";
+	
 	var container;
 	var itemWidth = dimensions.width / MAX_INVENTORY_SIZE;
 	var itemHeight = window.innerHeight / 8;
@@ -26,6 +28,8 @@ function MenuInventory(dimensions) {
 				
 				var itemBitmap = convertImageToScaledBitmap(item.inventoryImage, currentWidth, currentHeight, itemWidth, itemHeight);
 				
+				itemBitmap.addEventListener("click", updateInventoryMainItemDelegate(item));
+				
 				container.addChild(itemBitmap);
 			}
 			
@@ -33,17 +37,36 @@ function MenuInventory(dimensions) {
 		}
 	}
 	
-	createInventoryMainItem = function() {
+	createInventoryMainItem = function(mainItemContainer) {
+		
 		var mainItemWidth = stage.canvas.width / 3;
 		
 		var currentItem = player.getHeldItem();
 		var itemViewing = convertImageToScaledBitmap(currentItem.inventoryImage, mainItemWidth, itemHeight + 20, mainItemWidth, stage.canvas.height / 3);
-		container.addChild(itemViewing);
+		mainItemContainer.addChild(itemViewing);
 		
 		var itemDescriptionTxt = createText(currentItem.description, "#000000", mainItemWidth, itemHeight + (stage.canvas.height/3) + 50, mainItemWidth);
 			
-		container.addChild(itemDescriptionTxt);
+		mainItemContainer.addChild(itemDescriptionTxt);
 			
+	}
+	
+	/*
+	* Closure stuff... I guess
+	*/
+	function updateInventoryMainItemDelegate(item) {
+		return function() {
+			updateInventoryMainItem(item);
+		}
+	}
+	
+	updateInventoryMainItem = function(item) {
+		console.log('reached');
+		player.setHeldItem(item);
+		
+		var mainItemContainer = container.getChildByName(VIEWING_ITEM_NAME);
+		mainItemContainer.removeAllChildren();
+		createInventoryMainItem(mainItemContainer);
 	}
 	
 	createBackArrow = function() {
@@ -51,6 +74,7 @@ function MenuInventory(dimensions) {
 
 		backArrow.addEventListener("click", function(evt) {
 			container.removeAllChildren();
+			updateItemContainer();
 			stage.update();
 		});
 		
@@ -59,7 +83,12 @@ function MenuInventory(dimensions) {
 	
 	createInventoryBackground();
 	createInventoryItemContainers();
-	createInventoryMainItem();
+	
+	var mainItemContainer = new createjs.Container();
+	mainItemContainer.name = VIEWING_ITEM_NAME;
+	container.addChild(mainItemContainer);
+	
+	createInventoryMainItem(mainItemContainer);
 	createBackArrow();
 	
 	return container;

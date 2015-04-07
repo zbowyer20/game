@@ -4,6 +4,7 @@ function Player() {
 	
 	this.addItem = function(item) {
 		inventory.push(item);
+		this.setHeldItem(item);
 		return this;
 	}
 	
