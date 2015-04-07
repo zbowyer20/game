@@ -29,9 +29,20 @@ function MenuInventory(dimensions) {
 				
 				var itemBitmap = convertImageToScaledBitmap(item.inventoryImage, currentWidth, currentHeight, itemWidth, itemHeight);
 				
-				itemBitmap.addEventListener("click", updateInventoryMainItemDelegate(item));
+				var hitArea = new createjs.Shape();
+				hitArea.graphics.beginFill("#000").drawRect(0,0,itemWidth,itemHeight);
+				hitArea.x = currentWidth;
+				hitArea.y = currentHeight;
+				itemBitmap.hitArea = hitArea;
 				
-				container.addChild(itemBitmap);
+				var itemContainer = new createjs.Container();
+				itemContainer.addChild(itemBitmap);
+				
+				itemContainer.hitArea = hitArea;
+				
+				itemContainer.addEventListener("click", updateInventoryMainItemDelegate(item));
+				
+				container.addChild(itemContainer);
 			}
 			
 			currentWidth += itemWidth;
