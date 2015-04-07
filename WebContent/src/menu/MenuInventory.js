@@ -1,4 +1,7 @@
 function MenuInventory(dimensions) {
+	var opening = false;
+	var closing = false;
+	
 	var VIEWING_ITEM_NAME = "viewingItem";
 	
 	var container;
@@ -6,13 +9,17 @@ function MenuInventory(dimensions) {
 	var itemHeight = dimensions.height / 8;
 	
 	container = new createjs.Container();
-	container.y = MENU_HEIGHT;
+	container.y = 0 - dimensions.height;
 	
 	createInventoryBackground = function() {
 		var graphics = new createjs.Graphics().beginFill("white").drawRect(0, 0, dimensions.width, dimensions.height);
 		var background = new createjs.Shape(graphics);
 		background.x = 0;
 		background.y = 0;
+				
+		opening = true;
+		
+		stage.update();
 		
 		container.addChild(background);
 	}
@@ -86,8 +93,36 @@ function MenuInventory(dimensions) {
 	var mainItemContainer = new createjs.Container();
 	mainItemContainer.name = VIEWING_ITEM_NAME;
 	container.addChild(mainItemContainer);
+		
+	createjs.Ticker.addEventListener("tick", openMenu);
 	
 	createInventoryMainItem(mainItemContainer);
+	
+	function openMenu(event) {
+		if (!event.paused) {
+			if (opening) {
+				if (container.y < 0) {
+					container.y+= (event.delta / 1000) * 500;
+				}
+				else {
+					container.y = 0;
+					opening = false;
+				}
+				stage.update();
+			}
+			if (closing) {
+				if (container.y > (0 - dimensions.height)) {
+					container.y -= (event.delta / 1000) * 500;
+					stage.update();
+				}
+				else {
+					container.y = 0 - dimensions.height;
+					closing = false;
+				}
+				stage.update();
+			}
+		}
+	}
 	
 	return container;
 }
