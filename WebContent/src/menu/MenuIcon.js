@@ -1,15 +1,27 @@
 function MenuIcon(name, width, height) {
 	var shape = new createjs.Shape();
 
+	var open = false;
+	var menu;
+	
 	var dimensions = [];
 	dimensions.width = width;
 	dimensions.height = stage.canvas.height / 2;
-	
+		
 	if (name === MENU_INVENTORY) {
 		shape.graphics.beginFill("green").drawRect(0, 0, width, height);
 		shape.addEventListener("click", function() {
 			if (priority <= MENU_PRIORITY) {
-				stage.addChild(new MenuInventory(dimensions));
+				if (!open) {
+					menu = new MenuInventory(dimensions);
+					stage.addChild(menu);
+					open = true;
+				}
+				else {
+					stage.removeChild(menu);
+					menu = null;
+					open = false;
+				}
 				stage.update();
 			}
 		});

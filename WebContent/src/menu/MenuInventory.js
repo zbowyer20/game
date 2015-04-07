@@ -80,18 +80,6 @@ function MenuInventory(dimensions) {
 		createInventoryMainItem(mainItemContainer);
 	}
 	
-	createBackArrow = function() {
-		var backArrow = drawArrow("red", DIRECTION_LEFT);
-
-		backArrow.addEventListener("click", function(evt) {
-			container.removeAllChildren();
-			updateItemContainer();
-			stage.update();
-		});
-		
-		container.addChild(backArrow);
-	}
-	
 	createInventoryBackground();
 	createInventoryItemContainers();
 	
@@ -100,7 +88,6 @@ function MenuInventory(dimensions) {
 	container.addChild(mainItemContainer);
 	
 	createInventoryMainItem(mainItemContainer);
-	createBackArrow();
 	
 	return container;
 }
