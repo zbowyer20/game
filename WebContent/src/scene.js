@@ -113,7 +113,7 @@ function loadGame() {
 		globalContainer.addChild(itemContainer);
 		globalContainer.addChild(audioContainer);
 		
-    	stage.addChild(globalContainer);
+    	layers.sceneLayer.addChild(globalContainer);
     	
     	// Set up the arrows for this scene
     	setupNavigation(json);
@@ -857,5 +857,5 @@ function tick(event) {
 		}
 		stage.update();
 	}
-	stage.update();
+	//stage.update();
 }

@@ -14,12 +14,10 @@ function MenuIcon(name, width, height) {
 			if (priority <= MENU_PRIORITY) {
 				if (!open) {
 					menu = new MenuInventory(dimensions);
-					stage.addChild(menu);
+					layers.menuLayer.addChild(menu);
 					open = true;
 				}
 				else {
-					stage.removeChild(menu);
-					menu = null;
 					open = false;
 				}
 				stage.update();

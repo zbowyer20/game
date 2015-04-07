@@ -14,7 +14,7 @@ function initMenu() {
 		currentWidth += menuIconWidth;
 	}
 	
-	stage.addChild(menuBar);
+	layers.UILayer.addChild(menuBar);
 	stage.update();
 	return stage;
 }
