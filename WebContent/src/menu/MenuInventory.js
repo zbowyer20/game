@@ -113,22 +113,27 @@ function MenuInventory(dimensions) {
 	function openMenu(event) {
 		if (!event.paused) {
 			if (self.opening) {
-				if (self.container.y < 0) {
-					self.container.y+= (event.delta / 1000) * 500;
+				if (self.container.y < MENU_HEIGHT) {
+					var newY = (event.delta / 1000) * 500 + self.container.y;
+					if (newY >= MENU_HEIGHT) {
+						self.container.y = MENU_HEIGHT;
+					}
+					else {
+						self.container.y = newY;
+					}
 				}
 				else {
-					self.container.y = 0;
 					self.opening = false;
 				}
 				stage.update();
 			}
 			if (self.closing) {
-				if (self.container.y > (0 - dimensions.height)) {
+				if (self.container.y > (0 - dimensions.height - MENU_HEIGHT)) {
 					self.container.y -= (event.delta / 1000) * 500;
 					stage.update();
 				}
 				else {
-					self.container.y = 0 - dimensions.height;
+					self.container.y = 0 - dimensions.height - MENU_HEIGHT;
 					self.closing = false;
 				}
 				stage.update();
