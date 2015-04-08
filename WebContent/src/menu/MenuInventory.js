@@ -86,6 +86,7 @@ function MenuInventory(dimensions) {
 	
 	updateInventoryMainItem = function(item) {
 		player.setHeldItem(item);
+		updateItemContainer();
 		
 		var mainItemContainer = self.prototype.container.getChildByName(VIEWING_ITEM_NAME);
 		mainItemContainer.removeAllChildren();
