@@ -226,6 +226,7 @@ function createAudioContainer() {
 				createjs.Sound.setMute(true);
 				audioSwitch.image = images["sound-off"];
 			}
+			stage.update();
 		}
 	});
 	
