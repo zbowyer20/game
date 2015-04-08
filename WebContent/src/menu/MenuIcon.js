@@ -22,27 +22,40 @@ function MenuIcon(name, width, height) {
 
 	var veil = createVeil();
 	
+	function clickMenuIcon() {
+		if (!open) {
+			openMenu();
+		}
+		else {
+			console.log('close menu');
+			closeMenu();
+		}
+	}
+	
+	function openMenu() {
+		layers.menuLayer.addChild(menu.prototype.container);
+		layers.sceneLayer.addChild(veil);
+		veil.addEventListener("click", closeMenu);
+		menu.prototype.open();
+		open = true;
+		stage.update();
+	}
+	
+	function closeMenu() {
+		open = false;
+		layers.sceneLayer.removeChild(veil);
+		menu.prototype.close();
+		stage.update();
+	}
+	
 	if (name === MENU_INVENTORY) {
 		shape.graphics.beginFill("green").drawRect(0, 0, width, height);
 		shape.addEventListener("click", function() {
 			if (priority <= MENU_PRIORITY) {
-				if (!open) {
+				if (menu == null) {
 					menu = new MenuInventory(dimensions);
-					layers.menuLayer.addChild(menu.prototype.container);
-					layers.sceneLayer.addChild(veil);
-					veil.addEventListener("click", function() {
-						open = false;
-						layers.sceneLayer.removeChild(veil);
-						menu.prototype.close();
-					});
-					stage.update();
-					open = true;
 				}
-				else {
-					open = false;
-					layers.sceneLayer.removeChild(veil);
-					menu.prototype.close();
-				}
+				clickMenuIcon();
 				stage.update();
 			}
 		});
