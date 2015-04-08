@@ -1,15 +1,27 @@
 function MenuInventory(dimensions) {
-	var opening = false;
-	var closing = false;
+	this.opening = false;
+	this.closing = false;
 	
 	var VIEWING_ITEM_NAME = "viewingItem";
 	
-	var container;
 	var itemWidth = dimensions.width / MAX_INVENTORY_SIZE;
 	var itemHeight = dimensions.height / 8;
 	
-	container = new createjs.Container();
-	container.y = 0 - dimensions.height;
+	this.container = new createjs.Container();
+	this.container.y = 0 - dimensions.height;
+	
+	//maintain scope
+	var self = this
+	
+	this.open = function() {
+		self.closing = false;
+		self.opening = true;
+	}
+	
+	this.close = function() {
+		self.opening = false;
+		self.closing = true;
+	}
 	
 	createInventoryBackground = function() {
 		var graphics = new createjs.Graphics().beginFill("white").drawRect(0, 0, dimensions.width, dimensions.height);
@@ -17,11 +29,11 @@ function MenuInventory(dimensions) {
 		background.x = 0;
 		background.y = 0;
 				
-		opening = true;
+		self.open();
 		
 		stage.update();
 		
-		container.addChild(background);
+		self.container.addChild(background);
 	}
 		
 	createInventoryItemContainers = function() {
@@ -30,7 +42,7 @@ function MenuInventory(dimensions) {
 		var inventory = player.getInventory();
 
 		for (var i = 0; i < MAX_INVENTORY_SIZE; i++) {
-			container.addChild(drawBorderedRectangle(currentWidth, currentHeight, itemWidth, itemHeight, "#000"));
+			self.container.addChild(drawBorderedRectangle(currentWidth, currentHeight, itemWidth, itemHeight, "#000"));
 			if (i < inventory.length) {
 				var item = inventory[i];
 				
@@ -49,7 +61,7 @@ function MenuInventory(dimensions) {
 				
 				itemContainer.addEventListener("click", updateInventoryMainItemDelegate(item));
 				
-				container.addChild(itemContainer);
+				self.container.addChild(itemContainer);
 			}
 			
 			currentWidth += itemWidth;
@@ -92,7 +104,7 @@ function MenuInventory(dimensions) {
 	
 	var mainItemContainer = new createjs.Container();
 	mainItemContainer.name = VIEWING_ITEM_NAME;
-	container.addChild(mainItemContainer);
+	self.container.addChild(mainItemContainer);
 		
 	createjs.Ticker.addEventListener("tick", openMenu);
 	
@@ -100,29 +112,29 @@ function MenuInventory(dimensions) {
 	
 	function openMenu(event) {
 		if (!event.paused) {
-			if (opening) {
-				if (container.y < 0) {
-					container.y+= (event.delta / 1000) * 500;
+			if (self.opening) {
+				if (self.container.y < 0) {
+					self.container.y+= (event.delta / 1000) * 500;
 				}
 				else {
-					container.y = 0;
-					opening = false;
+					self.container.y = 0;
+					self.opening = false;
 				}
 				stage.update();
 			}
-			if (closing) {
-				if (container.y > (0 - dimensions.height)) {
-					container.y -= (event.delta / 1000) * 500;
+			if (self.closing) {
+				if (self.container.y > (0 - dimensions.height)) {
+					self.container.y -= (event.delta / 1000) * 500;
 					stage.update();
 				}
 				else {
-					container.y = 0 - dimensions.height;
-					closing = false;
+					self.container.y = 0 - dimensions.height;
+					self.closing = false;
 				}
 				stage.update();
 			}
 		}
 	}
 	
-	return container;
+	return this;
 }
