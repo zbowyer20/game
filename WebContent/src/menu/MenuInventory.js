@@ -16,7 +16,7 @@ function MenuInventory(dimensions) {
 	 * Creates the background for the whole inventory
 	 */
 	createInventoryBackground = function() {
-		var graphics = new createjs.Graphics().beginFill("white").drawRect(0, 0, dimensions.width, dimensions.height);
+		var graphics = new createjs.Graphics().beginFill(WHITE).drawRect(0, 0, dimensions.width, dimensions.height);
 		var background = new createjs.Shape(graphics);
 		background.x = 0;
 		background.y = 0;
@@ -37,7 +37,7 @@ function MenuInventory(dimensions) {
 		var itemBitmap = convertImageToScaledBitmap(item.inventoryImage, position.x, position.y, itemDimensions.width, itemDimensions.height);
 		
 		var hitArea = new createjs.Shape();
-		hitArea.graphics.beginFill("#000").drawRect(0,0,itemDimensions.width,itemDimensions.height);
+		hitArea.graphics.beginFill(BLACK).drawRect(0,0,itemDimensions.width,itemDimensions.height);
 		hitArea.x = position.x;
 		hitArea.y = position.y;
 		itemBitmap.hitArea = hitArea;
@@ -61,7 +61,7 @@ function MenuInventory(dimensions) {
 		
 		// for each possible item in the inventory, add in a item slot with an item, if necessary
 		for (var i = 0; i < MAX_INVENTORY_SIZE; i++) {
-			self.prototype.container.addChild(drawBorderedRectangle(current.x, current.y, itemDimensions.width, itemDimensions.height, "#000"));
+			self.prototype.container.addChild(drawBorderedRectangle(current.x, current.y, itemDimensions.width, itemDimensions.height, BLACK));
 			if (i < inventory.length) {
 				var item = inventory[i];
 				self.prototype.container.addChild(createInventoryItemContainer(item, current, itemDimensions));
