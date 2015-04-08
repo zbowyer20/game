@@ -1,17 +1,5 @@
 function MenuIcon(name, width, height) {
 	var shape = new createjs.Shape();
-
-	function createVeil() {
-		var cont = new createjs.Container();
-		
-		var graphics = new createjs.Graphics().beginFill("#000000").drawRect(0, 0, stage.canvas.width, stage.canvas.height);
-		var shape = new createjs.Shape(graphics);
-		shape.alpha = 0.4; 
-		
-		cont.addChild(shape);
-		
-		return cont;
-	}
 	
 	var open = false;
 	var menu;

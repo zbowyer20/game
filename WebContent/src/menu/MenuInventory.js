@@ -1,16 +1,20 @@
 function MenuInventory(dimensions) {
-	this.prototype = new MenuScreen(dimensions);
 	
-	var VIEWING_ITEM_NAME = "viewingItem";
+	/*
+	 * Set the width and height of each clickable item
+	 * @returns Object{width:int, height:int} The dimensions of each clickable item
+	 */
+	setItemDimensions = function() {
+		var itemDimensions = {};
+		itemDimensions.width = dimensions.width / MAX_INVENTORY_SIZE;
+		itemDimensions.height = Math.max(dimensions.height / 8, 30);
+		
+		return itemDimensions;
+	}
 	
-	var itemWidth = dimensions.width / MAX_INVENTORY_SIZE;
-	var itemHeight = dimensions.height / 8;
-	
-	this.prototype.container.y = 0 - dimensions.height;
-	
-	//maintain scope
-	var self = this
-	
+	/*
+	 * Creates the background for the whole inventory
+	 */
 	createInventoryBackground = function() {
 		var graphics = new createjs.Graphics().beginFill("white").drawRect(0, 0, dimensions.width, dimensions.height);
 		var background = new createjs.Shape(graphics);
@@ -19,60 +23,65 @@ function MenuInventory(dimensions) {
 				
 		self.prototype.container.addChild(background);
 		
-		stage.update();
-		
-		self.prototype.open();
-		
-		stage.update();
-		
+		stage.update();	
 	}
+	
+	/*
+	 * Fetches the item information to be stored in an item container
+	 * @param item The item itself
+	 * @param position{x: int, y: int} The x and y position of the item
+	 * @param itemDimensions{width: int, height: int} The height and width of the item to be displayed
+	 * @returns The container including that item
+	 */
+	createInventoryItemContainer = function(item, position, itemDimensions) {
+		var itemBitmap = convertImageToScaledBitmap(item.inventoryImage, position.x, position.y, itemDimensions.width, itemDimensions.height);
 		
+		var hitArea = new createjs.Shape();
+		hitArea.graphics.beginFill("#000").drawRect(0,0,itemDimensions.width,itemDimensions.height);
+		hitArea.x = position.x;
+		hitArea.y = position.y;
+		itemBitmap.hitArea = hitArea;
+		
+		var itemContainer = new createjs.Container();
+		itemContainer.addChild(itemBitmap);
+		itemContainer.hitArea = hitArea;
+		
+		itemContainer.addEventListener("click", updateInventoryMainItemDelegate(item));
+		
+		return itemContainer;
+	}
+	
+	/*
+	 * Creates the smaller item containers
+	 */
 	createInventoryItemContainers = function() {
-		var currentWidth = 0;
-		var currentHeight = 0;
+		// the current position for an item container
+		var current = {"x": 0, "y": 0};
 		var inventory = player.getInventory();
-
+		
+		// for each possible item in the inventory, add in a item slot with an item, if necessary
 		for (var i = 0; i < MAX_INVENTORY_SIZE; i++) {
-			self.prototype.container.addChild(drawBorderedRectangle(currentWidth, currentHeight, itemWidth, itemHeight, "#000"));
+			self.prototype.container.addChild(drawBorderedRectangle(current.x, current.y, itemDimensions.width, itemDimensions.height, "#000"));
 			if (i < inventory.length) {
 				var item = inventory[i];
-				
-				var itemBitmap = convertImageToScaledBitmap(item.inventoryImage, currentWidth, currentHeight, itemWidth, itemHeight);
-				
-				var hitArea = new createjs.Shape();
-				hitArea.graphics.beginFill("#000").drawRect(0,0,itemWidth,itemHeight);
-				hitArea.x = currentWidth;
-				hitArea.y = currentHeight;
-				itemBitmap.hitArea = hitArea;
-				
-				var itemContainer = new createjs.Container();
-				itemContainer.addChild(itemBitmap);
-				
-				itemContainer.hitArea = hitArea;
-				
-				itemContainer.addEventListener("click", updateInventoryMainItemDelegate(item));
-				
-				self.prototype.container.addChild(itemContainer);
+				self.prototype.container.addChild(createInventoryItemContainer(item, current, itemDimensions));
 			}
-			
-			currentWidth += itemWidth;
+			current.x += itemDimensions.width;
 		}
 	}
 	
 	createInventoryMainItem = function(mainItemContainer) {
-		
-		var mainItemWidth = dimensions.width / 3;
+		var mainItemDimensions = {"width" : dimensions.width / INVENTORY_MAIN_ITEM_RECIPROCAL_WIDTH, "height" : dimensions.height / INVENTORY_MAIN_ITEM_RECIPROCAL_HEIGHT};
 		
 		var currentItem = player.getHeldItem();
-		var itemViewing = convertImageToScaledBitmap(currentItem.inventoryImage, mainItemWidth, itemHeight + 20, mainItemWidth, dimensions.height / 3);
+		var itemViewing = convertImageToScaledBitmap(currentItem.inventoryImage, mainItemDimensions.width, itemDimensions.height + 20, mainItemDimensions.width, mainItemDimensions.height);
 		mainItemContainer.addChild(itemViewing);
 		
-		var itemDescriptionTxt = createText(currentItem.description, "#000000", mainItemWidth, itemHeight + (dimensions.height/3) + 50, mainItemWidth);
+		var itemDescriptionTxt = createText(currentItem.description, BLACK, mainItemDimensions.width, itemDimensions.height + mainItemDimensions.height + 50, mainItemDimensions.width);
 			
 		mainItemContainer.addChild(itemDescriptionTxt);
 		
-		stage.update();
-			
+		stage.update();	
 	}
 	
 	/*
@@ -84,6 +93,10 @@ function MenuInventory(dimensions) {
 		}
 	}
 	
+	/*
+	 * Update the main item, held by the player
+	 * @param item Item the item that will be held
+	 */
 	updateInventoryMainItem = function(item) {
 		player.setHeldItem(item);
 		updateItemContainer();
@@ -92,6 +105,18 @@ function MenuInventory(dimensions) {
 		mainItemContainer.removeAllChildren();
 		createInventoryMainItem(mainItemContainer);
 	}
+	
+	this.prototype = new MenuScreen(dimensions);
+	
+	// The name of the container displaying the currently held item
+	var VIEWING_ITEM_NAME = "viewingItem";
+	
+	var itemDimensions = setItemDimensions();
+	
+	this.prototype.container.y = 0 - dimensions.height;
+	
+	//maintain scope
+	var self = this
 	
 	createInventoryBackground();
 	createInventoryItemContainers();
