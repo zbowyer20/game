@@ -79,6 +79,8 @@ function MenuInventory(dimensions) {
 		var itemDescriptionTxt = createText(currentItem.description, "#000000", mainItemWidth, itemHeight + (dimensions.height/3) + 50, mainItemWidth);
 			
 		mainItemContainer.addChild(itemDescriptionTxt);
+		
+		stage.update();
 			
 	}
 	
@@ -94,7 +96,7 @@ function MenuInventory(dimensions) {
 	updateInventoryMainItem = function(item) {
 		player.setHeldItem(item);
 		
-		var mainItemContainer = container.getChildByName(VIEWING_ITEM_NAME);
+		var mainItemContainer = self.container.getChildByName(VIEWING_ITEM_NAME);
 		mainItemContainer.removeAllChildren();
 		createInventoryMainItem(mainItemContainer);
 	}
