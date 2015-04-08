@@ -7,8 +7,6 @@ function MenuIcon(name, width, height) {
 	var dimensions = [];
 	dimensions.width = width;
 	dimensions.height = stage.canvas.height / 2;
-
-	var veil = createVeil();
 	
 	function clickMenuIcon() {
 		if (!open) {
@@ -21,8 +19,8 @@ function MenuIcon(name, width, height) {
 	
 	function openMenu() {
 		layers.menuLayer.addChild(menu.prototype.container);
-		layers.sceneLayer.addChild(veil);
-		veil.addEventListener("click", closeMenu);
+		veil.state.opening = true;
+		veil.container.addEventListener("click", closeMenu);
 		menu.prototype.open();
 		open = true;
 		stage.update();
@@ -30,7 +28,7 @@ function MenuIcon(name, width, height) {
 	
 	function closeMenu() {
 		open = false;
-		layers.sceneLayer.removeChild(veil);
+		veil.state.closing = true;
 		menu.prototype.close();
 		stage.update();
 	}

@@ -19,6 +19,7 @@ var cutscenes = {};
 var loadingText = false;
 var images = {};
 var currentDialogs = {};
+var veil;
 
 function initScene(sceneNumber, player) {
 	initScene0();
@@ -114,7 +115,8 @@ function loadGame() {
 		globalContainer.addChild(audioContainer);
 		
     	layers.sceneLayer.addChild(globalContainer);
-    	
+    	veil = new Veil();
+    	layers.sceneLayer.addChild(veil.container);
     	// Set up the arrows for this scene
     	setupNavigation(json);
     	    	
