@@ -15,7 +15,6 @@ function MenuIcon(name, width, height) {
 			openMenu();
 		}
 		else {
-			console.log('close menu');
 			closeMenu();
 		}
 	}
