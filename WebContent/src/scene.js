@@ -166,28 +166,28 @@ function setupNavigation(data) {
 	for (var i = 0; i < arrowContainers.length; i++) {
 		globalContainer.addChild(arrowContainers[i]);
 	}
-}
-
-function removeNavigation() {
-	for (var i = 0; i<arrowContainers.length; i++) {
-		globalContainer.removeChild(arrowContainers[i]);
+	
+	function removeNavigation() {
+		for (var i = 0; i<arrowContainers.length; i++) {
+			globalContainer.removeChild(arrowContainers[i]);
+		}
+		return true;
 	}
-	return true;
-}
 
-function createNavigation() {
-	arrowContainers = [];
-	for (var directions = 0; directions < currentBackground.movements.length; directions++) {
-		arrowContainers.push(createNavigationArrow(directions));
+	function createNavigation() {
+		arrowContainers = [];
+		for (var directions = 0; directions < currentBackground.movements.length; directions++) {
+			arrowContainers.push(createNavigationArrow(directions));
+		}
+		return true;
 	}
-	return true;
-}
 
-function createNavigationArrow(direction) {
-	var name = currentBackground.movements[direction].name;
-	var arrow = drawArrow("green", name);
-	arrow.addEventListener("click", moveInDirectionDelegate(name));
-	return arrow;
+	function createNavigationArrow(direction) {
+		var name = currentBackground.movements[direction].name;
+		var arrow = drawArrow("green", name);
+		arrow.addEventListener("click", moveInDirectionDelegate(name));
+		return arrow;
+	}
 }
 
 function handleLoad(event) {
@@ -199,31 +199,43 @@ function turnOnSwitch(object) {
 	}
 }
 
+function requiresSwitch(object) {
+	return object.requires != null;
+}
+
+function switchIsOn(id) {
+	return switches[id];
+}
+
+function isActiveItem(id) {
+	var heldItem = player.getHeldItem();
+	return (heldItem && heldItem.id == id);
+}
+
+function checkRequirement(requirement) {
+	switch (requirement.type) {
+		case "switch":
+			return switchIsOn(requirement.id);
+			break;
+		case "item":
+			if (requirement.activeItem) {
+				return isActiveItem(requirement.id);
+			}
+			else {
+				return player.hasItem(requirement.id);
+			}
+			break;
+	}
+}
+
 function validToPlay(object) {
-	if (object.requires == null) {
+	if (!requiresSwitch(object)) {
 		return true;
 	}
-	var i = 0;
-	while (i < object.requires.length) {
-		if (object.requires[i].type == "switch") {
-			if (!switches[object.requires[i].id]) {
-				return false;
-			}
+	for (var i = 0; i < object.requires.length; i++) {
+		if (!checkRequirement(object.requires[i])) {
+			return false;
 		}
-		else {
-			if (object.requires[i].type == "item") {
-				if (object.requires[i].activeItem) {
-					var heldItem = player.getHeldItem();
-					if ((!heldItem) || (heldItem.id != object.requires[i].id)) {
-						return false;
-					}
-				}
-				else if (!player.hasItem(object.requires[i].id)) {
-					return false;
-				}
-			}
-		}
-		i++;
 	}
 	return true;
 }
@@ -232,18 +244,30 @@ function createAudioContainer() {
 	var audioSwitch = convertImageToScaledBitmap(images["sound-on"], stage.canvas.width - SPEAKER_WIDTH - 10, MENU_HEIGHT + 10, SPEAKER_WIDTH, SPEAKER_HEIGHT);
 	
 	audioSwitch.addEventListener("click", function() {
+		clickMuter();
+	});
+	
+	function clickMuter() {
 		if (checkPriority(MUTE_PRIORITY)) {
 			if (createjs.Sound.getMute()) {
-				createjs.Sound.setMute(false);
-				audioSwitch.image = images["sound-on"];
+				unmute();
 			}
 			else {
-				createjs.Sound.setMute(true);
-				audioSwitch.image = images["sound-off"];
+				mute();
 			}
 			stage.update();
 		}
-	});
+	}
+	
+	function mute() {
+		createjs.Sound.setMute(true);
+		audioSwitch.image = images["sound-off"];
+	}
+	
+	function unmute() {
+		createjs.Sound.setMute(false);
+		audioSwitch.image = images["sound-on"];
+	}
 	
 	return audioSwitch;
 }
