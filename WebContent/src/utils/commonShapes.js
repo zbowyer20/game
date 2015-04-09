@@ -14,22 +14,22 @@ function convertImageToScaledBitmap(image, x, y, width, height) {
 
 function drawArrow(colour, direction) {
 	var arrow = new createjs.Shape();
-	var x = y = angle = 0;
+	var position = {"x": 0, "y": 0, "angle": 0};
 	
 	switch (direction) {
 		case DIRECTION_LEFT:
-			x = 40;
-			y = stage.canvas.height / 2;
-			angle = 180;
+			position.x = 40;
+			position.y = stage.canvas.height / 2;
+			position.angle = 180;
 			break;
 		case DIRECTION_RIGHT:
-			x = stage.canvas.width - 40;
-			y = stage.canvas.height / 2;
-			angle = 0;
+			position.x = stage.canvas.width - 40;
+			position.y = stage.canvas.height / 2;
+			position.angle = 0;
 			break;
 	}
 	
-	arrow.graphics.beginFill(colour).drawPolyStar(x, y , 30, 3, 0.5, angle);
+	arrow.graphics.beginFill(colour).drawPolyStar(position.x, position.y , 30, 3, 0.5, position.angle);
 	
 	var container = new createjs.Container();
 	container.addChild(arrow);
