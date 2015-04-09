@@ -7,7 +7,7 @@ function Game() {
 	stage.addChild(layers.menuLayer);
 	stage.addChild(layers.UILayer);
 	
-	initScene(stage);
-	initMenu(stage, player);
+	initScene();
+	initMenu();
 	
 }

@@ -21,7 +21,7 @@ var images = {};
 var currentDialogs = {};
 var veil;
 
-function initScene(sceneNumber, player) {
+function initScene() {
 	initScene0();
 }
 
