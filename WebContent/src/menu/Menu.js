@@ -1,17 +1,17 @@
 function initMenu() {
 	var menuBar = new createjs.Container();
-	var menuIconWidth = stage.canvas.width / MENU_ICONS;
-	var currentWidth = 0;
+	var menuIconDimensions = {"width": stage.canvas.width / MENU_ICONS};
+	var current = {"width": 0};
 	
 	var icons = [MENU_INVENTORY, MENU_PARTY, MENU_SAVE];
 	
 	for (var i = 0; i < icons.length; i++) {
-		var icon = new MenuIcon(icons[i], menuIconWidth, MENU_HEIGHT);
-		icon.x = currentWidth;
+		var icon = new MenuIcon(icons[i], menuIconDimensions.width, MENU_HEIGHT);
+		icon.x = current.width;
 		icon.y = 0;
 		menuBar.addChild(icon);
 		
-		currentWidth += menuIconWidth;
+		current.width += menuIconDimensions.width;
 	}
 	
 	layers.UILayer.addChild(menuBar);
