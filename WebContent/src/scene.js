@@ -6,7 +6,6 @@ var globalContainer;
 var sliding = false;
 var changeX = 0;
 var changeY = 0;
-var prevWidth;
 var arrowContainers = [];
 var items = [];
 var sceneBackgrounds = [];
@@ -25,9 +24,7 @@ function initScene() {
 	initScene0();
 }
 
-function initScene0() {
-	prevWidth = window.innerWidth;
-	    
+function initScene0() {	    
 	// Retrieve the JSON data for this particular scene	
 	$.getJSON("json/manifest.json", function(json) {
 		loadImages(json.images);
@@ -92,7 +89,6 @@ function loadGame() {
 	// now we can load all our backgrounds
 	// TODO redo for all scenes
     $.getJSON("json/level0.json", function(json) {
-    	// TODO foreach loop
         storeSceneBackgrounds(json);
         //TODO current background set as the first loaded,
         //     should be the default
@@ -100,8 +96,10 @@ function loadGame() {
         // Designate movements for each background
         setupBackgrounds(sceneBackgrounds);
         setupBackgroundContainer();
+        
     	// The container for clickables for this scene
         initClickables(json);
+        
         // scene container contains background and clickables
         var sceneContainer = initSceneContainer();
     	
@@ -111,12 +109,13 @@ function loadGame() {
     	
     	globalContainer = new createjs.Container();
     	globalContainer.addChild(sceneContainer);
-		globalContainer.addChild(itemContainer);
-		globalContainer.addChild(audioContainer);
+    	globalContainer.addChild(itemContainer);
+    	globalContainer.addChild(audioContainer);
 		
     	layers.sceneLayer.addChild(globalContainer);
-    	veil = new Veil();
-    	layers.sceneLayer.addChild(veil.container);
+    	
+    	addVeil();
+    	
     	// Set up the arrows for this scene
     	setupNavigation(json);
     	    	
@@ -130,14 +129,14 @@ function loadGame() {
 
 ///////////////////////////////////////////////////
 //////////////////////////////////////////////////
-//////////GAME 			            /////////////
+//////////          GAME 			/////////////
 ////////////////////////////////////////////////
 ///////////////////////////////////////////////
 
 
 function initSceneContainer() {
 	var sceneContainer = new createjs.Container();
-	sceneContainer.addChild(backgroundContainer);
+	sceneContainer.addChild(backgroundContainer)
 	sceneContainer.addChild(clickableContainer);
 	return sceneContainer
 }
@@ -158,23 +157,37 @@ function getImageById(id) {
 */
 function setupNavigation(data) {
 	// Remove all that arrow shit from before
-	for (var i = 0; i<arrowContainers.length; i++) {
-		globalContainer.removeChild(arrowContainers[i]);
-	}
-
-	arrowContainers = [];
+	removeNavigation();
 
 	// For every direction for the current background, add an arrow
-	for (var directions = 0; directions < currentBackground.movements.length; directions++) {
-		var name = currentBackground.movements[directions].name;
-		arrowContainers.push(drawArrow("green", name));
-		arrowContainers[directions].addEventListener("click", moveInDirectionDelegate(name));
-	}
+	createNavigation();
 	
 	// Add those arrows to the scene
 	for (var i = 0; i < arrowContainers.length; i++) {
 		globalContainer.addChild(arrowContainers[i]);
 	}
+}
+
+function removeNavigation() {
+	for (var i = 0; i<arrowContainers.length; i++) {
+		globalContainer.removeChild(arrowContainers[i]);
+	}
+	return true;
+}
+
+function createNavigation() {
+	arrowContainers = [];
+	for (var directions = 0; directions < currentBackground.movements.length; directions++) {
+		arrowContainers.push(createNavigationArrow(directions));
+	}
+	return true;
+}
+
+function createNavigationArrow(direction) {
+	var name = currentBackground.movements[direction].name;
+	var arrow = drawArrow("green", name);
+	arrow.addEventListener("click", moveInDirectionDelegate(name));
+	return arrow;
 }
 
 function handleLoad(event) {
@@ -233,6 +246,11 @@ function createAudioContainer() {
 	});
 	
 	return audioSwitch;
+}
+
+function addVeil() {
+	veil = new Veil();
+	layers.sceneLayer.addChild(veil.container);
 }
 
 ///////////////////////////////////////////////////
