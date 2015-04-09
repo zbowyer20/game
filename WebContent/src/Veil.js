@@ -4,6 +4,16 @@ function Veil() {
 	
 	var self = this;
 	
+	this.open = function() {
+		self.state.opening = true;
+		self.state.closing = false;
+	}
+	
+	this.close = function() {
+		self.state.opening = false;
+		self.state.closing = true;
+	}
+	
 	/*
 	 * Create a veil over the entire stage
 	 * @returns The container containing the veil

@@ -1,15 +1,12 @@
 function MenuIcon(name, width, height) {
-	var shape = new createjs.Shape();
-	
-	var open = false;
 	var menu;
-	
-	var dimensions = [];
-	dimensions.width = width;
-	dimensions.height = stage.canvas.height / 2;
+	var state = {"open": false};
+
+	var shape = new createjs.Shape();	
+	var dimensions = {"width": width, "height": stage.canvas.height / 2};
 	
 	function clickMenuIcon() {
-		if (!open) {
+		if (!state.open) {
 			openMenu();
 		}
 		else {
@@ -18,19 +15,15 @@ function MenuIcon(name, width, height) {
 	}
 	
 	function openMenu() {
+		state.open = true;
 		layers.menuLayer.addChild(menu.prototype.container);
-		veil.state.opening = true;
-		veil.container.addEventListener("click", closeMenu);
 		menu.prototype.open();
-		open = true;
-		stage.update();
+		veil.container.addEventListener("click", closeMenu);
 	}
 	
 	function closeMenu() {
-		open = false;
-		veil.state.closing = true;
+		state.open = false;
 		menu.prototype.close();
-		stage.update();
 	}
 	
 	if (name === MENU_INVENTORY) {

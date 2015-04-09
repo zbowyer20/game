@@ -11,6 +11,7 @@ function MenuScreen(dimensions) {
 	this.open = function() {
 		self.state.closing = false;
 		self.state.opening = true;
+		veil.open();
 	}
 	
 	/*
@@ -19,6 +20,7 @@ function MenuScreen(dimensions) {
 	this.close = function() {
 		self.state.opening = false;
 		self.state.closing = true;
+		veil.close();
 	}
 	
 	/*
