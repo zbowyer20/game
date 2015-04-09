@@ -297,11 +297,11 @@ function storeSceneBackgrounds(json) {
 }
 
 function setupBackground(scene) {
-	var thisBackground = convertImageToScaledBitmap(images[scene.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
-	thisBackground.name = scene.name;
-	thisBackground.movements = scene.movements;
+	var background = convertImageToScaledBitmap(images[scene.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
+	background.name = scene.name;
+	background.movements = scene.movements;
 	
-	return thisBackground;
+	return background;
 }
 
 // TODO: default background
@@ -487,22 +487,30 @@ function storeCutscenes(json) {
 	}
 }
 
+/*
+ * Get the most relevant cutscene to play
+ * Through priority, switches, etc
+ * @param cutscenes The cutscenes in JSON
+ * @returns The cutscene that should be played
+ */
 function getCutsceneToPlay(cutscenes) {
 	if (cutscenes == null) {
 		return null;
 	}
 	var bestCutscene = null;
 	for (var i = 0; i < cutscenes.length; i++) {
-		if ((bestCutscene == null) || (cutscenes[i].priority >= bestCutscene.priority)) {
-			if (validToPlay(cutscenes[i])) {
-				bestCutscene = cutscenes[i];
-			}
-			else {
-				console.log('not valid');
-			}
-		}
+		bestCutscene = mostRelevantCutscene(bestCutscene, cutscenes[i]);
 	}
 	return bestCutscene;
+}
+
+function mostRelevantCutscene(currentCutscene, possibleCutscene) {
+	if (currentCutscene == null || (possibleCutscene.priority >= currentCutscene.priority)) {
+		if (validToPlay(possibleCutscene)) {
+			return possibleCutscene;
+		}
+	}
+	return currentCutscene;
 }
 
 /*
@@ -522,13 +530,7 @@ function findCutscene(cutsceneId) {
 
 function showText(target, text, index) {
 	if (index <= text.length) {
-		if (loadingText) {
-			target.text = text.substring(0, index);
-		}
-		else {
-			index = text.length;
-			target.text = text.substring(0, index);
-		}
+		updateText(target, text, index);
 		stage.update();
 		setTimeout(function() {
 			showText(target, text, index+1);
@@ -537,6 +539,13 @@ function showText(target, text, index) {
 	else {
 		loadingText = false;
 	}
+}
+
+function updateText(target, text, index) {
+	if (!loadingText) {
+		index = text.length;
+	}
+	target.text = text.substring(0, index);
 }
 
 function loadClickableCutscene(clickable) {
@@ -557,6 +566,11 @@ function playCutscene(cutscene) {
 	loadingText = true;
 	var speech = createCutsceneDialog(cutscene.scene[current]);
 	// when the user presses space, we play the next dialog
+	dialogKeyPress(cutscene, current);
+	showText(speech.text, cutscene.scene[current].text, 0);
+}
+
+function dialogKeyPress(cutscene, current) {
 	document.onkeypress = function(e) {
 		if (e.keyCode == 32) {
 			if (loadingText) {
@@ -568,7 +582,6 @@ function playCutscene(cutscene) {
 			}
 		}
 	}
-	showText(speech.text, cutscene.scene[current].text, 0);
 }
 
 /*
@@ -582,20 +595,7 @@ function playNextDialog(cutscene, current) {
 	if (cutscene.scene[current] != null) {
 		var speech = createCutsceneDialog(cutscene.scene[current]);
 		// play the next dialog on space
-		// TODO function!
-		document.onkeypress = function(e) {
-			if (e.keyCode == 32) {
-				if (checkPriority(CUTSCENE_PRIORITY)) {
-					if (loadingText) {
-						loadingText = false;
-					}
-					else {
-						loadingText = true;
-						playNextDialog(cutscene, current);
-					}
-				}
-			}
-		}
+		dialogKeyPress(cutscene, current);
 		showText(speech.text, cutscene.scene[current].text, 0)
 	}
 	// cutscene is done
