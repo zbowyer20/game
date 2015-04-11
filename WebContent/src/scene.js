@@ -272,6 +272,19 @@ function createAudioContainer() {
 	return audioSwitch;
 }
 
+function playAudio(json) {
+	if (json.audio != null) {
+		createjs.Sound.stop();
+		var sound = createjs.Sound.play(json.audio.id);
+		if (json.audio.position != null) {
+			sound.setPosition(json.audio.position);
+		}
+		if (json.audio.volume != null) {
+		    sound.setVolume(json.audio.volume);
+		}
+	}
+}
+
 function addVeil() {
 	veil = new Veil();
 	layers.sceneLayer.addChild(veil.container);
@@ -601,14 +614,19 @@ function playNextDialog(cutscene, current) {
 	// cutscene is done
 	else {
 		// remove all the dialogs from the stage
-		$.each(currentDialogs, function(name, value) {
-		    globalContainer.removeChild(value);
-		});
-		currentDialogs = {};
+		initializeDialogs();
 		document.onkeypress = null;
 		priority = 0;
 		stage.update();
 	}
+}
+
+function initializeDialogs() {
+	$.each(currentDialogs, function(name, value) {
+	    globalContainer.removeChild(value);
+	});
+	currentDialogs = {};
+	return true;
 }
 
 /*
@@ -621,16 +639,7 @@ function createCutsceneDialog(dialog) {
 	globalContainer.addChild(txtContainer.container);
 	stage.update();
 	
-	if (dialog.audio != null) {
-		createjs.Sound.stop();
-		var sound = createjs.Sound.play(dialog.audio.id);
-		if (dialog.audio.position != null) {
-			sound.setPosition(dialog.audio.position);
-		}
-		if (dialog.audio.volume != null) {
-		    sound.setVolume(dialog.audio.volume);
-		}
-	}
+	playAudio(dialog);
 	
 	return txtContainer;
 }
@@ -664,12 +673,10 @@ function updateDialogPosition(position, newDialog) {
  * @param json The items in json
  */
 function storeItems(json) {
-	var itemNumber = 0;
-	while (itemNumber < json.length) {
+	for (var itemNumber = 0; itemNumber < json.length; itemNumber++) {
 		var itemJson = json[itemNumber];
 		var item = new Item(itemJson.id, itemJson.name, itemJson.description, images[itemJson.id]);
 		items.push(item);
-		itemNumber++;
 	}
 }
 
@@ -688,41 +695,42 @@ function createItemContainer() {
 	container.hitArea = hit;
 	
 	container.addEventListener("click", function() {
-		if (checkPriority(MENU_PRIORITY) && (player.getHeldItem() != null)) {
-			var i = 0;
-			var itemToUpdate;
-			var heldItem = player.getHeldItem();
-			while (i < player.getInventory().length) {
-				if (player.getInventory()[i].id == heldItem.id) {
-					if ((i - 1) >= 0) {
-						itemToUpdate = player.getInventory()[i-1];
-					}
-					else {
-						itemToUpdate = player.getInventory()[player.getInventory().length-1];
-					}
-					i = player.getInventory().length;
+		clickItemContainer();
+	});
+	return container;
+}
+
+function clickItemContainer() {
+	if (checkPriority(MENU_PRIORITY) && (player.getHeldItem() != null)) {
+		var i = 0;
+		var itemToUpdate;
+		var heldItem = player.getHeldItem();
+		while (i < player.getInventory().length) {
+			if (player.getInventory()[i].id == heldItem.id) {
+				if ((i - 1) >= 0) {
+					itemToUpdate = player.getInventory()[i-1];
 				}
 				else {
-					i++;
+					itemToUpdate = player.getInventory()[player.getInventory().length-1];
 				}
+				i = player.getInventory().length;
 			}
-			if (itemToUpdate != null) {
-				player.setHeldItem(itemToUpdate);
-				updateItemContainer();
+			else {
+				i++;
 			}
 		}
-		
-	})
-	return container;
+		if (itemToUpdate != null) {
+			player.setHeldItem(itemToUpdate);
+			updateItemContainer();
+		}
+	}
 }
 
 function updateItemContainer() {
 	itemContainer.removeChildAt(1);
 	var item = player.getHeldItem();
-	var itemWidth = 50;
-	var itemHeight = 50;
-	
-	var itemContainerImage = convertImageToScaledBitmap(item.inventoryImage, 25, stage.canvas.height - 75, itemWidth, itemHeight);
+
+	var itemContainerImage = convertImageToScaledBitmap(item.inventoryImage, 25, stage.canvas.height - 75, ITEM_CONTAINER_ITEM_WIDTH, ITEM_CONTAINER_ITEM_HEIGHT);
 		
 	itemContainer.addChild(itemContainerImage);
 	stage.update();
@@ -747,13 +755,13 @@ function initClickables(json) {
 function addClickables(theseClickables, movementMultiplier) {
 	for (var clickableIndex = 0; clickableIndex < theseClickables.length; clickableIndex++) {
 		var clickable = theseClickables[clickableIndex];
-		if (addClickableToStage(clickable)) {
+		if (shouldAddClickableToStage(clickable)) {
 			clickableContainer.addChild(createClickable(clickable, movementMultiplier));
 		}
 	}
 }
 
-function addClickableToStage(clickable) {
+function shouldAddClickableToStage(clickable) {
 	if (clickables[clickable.id] == null) {
 		clickables[clickable.id] = {};
 		clickables[clickable.id].addToStage = true;
