@@ -1,36 +1,36 @@
-function Background() {
-	var background;
-	var left;
-	var right;
+function Background(background) {
+	this.background;
+	this.movements = {};
 	
-	this.createBackground = function(thisBackground) {
-		background = thisBackground;
-		return this;
-	}
-	
-	this.createBackground = function(thisBackground, thisLeft, thisRight) {
-		background = thisBackground;
-		left = thisLeft;
-		right = thisRight;
-	}
+	var self = this;
 
 	this.getBackground = function() {
-		return background;
+		return self.background;
 	}
 
-	this.getLeft = function() {
-		return this.left;
+	this.setBackground = function(background) {
+		self.background = background;
+	}
+	
+	this.getDestinationByDirection = function(direction) {
+		return self.movements[direction];
+	}
+	
+	this.getMovements = function() {
+		return self.movements;
 	}
 
-	this.getRight = function() {
-		return this.right;
+	this.setMovement = function(movement) {
+		self.movements[movement.direction] = movement.destination;
 	}
-
-	this.setLeft = function(left) {
-		this.left = left;
+	
+	this.setMovements = function(movements) {
+		for (var i = 0; i < movements.length; i++) {
+			self.setMovement(movements[i]);
+		}
 	}
-
-	this.setRight = function(right) {
-		this.right = right;
-	}
+	
+	this.setBackground(background);
+	
+	return this;
 }

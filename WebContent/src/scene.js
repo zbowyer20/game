@@ -8,7 +8,7 @@ var changeX = 0;
 var changeY = 0;
 var arrowContainers = [];
 var items = [];
-var sceneBackgrounds = [];
+var sceneBackgrounds = {};
 var clickables = [];
 var currentBackground;
 var nextBackground;
@@ -90,11 +90,8 @@ function loadGame() {
 	// TODO redo for all scenes
     $.getJSON("json/level0.json", function(json) {
         storeSceneBackgrounds(json);
-        //TODO current background set as the first loaded,
-        //     should be the default
-        setCurrentBackground();
         // Designate movements for each background
-        setupBackgrounds(sceneBackgrounds);
+        setupBackgrounds();
         setupBackgroundContainer();
         
     	// The container for clickables for this scene
@@ -305,7 +302,7 @@ function storeSceneBackgrounds(json) {
 	// Load every scene (ie. background image)
 	for (var sceneNumber = 0; sceneNumber < json.scenes.length; sceneNumber++) {
 		var scene = json.scenes[sceneNumber];
-		sceneBackgrounds.push(setupBackground(scene));
+		sceneBackgrounds[scene.name] = setupBackground(scene);
 	}
 }
 
@@ -313,13 +310,9 @@ function setupBackground(scene) {
 	var background = convertImageToScaledBitmap(images[scene.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
 	background.name = scene.name;
 	background.movements = scene.movements;
+	background.defaultBackground = scene.defaultBackground;
 	
 	return background;
-}
-
-// TODO: default background
-function setCurrentBackground() {
-	currentBackground = sceneBackgrounds[0];
 }
 
 function setupBackgroundContainer() {
@@ -339,56 +332,25 @@ function setupBackgroundContainer() {
 * Designate which scene arrows for the backgrounds will point to
 * @param backgrounds The set of backgrounds for this scene
 */
-function setupBackgrounds(backgrounds){
-	var views = [];
-	
+function setupBackgrounds() {
+	var views = {};
+		
 	// Create a separate view for each background
-	for (var i = 0; i < backgrounds.length; i++) {
-		views.push(new Background());
-		views[i].createBackground(backgrounds[i]);
-	}
-
-	// Add movements to each background
-	for (var i = 0; i < views.length; i++) {
-		var thisBG = views[i].getBackground();
-		// The directions the user can move to from this scene
-		var directions = [];
-		// Save each destination for this scene
-		// TODO only supports LEFT and RIGHT
-		for (var k = 0; k < thisBG.movements.length; k++) {
-			if (thisBG.movements[k].name == DIRECTION_LEFT) {
-				directions.push({name: DIRECTION_LEFT, destination: thisBG.movements[k].destination});
-			}
-			if (thisBG.movements[k].name == DIRECTION_RIGHT) {				
-				directions.push({name: DIRECTION_RIGHT, destination: thisBG.movements[k].destination});
-			}
-		}
-		// Loop through all the other views, checking which can be moved to
-		// TODO only supports LEFT and RIGHT
-		for (var j = 0; j < views.length; j++) {
-		// Get the other view
-			var compareBG = views[j].getBackground();
-			// Check through all the original scene's directions, checking if
-			// the checked background matches those directions' destination
-			for (var k = 0; k < directions.length; k++) {
-				if (compareBG.name == directions[k].destination) {
-					switch (directions[k].name) {
-						case DIRECTION_LEFT:
-							views[i].setLeft(views[j]);
-							break;
-						case DIRECTION_RIGHT:
-							views[i].setRight(views[j]);
-							break;
-					}
-				}
-			}
+	for (var backgroundName in sceneBackgrounds) {
+		views[backgroundName] = new Background(sceneBackgrounds[backgroundName]);
+		if (sceneBackgrounds[backgroundName].defaultBackground) {
+			currentView = views[backgroundName];
+			currentBackground = views[backgroundName].getBackground();
 		}
 	}
-
-	currentView = views[0];
-
-	console.log(currentView);
 	
+	for (var backgroundName in sceneBackgrounds) {
+		var background = sceneBackgrounds[backgroundName];
+		for (var i = 0; i < background.movements.length; i++) {
+			views[backgroundName].setMovement({"direction":background.movements[i].name, "destination": views[background.movements[i].destination]});
+		}
+	}
+		
 	return views;
 }
 
@@ -418,15 +380,7 @@ function getMovementAnimation(direction) {
 * @returns The view to move to
 */
 function getMovement(direction) {
-	switch (direction) {
-		case DIRECTION_LEFT :
-			return currentView.getLeft();
-			break;
-		case DIRECTION_RIGHT :
-			return currentView.getRight();
-			console.log(currentView.getRight());
-			break;
-	}
+	return currentView.getDestinationByDirection(direction);
 }
 
 /*
@@ -458,7 +412,6 @@ function moveInDirectionDelegate(direction) {
 */
 function turn(newView, movementMultiplier) {
 	var background = stage.getChildByName("backgroundContainer");
-	console.log(newView);
 	updateBackground(background, newView);
 	updateClickables(movementMultiplier);
 	stage.update();
@@ -479,8 +432,6 @@ function updateBackground(background, view) {
 	// Start animation
 	priority = FROZEN_PRIORITY;
 	sliding = true;
-	console.log('got here');
-	console.log(view);
 	currentView = view;
 }
 
