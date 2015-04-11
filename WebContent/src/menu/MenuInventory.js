@@ -1,4 +1,6 @@
 function MenuInventory(dimensions) {
+	var miniItemContainer = new createjs.Container();
+	
 	
 	/*
 	 * Set the width and height of each clickable item
@@ -55,19 +57,21 @@ function MenuInventory(dimensions) {
 	 * Creates the smaller item containers
 	 */
 	createInventoryItemContainers = function() {
+		miniItemContainer.removeAllChildren();
+		
 		// the current position for an item container
 		var current = {"x": 0, "y": 0};
 		var inventory = player.getInventory();
 		
 		// for each possible item in the inventory, add in a item slot with an item, if necessary
 		for (var i = 0; i < MAX_INVENTORY_SIZE; i++) {
-			self.prototype.container.addChild(drawBorderedRectangle(current.x, current.y, itemDimensions.width, itemDimensions.height, BLACK));
+			miniItemContainer.addChild(drawBorderedRectangle(current.x, current.y, itemDimensions.width, itemDimensions.height, BLACK));
 			if (i < inventory.length) {
 				var item = inventory[i];
-				self.prototype.container.addChild(createInventoryItemContainer(item, current, itemDimensions));
+				miniItemContainer.addChild(createInventoryItemContainer(item, current, itemDimensions));
 			}
 			current.x += itemDimensions.width;
-		}
+		}		
 	}
 	
 	createInventoryMainItem = function(mainItemContainer) {
@@ -106,6 +110,11 @@ function MenuInventory(dimensions) {
 		createInventoryMainItem(mainItemContainer);
 	}
 	
+	this.update = function() {
+		createInventoryItemContainers();
+		updateInventoryMainItem(player.getHeldItem());
+	}
+	
 	this.prototype = new MenuScreen(dimensions);
 	
 	// The name of the container displaying the currently held item
@@ -120,6 +129,8 @@ function MenuInventory(dimensions) {
 	
 	createInventoryBackground();
 	createInventoryItemContainers();
+	
+	self.prototype.container.addChild(miniItemContainer);
 	
 	var mainItemContainer = new createjs.Container();
 	mainItemContainer.name = VIEWING_ITEM_NAME;

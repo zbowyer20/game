@@ -17,6 +17,7 @@ function MenuIcon(name, iconDimensions) {
 	function openMenu() {
 		state.open = true;
 		layers.menuLayer.addChild(menu.prototype.container);
+		menu.update();
 		menu.prototype.open();
 		veil.container.addEventListener("click", closeMenu);
 	}
