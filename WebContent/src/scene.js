@@ -1,23 +1,26 @@
 var currentView;
-var itemContainer;
-var backgroundContainer;
-var clickableContainer;
-var globalContainer;
-var sliding = false;
-var changeX = 0;
-var changeY = 0;
-var arrowContainers = [];
-var items = [];
-var sceneBackgrounds = {};
-var clickables = [];
 var currentBackground;
+
+var arrowContainers = [];
+var globalContainer;
+
+var sceneBackgrounds = {};
+
+var items = [];
+var clickables = [];
+var cutscenes = {};
+var currentDialogs = {};
+var loadingText = false;
+
+var sliding = false;
+var animation = {"x": 0, "y": 0};
 var nextBackground;
+
 var sceneJson;
 var itemJson;
-var cutscenes = {};
-var loadingText = false;
+
 var images = {};
-var currentDialogs = {};
+
 var veil;
 
 function initScene() {
@@ -92,15 +95,15 @@ function loadGame() {
         storeSceneBackgrounds(json);
         // Designate movements for each background
         setupBackgrounds();
-        setupBackgroundContainer();
+        var backgroundContainer = setupBackgroundContainer();
         
     	// The container for clickables for this scene
-        initClickables(json);
+        var clickableContainer = initClickables(json);
         
         // scene container contains background and clickables
-        var sceneContainer = initSceneContainer();
+        var sceneContainer = initSceneContainer(backgroundContainer, clickableContainer);
     	
-    	itemContainer = createItemContainer();
+    	var itemContainer = createItemContainer();
 
     	audioContainer = createAudioContainer();
     	
@@ -131,10 +134,12 @@ function loadGame() {
 ///////////////////////////////////////////////
 
 
-function initSceneContainer() {
+function initSceneContainer(backgroundContainer, clickableContainer) {
 	var sceneContainer = new createjs.Container();
 	sceneContainer.addChild(backgroundContainer)
 	sceneContainer.addChild(clickableContainer);
+	
+	sceneContainer.name = "sceneContainer";
 	return sceneContainer
 }
 
@@ -316,9 +321,10 @@ function setupBackground(scene) {
 }
 
 function setupBackgroundContainer() {
-	backgroundContainer = new createjs.Container();
+	var backgroundContainer = new createjs.Container();
 	backgroundContainer.name = "backgroundContainer";
 	backgroundContainer.addChild(currentView.getBackground());
+	return backgroundContainer;
 }
 
 ///////////////////////////////////////////////////
@@ -390,9 +396,9 @@ function getMovement(direction) {
 function moveInDirection(direction) {
 	if (checkPriority(NAVIGATION_PRIORITY)) {
 		var movementAnimation = getMovementAnimation(direction);
-		changeX = movementAnimation.changeX;
-		changeY = movementAnimation.changeY;
-		var movementMultiplier = changeX > 0 ? -1 : 1;
+		animation.x = movementAnimation.changeX;
+		animation.y = movementAnimation.changeY;
+		var movementMultiplier = animation.x > 0 ? -1 : 1;
 		turn(getMovement(direction), movementMultiplier);
 	}
 }
@@ -424,9 +430,10 @@ function turn(newView, movementMultiplier) {
 */
 function updateBackground(background, view) {
 	var backgroundBit = view.getBackground();
-	backgroundBit.x = changeX > 0 ? stage.canvas.width * (-1) : stage.canvas.width;
+	backgroundBit.x = animation.x > 0 ? stage.canvas.width * (-1) : stage.canvas.width;
 	backgroundBit.movements = view.getBackground().movements;
 	backgroundBit.name = view.getBackground().name;
+	var backgroundContainer = globalContainer.getChildByName("sceneContainer").getChildByName("backgroundContainer");
 	backgroundContainer.addChild(backgroundBit);
 	nextBackground = backgroundBit;
 	// Start animation
@@ -648,6 +655,9 @@ function createItemContainer() {
 	container.addEventListener("click", function() {
 		clickItemContainer();
 	});
+	
+	container.name = "itemContainer";
+	
 	return container;
 }
 
@@ -678,6 +688,7 @@ function clickItemContainer() {
 }
 
 function updateItemContainer() {
+	var itemContainer = globalContainer.getChildByName("itemContainer")
 	itemContainer.removeChildAt(1);
 	var item = player.getHeldItem();
 
@@ -695,8 +706,14 @@ function updateItemContainer() {
 
 
 function initClickables(json) {
-	clickableContainer = new createjs.Container();
-	addClickables(json.scenes[0].clickables, 0);
+	var clickableContainer = new createjs.Container();
+	clickableContainer.name = "clickableContainer";
+	var clickablesToAdd = addClickables(json.scenes[0].clickables, 0);
+	console.log(clickablesToAdd);
+	for (var i = 0; i < clickablesToAdd.length; i++) {
+		clickableContainer.addChild(clickablesToAdd[i]);
+	}
+	return clickableContainer;
 }
 
 /*
@@ -704,12 +721,14 @@ function initClickables(json) {
  * @param clickables The clickables to add
  */
 function addClickables(theseClickables, movementMultiplier) {
+	var clickablesHere = [];
 	for (var clickableIndex = 0; clickableIndex < theseClickables.length; clickableIndex++) {
 		var clickable = theseClickables[clickableIndex];
 		if (shouldAddClickableToStage(clickable)) {
-			clickableContainer.addChild(createClickable(clickable, movementMultiplier));
+			clickablesHere.push(createClickable(clickable, movementMultiplier));
 		}
 	}
+	return clickablesHere;
 }
 
 function shouldAddClickableToStage(clickable) {
@@ -781,6 +800,7 @@ function createItemClickable(clickable, movementMultiplier) {
 		if (checkPriority(ITEM_PRIORITY)) {
 			if (!clickable.persist) {
 				clickables[clickable.id].addToStage = false;
+				var clickableContainer = globalContainer.getChildByName("sceneContainer").getChildByName("clickableContainer");
 				clickableContainer.removeChild(clickableBit);
 				stage.update();
 			}
@@ -813,7 +833,11 @@ function createItemClickable(clickable, movementMultiplier) {
 function updateClickables(movementMultiplier) {
 	for (var index = 0; index < sceneJson.scenes.length; index++) {
 		if (nextBackground.name == sceneJson.scenes[index].name) {
-			addClickables(sceneJson.scenes[index].clickables, movementMultiplier);
+			var clickablesToAdd = addClickables(sceneJson.scenes[index].clickables, movementMultiplier);
+			var clickableContainer = globalContainer.getChildByName("sceneContainer").getChildByName("clickableContainer");
+			for (var i = 0; i < clickablesToAdd.length; i++) {
+				clickableContainer.addChild(clickablesToAdd[i]);
+			}
 		}
 	}
 	stage.update();
@@ -830,14 +854,15 @@ function tick(event) {
 	// For moving direction
 	// TODO this is a bit rubbish
 	if (sliding) {
-		currentBackground.x += changeX;
-		nextBackground.x += changeX;
+		currentBackground.x += animation.x;
+		nextBackground.x += animation.x;
+		var clickableContainer = globalContainer.getChildByName("sceneContainer").getChildByName("clickableContainer");
 		for (var i = 0; i < clickableContainer.children.length; i++) {
 			var child = clickableContainer.getChildAt(i);
-			child.x += changeX;
+			child.x += animation.x;
 		}
 		var finishAnimation = false;
-		if (changeX < 0) {
+		if (animation.x < 0) {
 			finishAnimation = nextBackground.x <= 0;
 		}
 		else {
@@ -847,6 +872,7 @@ function tick(event) {
 			sliding = false;
 			priority = LOWEST_PRIORITY;
 			nextBackground.x = 0;
+			var backgroundContainer = globalContainer.getChildByName("sceneContainer").getChildByName("backgroundContainer");
 			backgroundContainer.removeChild(currentBackground);
 			currentBackground = nextBackground;
 			var i = 0;
