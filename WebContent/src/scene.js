@@ -1,24 +1,18 @@
 var currentView;
-var currentBackground;
 
 var arrowContainers = [];
 var globalContainer;
 
-var sceneBackgrounds = {};
-
+var images = {};
+var areas = {};
 var items = {};
 var clickables = {};
 var cutscenes = {};
 var dialogs = {};
+var areaBackgrounds = {"current": null, "next": null};
 
 var animation = {"sliding": false, "loadingText": false};
 var animationMovements = {"x": 0, "y": 0};
-var nextBackground;
-
-var sceneJson;
-var itemJson;
-
-var images = {};
 
 var veil;
 
@@ -300,12 +294,11 @@ function addVeil() {
 * Store the received JSON backgrounds
 * @param json The backgrounds in json
 */
-function storeSceneBackgrounds(json) {
-	sceneJson = json;
+function storeSceneBackgrounds(sceneJson) {
 	// Load every scene (ie. background image)
-	for (var sceneNumber = 0; sceneNumber < json.scenes.length; sceneNumber++) {
-		var scene = json.scenes[sceneNumber];
-		sceneBackgrounds[scene.name] = setupBackground(scene);
+	for (var sceneNumber = 0; sceneNumber < sceneJson.scenes.length; sceneNumber++) {
+		var scene = sceneJson.scenes[sceneNumber];
+		areas[scene.name] = setupBackground(scene);
 	}
 }
 
@@ -313,6 +306,7 @@ function setupBackground(scene) {
 	var background = convertImageToScaledBitmap(images[scene.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
 	background.name = scene.name;
 	background.movements = scene.movements;
+	background.clickables = scene.clickables;
 	background.defaultBackground = scene.defaultBackground;
 	
 	return background;
@@ -340,16 +334,16 @@ function setupBackgrounds() {
 	var views = {};
 		
 	// Create a separate view for each background
-	for (var backgroundName in sceneBackgrounds) {
-		views[backgroundName] = new Background(sceneBackgrounds[backgroundName]);
-		if (sceneBackgrounds[backgroundName].defaultBackground) {
+	for (var backgroundName in areas) {
+		views[backgroundName] = new Background(areas[backgroundName]);
+		if (areas[backgroundName].defaultBackground) {
 			currentView = views[backgroundName];
-			currentBackground = views[backgroundName].getBackground();
+			areaBackgrounds["current"] = views[backgroundName].getBackground();
 		}
 	}
 	
-	for (var backgroundName in sceneBackgrounds) {
-		var background = sceneBackgrounds[backgroundName];
+	for (var backgroundName in areas) {
+		var background = areas[backgroundName];
 		for (var i = 0; i < background.movements.length; i++) {
 			views[backgroundName].setMovement({"direction":background.movements[i].name, "destination": views[background.movements[i].destination]});
 		}
@@ -433,7 +427,7 @@ function updateBackground(background, view) {
 	backgroundBit.name = view.getBackground().name;
 	var backgroundContainer = globalContainer.getChildByName("sceneContainer").getChildByName("backgroundContainer");
 	backgroundContainer.addChild(backgroundBit);
-	nextBackground = backgroundBit;
+	areaBackgrounds["next"] = backgroundBit;
 	// Start animation
 	priority = FROZEN_PRIORITY;
 	animation.sliding = true;
@@ -817,15 +811,14 @@ function createItemClickable(clickable, movementMultiplier) {
  * Update clickables for this scene
  */
 function updateClickables(movementMultiplier) {
-	for (var index = 0; index < sceneJson.scenes.length; index++) {
-		if (nextBackground.name == sceneJson.scenes[index].name) {
-			var clickablesToAdd = addClickables(sceneJson.scenes[index].clickables, movementMultiplier);
+		if (areas[areaBackgrounds["next"].name]) {
+			console.log(areas);
+			var clickablesToAdd = addClickables(areas[areaBackgrounds["next"].name].clickables, movementMultiplier);
 			var clickableContainer = globalContainer.getChildByName("sceneContainer").getChildByName("clickableContainer");
 			for (var i = 0; i < clickablesToAdd.length; i++) {
 				clickableContainer.addChild(clickablesToAdd[i]);
 			}
 		}
-	}
 	stage.update();
 }
 
@@ -840,8 +833,8 @@ function tick(event) {
 	// For moving direction
 	// TODO this is a bit rubbish
 	if (animation.sliding) {
-		currentBackground.x += animationMovements.x;
-		nextBackground.x += animationMovements.x;
+		areaBackgrounds["current"].x += animationMovements.x;
+		areaBackgrounds["next"].x += animationMovements.x;
 		var clickableContainer = globalContainer.getChildByName("sceneContainer").getChildByName("clickableContainer");
 		for (var i = 0; i < clickableContainer.children.length; i++) {
 			var child = clickableContainer.getChildAt(i);
@@ -849,18 +842,18 @@ function tick(event) {
 		}
 		var finishAnimation = false;
 		if (animationMovements.x < 0) {
-			finishAnimation = nextBackground.x <= 0;
+			finishAnimation = areaBackgrounds["next"].x <= 0;
 		}
 		else {
-			finishAnimation = nextBackground.x >= 0;
+			finishAnimation = areaBackgrounds["next"].x >= 0;
 		}
 		if (finishAnimation) {
 			animation.sliding = false;
 			priority = LOWEST_PRIORITY;
-			nextBackground.x = 0;
+			areaBackgrounds["next"].x = 0;
 			var backgroundContainer = globalContainer.getChildByName("sceneContainer").getChildByName("backgroundContainer");
-			backgroundContainer.removeChild(currentBackground);
-			currentBackground = nextBackground;
+			backgroundContainer.removeChild(areaBackgrounds["current"]);
+			areaBackgrounds["current"] = areaBackgrounds["next"];
 			var i = 0;
 			while (i < clickableContainer.children.length) {
 				var child = clickableContainer.getChildAt(i);
