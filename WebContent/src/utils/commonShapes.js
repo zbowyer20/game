@@ -18,18 +18,18 @@ function drawArrow(colour, direction) {
 	
 	switch (direction) {
 		case DIRECTION_LEFT:
-			position.x = 40;
+			position.x = 40 * DPR;
 			position.y = stage.canvas.height / 2;
 			position.angle = 180;
 			break;
 		case DIRECTION_RIGHT:
-			position.x = stage.canvas.width - 40;
+			position.x = stage.canvas.width - (40 * DPR);
 			position.y = stage.canvas.height / 2;
 			position.angle = 0;
 			break;
 	}
 	
-	arrow.graphics.beginFill(colour).drawPolyStar(position.x, position.y , 30, 3, 0.5, position.angle);
+	arrow.graphics.beginFill(colour).drawPolyStar(position.x, position.y , 30 * DPR, 3, 0.5, position.angle);
 	
 	var container = new createjs.Container();
 	container.addChild(arrow);
@@ -38,7 +38,7 @@ function drawArrow(colour, direction) {
 }
 
 function createText(content, colour, x, y, lineWidth) {
-	var text = new createjs.Text(content, "20px Raleway", colour);
+	var text = new createjs.Text(content, FONT, colour);
 	text.textBaseline = "alphabetic";
 	text.y = y;
 	text.x = x;

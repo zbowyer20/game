@@ -21,7 +21,7 @@ function Dialog() {
 //				return {x: stage.canvas.width / 2 - (DIALOG_WIDTH / 2), y: MENU_HEIGHT+50};
 //				break;
 //		}
-		return {x: 10, y: stage.canvas.height - DIALOG_IMAGE_HEIGHT + 70};
+		return {x: 10 * DPR, y: stage.canvas.height - DIALOG_IMAGE_HEIGHT + (70 * DPR)};
 	}
 	
 	/*
@@ -52,9 +52,9 @@ function Dialog() {
 	
 	this.createText = function() {
 		var txtDimensions = {};
-		txtDimensions.y = image == null ? stage.canvas.height - 320 : (image.image.height * image.scaleY) * (9/16);
+		txtDimensions.y = image == null ? stage.canvas.height - (320 * DPR) : (image.image.height * image.scaleY) * (9/16);
 		txtDimensions.x = image == null? 0 : (image.image.width * image.scaleX);
-		txtDimensions.lineWidth = image == null ? stage.canvas.width - 20 : stage.canvas.width - 425;
+		txtDimensions.lineWidth = image == null ? stage.canvas.width - (20 * DPR) : stage.canvas.width - 425;
 		
 		var txt = createText("", "#FFFFFF", txtDimensions.x, txtDimensions.y, txtDimensions.lineWidth);
 		
@@ -63,7 +63,7 @@ function Dialog() {
 	
 	this.createName = function(name) {
 		var txtDimensions = {};
-		txtDimensions.y = stage.canvas.height - DIALOG_HEIGHT - (0.5 * DIALOG_NAME_HEIGHT) + 7;
+		txtDimensions.y = stage.canvas.height - DIALOG_HEIGHT - (0.5 * DIALOG_NAME_HEIGHT) + (7 * DPR);
 		txtDimensions.x = image == null ? 0 : (image.image.width * image.scaleX);
 
 		var txt = createText(name, "#FFFFFF", txtDimensions.x, txtDimensions.y, stage.canvas.width - 805);
@@ -78,7 +78,7 @@ function Dialog() {
 		
 		if (image == null) {
 			txtBackgroundX = DIALOG_SCRIPT_X;
-			txtBackgroundWidth = stage.canvas.width + 10;
+			txtBackgroundWidth = stage.canvas.width + (10 * DPR);
 		}
 		else {
 			var calculatedImageWidth = image.image.width * image.scaleX;
@@ -87,7 +87,7 @@ function Dialog() {
 		}
 				
 		if (includeName) {
-			var nameBackground = drawBorderedRectangle(txtBackgroundX, stage.canvas.height - DIALOG_HEIGHT - DIALOG_NAME_HEIGHT, stage.canvas.width - 600, DIALOG_NAME_HEIGHT, "#FFFFFF");
+			var nameBackground = drawBorderedRectangle(txtBackgroundX, stage.canvas.height - DIALOG_HEIGHT - DIALOG_NAME_HEIGHT, stage.canvas.width - (600 * DPR), DIALOG_NAME_HEIGHT, "#FFFFFF");
 			container.addChild(nameBackground);
 		}
 		

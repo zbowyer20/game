@@ -116,6 +116,7 @@ function loadGame() {
     });
 
 	createjs.Ticker.on("tick", tick);
+	createjs.Ticker.setFPS(45);
 		
 	stage.update();
 }
@@ -235,7 +236,7 @@ function validToPlay(object) {
 }
 
 function createAudioContainer() {
-	var audioSwitch = convertImageToScaledBitmap(images["sound-on"], stage.canvas.width - SPEAKER_WIDTH - 10, MENU_HEIGHT + 10, SPEAKER_WIDTH, SPEAKER_HEIGHT);
+	var audioSwitch = convertImageToScaledBitmap(images["sound-on"], stage.canvas.width - SPEAKER_WIDTH - (10 * DPR), MENU_HEIGHT + (10 * DPR), SPEAKER_WIDTH, SPEAKER_HEIGHT);
 	
 	audioSwitch.addEventListener("click", function() {
 		clickMuter();
@@ -361,11 +362,11 @@ function getMovementAnimation(direction) {
 	var movementAnimation = {};
 	switch (direction) {
 		case DIRECTION_LEFT :
-			movementAnimation.changeX = stage.canvas.width / 25;
+			movementAnimation.changeX = (stage.canvas.width / (25 * DPR));
 			movementAnimation.changeY = 0;
 			break;
 		case DIRECTION_RIGHT :
-		movementAnimation.changeX = -1 * (stage.canvas.width / 25);
+		movementAnimation.changeX = -1 *(stage.canvas.width / (25 * DPR));
 		movementAnimation.changeY = 0;
 		break;
 	}
@@ -631,7 +632,7 @@ function storeItems(json) {
 }
 
 function createItemContainer() {
-	var border = drawBorderedRectangle(20, stage.canvas.height - 80, ITEM_CONTAINER_WIDTH, ITEM_CONTAINER_HEIGHT, "#FFFFFF");
+	var border = drawBorderedRectangle(10 * DPR, stage.canvas.height - (80 * DPR), ITEM_CONTAINER_WIDTH, ITEM_CONTAINER_HEIGHT, "#FFFFFF");
 	var container = new createjs.Container();
 	
 	container.addChild(border);
@@ -641,7 +642,7 @@ function createItemContainer() {
 	var hit = new createjs.Shape();
 	hit.graphics.beginFill("#000").drawRect(0,0,ITEM_CONTAINER_WIDTH,ITEM_CONTAINER_HEIGHT);
 	hit.x = 20;
-	hit.y = stage.canvas.height - 80;
+	hit.y = stage.canvas.height - (80 * DPR);
 	container.hitArea = hit;
 	
 	container.addEventListener("click", function() {
@@ -684,7 +685,7 @@ function updateItemContainer() {
 	itemContainer.removeChildAt(1);
 	var item = player.getHeldItem();
 
-	var itemContainerImage = convertImageToScaledBitmap(item.inventoryImage, 25, stage.canvas.height - 75, ITEM_CONTAINER_ITEM_WIDTH, ITEM_CONTAINER_ITEM_HEIGHT);
+	var itemContainerImage = convertImageToScaledBitmap(item.inventoryImage, 15 * DPR, stage.canvas.height - (75 * DPR), ITEM_CONTAINER_ITEM_WIDTH, ITEM_CONTAINER_ITEM_HEIGHT);
 		
 	itemContainer.addChild(itemContainerImage);
 	stage.update();
@@ -758,7 +759,7 @@ function createClickable(clickable, movementMultiplier) {
 function createClickableImage(clickable, multiplier) {
 	var clickableImage = getImageById(clickable.id);
 	
-	var clickableBit = convertImageToScaledBitmap(clickableImage, clickable.location.x + (stage.canvas.width*multiplier), clickable.location.y, clickable.dimensions.width, clickable.dimensions.height);
+	var clickableBit = convertImageToScaledBitmap(clickableImage, ((clickable.location.x * DPR) + (stage.canvas.width*multiplier)), clickable.location.y * DPR, clickable.dimensions.width * DPR, clickable.dimensions.height * DPR);
 	return clickableBit;
 }
 
@@ -857,7 +858,7 @@ function tick(event) {
 			var i = 0;
 			while (i < clickableContainer.children.length) {
 				var child = clickableContainer.getChildAt(i);
-				if ((child.x < 0) || child.x > stage.canvas.width) {
+				if ((child.x < 0) || child.x >stage.canvas.width) {
 					clickableContainer.removeChild(child);
 					i--;
 				}
