@@ -38,7 +38,7 @@ function drawArrow(colour, direction) {
 }
 
 function createText(content, colour, x, y, lineWidth) {
-	var text = new createjs.Text(content, "20px Arial", colour);
+	var text = new createjs.Text(content, "20px Raleway", colour);
 	text.textBaseline = "alphabetic";
 	text.y = y;
 	text.x = x;
