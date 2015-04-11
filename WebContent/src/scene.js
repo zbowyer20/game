@@ -6,14 +6,13 @@ var globalContainer;
 
 var sceneBackgrounds = {};
 
-var items = [];
-var clickables = [];
+var items = {};
+var clickables = {};
 var cutscenes = {};
 var currentDialogs = {};
-var loadingText = false;
 
-var sliding = false;
-var animation = {"x": 0, "y": 0};
+var animation = {"sliding": false, "loadingText": false};
+var animationMovements = {"x": 0, "y": 0};
 var nextBackground;
 
 var sceneJson;
@@ -396,9 +395,9 @@ function getMovement(direction) {
 function moveInDirection(direction) {
 	if (checkPriority(NAVIGATION_PRIORITY)) {
 		var movementAnimation = getMovementAnimation(direction);
-		animation.x = movementAnimation.changeX;
-		animation.y = movementAnimation.changeY;
-		var movementMultiplier = animation.x > 0 ? -1 : 1;
+		animationMovements.x = movementAnimation.changeX;
+		animationMovements.y = movementAnimation.changeY;
+		var movementMultiplier = animationMovements.x > 0 ? -1 : 1;
 		turn(getMovement(direction), movementMultiplier);
 	}
 }
@@ -430,7 +429,7 @@ function turn(newView, movementMultiplier) {
 */
 function updateBackground(background, view) {
 	var backgroundBit = view.getBackground();
-	backgroundBit.x = animation.x > 0 ? stage.canvas.width * (-1) : stage.canvas.width;
+	backgroundBit.x = animationMovements.x > 0 ? stage.canvas.width * (-1) : stage.canvas.width;
 	backgroundBit.movements = view.getBackground().movements;
 	backgroundBit.name = view.getBackground().name;
 	var backgroundContainer = globalContainer.getChildByName("sceneContainer").getChildByName("backgroundContainer");
@@ -438,7 +437,7 @@ function updateBackground(background, view) {
 	nextBackground = backgroundBit;
 	// Start animation
 	priority = FROZEN_PRIORITY;
-	sliding = true;
+	animation.sliding = true;
 	currentView = view;
 }
 
@@ -508,12 +507,12 @@ function showText(target, text, index) {
 		}, textSpeed);
 	}
 	else {
-		loadingText = false;
+		animation.loadingText = false;
 	}
 }
 
 function updateText(target, text, index) {
-	if (!loadingText) {
+	if (!animation.loadingText) {
 		index = text.length;
 	}
 	target.text = text.substring(0, index);
@@ -534,7 +533,7 @@ function loadClickableCutscene(clickable) {
 function playCutscene(cutscene) {
 	priority = cutscene != null ? CUTSCENE_PRIORITY: 0;
 	var current = 0;
-	loadingText = true;
+	animation.loadingText = true;
 	var speech = createCutsceneDialog(cutscene.scene[current]);
 	// when the user presses space, we play the next dialog
 	dialogKeyPress(cutscene, current);
@@ -544,11 +543,11 @@ function playCutscene(cutscene) {
 function dialogKeyPress(cutscene, current) {
 	document.onkeypress = function(e) {
 		if (e.keyCode == 32) {
-			if (loadingText) {
-				loadingText = false;
+			if (animation.loadingText) {
+				animation.loadingText = false;
 			}
 			else {
-				loadingText = true;
+				animation.loadingText = true;
 				playNextDialog(cutscene, current);
 			}
 		}
@@ -634,7 +633,7 @@ function storeItems(json) {
 	for (var itemNumber = 0; itemNumber < json.length; itemNumber++) {
 		var itemJson = json[itemNumber];
 		var item = new Item(itemJson.id, itemJson.name, itemJson.description, images[itemJson.id]);
-		items.push(item);
+		items[itemJson.id] = item;
 	}
 }
 
@@ -709,7 +708,6 @@ function initClickables(json) {
 	var clickableContainer = new createjs.Container();
 	clickableContainer.name = "clickableContainer";
 	var clickablesToAdd = addClickables(json.scenes[0].clickables, 0);
-	console.log(clickablesToAdd);
 	for (var i = 0; i < clickablesToAdd.length; i++) {
 		clickableContainer.addChild(clickablesToAdd[i]);
 	}
@@ -804,21 +802,10 @@ function createItemClickable(clickable, movementMultiplier) {
 				clickableContainer.removeChild(clickableBit);
 				stage.update();
 			}
-			var itemNumber = 0;
-			var foundItem = false;
-			var thisItem;
-			while ((itemNumber < items.length) && (!foundItem)) {
-				if (items[itemNumber].id == clickable.id) {
-					thisItem = items[itemNumber];
-					foundItem = true;
-				}
-				else {
-					itemNumber++;
-				}
-			}
+			var item = items[clickable.id];
 			loadClickableCutscene(clickable);
-			if (foundItem) {
-				player.addItem(thisItem);
+			if (item) {
+				player.addItem(item);
 				updateItemContainer();
 			}		
 		}
@@ -853,23 +840,23 @@ function checkPriority(targetPriority) {
 function tick(event) {
 	// For moving direction
 	// TODO this is a bit rubbish
-	if (sliding) {
-		currentBackground.x += animation.x;
-		nextBackground.x += animation.x;
+	if (animation.sliding) {
+		currentBackground.x += animationMovements.x;
+		nextBackground.x += animationMovements.x;
 		var clickableContainer = globalContainer.getChildByName("sceneContainer").getChildByName("clickableContainer");
 		for (var i = 0; i < clickableContainer.children.length; i++) {
 			var child = clickableContainer.getChildAt(i);
-			child.x += animation.x;
+			child.x += animationMovements.x;
 		}
 		var finishAnimation = false;
-		if (animation.x < 0) {
+		if (animationMovements.x < 0) {
 			finishAnimation = nextBackground.x <= 0;
 		}
 		else {
 			finishAnimation = nextBackground.x >= 0;
 		}
 		if (finishAnimation) {
-			sliding = false;
+			animation.sliding = false;
 			priority = LOWEST_PRIORITY;
 			nextBackground.x = 0;
 			var backgroundContainer = globalContainer.getChildByName("sceneContainer").getChildByName("backgroundContainer");
