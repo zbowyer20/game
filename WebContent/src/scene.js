@@ -9,7 +9,7 @@ var sceneBackgrounds = {};
 var items = {};
 var clickables = {};
 var cutscenes = {};
-var currentDialogs = {};
+var dialogs = {};
 
 var animation = {"sliding": false, "loadingText": false};
 var animationMovements = {"x": 0, "y": 0};
@@ -177,16 +177,15 @@ function setupNavigation(data) {
 
 	function createNavigation() {
 		arrowContainers = [];
-		for (var directions = 0; directions < currentBackground.movements.length; directions++) {
-			arrowContainers.push(createNavigationArrow(directions));
+		for (var movements in currentView.getMovements()) {
+			arrowContainers.push(createNavigationArrow(movements));
 		}
 		return true;
 	}
 
 	function createNavigationArrow(direction) {
-		var name = currentBackground.movements[direction].name;
-		var arrow = drawArrow("green", name);
-		arrow.addEventListener("click", moveInDirectionDelegate(name));
+		var arrow = drawArrow("green", direction);
+		arrow.addEventListener("click", moveInDirectionDelegate(direction));
 		return arrow;
 	}
 }
@@ -579,10 +578,10 @@ function playNextDialog(cutscene, current) {
 }
 
 function initializeDialogs() {
-	$.each(currentDialogs, function(name, value) {
+	$.each(dialogs, function(name, value) {
 	    globalContainer.removeChild(value);
 	});
-	currentDialogs = {};
+	dialogs = {};
 	return true;
 }
 
@@ -609,13 +608,13 @@ function createCutsceneDialog(dialog) {
  */
 function updateDialogPosition(position, newDialog) {
 	// nothing there so we add a new one
-	if (currentDialogs[position] == null) {
-		currentDialogs[position] = newDialog;
+	if (dialogs[position] == null) {
+		dialogs[position] = newDialog;
 	}
 	else {
 		// get rid of the old dialog
-		globalContainer.removeChild(currentDialogs[position]);
-		currentDialogs[position] = newDialog;
+		globalContainer.removeChild(dialogs[position]);
+		dialogs[position] = newDialog;
 	}
 }
 
