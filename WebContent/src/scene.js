@@ -18,14 +18,14 @@ var animationMovements = {"x": 0, "y": 0};
 
 var veil;
 
-function initScene() {
-	initScene0();
+function initGame() {
+	initScene(0);
 }
 
-function initScene0() {	    
+function initScene(sceneNumber) {	    
 	// Retrieve the JSON data for this particular scene	
 	$.getJSON("json/manifest.json", function(json) {
-		loadImages(json.images);
+		loadImages(sceneNumber, json.images);
 		loadAudio(json.audio);
 	});
 		
@@ -34,7 +34,7 @@ function initScene0() {
 /*
  * Load all our image and audio files before showing the game
  */
-function loadImages(manifest) {
+function loadImages(sceneNumber, manifest) {
 	var loader = new createjs.LoadQueue(false);
 	loader.addEventListener("fileload", handleFileLoad);
     loader.addEventListener("complete", handleComplete);
@@ -51,7 +51,7 @@ function loadImages(manifest) {
     
     function handleComplete() {
     	// now we can load the game
-    	loadGame();
+    	loadGame(sceneNumber);
         stage.update();
     }
     
@@ -71,7 +71,7 @@ function handleFileLoad(evt) {
     console.log('loaded');
 }
 
-function loadGame() {
+function loadGame(sceneNumber) {
 	// picking up our cutscenes via JSON
 	$.getJSON("json/cutscenes.json", function(json) {
 		storeCutscenes(json.cutscenes);
@@ -83,10 +83,27 @@ function loadGame() {
 		storeItems(json.items);
 	});
 	
-	
+	loadSceneByNumber(sceneNumber);
+
+	createjs.Ticker.on("tick", tick);
+	createjs.Ticker.setFPS(45);
+		
+	stage.update();
+}
+
+function goToNewScene(sceneNumber) {
+	clearScene();
+	loadSceneByNumber(sceneNumber);
+}
+
+function clearScene() {
+	layers.sceneLayer.removeAllChildren();
+}
+
+function loadSceneByNumber(sceneNumber) {
+	var sceneJsonFile = "json/level" + sceneNumber + ".json";
 	// now we can load all our backgrounds
-	// TODO redo for all scenes
-    $.getJSON("json/level0.json", function(json) {
+    $.getJSON(sceneJsonFile, function(json) {
         storeSceneBackgrounds(json);
         // Designate movements for each background
         setupBackgrounds();
@@ -116,11 +133,6 @@ function loadGame() {
     	    	
     	stage.update();
     });
-
-	createjs.Ticker.on("tick", tick);
-	createjs.Ticker.setFPS(45);
-		
-	stage.update();
 }
 
 ///////////////////////////////////////////////////
@@ -349,8 +361,10 @@ function setupBackgrounds() {
 	
 	for (var backgroundName in areas) {
 		var background = areas[backgroundName];
-		for (var i = 0; i < background.movements.length; i++) {
-			views[backgroundName].setMovement({"direction":background.movements[i].name, "destination": views[background.movements[i].destination]});
+		if (background.movements) {
+			for (var i = 0; i < background.movements.length; i++) {
+				views[backgroundName].setMovement({"direction":background.movements[i].name, "destination": views[background.movements[i].destination]});
+			}
 		}
 	}
 		
@@ -830,6 +844,9 @@ function playClickableClickResult() {
 			case "GAINED_ITEM":
 				createGainedItemContainer(clickEvent.clickable);
 				playAudio(clickEvent.events[clickEvent.index]);
+				break;
+			case "SCENE_CHANGE":
+				goToNewScene(clickEvent.events[clickEvent.index].id);
 				break;
 		}
 	}

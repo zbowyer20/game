@@ -133,6 +133,36 @@
 					"text": "Well, we have the table. Maybe we can do something with that?"
 				}
 			]
+		},
+		{
+			"id": "5",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"text": "The group approached the statue. Kate shivered, both the chill of the prison and the ominous look the statue appeared to be sending her delivering a frosty grip on her spine."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "KATE",
+					"text": "Let's just get outta here..."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"mood": "DETERMINED",
+					"text": "I hear ya..."
+				}
+			]
+		},
+		{
+			"id": "6",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "KATE",
+					"text": "That thing gives me the creeps!"
+				}
+			]
 		}
 	]
 }

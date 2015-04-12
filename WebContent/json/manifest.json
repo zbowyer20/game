@@ -17,6 +17,10 @@
 			"src": "img/scene0-3.png"
 		},
 		{
+			"id": "bg1-hallway",
+			"src": "img/scene1.png"
+		},
+		{
 			"id": "0-chair",
 			"src": "img/items/chair.jpeg"
 		},
@@ -35,6 +39,10 @@
 		{
 			"id": "0-door",
 			"src": "img/sceneClickables/door.png"
+		},
+		{
+			"id": "1-statue",
+			"src": "img/sceneClickables/statue.png"
 		},
 		{
 			"id": "albert-happy",

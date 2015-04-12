@@ -1,0 +1,44 @@
+{
+	"scenes": [
+		{
+			"defaultBackground": true,
+			"name" : "hallway",
+			"id" : "bg1-hallway",
+			"clickables": [
+				{
+					"location" : 
+					{
+						"x" : 400,
+						"y" : 200
+					},
+					"dimensions" :
+					{
+						"width" : 150,
+						"height" : 270
+					},
+					"type" : "EXAMINE",
+					"id": "1-statue",
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "5",
+							"switchOn": "statue-cutscene-1"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "6",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "statue-cutscene-1"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
