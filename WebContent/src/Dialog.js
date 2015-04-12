@@ -54,7 +54,7 @@ function Dialog() {
 		var txtDimensions = {};
 		txtDimensions.y = image == null ? stage.canvas.height - (320 * DPR) : (image.image.height * image.scaleY) * (9/16);
 		txtDimensions.x = image == null? 0 : (image.image.width * image.scaleX);
-		txtDimensions.lineWidth = image == null ? stage.canvas.width - (20 * DPR) : stage.canvas.width - 425;
+		txtDimensions.lineWidth = image == null ? stage.canvas.width - (20 * DPR) : stage.canvas.width - (image.image.width * image.scaleX * (2/3)) * DPR;
 		
 		var txt = createText("", "#FFFFFF", txtDimensions.x, txtDimensions.y, txtDimensions.lineWidth);
 		
