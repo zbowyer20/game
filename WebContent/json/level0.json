@@ -66,12 +66,12 @@
 					"onclick" : [
 						{
 							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "0"
+							"type": "GAINED_ITEM"
 						},
 						{
 							"priority": 0,
-							"type": "GAINED_ITEM"
+							"type": "CUTSCENE",
+							"id": "0"
 						}
 					]
 				}

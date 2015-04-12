@@ -702,13 +702,34 @@ function updateItemContainer() {
 }
 
 function createGainedItemContainer(clickable) {
+	priority = ITEM_GAINED_PRIORITY;
 	var container = new createjs.Container();
-	var border = drawBorderedRectangle(stage.canvas.width * (1/3), MENU_HEIGHT * 2, stage.canvas.width * (1/3), (stage.canvas.height * (5/8)), WHITE);
+	var dimensions = {"w": stage.canvas.width * (1/3), "h": stage.canvas.height * (5/8)};
+	var position = {"x": stage.canvas.width * (1/3), "y": MENU_HEIGHT * 2};
+	var border = drawBorderedRectangle(position.x, position.y, dimensions.w, dimensions.h, WHITE);
+		
+	var item = items[clickable.id];
+		
+	var itemImage = convertImageToScaledBitmap(item.inventoryImage, position.x + (30*DPR), position.y + (10*DPR), dimensions.w - (60*DPR), dimensions.h / 2);
+
+	var nameText = createText("Gained " + item.name + "!", WHITE, position.x + (30 * DPR), position.y + (40*DPR) + (dimensions.h/2), dimensions.w - (60 * DPR));
+	var b = nameText.getBounds();
+	nameText.x = position.x + (0.5 * dimensions.w) - (0.5 * b.width);
+	
+	var descriptionText = createText(item.description, WHITE, position.x + (30 * DPR), position.y + (50*DPR) + (dimensions.h/2) + b.height, dimensions.w - (60 * DPR));
+	
 	container.addChild(border);
+	container.addChild(itemImage);
+	container.addChild(nameText);
+	container.addChild(descriptionText);
+	
 	globalContainer.addChild(container);
+	
 	document.onkeypress = function() {
 		globalContainer.removeChild(container);
 		stage.update();
+		clickEvent.index++;
+		playClickableClickResult();
 	}
 	stage.update();
 }
