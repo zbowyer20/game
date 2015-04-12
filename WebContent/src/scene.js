@@ -24,11 +24,21 @@ function initGame() {
 
 function initScene(sceneNumber) {	    
 	// Retrieve the JSON data for this particular scene	
+	var sceneName = "scene" + sceneNumber;
 	$.getJSON("json/manifest.json", function(json) {
-		loadImages(sceneNumber, json.images);
-		loadAudio(json.audio);
+		loadImages(sceneNumber, json["global"].images.concat(json[sceneName].images));
+		loadAudio(json['global'].audio.concat(json[sceneName].audio));
 	});
 		
+}
+
+function loadSceneAssets(sceneNumber) {
+	var sceneName = "scene" + sceneNumber;
+	$.getJSON("json/manifest.json", function(json) {
+		loadImages(sceneNumber, json[sceneName].images);
+		loadAudio(json[sceneName].audio);
+	});
+
 }
 
 /*
@@ -38,7 +48,7 @@ function loadImages(sceneNumber, manifest) {
 	var loader = new createjs.LoadQueue(false);
 	loader.addEventListener("fileload", handleFileLoad);
     loader.addEventListener("complete", handleComplete);
-    
+        
     loader.loadManifest(manifest);
     
     loader.addEventListener("progress", handleProgress);
@@ -93,7 +103,7 @@ function loadGame(sceneNumber) {
 
 function goToNewScene(sceneNumber) {
 	clearScene();
-	loadSceneByNumber(sceneNumber);
+	loadSceneAssets(sceneNumber);
 }
 
 function clearScene() {
@@ -114,11 +124,9 @@ function loadSceneByNumber(sceneNumber) {
         
         // scene container contains background and clickables
         var sceneContainer = initSceneContainer(backgroundContainer, clickableContainer);
-    	
+    	        
     	var itemContainer = createItemContainer();
-
     	audioContainer = createAudioContainer();
-    	
     	globalContainer = new createjs.Container();
     	globalContainer.addChild(sceneContainer);
     	globalContainer.addChild(itemContainer);
@@ -130,7 +138,6 @@ function loadSceneByNumber(sceneNumber) {
     	
     	// Set up the arrows for this scene
     	setupNavigation(json);
-    	    	
     	stage.update();
     });
 }
