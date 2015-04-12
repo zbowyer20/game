@@ -31,7 +31,19 @@
 					"cutscenes" : [
 						{
 							"priority" : 0,
-							"id" : "2"
+							"id" : "2",
+							"switchOn" : "lamp-cutscene-1"
+						},
+						{
+							"priority" : 1,
+							"id" : "3",
+							"requires" : [
+								{
+									"type":"switch",
+									"id":"lamp-cutscene-1"
+								}
+							]
+							
 						}
 					]
 				},

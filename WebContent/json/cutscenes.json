@@ -95,6 +95,23 @@
 				{
 					"position": "DIALOG_LEFT",
 					"text": "Looks nice..."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "KATE",
+					"mood": "CURIOUS",
+					"text": "I have a lamp like that in my room!"
+				}
+			]
+		},
+		{
+			"id": "3",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"mood": "DETERMINED",
+					"text": "We could do with some more characters!"
 				}
 			]
 		}
