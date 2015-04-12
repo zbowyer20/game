@@ -1,4 +1,8 @@
 function Game() {	
+	$(document).ready(function() {
+		  $.ajaxSetup({ cache: false });
+		});
+	
 	canvas = document.getElementById("canvas");	
 	canvas.width = 1000 * DPR;
 	canvas.style.width = "1000px";
