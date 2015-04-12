@@ -11,6 +11,8 @@ var cutscenes = {};
 var dialogs = {};
 var areaBackgrounds = {"current": null, "next": null};
 
+var clickEvent = {"clickable": null, "events": null, "index": 0};
+
 var animation = {"sliding": false, "loadingText": false};
 var animationMovements = {"x": 0, "y": 0};
 
@@ -461,20 +463,27 @@ function getCutsceneToPlay(cutscenes) {
 	if (cutscenes == null) {
 		return null;
 	}
-	var bestCutscene = null;
+	var bestCutscenes = [];
 	for (var i = 0; i < cutscenes.length; i++) {
-		bestCutscene = mostRelevantCutscene(bestCutscene, cutscenes[i]);
+		bestCutscenes = mostRelevantCutscene(bestCutscenes, cutscenes[i]);
 	}
-	return bestCutscene;
+	return bestCutscenes;
 }
 
-function mostRelevantCutscene(currentCutscene, possibleCutscene) {
-	if (currentCutscene == null || (possibleCutscene.priority >= currentCutscene.priority)) {
+function mostRelevantCutscene(currentCutscenes, possibleCutscene) {
+	if (currentCutscenes.length == 0 || (possibleCutscene.priority >= currentCutscenes[0].priority)) {
 		if (validToPlay(possibleCutscene)) {
-			return possibleCutscene;
+			if (currentCutscenes.length > 0 && possibleCutscene.priority == currentCutscenes[0].priority) {
+				currentCutscenes.push(possibleCutscene);
+			}
+			else {
+				var bestCutscene = [];
+				bestCutscene.push(possibleCutscene);
+				return bestCutscene;
+			}
 		}
 	}
-	return currentCutscene;
+	return currentCutscenes;
 }
 
 /*
@@ -566,9 +575,10 @@ function playNextDialog(cutscene, current) {
 	else {
 		// remove all the dialogs from the stage
 		initializeDialogs();
-		document.onkeypress = null;
 		priority = 0;
 		stage.update();
+		clickEvent.index++;
+		playClickableClickResult();
 	}
 }
 
@@ -691,14 +701,14 @@ function updateItemContainer() {
 	stage.update();
 }
 
-function createGainedItemContainer(item, clickable) {
+function createGainedItemContainer(clickable) {
 	var container = new createjs.Container();
 	var border = drawBorderedRectangle(stage.canvas.width * (1/3), MENU_HEIGHT * 2, stage.canvas.width * (1/3), (stage.canvas.height * (5/8)), WHITE);
 	container.addChild(border);
 	globalContainer.addChild(container);
 	document.onkeypress = function() {
 		globalContainer.removeChild(container);
-		loadClickableCutscene(clickable);
+		stage.update();
 	}
 	stage.update();
 }
@@ -779,12 +789,27 @@ function loadClickableClickResult(clickable) {
 	if (!clickable.onclick) {
 		return false;
 	}
-	var result = getCutsceneToPlay(clickable.onclick);
-	switch (result.type) {
-		case "CUTSCENE":
-			playCutscene(findCutscene(result.id));
-			turnOnSwitch(result);
-			break;
+	var results = getCutsceneToPlay(clickable.onclick);
+	clickEvent.clickable = clickable;
+	clickEvent.index = 0;
+	clickEvent.events = results;
+	playClickableClickResult();
+}
+
+function playClickableClickResult() {
+	if (clickEvent.index < clickEvent.events.length) {
+		switch (clickEvent.events[clickEvent.index].type) {
+			case "CUTSCENE":
+				playCutscene(findCutscene(clickEvent.events[clickEvent.index].id));
+				turnOnSwitch(clickEvent.events[clickEvent.index]);
+				break;
+			case "GAINED_ITEM":
+				createGainedItemContainer(clickEvent.clickable);
+				break;
+		}
+	}
+	else {
+		document.onkeypress = null;
 	}
 }
 

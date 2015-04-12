@@ -68,6 +68,10 @@
 							"priority": 0,
 							"type": "CUTSCENE",
 							"id": "0"
+						},
+						{
+							"priority": 0,
+							"type": "GAINED_ITEM"
 						}
 					]
 				}
