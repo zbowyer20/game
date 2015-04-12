@@ -85,6 +85,10 @@
 		{
 			"id":"living",
 			"src": "audio/living.mp3"
+		},
+		{
+			"id":"foundItem",
+			"src": "audio/foundItem.wav"
 		}
 	]
 }

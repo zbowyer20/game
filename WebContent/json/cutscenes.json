@@ -14,6 +14,7 @@
 					"text": "I am hungry! Do you think you could get me something to eat? It'd really be good and I'd really, really appreciate it buddy.",
 					"audio": {
 						"id": "living",
+						"type" : "MUSIC",
 						"position": 20000,
 						"volume": 0.1
 					}
@@ -56,7 +57,13 @@
 					"position": "DIALOG_LEFT",
 					"character": "KATE",
 					"mood": "SAD",
-					"text": "Oh..."
+					"text": "Oh...",
+					"audio": {
+						"id": "sad",
+						"type": "MUSIC",
+						"position": 20000,
+						"volume": 1
+					}
 				}
 			]
 		}, 
@@ -74,6 +81,7 @@
 					"text": "I am hungry too!",
 					"audio": {
 						"id": "sad",
+						"type": "MUSIC",
 						"position": 20000,
 						"volume": 1
 					}

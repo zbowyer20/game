@@ -271,7 +271,9 @@ function createAudioContainer() {
 
 function playAudio(json) {
 	if (json.audio != null) {
-		createjs.Sound.stop();
+		if (json.audio.type == "MUSIC") {
+			createjs.Sound.stop();
+		}
 		var sound = createjs.Sound.play(json.audio.id);
 		if (json.audio.position != null) {
 			sound.setPosition(json.audio.position);
@@ -827,6 +829,7 @@ function playClickableClickResult() {
 				break;
 			case "GAINED_ITEM":
 				createGainedItemContainer(clickEvent.clickable);
+				playAudio(clickEvent.events[clickEvent.index]);
 				break;
 		}
 	}
