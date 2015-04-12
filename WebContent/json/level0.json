@@ -152,8 +152,13 @@
 					},
 					"type" : "ITEM",
 					"id" : "0-bed",
-					"message" : "Picked up bed",
-					"persist" : false
+					"persist" : false,
+					"onclick" : [
+						{
+							"priority": 0,
+							"type": "GAINED_ITEM"
+						}
+					]
 				}
 			]
 		},

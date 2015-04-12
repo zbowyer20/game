@@ -729,6 +729,7 @@ function createGainedItemContainer(clickable) {
 		globalContainer.removeChild(container);
 		stage.update();
 		clickEvent.index++;
+		priority = LOWEST_PRIORITY;
 		playClickableClickResult();
 	}
 	stage.update();
