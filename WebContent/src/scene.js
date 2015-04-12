@@ -209,10 +209,10 @@ function isActiveItem(id) {
 
 function checkRequirement(requirement) {
 	switch (requirement.type) {
-		case "switch":
+		case "SWITCH":
 			return switchIsOn(requirement.id);
 			break;
-		case "item":
+		case "ITEM":
 			if (requirement.activeItem) {
 				return isActiveItem(requirement.id);
 			}
@@ -691,6 +691,18 @@ function updateItemContainer() {
 	stage.update();
 }
 
+function createGainedItemContainer(item, clickable) {
+	var container = new createjs.Container();
+	var border = drawBorderedRectangle(stage.canvas.width * (1/3), MENU_HEIGHT * 2, stage.canvas.width * (1/3), (stage.canvas.height * (5/8)), WHITE);
+	container.addChild(border);
+	globalContainer.addChild(container);
+	document.onkeypress = function() {
+		globalContainer.removeChild(container);
+		loadClickableCutscene(clickable);
+	}
+	stage.update();
+}
+
 ///////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////      CLICKABLES 			/////////////
@@ -763,6 +775,19 @@ function createClickableImage(clickable, multiplier) {
 	return clickableBit;
 }
 
+function loadClickableClickResult(clickable) {
+	if (!clickable.onclick) {
+		return false;
+	}
+	var result = getCutsceneToPlay(clickable.onclick);
+	switch (result.type) {
+		case "CUTSCENE":
+			playCutscene(findCutscene(result.id));
+			turnOnSwitch(result);
+			break;
+	}
+}
+
 /*
  * Create an "Examine" clickable
  * @param clickable The JSON object for this clickable
@@ -772,7 +797,7 @@ function createExamineClickable(clickable, movementMultiplier) {
 	clickableBit = createClickableImage(clickable, movementMultiplier);
 	clickableBit.addEventListener("click", function() {
 		if (checkPriority(ITEM_PRIORITY)) {
-			loadClickableCutscene(clickable);
+			loadClickableClickResult(clickable);
 		}
 	});
 	
@@ -797,11 +822,11 @@ function createItemClickable(clickable, movementMultiplier) {
 				stage.update();
 			}
 			var item = items[clickable.id];
-			loadClickableCutscene(clickable);
 			if (item) {
 				player.addItem(item);
 				updateItemContainer();
-			}		
+			}	
+			loadClickableClickResult(clickable);
 		}
 	})
 	
@@ -813,7 +838,6 @@ function createItemClickable(clickable, movementMultiplier) {
  */
 function updateClickables(movementMultiplier) {
 		if (areas[areaBackgrounds["next"].name]) {
-			console.log(areas);
 			var clickablesToAdd = addClickables(areas[areaBackgrounds["next"].name].clickables, movementMultiplier);
 			var clickableContainer = globalContainer.getChildByName("sceneContainer").getChildByName("clickableContainer");
 			for (var i = 0; i < clickablesToAdd.length; i++) {

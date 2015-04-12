@@ -28,22 +28,23 @@
 					},
 					"type" : "EXAMINE",
 					"id": "0-lamp",
-					"cutscenes" : [
+					"onclick": [
 						{
-							"priority" : 0,
-							"id" : "2",
-							"switchOn" : "lamp-cutscene-1"
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "2",
+							"switchOn": "lamp-cutscene-1"
 						},
 						{
-							"priority" : 1,
-							"id" : "3",
-							"requires" : [
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "3",
+							"requires": [
 								{
-									"type":"switch",
-									"id":"lamp-cutscene-1"
+									"type": "SWITCH",
+									"id": "lamp-cutscene-1"
 								}
 							]
-							
 						}
 					]
 				},
@@ -62,11 +63,11 @@
 					"id" : "0-table",
 					"message" : "Picked up tables",
 					"persist" : false,
-					"cutscenes" : [
+					"onclick" : [
 						{
-							"priority" : 0,
-							"id" : "0",
-							"switchOn" : "table-cutscene-0"
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "0"
 						}
 					]
 				}
@@ -99,13 +100,7 @@
 						"height" : 100
 					},
 					"type" : "EXAMINE",
-					"id" : "0-lamp",
-					"cutscenes": [
-						{
-							"priority" : 0,
-							"id" : "2"
-						}
-					]
+					"id" : "0-lamp"
 				},
 				{
 					"location" :
@@ -121,20 +116,7 @@
 					"type" : "ITEM",
 					"id" : "0-chair",
 					"message" : "Picked up chair",
-					"persist" : false,
-					"cutscenes" : [
-						{
-							"priority" : 0,
-							"requires" : [
-								{
-									"type":"item",
-									"activeItem": true,
-									"id":"0-table"
-								}
-							],
-							"id" : "1"
-						}
-					]
+					"persist" : false
 				}
 			]
 		},
