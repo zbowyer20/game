@@ -45,6 +45,18 @@
 									"id": "lamp-cutscene-1"
 								}
 							]
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "4",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-table"
+								}
+							]
 						}
 					]
 				},
@@ -194,6 +206,29 @@
 				{
 					"name" : "LEFT",
 					"destination" : "side-2"
+				}
+			],
+			"clickables": [
+				{
+					"location" : 
+					{
+						"x" : 385,
+						"y" : 100
+					},
+					"dimensions" :
+					{
+						"width" : 250,
+						"height" : 350
+					},
+					"type" : "EXAMINE",
+					"id" : "0-door",
+					"onclick" : [
+						{
+							"priority": 0,
+							"type": "SCENE_CHANGE",
+							"id": "scene-1"
+						}
+					]
 				}
 			]
 		}

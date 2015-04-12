@@ -122,6 +122,17 @@
 					"text": "We could do with some more characters!"
 				}
 			]
+		},
+		{
+			"id": "4",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "KATE",
+					"mood": "CURIOUS",
+					"text": "Well, we have the table. Maybe we can do something with that?"
+				}
+			]
 		}
 	]
 }

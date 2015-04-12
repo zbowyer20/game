@@ -33,6 +33,10 @@
 			"src": "img/sceneClickables/bed.png"
 		},
 		{
+			"id": "0-door",
+			"src": "img/sceneClickables/door.png"
+		},
+		{
 			"id": "albert-happy",
 			"src": "img/dialog/albert-happy.png"
 		},
