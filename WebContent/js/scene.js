@@ -1,3 +1,53 @@
+var Scene = {
+		
+		init: function(sceneNumber) {
+			var self = this;
+			var sceneName = "scene" + sceneNumber;
+			this.loadManifest().then(function(data) {
+				self.loadImages(sceneNumber, data["global"].images.concat(data[sceneName].images));
+			});
+		},
+
+		loadManifest: function() {
+			return $.getJSON("json/manifest.json");
+		},
+		
+		/*
+		 * Load all our image and audio files before showing the game
+		 */
+		loadImages: function(sceneNumber, manifest) {
+			var loader = new createjs.LoadQueue(false);
+			loader.addEventListener("fileload", handleFileLoad);
+	        loader.addEventListener("complete", this.loadGame());
+			
+			loader.loadManifest(manifest);
+	    
+			loader.addEventListener("progress", handleProgress);
+	    
+		    function handleFileLoad(evt) {
+		        if (evt.item.type == "image") { 
+		        	console.log('loaded');
+		        	images[evt.item.id] = evt.result; 
+		        	console.log(images);
+		        }
+		    }
+	    
+		    function handleComplete() {
+		    	console.log('completed');
+		    	resolve("okay done");
+		    }
+		    
+		    function handleProgress() {
+		    	stage.update();
+		    }
+		},
+		
+		loadGame: function() {
+			console.log(images);
+		}
+		
+}
+
 var currentView;
 
 var arrowContainers = [];
@@ -38,35 +88,6 @@ function loadSceneAssets(sceneNumber) {
 		AudioManager.loadManifest(json[sceneName].audio);
 	});
 
-}
-
-/*
- * Load all our image and audio files before showing the game
- */
-function loadImages(sceneNumber, manifest) {
-	var loader = new createjs.LoadQueue(false);
-	loader.addEventListener("fileload", handleFileLoad);
-    loader.addEventListener("complete", handleComplete);
-        
-    loader.loadManifest(manifest);
-    
-    loader.addEventListener("progress", handleProgress);
-    
-    function handleFileLoad(evt) {
-        if (evt.item.type == "image") { 
-        	images[evt.item.id] = evt.result; 
-        }
-    }
-    
-    function handleComplete() {
-    	// now we can load the game
-    	loadGame(sceneNumber);
-        stage.update();
-    }
-    
-    function handleProgress() {
-    	stage.update();
-    }
 }
 
 function handleFileLoad(evt) {
