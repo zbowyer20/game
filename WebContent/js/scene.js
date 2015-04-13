@@ -4,7 +4,8 @@ var Scene = {
 			var self = this;
 			var sceneName = "scene" + sceneNumber;
 			this.loadManifest().then(function(data) {
-				self.loadImages(sceneNumber, data["global"].images.concat(data[sceneName].images));
+				self.loadImages(sceneNumber, data["global"].images.concat(data[sceneName].images))
+					.then(self.loadGame);
 			});
 		},
 
@@ -16,30 +17,29 @@ var Scene = {
 		 * Load all our image and audio files before showing the game
 		 */
 		loadImages: function(sceneNumber, manifest) {
-			var loader = new createjs.LoadQueue(false);
-			loader.addEventListener("fileload", handleFileLoad);
-	        loader.addEventListener("complete", this.loadGame());
-			
-			loader.loadManifest(manifest);
-	    
-			loader.addEventListener("progress", handleProgress);
-	    
-		    function handleFileLoad(evt) {
-		        if (evt.item.type == "image") { 
-		        	console.log('loaded');
-		        	images[evt.item.id] = evt.result; 
-		        	console.log(images);
-		        }
-		    }
-	    
-		    function handleComplete() {
-		    	console.log('completed');
-		    	resolve("okay done");
-		    }
+			return new Promise(function(resolve, reject) {
+				var loader = new createjs.LoadQueue(false);
+				loader.addEventListener("fileload", handleFileLoad);
+		        loader.addEventListener("complete", handleComplete);
+				
+				loader.loadManifest(manifest);
 		    
-		    function handleProgress() {
-		    	stage.update();
-		    }
+				loader.addEventListener("progress", handleProgress);
+		    
+			    function handleFileLoad(evt) {
+			        if (evt.item.type == "image") { 
+			        	images[evt.item.id] = evt.result; 
+			        }
+			    }
+		    
+			    function handleComplete() {
+			    	resolve(images);
+			    }
+			    
+			    function handleProgress() {
+			    	stage.update();
+			    }
+			});
 		},
 		
 		loadGame: function() {
