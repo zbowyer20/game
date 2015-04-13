@@ -2,47 +2,26 @@ var Scene = {
 		
 		init: function(sceneNumber) {
 			var self = this;
+			var scope = {};
 			var sceneName = "scene" + sceneNumber;
-			this.loadManifest().then(function(data) {
-				self.loadImages(sceneNumber, data["global"].images.concat(data[sceneName].images))
-					.then(self.loadGame);
-			});
-		},
-
-		loadManifest: function() {
-			return $.getJSON("json/manifest.json");
-		},
-		
-		/*
-		 * Load all our image and audio files before showing the game
-		 */
-		loadImages: function(sceneNumber, manifest) {
-			return new Promise(function(resolve, reject) {
-				var loader = new createjs.LoadQueue(false);
-				loader.addEventListener("fileload", handleFileLoad);
-		        loader.addEventListener("complete", handleComplete);
+			Loader
+				.loadManifest()
+				// TODO correct chaining of promises
+				.then(function(data) { 
+					scope.manifest = data;
+					Loader.loadImages(data["global"].images.concat(data[sceneName].images))
+							.then(function(data) {
+								self.loadGame();
+							});
+				});
 				
-				loader.loadManifest(manifest);
-		    
-				loader.addEventListener("progress", handleProgress);
-		    
-			    function handleFileLoad(evt) {
-			        if (evt.item.type == "image") { 
-			        	images[evt.item.id] = evt.result; 
-			        }
-			    }
-		    
-			    function handleComplete() {
-			    	resolve(images);
-			    }
-			    
-			    function handleProgress() {
-			    	stage.update();
-			    }
-			});
+				//.then(function(data) {
+					//return Loader.loadAudio(scope.manifest["global"].audio.concat(scope.manifest[sceneName].audio));
+				//})
 		},
 		
 		loadGame: function() {
+			console.log('testing now');
 			console.log(images);
 		}
 		
