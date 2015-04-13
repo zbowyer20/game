@@ -27,7 +27,7 @@ function initScene(sceneNumber) {
 	var sceneName = "scene" + sceneNumber;
 	$.getJSON("json/manifest.json", function(json) {
 		loadImages(sceneNumber, json["global"].images.concat(json[sceneName].images));
-		loadAudio(json['global'].audio.concat(json[sceneName].audio));
+		AudioManager.init().loadManifest(json['global'].audio.concat(json[sceneName].audio));
 	});
 		
 }
@@ -36,7 +36,7 @@ function loadSceneAssets(sceneNumber) {
 	var sceneName = "scene" + sceneNumber;
 	$.getJSON("json/manifest.json", function(json) {
 		loadImages(sceneNumber, json[sceneName].images);
-		loadAudio(json[sceneName].audio);
+		AudioManager.loadManifest(json[sceneName].audio);
 	});
 
 }
@@ -68,13 +68,6 @@ function loadImages(sceneNumber, manifest) {
     function handleProgress() {
     	stage.update();
     }
-}
-
-function loadAudio(audio) {
-	createjs.Sound.alternateExtensions = ["mp3"];
-	for (i = 0; i < audio.length; i++) {
-		createjs.Sound.registerSound({id:audio[i].id, src:audio[i].src});
-	}
 }
 
 function handleFileLoad(evt) {
@@ -276,31 +269,16 @@ function createAudioContainer() {
 	}
 	
 	function mute() {
-		createjs.Sound.setMute(true);
+		AudioManager.mute();
 		audioSwitch.image = images["sound-off"];
 	}
 	
 	function unmute() {
-		createjs.Sound.setMute(false);
+		AudioManager.unmute();
 		audioSwitch.image = images["sound-on"];
 	}
 	
 	return audioSwitch;
-}
-
-function playAudio(json) {
-	if (json.audio != null) {
-		if (json.audio.type == "MUSIC") {
-			createjs.Sound.stop();
-		}
-		var sound = createjs.Sound.play(json.audio.id);
-		if (json.audio.position != null) {
-			sound.setPosition(json.audio.position);
-		}
-		if (json.audio.volume != null) {
-		    sound.setVolume(json.audio.volume);
-		}
-	}
 }
 
 function addVeil() {
@@ -623,7 +601,7 @@ function createCutsceneDialog(dialog) {
 	globalContainer.addChild(txtContainer.container);
 	stage.update();
 	
-	playAudio(dialog);
+	AudioManager.play(dialog.audio);
 	
 	return txtContainer;
 }
@@ -850,7 +828,7 @@ function playClickableClickResult() {
 				break;
 			case "GAINED_ITEM":
 				createGainedItemContainer(clickEvent.clickable);
-				playAudio(clickEvent.events[clickEvent.index]);
+				AudioManager.play(clickEvent.events[clickEvent.index].audio);
 				break;
 			case "SCENE_CHANGE":
 				goToNewScene(clickEvent.events[clickEvent.index].id);
