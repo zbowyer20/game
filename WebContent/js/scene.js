@@ -3,7 +3,6 @@ var currentView;
 var arrowContainers = [];
 var globalContainer;
 
-var images = {};
 var areas = {};
 var items = {};
 var clickables = {};
@@ -119,7 +118,7 @@ function loadSceneByNumber(sceneNumber) {
         var sceneContainer = initSceneContainer(backgroundContainer, clickableContainer);
     	        
     	var itemContainer = createItemContainer();
-    	audioContainer = createAudioContainer();
+    	audioContainer = Muter.init().icon;
     	globalContainer = new createjs.Container();
     	globalContainer.addChild(sceneContainer);
     	globalContainer.addChild(itemContainer);
@@ -247,38 +246,6 @@ function validToPlay(object) {
 		}
 	}
 	return true;
-}
-
-function createAudioContainer() {
-	var audioSwitch = convertImageToScaledBitmap(images["sound-on"], stage.canvas.width - SPEAKER_WIDTH - (10 * DPR), MENU_HEIGHT + (10 * DPR), SPEAKER_WIDTH, SPEAKER_HEIGHT);
-	
-	audioSwitch.addEventListener("click", function() {
-		clickMuter();
-	});
-	
-	function clickMuter() {
-		if (checkPriority(MUTE_PRIORITY)) {
-			if (createjs.Sound.getMute()) {
-				unmute();
-			}
-			else {
-				mute();
-			}
-			stage.update();
-		}
-	}
-	
-	function mute() {
-		AudioManager.mute();
-		audioSwitch.image = images["sound-off"];
-	}
-	
-	function unmute() {
-		AudioManager.unmute();
-		audioSwitch.image = images["sound-on"];
-	}
-	
-	return audioSwitch;
 }
 
 function addVeil() {

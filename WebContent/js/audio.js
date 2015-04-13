@@ -6,10 +6,14 @@ var AudioManager = {
 		},
 		
 		loadManifest: function(manifest) {
-			self = this;
-			manifest.forEach(function(file) {
+			var self = this;
+			try {
+				manifest.forEach(function(file) {
 					self.registerSound(file);
-			});
+				});
+			}
+			catch (e) {
+			}
 		},
 		
 		registerSound: function(file) {
@@ -17,7 +21,6 @@ var AudioManager = {
 		},
 		
 		play: function(audio) {
-			console.log('reached');
 			try {
 				if (audio.type == "MUSIC") {
 					this.stop();
@@ -26,7 +29,6 @@ var AudioManager = {
 				this.setPosition(sound, audio.position).setVolume(sound, audio.volume);
 			}
 			catch (e) {
-				this.stop();
 			}
 		},
 		
@@ -64,6 +66,10 @@ var AudioManager = {
 		
 		unmute: function() {
 			createjs.Sound.setMute(false);
+		},
+		
+		getMute: function() {
+			return createjs.Sound.getMute();
 		}
 		
 }
