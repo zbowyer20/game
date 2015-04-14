@@ -6,22 +6,17 @@ var Scene = {
 			var sceneName = "scene" + sceneNumber;
 			Loader
 				.loadManifest()
-				// TODO correct chaining of promises
 				.then(function(data) { 
 					scope.manifest = data;
-					Loader.loadImages(data["global"].images.concat(data[sceneName].images))
-							.then(function(data) {
-								self.loadGame();
-							});
+					return Loader.loadImages(data["global"].images.concat(data[sceneName].images));
+				})
+				.then(function(data) {
+					Loader.loadAudio(scope.manifest["global"].audio.concat(scope.manifest[sceneName].audio));
+					self.loadGame();
 				});
-				
-				//.then(function(data) {
-					//return Loader.loadAudio(scope.manifest["global"].audio.concat(scope.manifest[sceneName].audio));
-				//})
 		},
 		
 		loadGame: function() {
-			console.log('testing now');
 			console.log(images);
 		}
 		

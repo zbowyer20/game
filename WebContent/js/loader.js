@@ -19,31 +19,31 @@ var Loader = {
 		},
 		
 		loadImages: function(manifest) {
-			return new Promise(function(resolve, reject) {
-				var loadQueue = new createjs.LoadQueue(false);
-				loadQueue.addEventListener("fileload", handleFileLoad);
-		        loadQueue.addEventListener("complete", handleComplete);
+			var deferred = $.Deferred();
+
+			var loadQueue = new createjs.LoadQueue(false);
+			loadQueue.addEventListener("fileload", handleFileLoad);
+		    loadQueue.addEventListener("complete", handleComplete);
 				
-				loadQueue.loadManifest(manifest);
+			loadQueue.loadManifest(manifest);
+	    
+			loadQueue.addEventListener("progress", handleProgress);
+	    
+		    function handleFileLoad(evt) {
+		        if (evt.item.type == "image") { 
+		        	images[evt.item.id] = evt.result;
+		        }
+		    }
+	    
+		    function handleComplete() {
+		    	deferred.resolve(images);
+		    }
 		    
-				loadQueue.addEventListener("progress", handleProgress);
+		    function handleProgress() {
+		    	stage.update();
+		    }
 		    
-			    function handleFileLoad(evt) {
-			        if (evt.item.type == "image") { 
-			        	images[evt.item.id] = evt.result;
-			        	console.log('loaded');
-			        }
-			    }
-		    
-			    function handleComplete() {
-			    	console.log('resolved');
-			    	resolve(images);
-			    }
-			    
-			    function handleProgress() {
-			    	stage.update();
-			    }
-			});
+		    return deferred.promise();
 		},
 		
 		loadAudio: function(manifest) {

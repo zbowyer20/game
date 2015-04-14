@@ -6,17 +6,16 @@ var AudioManager = {
 		},
 		
 		loadManifest: function(manifest) {
-			return new Promise(function(resolve, reject) {
-				var self = this;
-				try {
-					manifest.forEach(function(file) {
-						self.registerSound(file);
-					});
-					resolve("sounds loaded successfully");
-				}
-				catch (e) {
-				}
-			});
+			var self = this;
+			try {
+				manifest.forEach(function(file) {
+					self.registerSound(file);
+				});
+				return true;
+			}
+			catch (e) {
+			}
+			
 		},
 		
 		registerSound: function(file) {
