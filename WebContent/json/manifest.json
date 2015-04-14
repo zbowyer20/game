@@ -1,5 +1,5 @@
 {
-	"global": {
+	"scene-global": {
 		"images": [
 			{
 				"id": "albert-happy",
@@ -53,7 +53,7 @@
 			}
 		]
 	},
-	"scene0": {
+	"scene-0": {
 		"images": [
 			{
 				"id": "bg0-front",
@@ -103,7 +103,7 @@
 			}
 		]
 	},
-	"scene1": {
+	"scene-1": {
 		"images": [
 			{
 				"id": "bg1-hallway",

@@ -1,19 +1,22 @@
 var Scene = {
-		
-		init: function(sceneNumber) {
+		init: function(sceneName) {
 			var self = this;
-			var scope = {};
-			var sceneName = "scene" + sceneNumber;
 			Loader
 				.loadManifest()
 				.then(function(data) { 
-					scope.manifest = data;
-					return Loader.loadImages(data["global"].images.concat(data[sceneName].images));
+					self.assets = data;
+					return self.loadSceneAssets("global");
 				})
 				.then(function(data) {
-					Loader.loadAudio(scope.manifest["global"].audio.concat(scope.manifest[sceneName].audio));
-					self.loadGame();
-				});
+					return self.loadSceneAssets(sceneName);
+				})
+				.done(self.loadGame);
+		},
+		
+		loadSceneAssets: function(sceneName) {
+			var sceneId = "scene-" + sceneName;
+			Loader.loadAudio(this.assets[sceneId].audio);
+			return Loader.loadImages(this.assets[sceneId].images);
 		},
 		
 		loadGame: function() {
