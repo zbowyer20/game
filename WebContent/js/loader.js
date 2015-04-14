@@ -4,18 +4,9 @@ var Loader = {
 			return $.getJSON("json/manifest.json");
 		},
 		
-		loadAssets: function(imageManifest, audioManifest) {
-			var self = this;
-			return new Promise(function(resolve, reject) {
-				self.loadImages(imageManifest)
-//					.then(function() {
-//						self.loadAudio(audioManifest);
-//					})
-					.then(function() {
-						console.log('successful');
-						resolve("successful");
-					})
-			});
+		loadSceneAssets: function(assets) {
+			Loader.loadAudio(assets.audio);
+			return Loader.loadImages(assets.images);
 		},
 		
 		loadImages: function(manifest) {

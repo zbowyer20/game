@@ -5,18 +5,18 @@ var Scene = {
 				.loadManifest()
 				.then(function(data) { 
 					self.assets = data;
-					return self.loadSceneAssets("global");
+					var sceneId = self.getSceneId("global");
+					return Loader.loadSceneAssets(self.assets[sceneId]);
 				})
 				.then(function(data) {
-					return self.loadSceneAssets(sceneName);
+					var sceneId = self.getSceneId(sceneName);
+					return Loader.loadSceneAssets(self.assets[sceneId]);
 				})
 				.done(self.loadGame);
 		},
 		
-		loadSceneAssets: function(sceneName) {
-			var sceneId = "scene-" + sceneName;
-			Loader.loadAudio(this.assets[sceneId].audio);
-			return Loader.loadImages(this.assets[sceneId].images);
+		getSceneId: function(sceneName) {
+			return "scene-" + sceneName;
 		},
 		
 		loadGame: function() {

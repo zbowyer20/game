@@ -4,7 +4,7 @@ var layers = {};
 	layers.menuLayer = new createjs.Container();
 	layers.UILayer = new createjs.Container();
 	
-var images = {"test":"test"};	
+var images = {};	
 	
 var player;
 var priority = 0;
