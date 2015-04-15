@@ -12,7 +12,9 @@ var Scene = {
 					var sceneId = self.getSceneId(sceneName);
 					return Loader.loadSceneAssets(self.assets[sceneId]);
 				})
-				.done(self.loadGame);
+				.done(function(data) {
+					self.populate(sceneName);
+				});
 		},
 		
 		getSceneId: function(sceneName) {
@@ -21,7 +23,113 @@ var Scene = {
 		
 		loadGame: function() {
 			console.log(images);
+		},
+		
+		nextScene: function(sceneName) {
+			this.clear();
+			var sceneId = this.getSceneId(sceneName);
+			return Loader.loadSceneAssets(sceneId);
+		},
+		
+		clear: function() {
+			layers.sceneLayer.removeAllChildren();
+		},
+		
+		populate: function(sceneName) {
+			var self = this;
+			$.when(Loader.loadLevel(sceneName))
+			 .then(function(json) {
+				 self.initAreas(json);
+			 })
+		},
+		
+		initAreas: function(json) {
+			this.storeSceneAreas(json);
+			console.log(this.setupAreas());
+		},
+		
+		/*
+		* Store the received JSON backgrounds
+		* @param json The backgrounds in json
+		*/
+		storeSceneAreas: function(json) {
+			var self = this;
+			if (!self.areas) {
+				self.areas = {};
+			}
+			// Load every scene (ie. background image)
+			for (var i = 0; i < json.areas.length; i++) {
+				self.areas[json.areas[i].name] = self.initArea(json.areas[i]);
+			}
+		},
+		
+		initArea: function(area) {
+			var background = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
+			background.name = area.name;
+			background.movements = area.movements;
+			background.clickables = area.clickables;
+			background.defaultBackground = area.defaultBackground;
+			
+			return background;
+		},
+		
+		/*
+		* Designate which scene arrows for the backgrounds will point to
+		* @param backgrounds The set of backgrounds for this scene
+		*/
+		setupAreas: function() {
+			var views = {};
+				
+			// Create a separate view for each background
+			for (var areaName in this.areas) {
+				views[areaName] = new Background(areas[areaName]);
+				if (this.areas[areaName].defaultBackground) {
+					currentView = views[areaName];
+					areaBackgrounds["current"] = views[areaName].getBackground();
+				}
+			}
+			
+			for (var areaName in this.areas) {
+				var area = this.areas[areaName];
+				if (area.movements) {
+					for (var i = 0; i < area.movements.length; i++) {
+						views[areaName].setMovement({"direction":area.movements[i].name, "destination": views[area.movements[i].destination]});
+					}
+				}
+			}
+				
+			return views;
 		}
+		
+//		var sceneJsonFile = "json/level" + sceneNumber + ".json";
+//		// now we can load all our backgrounds
+//	    $.getJSON(sceneJsonFile, function(json) {
+//	        storeSceneBackgrounds(json);
+//	        // Designate movements for each background
+//	        setupBackgrounds();
+//	        var backgroundContainer = setupBackgroundContainer();
+//	        
+//	    	// The container for clickables for this scene
+//	        var clickableContainer = initClickables(json);
+//	        
+//	        // scene container contains background and clickables
+//	        var sceneContainer = initSceneContainer(backgroundContainer, clickableContainer);
+//	    	        
+//	    	var itemContainer = createItemContainer();
+//	    	audioContainer = Muter.init().icon;
+//	    	globalContainer = new createjs.Container();
+//	    	globalContainer.addChild(sceneContainer);
+//	    	globalContainer.addChild(itemContainer);
+//	    	globalContainer.addChild(audioContainer);
+//			
+//	    	layers.sceneLayer.addChild(globalContainer);
+//	    	
+//	    	addVeil();
+//	    	
+//	    	// Set up the arrows for this scene
+//	    	setupNavigation(json);
+//	    	stage.update();
+//	    });
 		
 }
 
@@ -43,29 +151,6 @@ var animation = {"sliding": false, "loadingText": false};
 var animationMovements = {"x": 0, "y": 0};
 
 var veil;
-
-function initGame() {
-	initScene(0);
-}
-
-function initScene(sceneNumber) {	    
-	// Retrieve the JSON data for this particular scene	
-	var sceneName = "scene" + sceneNumber;
-	$.getJSON("json/manifest.json", function(json) {
-		loadImages(sceneNumber, json["global"].images.concat(json[sceneName].images));
-		AudioManager.init().loadManifest(json['global'].audio.concat(json[sceneName].audio));
-	});
-		
-}
-
-function loadSceneAssets(sceneNumber) {
-	var sceneName = "scene" + sceneNumber;
-	$.getJSON("json/manifest.json", function(json) {
-		loadImages(sceneNumber, json[sceneName].images);
-		AudioManager.loadManifest(json[sceneName].audio);
-	});
-
-}
 
 function handleFileLoad(evt) {
     console.log('loaded');
@@ -89,15 +174,6 @@ function loadGame(sceneNumber) {
 	createjs.Ticker.setFPS(45);
 		
 	stage.update();
-}
-
-function goToNewScene(sceneNumber) {
-	clearScene();
-	loadSceneAssets(sceneNumber);
-}
-
-function clearScene() {
-	layers.sceneLayer.removeAllChildren();
 }
 
 function loadSceneByNumber(sceneNumber) {
@@ -256,18 +332,6 @@ function addVeil() {
 //////////	BACKGROUNDS 			/////////////
 ////////////////////////////////////////////////
 ///////////////////////////////////////////////
-
-/*
-* Store the received JSON backgrounds
-* @param json The backgrounds in json
-*/
-function storeSceneBackgrounds(sceneJson) {
-	// Load every scene (ie. background image)
-	for (var sceneNumber = 0; sceneNumber < sceneJson.scenes.length; sceneNumber++) {
-		var scene = sceneJson.scenes[sceneNumber];
-		areas[scene.name] = setupBackground(scene);
-	}
-}
 
 function setupBackground(scene) {
 	var background = convertImageToScaledBitmap(images[scene.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);

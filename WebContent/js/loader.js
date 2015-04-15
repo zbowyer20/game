@@ -23,6 +23,7 @@ var Loader = {
 		    function handleFileLoad(evt) {
 		        if (evt.item.type == "image") { 
 		        	images[evt.item.id] = evt.result;
+		        	console.log('loaded img');
 		        }
 		    }
 	    
@@ -39,6 +40,12 @@ var Loader = {
 		
 		loadAudio: function(manifest) {
 			AudioManager.init().loadManifest(manifest);
+		},
+		
+		loadLevel: function(sceneNumber) {
+			var sceneJsonFile = "json/level" + sceneNumber + ".json";
+			// now we can load all our backgrounds
+			return $.getJSON(sceneJsonFile);
 		}
 		
 }

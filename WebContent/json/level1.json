@@ -1,5 +1,5 @@
 {
-	"scenes": [
+	"areas": [
 		{
 			"defaultBackground": true,
 			"name" : "hallway",
