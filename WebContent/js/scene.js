@@ -39,13 +39,18 @@ var Scene = {
 			var self = this;
 			$.when(Loader.loadLevel(sceneName))
 			 .then(function(json) {
-				 self.initAreas(json);
+				 var containers = {};
+				 var globalContainer = new createjs.Container();
+				 globalContainer.addChild(self.initAreas(json));
+				 layers.sceneLayer.addChild(globalContainer);
+				 stage.update();
 			 })
 		},
 		
 		initAreas: function(json) {
 			this.storeSceneAreas(json);
-			console.log(this.setupAreas());
+			var defaultArea = this.setupAreas();
+			return this.setupAreaContainer(defaultArea);
 		},
 		
 		/*
@@ -78,27 +83,42 @@ var Scene = {
 		* @param backgrounds The set of backgrounds for this scene
 		*/
 		setupAreas: function() {
+			var self = this;
 			var views = {};
-				
+			var defaultArea;
+			
 			// Create a separate view for each background
-			for (var areaName in this.areas) {
-				views[areaName] = new Background(areas[areaName]);
-				if (this.areas[areaName].defaultBackground) {
-					currentView = views[areaName];
-					areaBackgrounds["current"] = views[areaName].getBackground();
-				}
+			createAreas = function() {
+				for (var areaName in self.areas) {
+					views[areaName] = new Background(self.areas[areaName]);
+					if (self.areas[areaName].defaultBackground) {
+						defaultArea = views[areaName];
+					}
+				}			
 			}
 			
-			for (var areaName in this.areas) {
-				var area = this.areas[areaName];
-				if (area.movements) {
-					for (var i = 0; i < area.movements.length; i++) {
-						views[areaName].setMovement({"direction":area.movements[i].name, "destination": views[area.movements[i].destination]});
+			initAreaMovements = function() {
+				for (var areaName in self.areas) {
+					var area = self.areas[areaName];
+					if (area.movements) {
+						for (var i = 0; i < area.movements.length; i++) {
+							views[areaName].setMovement({"direction":area.movements[i].name, "destination": views[area.movements[i].destination]});
+						}
 					}
 				}
 			}
 				
-			return views;
+			createAreas();
+			initAreaMovements();
+			
+			return defaultArea;
+		},
+		
+		setupAreaContainer: function(defaultArea) {
+			var container = new createjs.Container();
+			container.name = "backgroundContainer";
+			container.addChild(defaultArea.getBackground());
+			return container;
 		}
 		
 //		var sceneJsonFile = "json/level" + sceneNumber + ".json";
