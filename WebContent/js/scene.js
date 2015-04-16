@@ -42,6 +42,8 @@ var Scene = {
 				 var containers = {};
 				 var globalContainer = new createjs.Container();
 				 globalContainer.addChild(self.setupAreas(json));
+			     var clickableContainer = self.initClickables(json);
+
 				 layers.sceneLayer.addChild(globalContainer);
 				 stage.update();
 			 })
@@ -97,7 +99,42 @@ var Scene = {
 			container.name = "backgroundContainer";
 			container.addChild(defaultArea.getBackground());
 			return container;
+		},
+		
+		initClickables: function(json) {
+			this.clickables = {};
+			var clickableContainer = new createjs.Container();
+			clickableContainer.name = "clickableContainer";
+			// TODO clickables are initialised for first scene
+			var clickablesToAdd = this.addClickablesToArea(json.areas[0].clickables, 0);
+			for (var i = 0; i < clickablesToAdd.length; i++) {
+				clickableContainer.addChild(clickablesToAdd[i]);
+			}
+			return clickableContainer;
+		},
+		
+		/*
+		 * Add all clickables to the scene
+		 * @param clickables The clickables to add
+		 */
+		addClickablesToArea: function(clickables) {
+			clickablesInView = [];
+			for (var i = 0; i < clickables.length; i++) {
+				var clickable = clickables[i];
+				if (this.clickableInView(clickable)) {
+					clickablesInView.push(new Clickable(clickable));
+				}
+			}
+			return clickablesInView;
+		},
+
+		clickableInView: function(clickable) {
+			if (this.clickables[clickable.id] == null) {
+				this.clickables[clickable.id] = {"addToStage": true};
+			}
+			return this.clickables[clickable.id].addToStage;
 		}
+
 		
 //		var sceneJsonFile = "json/level" + sceneNumber + ".json";
 //		// now we can load all our backgrounds
