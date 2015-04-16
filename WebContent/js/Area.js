@@ -1,9 +1,17 @@
-function Background(background) {
-	this.background;
+function Area(area) {
+	this.background = {};
 	this.movements = {};
 	
 	var self = this;
-
+	
+	this.initBackground = function(area) {
+		self.background = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
+		self.background.name = area.name;
+		self.background.movements = area.movements;
+		self.background.clickables = area.clickables;
+		self.background.defaultBackground = area.defaultBackground;
+	}
+	
 	this.getBackground = function() {
 		return self.background;
 	}
@@ -30,7 +38,7 @@ function Background(background) {
 		}
 	}
 	
-	this.setBackground(background);
+	this.initBackground(area);
 	
 	return this;
 }

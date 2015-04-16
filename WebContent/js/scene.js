@@ -48,8 +48,8 @@ var Scene = {
 		},
 		
 		initAreas: function(json) {
-			this.storeSceneAreas(json);
-			var defaultArea = this.setupAreas();
+			var defaultArea = this.storeSceneAreas(json);
+			this.setupAreaMovements();
 			return this.setupAreaContainer(defaultArea);
 		},
 		
@@ -58,60 +58,38 @@ var Scene = {
 		* @param json The backgrounds in json
 		*/
 		storeSceneAreas: function(json) {
-			var self = this;
-			if (!self.areas) {
-				self.areas = {};
+			var defaultArea; 
+			
+			if (!this.areas) {
+				this.areas = {};
 			}
 			// Load every scene (ie. background image)
 			for (var i = 0; i < json.areas.length; i++) {
-				self.areas[json.areas[i].name] = self.initArea(json.areas[i]);
+				this.areas[json.areas[i].name] = new Area(json.areas[i]);
+				if (json.areas[i].defaultBackground) {
+					defaultArea = this.areas[json.areas[i].name];
+				}
 			}
-		},
-		
-		initArea: function(area) {
-			var background = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
-			background.name = area.name;
-			background.movements = area.movements;
-			background.clickables = area.clickables;
-			background.defaultBackground = area.defaultBackground;
 			
-			return background;
+			return defaultArea;
 		},
 		
 		/*
 		* Designate which scene arrows for the backgrounds will point to
 		* @param backgrounds The set of backgrounds for this scene
 		*/
-		setupAreas: function() {
-			var self = this;
+		setupAreaMovements: function() {
 			var views = {};
-			var defaultArea;
 			
-			// Create a separate view for each background
-			createAreas = function() {
-				for (var areaName in self.areas) {
-					views[areaName] = new Background(self.areas[areaName]);
-					if (self.areas[areaName].defaultBackground) {
-						defaultArea = views[areaName];
-					}
-				}			
-			}
-			
-			initAreaMovements = function() {
-				for (var areaName in self.areas) {
-					var area = self.areas[areaName];
-					if (area.movements) {
-						for (var i = 0; i < area.movements.length; i++) {
-							views[areaName].setMovement({"direction":area.movements[i].name, "destination": views[area.movements[i].destination]});
-						}
+			for (var areaName in this.areas) {
+				var area = this.areas[areaName];
+				if (area.movements) {
+					for (var i = 0; i < area.movements.length; i++) {
+						views[areaName].setMovement({"direction":area.movements[i].name, "destination": views[area.movements[i].destination]});
 					}
 				}
 			}
-				
-			createAreas();
-			initAreaMovements();
-			
-			return defaultArea;
+						
 		},
 		
 		setupAreaContainer: function(defaultArea) {
