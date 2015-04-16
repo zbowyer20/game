@@ -41,23 +41,23 @@ var Scene = {
 			 .then(function(json) {
 				 var containers = {};
 				 var globalContainer = new createjs.Container();
-				 globalContainer.addChild(self.initAreas(json));
+				 globalContainer.addChild(self.setupAreas(json));
 				 layers.sceneLayer.addChild(globalContainer);
 				 stage.update();
 			 })
 		},
 		
-		initAreas: function(json) {
-			var defaultArea = this.storeSceneAreas(json);
-			this.setupAreaMovements();
-			return this.setupAreaContainer(defaultArea);
+		setupAreas: function(json) {
+			var defaultArea = this.initAreas(json);
+			this.initAreaMovements();
+			return this.initAreaContainer(defaultArea);
 		},
 		
 		/*
 		* Store the received JSON backgrounds
 		* @param json The backgrounds in json
 		*/
-		storeSceneAreas: function(json) {
+		initAreas: function(json) {
 			var defaultArea; 
 			
 			if (!this.areas) {
@@ -78,7 +78,7 @@ var Scene = {
 		* Designate which scene arrows for the backgrounds will point to
 		* @param backgrounds The set of backgrounds for this scene
 		*/
-		setupAreaMovements: function() {
+		initAreaMovements: function() {
 			var views = {};
 			
 			for (var areaName in this.areas) {
@@ -92,7 +92,7 @@ var Scene = {
 						
 		},
 		
-		setupAreaContainer: function(defaultArea) {
+		initAreaContainer: function(defaultArea) {
 			var container = new createjs.Container();
 			container.name = "backgroundContainer";
 			container.addChild(defaultArea.getBackground());
