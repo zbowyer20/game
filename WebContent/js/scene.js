@@ -1,4 +1,7 @@
 var Scene = {
+		components: {"clickables" : {}},
+		container: null,
+		
 		init: function(sceneName) {
 			var self = this;
 			Loader
@@ -40,11 +43,12 @@ var Scene = {
 			$.when(Loader.loadLevel(sceneName))
 			 .then(function(json) {
 				 var containers = {};
-				 var globalContainer = new createjs.Container();
-				 globalContainer.addChild(self.setupAreas(json));
+				 self.container = new createjs.Container();
+				 self.container.addChild(self.setupAreas(json));
 			     var clickableContainer = self.initClickables(json);
-
-				 layers.sceneLayer.addChild(globalContainer);
+			     self.container.addChild(clickableContainer);
+			     
+				 layers.sceneLayer.addChild(self.container);
 				 stage.update();
 			 })
 		},
@@ -102,7 +106,7 @@ var Scene = {
 		},
 		
 		initClickables: function(json) {
-			this.clickables = {};
+			this.components.clickables = {};
 			var clickableContainer = new createjs.Container();
 			clickableContainer.name = "clickableContainer";
 			// TODO clickables are initialised for first scene
@@ -122,17 +126,18 @@ var Scene = {
 			for (var i = 0; i < clickables.length; i++) {
 				var clickable = clickables[i];
 				if (this.clickableInView(clickable)) {
-					clickablesInView.push(new Clickable(clickable));
+					clickablesInView.push(new Clickable(clickable).init());
 				}
 			}
 			return clickablesInView;
 		},
 
 		clickableInView: function(clickable) {
-			if (this.clickables[clickable.id] == null) {
-				this.clickables[clickable.id] = {"addToStage": true};
+			console.log(this.components);
+			if (!this.components.clickables[clickable.id]) {
+				this.components.clickables[clickable.id] = {"addToStage": true};
 			}
-			return this.clickables[clickable.id].addToStage;
+			return this.components.clickables[clickable.id].addToStage;
 		}
 
 		
