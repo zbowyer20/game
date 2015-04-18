@@ -1,5 +1,6 @@
 var Scene = {
-		components: {"clickables" : {}},
+		components: {"clickables" : {}, "dialogs" : {}},
+		animation: {},
 		container: null,
 		
 		init: function(sceneName) {
@@ -15,7 +16,11 @@ var Scene = {
 					var sceneId = self.getSceneId(sceneName);
 					return Loader.loadSceneAssets(self.assets[sceneId]);
 				})
+				.then(function(data) {
+					return Loader.loadCutscenes();
+				})
 				.done(function(data) {
+					CutsceneHandler.addCutscenes(data);
 					self.populate(sceneName);
 				});
 		},

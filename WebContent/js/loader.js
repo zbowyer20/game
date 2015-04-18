@@ -46,6 +46,10 @@ var Loader = {
 			var sceneJsonFile = "json/level" + sceneNumber + ".json";
 			// now we can load all our backgrounds
 			return $.getJSON(sceneJsonFile);
+		},
+		
+		loadCutscenes: function() {
+			return $.getJSON("json/cutscenes.json");
 		}
 		
 }
