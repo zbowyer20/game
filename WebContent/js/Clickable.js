@@ -24,7 +24,7 @@ function Clickable(json) {
 		Scene.components.clickables[this.clickable.id].addToStage = false;
 		console.log(Scene.container);
 		//var clickableContainer = Scene.container.getChildByName("sceneContainer").getChildByName("clickableContainer");
-		var clickableContainer = Scene.container.getChildByName("clickableContainer");
+		var clickableContainer = Scene.container.getChildByName(CLICKABLE_CONTAINER_NAME);
 		clickableContainer.removeChild(this.bitmap);
 		stage.update();
 	}

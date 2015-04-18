@@ -28,6 +28,7 @@
 					},
 					"type" : "EXAMINE",
 					"id": "0-lamp",
+					"persist": true,
 					"onclick": [
 						{
 							"priority": 0,

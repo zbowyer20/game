@@ -108,7 +108,7 @@ var Scene = {
 		initClickables: function(json) {
 			this.components.clickables = {};
 			var clickableContainer = new createjs.Container();
-			clickableContainer.name = "clickableContainer";
+			clickableContainer.name = CLICKABLE_CONTAINER_NAME;
 			// TODO clickables are initialised for first scene
 			var clickablesToAdd = this.addClickablesToArea(json.areas[0].clickables, 0);
 			for (var i = 0; i < clickablesToAdd.length; i++) {
@@ -133,7 +133,6 @@ var Scene = {
 		},
 
 		clickableInView: function(clickable) {
-			console.log(this.components);
 			if (!this.components.clickables[clickable.id]) {
 				this.components.clickables[clickable.id] = {"addToStage": true};
 			}
@@ -811,83 +810,6 @@ function createGainedItemContainer(clickable) {
 ////////////////////////////////////////////////
 ///////////////////////////////////////////////
 
-
-function initClickables(json) {
-	var clickableContainer = new createjs.Container();
-	clickableContainer.name = "clickableContainer";
-	var clickablesToAdd = addClickables(json.scenes[0].clickables, 0);
-	for (var i = 0; i < clickablesToAdd.length; i++) {
-		clickableContainer.addChild(clickablesToAdd[i]);
-	}
-	return clickableContainer;
-}
-
-/*
- * Add all clickables to the scene
- * @param clickables The clickables to add
- */
-function addClickables(theseClickables, movementMultiplier) {
-	var clickablesHere = [];
-	for (var clickableIndex = 0; clickableIndex < theseClickables.length; clickableIndex++) {
-		var clickable = theseClickables[clickableIndex];
-		if (shouldAddClickableToStage(clickable)) {
-			clickablesHere.push(createClickable(clickable, movementMultiplier));
-		}
-	}
-	return clickablesHere;
-}
-
-function shouldAddClickableToStage(clickable) {
-	if (clickables[clickable.id] == null) {
-		clickables[clickable.id] = {};
-		clickables[clickable.id].addToStage = true;
-	}
-	return clickables[clickable.id].addToStage;
-}
-
-/*
- * Create a clickable based off of JSON object
- * @param clickable The clickable object
- * @returns The clickable
- */
-function createClickable(clickable, movementMultiplier) {
-	switch (clickable.type) {
-		case CLICKABLE_EXAMINE :
-			return createExamineClickable(clickable, movementMultiplier);
-			break;
-		case CLICKABLE_ITEM :
-			return createItemClickable(clickable, movementMultiplier);
-			break;
-	}
-}
-
-/*
- * Create a clickable image
- * @param clickable The JSON object for the clickable
- * @param multiplier The number of screen widths away this clickable is
- * 					-1 for clickable to the left
- * 					0 for clickable onscreen
- * 					1 for clickable to the right
- * @returns Bitmap The bitmap of the image
- */
-function createClickableImage(clickable, multiplier) {
-	var clickableImage = getImageById(clickable.id);
-	
-	var clickableBit = convertImageToScaledBitmap(clickableImage, ((clickable.location.x * DPR) + (stage.canvas.width*multiplier)), clickable.location.y * DPR, clickable.dimensions.width * DPR, clickable.dimensions.height * DPR);
-	return clickableBit;
-}
-
-function loadClickableClickResult(clickable) {
-	if (!clickable.onclick) {
-		return false;
-	}
-	var results = getCutsceneToPlay(clickable.onclick);
-	clickEvent.clickable = clickable;
-	clickEvent.index = 0;
-	clickEvent.events = results;
-	playClickableClickResult();
-}
-
 function playClickableClickResult() {
 	if (clickEvent.index < clickEvent.events.length) {
 		switch (clickEvent.events[clickEvent.index].type) {
@@ -907,51 +829,6 @@ function playClickableClickResult() {
 	else {
 		document.onkeypress = null;
 	}
-}
-
-/*
- * Create an "Examine" clickable
- * @param clickable The JSON object for this clickable
- * @returns Bitmap The clickable
- */
-function createExamineClickable(clickable, movementMultiplier) {
-	clickableBit = createClickableImage(clickable, movementMultiplier);
-	clickableBit.addEventListener("click", function() {
-		if (checkPriority(ITEM_PRIORITY)) {
-			loadClickableClickResult(clickable);
-		}
-	});
-	
-	return clickableBit;
-}
-
-/*
- * Create an "Item" clickable
- * ie. once clicked, the user will get something in their inventory
- * @param clickable The JSON object for this clickable
- * @returns Bitmap the clickable
- */
-function createItemClickable(clickable, movementMultiplier) {
-	var clickableBit = createClickableImage(clickable, movementMultiplier);
-	
-	clickableBit.addEventListener("click", function() {
-		if (checkPriority(ITEM_PRIORITY)) {
-			if (!clickable.persist) {
-				clickables[clickable.id].addToStage = false;
-				var clickableContainer = globalContainer.getChildByName("sceneContainer").getChildByName("clickableContainer");
-				clickableContainer.removeChild(clickableBit);
-				stage.update();
-			}
-			var item = items[clickable.id];
-			if (item) {
-				player.addItem(item);
-				updateItemContainer();
-			}	
-			loadClickableClickResult(clickable);
-		}
-	})
-	
-	return clickableBit;
 }
 
 /*
