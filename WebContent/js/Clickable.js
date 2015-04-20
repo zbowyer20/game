@@ -20,9 +20,7 @@ function Clickable(json) {
 	}
 	
 	this.removeFromStage = function() {
-		console.log(Scene.components.clickables);
 		Scene.components.clickables[this.clickable.id].addToStage = false;
-		console.log(Scene.container);
 		//var clickableContainer = Scene.container.getChildByName("sceneContainer").getChildByName("clickableContainer");
 		var clickableContainer = Scene.container.getChildByName(CLICKABLE_CONTAINER_NAME);
 		clickableContainer.removeChild(this.bitmap);
@@ -57,11 +55,40 @@ function Clickable(json) {
 		if (!this.clickable.onclick) {
 			return false;
 		}
-		//var results = getCutsceneToPlay();
-		//clickEvent.clickable = this.clickable;
-		//clickEvent.index = 0;
-		//clickEvent.events = results;
-		//playClickableClickResult();
+		var self = this;
+		var results = this.clickable.onclick;
+		var promise = $.when(1);
+		results.forEach(function (element) {
+			promise = promise.then(function() {
+				return self.playClickableClickResult(element);
+			});
+		})
+	}
+	
+	this.playClickableClickResult = function(event) {
+		var deferred = $.Deferred();
+		if (event != null) {
+			if (event.type == "CUTSCENE") {
+				CutsceneHandler.initCutscene(CutsceneHandler.findCutscene(event.id)).then(function() {
+					//turnOnSwitch(event);
+					deferred.resolve('complete');
+				});
+			}
+			else if (event.type == "GAINED_ITEM") {
+					//createGainedItemContainer(clickEvent.clickable);
+					//AudioManager.play(clickEvent.events[clickEvent.index].audio);
+				deferred.resolve('complete');
+			}
+			else if (event.type == "SCENE_CHANGE") {
+					//goToNewScene(clickEvent.events[clickEvent.index].id);
+				deferred.resolve('complete');
+			}
+		}
+		else {
+			document.onkeypress = null;
+			deferred.resolve('complete');
+		}
+		return deferred.promise();
 	}
 	
 	//this.clickable = function() {

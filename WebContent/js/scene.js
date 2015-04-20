@@ -20,7 +20,7 @@ var Scene = {
 					return Loader.loadCutscenes();
 				})
 				.done(function(data) {
-					CutsceneHandler.addCutscenes(data);
+					CutsceneHandler.addCutscenes(data.cutscenes);
 					self.populate(sceneName);
 				});
 		},
@@ -142,6 +142,33 @@ var Scene = {
 				this.components.clickables[clickable.id] = {"addToStage": true};
 			}
 			return this.components.clickables[clickable.id].addToStage;
+		},
+		
+		initDialogs: function() {
+			var self = this;
+			$.each(this.components.dialogs, function(name, value) {
+			    self.container.removeChild(value);
+			});
+			this.components.dialogs = {};
+			return true;
+		},
+		
+		/*
+		 * Update a dialog in a particular space
+		 * If there's already a dialog in this position, we replace it
+		 * @param position The dialog position to update
+		 * @param newDialog The new dialog to put there
+		 */
+		updateDialogPosition: function(position, dialog) {
+			// nothing there so we add a new one
+			if (this.components.dialogs[position] == null) {
+				this.components.dialogs[position] = dialog;
+			}
+			else {
+				// get rid of the old dialog
+				this.container.removeChild(this.components.dialogs[position]);
+				this.components.dialogs[position] = dialog;
+			}
 		}
 
 		
