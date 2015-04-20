@@ -5,6 +5,7 @@ var Scene = {
 		
 		init: function(sceneName) {
 			var self = this;
+			PopupHandler.init();
 			Loader
 				.loadManifest()
 				.then(function(data) { 
@@ -17,6 +18,10 @@ var Scene = {
 					return Loader.loadSceneAssets(self.assets[sceneId]);
 				})
 				.then(function(data) {
+					return Loader.loadItems();
+				})
+				.then(function(data) {
+					ItemHandler.addItems(data.items);
 					return Loader.loadCutscenes();
 				})
 				.done(function(data) {

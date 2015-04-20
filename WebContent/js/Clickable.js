@@ -75,9 +75,11 @@ function Clickable(json) {
 				});
 			}
 			else if (event.type == "GAINED_ITEM") {
-					//createGainedItemContainer(clickEvent.clickable);
+				var item = ItemHandler.items[this.clickable.id];
+				PopupHandler.addItem(item).display().then(function() {
+					deferred.resolve('complete');
+				})
 					//AudioManager.play(clickEvent.events[clickEvent.index].audio);
-				deferred.resolve('complete');
 			}
 			else if (event.type == "SCENE_CHANGE") {
 					//goToNewScene(clickEvent.events[clickEvent.index].id);

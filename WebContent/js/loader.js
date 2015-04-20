@@ -50,6 +50,10 @@ var Loader = {
 		
 		loadCutscenes: function() {
 			return $.getJSON("json/cutscenes.json");
+		},
+		
+		loadItems: function() {
+			return $.getJSON("json/items.json");
 		}
 		
 }
