@@ -7,7 +7,7 @@ function Area(area) {
 	this.initBackground = function(area) {
 		self.background = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
 		self.background.name = area.name;
-		self.background.movements = area.movements;
+		self.movements = area.movements;
 		self.background.clickables = area.clickables;
 		self.background.defaultBackground = area.defaultBackground;
 	}

@@ -1,7 +1,9 @@
 var Scene = {
-		components: {"clickables" : {}, "dialogs" : {}},
+		components: {"areas": {}, "clickables" : {}, "dialogs" : {}},
+		areas: {},
 		animation: {},
 		container: null,
+		containers: {},
 		
 		init: function(sceneName) {
 			var self = this;
@@ -59,6 +61,7 @@ var Scene = {
 			     var clickableContainer = self.initClickables(json);
 			     self.container.addChild(clickableContainer);
 			     self.container.addChild(ItemContainer.init().container);
+			     self.initNavigation();
 			     
 				 layers.sceneLayer.addChild(self.container);
 				 stage.update();
@@ -66,9 +69,8 @@ var Scene = {
 		},
 		
 		setupAreas: function(json) {
-			var defaultArea = this.initAreas(json);
-			this.initAreaMovements();
-			return this.initAreaContainer(defaultArea);
+			this.components.areas.current = this.initAreas(json);
+			return this.initAreaContainer();
 		},
 		
 		/*
@@ -88,32 +90,15 @@ var Scene = {
 					defaultArea = this.areas[json.areas[i].name];
 				}
 			}
-			
-			return defaultArea;
-		},
-		
-		/*
-		* Designate which scene arrows for the backgrounds will point to
-		* @param backgrounds The set of backgrounds for this scene
-		*/
-		initAreaMovements: function() {
-			var views = {};
-			
-			for (var areaName in this.areas) {
-				var area = this.areas[areaName];
-				if (area.movements) {
-					for (var i = 0; i < area.movements.length; i++) {
-						views[areaName].setMovement({"direction":area.movements[i].name, "destination": views[area.movements[i].destination]});
-					}
-				}
-			}
 						
+			return defaultArea;
+			
 		},
 		
 		initAreaContainer: function(defaultArea) {
 			var container = new createjs.Container();
 			container.name = "backgroundContainer";
-			container.addChild(defaultArea.getBackground());
+			container.addChild(this.components.areas.current.getBackground());
 			return container;
 		},
 		
@@ -176,6 +161,44 @@ var Scene = {
 				this.container.removeChild(this.components.dialogs[position]);
 				this.components.dialogs[position] = dialog;
 			}
+		},
+		
+		/*
+		* Set up the arrows to appear for this scene
+		* @param data Data, duh
+		*/
+		initNavigation: function() {
+			// For every direction for the current background, add an arrow
+			this.containers.navigation = this.createNavigation();
+			
+			// Add those arrows to the scene
+			for (var i = 0; i < this.containers.navigation.length; i++) {
+				this.container.addChild(this.containers.navigation[i]);
+			}
+						
+			stage.update();
+		},
+
+		createNavigation: function() {
+			var containers = [];
+			var movements = this.components.areas.current.getMovements();
+			for (var i = 0; i < movements.length; i++) {
+				containers.push(this.createNavigationIcon(movements[i]));
+			}
+			return containers;
+		},
+		
+		createNavigationIcon: function(movement) {
+			var arrow = drawArrow("red", movement.name);
+			//arrow.addEventListener("click", this.moveInDirectionDelegate(direction));
+			return arrow;
+		},
+		
+		clearNavigation: function() {
+			for (var i = 0; i<this.containers.navigation.length; i++) {
+				this.container.removeChild(this.containers.navigation[i]);
+			}
+			return true;
 		}
 
 		
@@ -291,25 +314,6 @@ function loadSceneByNumber(sceneNumber) {
 //////////          GAME 			/////////////
 ////////////////////////////////////////////////
 ///////////////////////////////////////////////
-
-
-function initSceneContainer(backgroundContainer, clickableContainer) {
-	var sceneContainer = new createjs.Container();
-	sceneContainer.addChild(backgroundContainer)
-	sceneContainer.addChild(clickableContainer);
-	
-	sceneContainer.name = "sceneContainer";
-	return sceneContainer
-}
-
-/*
-* Fetch an image by its id
-* @param id The id of the image
-* @returns Image the image corresponding to this ID
-*/
-function getImageById(id) {
-	return images[id];
-}
 
 
 /*

@@ -45,7 +45,7 @@ function Clickable(json) {
 	 * @returns Bitmap The bitmap of the image
 	 */
 	this.createClickableImage = function() {
-		var image = getImageById(this.clickable.id);
+		var image = images[this.clickable.id];
 		
 		var clickableBit = convertImageToScaledBitmap(image, ((this.clickable.location.x * DPR)), this.clickable.location.y * DPR, this.clickable.dimensions.width * DPR, this.clickable.dimensions.height * DPR);
 		return clickableBit;
