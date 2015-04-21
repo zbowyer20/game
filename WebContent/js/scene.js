@@ -80,14 +80,14 @@ var Scene = {
 		initAreas: function(json) {
 			var defaultArea; 
 			
-			if (!this.areas) {
-				this.areas = {};
+			if (!this.components.areas) {
+				this.components.areas = {};
 			}
 			// Load every scene (ie. background image)
 			for (var i = 0; i < json.areas.length; i++) {
-				this.areas[json.areas[i].name] = new Area(json.areas[i]);
+				this.components.areas[json.areas[i].name] = new Area(json.areas[i]);
 				if (json.areas[i].defaultBackground) {
-					defaultArea = this.areas[json.areas[i].name];
+					defaultArea = this.components.areas[json.areas[i].name];
 				}
 			}
 						
@@ -182,15 +182,15 @@ var Scene = {
 		createNavigation: function() {
 			var containers = [];
 			var movements = this.components.areas.current.getMovements();
-			for (var i = 0; i < movements.length; i++) {
-				containers.push(this.createNavigationIcon(movements[i]));
+			for (var movement in movements) {
+				containers.push(this.createNavigationIcon(movement));
 			}
 			return containers;
 		},
 		
 		createNavigationIcon: function(movement) {
-			var arrow = drawArrow("red", movement.name);
-			//arrow.addEventListener("click", this.moveInDirectionDelegate(direction));
+			var arrow = drawArrow("red", movement);
+			arrow.addEventListener("click", this.moveInDirectionDelegate(movement));
 			return arrow;
 		},
 		
@@ -199,6 +199,85 @@ var Scene = {
 				this.container.removeChild(this.containers.navigation[i]);
 			}
 			return true;
+		},
+		
+		/*
+		* Move in a particular direction from one scene to another
+		* @param direction The direction to move in
+		*/
+		moveInDirection: function(direction) {
+			if (checkPriority(NAVIGATION_PRIORITY)) {
+				var movementAnimation = this.getMovementAnimation(direction);
+				this.turn(this.getMovement(direction), movementAnimation);
+			}
+		},
+
+		/*
+		* Closure stuff... I guess
+		*/
+		moveInDirectionDelegate: function(direction) {
+			var self = this;
+			return function() {
+				self.moveInDirection(direction);
+			}
+		},
+		
+		/*
+		* Get the movement animation when moving in a particular direction
+		* @param direction The direction to move in
+		* @returns The x/y coordinations
+		*/
+		getMovementAnimation: function(direction) {
+			var movementAnimation = {};
+			switch (direction) {
+				case DIRECTION_LEFT :
+					movementAnimation.x = (stage.canvas.width / (25 * DPR));
+					movementAnimation.y = 0;
+					break;
+				case DIRECTION_RIGHT :
+				movementAnimation.x = -1 *(stage.canvas.width / (25 * DPR));
+				movementAnimation.y = 0;
+				break;
+			}
+			return movementAnimation;
+		},
+
+		/*
+		* Return the particular view to pick when moving, based off of direction
+		* @param direction The direction we're moving in
+		* @returns The view to move to
+		*/
+		getMovement: function(direction) {
+			return this.components.areas[this.components.areas.current.getDestinationByDirection(direction)];
+		},
+		
+		/*
+		* Animation for a particular movement from one scene to another
+		* @param newView the view we're moving to
+		*/
+		turn: function(next, movements) {
+			this.turnToArea(next, movements);
+			//updateClickables(movements);
+			stage.update();
+		},
+		
+		turnToArea: function(area, movements) {
+			var backgroundBit = area.getBackground();
+			console.log(backgroundBit);
+			backgroundBit.x = movements.x > 0 ? stage.canvas.width * (-1) : stage.canvas.width;
+			
+			var backgroundContainer = this.container.getChildByName("backgroundContainer");
+			
+			var newContainer = new createjs.Container();
+			newContainer.addChild(backgroundBit);
+			
+			this.container.addChild(newContainer);
+			
+			stage.update();
+			
+			// Start animation
+			priority = FROZEN_PRIORITY;
+			AnimationHandler.slideBackgrounds([backgroundContainer, newContainer], movements);
 		}
 
 		
@@ -400,29 +479,6 @@ function getMovementAnimation(direction) {
 */
 function getMovement(direction) {
 	return currentView.getDestinationByDirection(direction);
-}
-
-/*
-* Move in a particular direction from one scene to another
-* @param direction The direction to move in
-*/
-function moveInDirection(direction) {
-	if (checkPriority(NAVIGATION_PRIORITY)) {
-		var movementAnimation = getMovementAnimation(direction);
-		animationMovements.x = movementAnimation.changeX;
-		animationMovements.y = movementAnimation.changeY;
-		var movementMultiplier = animationMovements.x > 0 ? -1 : 1;
-		turn(getMovement(direction), movementMultiplier);
-	}
-}
-
-/*
-* Closure stuff... I guess
-*/
-function moveInDirectionDelegate(direction) {
-	return function() {
-		moveInDirection(direction);
-	}
 }
 
 /*

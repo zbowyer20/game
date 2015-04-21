@@ -7,7 +7,6 @@ function Area(area) {
 	this.initBackground = function(area) {
 		self.background = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
 		self.background.name = area.name;
-		self.movements = area.movements;
 		self.background.clickables = area.clickables;
 		self.background.defaultBackground = area.defaultBackground;
 	}
@@ -29,7 +28,7 @@ function Area(area) {
 	}
 
 	this.setMovement = function(movement) {
-		self.movements[movement.direction] = movement.destination;
+		self.movements[movement.name] = movement.destination;
 	}
 	
 	this.setMovements = function(movements) {
@@ -39,6 +38,7 @@ function Area(area) {
 	}
 	
 	this.initBackground(area);
-	
+	this.setMovements(area.movements);
+
 	return this;
 }

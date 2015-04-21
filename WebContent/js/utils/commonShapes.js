@@ -15,6 +15,7 @@ function convertImageToScaledBitmap(image, x, y, width, height) {
 function drawArrow(colour, direction) {
 	var arrow = new createjs.Shape();
 	var position = {"x": 0, "y": 0, "angle": 0};
+	console.log(direction);
 	
 	switch (direction) {
 		case DIRECTION_LEFT:
