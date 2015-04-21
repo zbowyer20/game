@@ -6,6 +6,7 @@ var Scene = {
 		init: function(sceneName) {
 			var self = this;
 			PopupHandler.init();
+			ItemContainer.init();
 			Loader
 				.loadManifest()
 				.then(function(data) { 
@@ -57,6 +58,7 @@ var Scene = {
 				 self.container.addChild(self.setupAreas(json));
 			     var clickableContainer = self.initClickables(json);
 			     self.container.addChild(clickableContainer);
+			     self.container.addChild(ItemContainer.init().container);
 			     
 				 layers.sceneLayer.addChild(self.container);
 				 stage.update();
@@ -926,5 +928,4 @@ function tick(event) {
 		}
 		stage.update();
 	}
-	//stage.update();
 }
