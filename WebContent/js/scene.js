@@ -1,6 +1,5 @@
 var Scene = {
-		components: {"areas": {}, "clickables" : {}, "dialogs" : {}},
-		areas: {},
+		components: {"areas": {}, "dialogs" : {}},
 		animation: {},
 		container: null,
 		containers: {},
@@ -9,6 +8,7 @@ var Scene = {
 			var self = this;
 			PopupHandler.init();
 			ItemContainer.init();
+			AnimationHandler.init();
 			Loader
 				.loadManifest()
 				.then(function(data) { 
@@ -58,8 +58,6 @@ var Scene = {
 				 var containers = {};
 				 self.container = new createjs.Container();
 				 self.container.addChild(self.setupAreas(json));
-			     var clickableContainer = self.initClickables(json);
-			     self.container.addChild(clickableContainer);
 			     self.container.addChild(ItemContainer.init().container);
 			     self.initNavigation();
 			     
@@ -99,41 +97,16 @@ var Scene = {
 			var container = new createjs.Container();
 			container.name = "backgroundContainer";
 			container.addChild(this.components.areas.current.getBackground());
+			this.addClickablesToContainer(container, this.components.areas.current, 0);
 			return container;
 		},
 		
-		initClickables: function(json) {
-			this.components.clickables = {};
-			var clickableContainer = new createjs.Container();
-			clickableContainer.name = CLICKABLE_CONTAINER_NAME;
-			// TODO clickables are initialised for first scene
-			var clickablesToAdd = this.addClickablesToArea(json.areas[0].clickables, 0);
-			for (var i = 0; i < clickablesToAdd.length; i++) {
-				clickableContainer.addChild(clickablesToAdd[i]);
+		addClickablesToContainer: function(container, area, offStageMultiplier) {
+			var clickables = area.getClickables(true);
+			for (var id in clickables) {
+				container.addChild(clickables[id].bitmap);
+				clickables[id].bitmap.x = clickables[id].getPrimaryPosition().x + (stage.canvas.width * offStageMultiplier);
 			}
-			return clickableContainer;
-		},
-		
-		/*
-		 * Add all clickables to the scene
-		 * @param clickables The clickables to add
-		 */
-		addClickablesToArea: function(clickables) {
-			clickablesInView = [];
-			for (var i = 0; i < clickables.length; i++) {
-				var clickable = clickables[i];
-				if (this.clickableInView(clickable)) {
-					clickablesInView.push(new Clickable(clickable).init());
-				}
-			}
-			return clickablesInView;
-		},
-
-		clickableInView: function(clickable) {
-			if (!this.components.clickables[clickable.id]) {
-				this.components.clickables[clickable.id] = {"addToStage": true};
-			}
-			return this.components.clickables[clickable.id].addToStage;
 		},
 		
 		initDialogs: function() {
@@ -262,14 +235,18 @@ var Scene = {
 		},
 		
 		turnToArea: function(area, movements) {
+			this.clearNavigation();
+			var self = this;
 			var backgroundBit = area.getBackground();
-			console.log(backgroundBit);
-			backgroundBit.x = movements.x > 0 ? stage.canvas.width * (-1) : stage.canvas.width;
+			var offStageMultiplier = movements.x > 0 ? -1 : 1;
+			backgroundBit.x = stage.canvas.width * offStageMultiplier;
 			
 			var backgroundContainer = this.container.getChildByName("backgroundContainer");
 			
 			var newContainer = new createjs.Container();
 			newContainer.addChild(backgroundBit);
+			
+			this.addClickablesToContainer(newContainer, area, offStageMultiplier);
 			
 			this.container.addChild(newContainer);
 			
@@ -277,7 +254,13 @@ var Scene = {
 			
 			// Start animation
 			priority = FROZEN_PRIORITY;
-			AnimationHandler.slideBackgrounds([backgroundContainer, newContainer], movements);
+			AnimationHandler.slideBackgrounds([backgroundContainer, newContainer], movements)
+							.then(function() {
+								self.container.removeChild(backgroundContainer);
+								newContainer.name = "backgroundContainer";
+								self.components.areas["current"] = area;
+								self.initNavigation();
+							});
 		}
 
 		

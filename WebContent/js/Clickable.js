@@ -1,5 +1,6 @@
 function Clickable(json) {
 	this.clickable = json;
+	this.addToStage = true;
 	this.bitmap;
 	
 	this.init = function() {
@@ -8,6 +9,7 @@ function Clickable(json) {
 		this.bitmap.addEventListener("click", function() {
 			if (checkPriority(ITEM_PRIORITY)) {
 				if (!self.clickable.persist) {
+					self.setAddToStage(false);
 					self.removeFromStage();
 				}
 				if (self.clickable.type == CLICKABLE_ITEM) {
@@ -16,7 +18,7 @@ function Clickable(json) {
 				self.loadClickableClickResult();
 			}
 		});
-		return this.bitmap;
+		return this;
 	}
 	
 	this.removeFromStage = function() {
@@ -37,11 +39,6 @@ function Clickable(json) {
 	
 	/*
 	 * Create a clickable image
-	 * @param clickable The JSON object for the clickable
-	 * @param multiplier The number of screen widths away this clickable is
-	 * 					-1 for clickable to the left
-	 * 					0 for clickable onscreen
-	 * 					1 for clickable to the right
 	 * @returns Bitmap The bitmap of the image
 	 */
 	this.createClickableImage = function() {
@@ -93,6 +90,18 @@ function Clickable(json) {
 			deferred.resolve('complete');
 		}
 		return deferred.promise();
+	}
+	
+	this.shouldAddToStage = function() {
+		return this.addToStage;
+	}
+	
+	this.setAddToStage = function(addToStage) {
+		this.addToStage = addToStage;
+	}
+	
+	this.getPrimaryPosition = function() {
+		return {"x": this.clickable.location.x * DPR, "y": this.clickable.location.y * DPR};
 	}
 	
 	//this.clickable = function() {

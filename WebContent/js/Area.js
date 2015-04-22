@@ -1,6 +1,7 @@
 function Area(area) {
 	this.background = {};
 	this.movements = {};
+	this.clickables = {};
 	
 	var self = this;
 	
@@ -37,8 +38,30 @@ function Area(area) {
 		}
 	}
 	
+	this.setClickables = function(clickables) {
+		for (var i = 0; i < clickables.length; i++) {
+			this.clickables[clickables[i].id] = new Clickable(clickables[i]).init();
+		}
+	}
+	
+	this.getClickables = function(visibleOnly) {
+		if (!visibleOnly) {
+			return this.clickables;
+		}
+		else {
+			var clickables = {};
+			for (var id in this.clickables) {
+				if (this.clickables[id].shouldAddToStage()) {
+					clickables[id] = this.clickables[id];
+				}
+			}
+			return clickables;
+		}
+	}
+		
 	this.initBackground(area);
 	this.setMovements(area.movements);
+	this.setClickables(area.clickables);
 
 	return this;
 }

@@ -1,7 +1,7 @@
 {
 	"areas": [
 		{
-			"defaultBackground": false,
+			"defaultBackground": true,
 			"name" : "front",
 			"id" : "bg0-front",
 			"movements": [
@@ -196,7 +196,7 @@
 			]
 		},
 		{
-			"defaultBackground": true,
+			"defaultBackground": false,
 			"name" : "side-3",
 			"id" : "bg0-side3",
 			"movements" : [
