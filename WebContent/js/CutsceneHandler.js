@@ -85,7 +85,7 @@ var CutsceneHandler = {
 		dialog: function(dialog) {
 			var container = new Dialog().createSpeech(dialog);
 			Scene.updateDialogPosition(dialog.position, container.container);
-			Scene.container.addChild(container.container);
+			Scene.containers.dialogLayer.addChild(container.container);
 			stage.update();
 			
 			//AudioManager.play(dialog.audio);

@@ -40,7 +40,7 @@ var PopupHandler = {
 		display: function() {
 			this.deferred = $.Deferred();
 			priority = ITEM_GAINED_PRIORITY;
-			Scene.container.addChild(this.container);
+			Scene.containers.dialogLayer.addChild(this.container);
 			stage.update();
 			this.keyPress();
 			return this.deferred.promise();
@@ -49,7 +49,7 @@ var PopupHandler = {
 		keyPress: function() {
 			var self = this;
 			document.onkeypress = function() {
-				Scene.container.removeChild(self.container);
+				Scene.containers.dialogLayer.removeChild(self.container);
 				stage.update();
 				priority = LOWEST_PRIORITY;
 				self.deferred.resolve("complete");

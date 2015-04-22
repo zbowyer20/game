@@ -1,8 +1,7 @@
 var Scene = {
 		components: {"areas": {}, "dialogs" : {}},
 		animation: {},
-		container: null,
-		containers: {},
+		containers: {"globalLayer": null, "areaLayer": null, "navigationLayer": null, "dialogLayer": null},
 		
 		init: function(sceneName) {
 			var self = this;
@@ -56,12 +55,19 @@ var Scene = {
 			$.when(Loader.loadLevel(sceneName))
 			 .then(function(json) {
 				 var containers = {};
-				 self.container = new createjs.Container();
-				 self.container.addChild(self.setupAreas(json));
-			     self.container.addChild(ItemContainer.init().container);
+				 self.containers.globalLayer = new createjs.Container();
+				 self.containers.areaLayer = new createjs.Container();
+				 self.containers.navigationLayer = new createjs.Container();
+				 self.containers.dialogLayer = new createjs.Container();
+				 
+				 self.containers.areaLayer.addChild(self.setupAreas(json));
 			     self.initNavigation();
 			     
-				 layers.sceneLayer.addChild(self.container);
+			     self.containers.globalLayer.addChild(self.containers.areaLayer);
+			     self.containers.globalLayer.addChild(ItemContainer.init().container);
+			     self.containers.globalLayer.addChild(self.containers.navigationLayer);
+			     self.containers.globalLayer.addChild(self.containers.dialogLayer);
+				 layers.sceneLayer.addChild(self.containers.globalLayer);
 				 stage.update();
 			 })
 		},
@@ -110,7 +116,7 @@ var Scene = {
 		},
 		
 		removeClickableFromContainer: function(id) {
-			var container = this.container.getChildByName("backgroundContainer");
+			var container = this.containers.areaLayer.getChildByName("backgroundContainer");
 			var clickable = container.getChildByName(id);
 			container.removeChild(clickable);
 			stage.update();
@@ -119,7 +125,7 @@ var Scene = {
 		initDialogs: function() {
 			var self = this;
 			$.each(this.components.dialogs, function(name, value) {
-			    self.container.removeChild(value);
+			    self.containers.dialogLayer.removeChild(value);
 			});
 			this.components.dialogs = {};
 			return true;
@@ -138,7 +144,7 @@ var Scene = {
 			}
 			else {
 				// get rid of the old dialog
-				this.container.removeChild(this.components.dialogs[position]);
+				this.containers.dialogLayer.removeChild(this.components.dialogs[position]);
 				this.components.dialogs[position] = dialog;
 			}
 		},
@@ -149,11 +155,11 @@ var Scene = {
 		*/
 		initNavigation: function() {
 			// For every direction for the current background, add an arrow
-			this.containers.navigation = this.createNavigation();
+			var navigation = this.createNavigation();
 			
 			// Add those arrows to the scene
-			for (var i = 0; i < this.containers.navigation.length; i++) {
-				this.container.addChild(this.containers.navigation[i]);
+			for (var i = 0; i < navigation.length; i++) {
+				this.containers.navigationLayer.addChild(navigation[i]);
 			}
 						
 			stage.update();
@@ -175,9 +181,7 @@ var Scene = {
 		},
 		
 		clearNavigation: function() {
-			for (var i = 0; i<this.containers.navigation.length; i++) {
-				this.container.removeChild(this.containers.navigation[i]);
-			}
+			this.containers.navigationLayer.removeAllChildren();
 			return true;
 		},
 		
@@ -248,14 +252,14 @@ var Scene = {
 			var offStageMultiplier = movements.x > 0 ? -1 : 1;
 			backgroundBit.x = stage.canvas.width * offStageMultiplier;
 			
-			var backgroundContainer = this.container.getChildByName("backgroundContainer");
+			var backgroundContainer = this.containers.areaLayer.getChildByName("backgroundContainer");
 			
 			var newContainer = new createjs.Container();
 			newContainer.addChild(backgroundBit);
 			
 			this.addClickablesToContainer(newContainer, area, offStageMultiplier);
 			
-			this.container.addChild(newContainer);
+			this.containers.areaLayer.addChild(newContainer);
 			
 			stage.update();
 			
@@ -263,7 +267,7 @@ var Scene = {
 			priority = FROZEN_PRIORITY;
 			AnimationHandler.slideBackgrounds([backgroundContainer, newContainer], movements)
 							.then(function() {
-								self.container.removeChild(backgroundContainer);
+								self.containers.areaLayer.removeChild(backgroundContainer);
 								newContainer.name = "backgroundContainer";
 								self.components.areas["current"] = area;
 								self.initNavigation();
