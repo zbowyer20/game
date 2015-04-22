@@ -22,10 +22,8 @@ function Clickable(json) {
 	}
 	
 	this.removeFromStage = function() {
-		Scene.components.clickables[this.clickable.id].addToStage = false;
-		//var clickableContainer = Scene.container.getChildByName("sceneContainer").getChildByName("clickableContainer");
-		var clickableContainer = Scene.container.getChildByName(CLICKABLE_CONTAINER_NAME);
-		clickableContainer.removeChild(this.bitmap);
+		this.setAddToStage(false);
+		Scene.removeClickableFromContainer(this.bitmap.name);
 		stage.update();
 	}
 	
@@ -45,6 +43,7 @@ function Clickable(json) {
 		var image = images[this.clickable.id];
 		
 		var clickableBit = convertImageToScaledBitmap(image, ((this.clickable.location.x * DPR)), this.clickable.location.y * DPR, this.clickable.dimensions.width * DPR, this.clickable.dimensions.height * DPR);
+		clickableBit.name = this.clickable.id;
 		return clickableBit;
 	}
 	
@@ -103,10 +102,6 @@ function Clickable(json) {
 	this.getPrimaryPosition = function() {
 		return {"x": this.clickable.location.x * DPR, "y": this.clickable.location.y * DPR};
 	}
-	
-	//this.clickable = function() {
-		
-	//}
-	
+
 	return this;
 }

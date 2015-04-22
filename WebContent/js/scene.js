@@ -109,6 +109,13 @@ var Scene = {
 			}
 		},
 		
+		removeClickableFromContainer: function(id) {
+			var container = this.container.getChildByName("backgroundContainer");
+			var clickable = container.getChildByName(id);
+			container.removeChild(clickable);
+			stage.update();
+		},
+		
 		initDialogs: function() {
 			var self = this;
 			$.each(this.components.dialogs, function(name, value) {
