@@ -4,7 +4,7 @@ function Area(area) {
 	this.clickables = {};
 	
 	var self = this;
-	
+
 	this.initBackground = function(area) {
 		self.background = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
 		self.background.name = area.name;
@@ -33,12 +33,18 @@ function Area(area) {
 	}
 	
 	this.setMovements = function(movements) {
+		if (!movements) {
+			return false;
+		}
 		for (var i = 0; i < movements.length; i++) {
 			self.setMovement(movements[i]);
 		}
 	}
 	
 	this.setClickables = function(clickables) {
+		if (!clickables) {
+			return false;
+		}
 		for (var i = 0; i < clickables.length; i++) {
 			this.clickables[clickables[i].id] = new Clickable(clickables[i]).init();
 		}

@@ -1,4 +1,5 @@
 var Scene = {
+		assets: {},
 		components: {"areas": {}, "dialogs" : {}},
 		animation: {},
 		containers: {"globalLayer": null, "areaLayer": null, "navigationLayer": null, "dialogLayer": null},
@@ -40,10 +41,17 @@ var Scene = {
 			console.log(images);
 		},
 		
-		nextScene: function(sceneName) {
-			this.clear();
+		loadScene: function(sceneName) {
 			var sceneId = this.getSceneId(sceneName);
-			return Loader.loadSceneAssets(sceneId);
+			return Loader.loadSceneAssets(this.assets[sceneId]);
+		},
+		
+		nextScene: function(sceneName) {
+			var self = this;
+			self.loadScene(sceneName).then(function() {
+				self.clear();
+				self.populate(sceneName);
+			});
 		},
 		
 		clear: function() {
@@ -59,10 +67,10 @@ var Scene = {
 				 self.containers.areaLayer = new createjs.Container();
 				 self.containers.navigationLayer = new createjs.Container();
 				 self.containers.dialogLayer = new createjs.Container();
-				 
+
 				 self.containers.areaLayer.addChild(self.setupAreas(json));
 			     self.initNavigation();
-			     
+			     			     
 			     self.containers.globalLayer.addChild(self.containers.areaLayer);
 			     self.containers.globalLayer.addChild(ItemContainer.init().container);
 			     self.containers.globalLayer.addChild(self.containers.navigationLayer);

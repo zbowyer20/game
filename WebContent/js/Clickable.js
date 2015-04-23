@@ -80,7 +80,8 @@ function Clickable(json) {
 					//AudioManager.play(clickEvent.events[clickEvent.index].audio);
 			}
 			else if (event.type == "SCENE_CHANGE") {
-					//goToNewScene(clickEvent.events[clickEvent.index].id);
+				Scene.nextScene(event.id);
+				stage.update();
 				deferred.resolve('complete');
 			}
 		}
