@@ -77,7 +77,7 @@ function Clickable(json) {
 				PopupHandler.addItem(item).display().then(function() {
 					deferred.resolve('complete');
 				})
-					//AudioManager.play(clickEvent.events[clickEvent.index].audio);
+				AudioManager.play(event.audio);
 			}
 			else if (event.type == "SCENE_CHANGE") {
 				Scene.nextScene(event.id);

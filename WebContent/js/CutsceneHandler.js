@@ -54,10 +54,6 @@ var CutsceneHandler = {
 			Scene.animation.loadingText = true;
 			this.play(cutscene, 0);
 			return this.deferred.promise();
-			//var speech = this.dialog(cutscene.scene[0]);
-			// when the user presses space, we play the next dialog
-			//dialogKeyPress(cutscene, 0);
-			//showText(speech.text, cutscene.scene[0].text, 0);
 		},
 		
 		play: function(cutscene, current, deferred) {
@@ -88,7 +84,7 @@ var CutsceneHandler = {
 			Scene.containers.dialogLayer.addChild(container.container);
 			stage.update();
 			
-			//AudioManager.play(dialog.audio);
+			AudioManager.play(dialog.audio);
 			
 			return container;
 		},
