@@ -12,39 +12,6 @@ var CutsceneHandler = {
 		},
 		
 		/*
-		 * Get the most relevant cutscene to play
-		 * Through priority, switches, etc
-		 * @param cutscenes The cutscenes in JSON
-		 * @returns The cutscene that should be played
-		 */
-		cutsceneToPlay: function(cutscenes) {
-			if (cutscenes == null) {
-				return null;
-			}
-			var bestCutscenes = [];
-			for (var i = 0; i < cutscenes.length; i++) {
-				bestCutscenes = this.mostRelevantOf(bestCutscenes, cutscenes[i]);
-			}
-			return bestCutscenes;
-		},
-		
-		mostRelevantOf: function(current, compare) {
-			if (current.length == 0 || (compare.priority >= current[0].priority)) {
-				if (GameUtils.validToPlay(compare)) {
-					if (current.length > 0 && possible.priority == current[0].priority) {
-						current.push(possible);
-					}
-					else {
-						var result = [];
-						result.push(possible);
-						return result;
-					}
-				}
-			}
-			return current;
-		},
-		
-		/*
 		 * Play a cutscene
 		 * @param cutscene The cutscene to play
 		 */

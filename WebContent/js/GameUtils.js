@@ -1,17 +1,20 @@
 var GameUtils = {
 		switches: {},
 		
-		// TODO move to CutsceneHandler?
 		validToPlay: function(object) {
-			if (!requiresSwitch(object)) {
+			if (!this.requiresSwitch(object)) {
 				return true;
 			}
 			for (var i = 0; i < object.requires.length; i++) {
-				if (!checkRequirement(object.requires[i])) {
+				if (!this.checkRequirement(object.requires[i])) {
 					return false;
 				}
 			}
 			return true;
+		},
+		
+		setSwitch: function(id, on) {
+			switches[id] = on;
 		},
 
 		requiresSwitch: function(object) {
@@ -31,12 +34,12 @@ var GameUtils = {
 		checkRequirement: function(requirement) {
 			switch (requirement.type) {
 				case "SWITCH":
-					return switchIsOn(requirement.id);
+					return this.switchIsOn(requirement.id);
 					break;
 				case "ITEM":
 					// TODO ItemHandler
 					if (requirement.activeItem) {
-						return isActiveItem(requirement.id);
+						return this.isActiveItem(requirement.id);
 					}
 					else {
 						return player.hasItem(requirement.id);

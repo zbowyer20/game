@@ -13,6 +13,8 @@ var ItemContainer = {
 			
 			var self = this;
 			
+			this.update();
+			
 			this.container.addEventListener("click", function() {
 				self.update();
 			});

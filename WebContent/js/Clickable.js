@@ -52,7 +52,7 @@ function Clickable(json) {
 			return false;
 		}
 		var self = this;
-		var results = this.clickable.onclick;
+		var results = this.getClickResults();
 		var promise = $.when(1);
 		results.forEach(function (element) {
 			promise = promise.then(function() {
@@ -61,12 +61,45 @@ function Clickable(json) {
 		})
 	}
 	
+	/*
+	 * Get the most relevant cutscene to play
+	 * Through priority, switches, etc
+	 * @param cutscenes The cutscenes in JSON
+	 * @returns The cutscene that should be played
+	 */
+	this.getClickResults = function() {
+		if (this.clickable.onclick == null) {
+			return null;
+		}
+		var results = [];
+		for (var i = 0; i < this.clickable.onclick.length; i++) {
+			results = this.mostRelevantOf(results, this.clickable.onclick[i]);
+		}
+		return results;
+	}
+	
+	this.mostRelevantOf = function(current, compare) {
+		if (current.length == 0 || (compare.priority >= current[0].priority)) {
+			if (GameUtils.validToPlay(compare)) {
+				if (current.length > 0 && compare.priority == current[0].priority) {
+					current.push(compare);
+				}
+				else {
+					var result = [];
+					result.push(compare);
+					return result;
+				}
+			}
+		}
+		return current;
+	},
+	
 	this.playClickableClickResult = function(event) {
 		var deferred = $.Deferred();
 		if (event != null) {
 			if (event.type == "CUTSCENE") {
 				CutsceneHandler.initCutscene(CutsceneHandler.findCutscene(event.id)).then(function() {
-					//turnOnSwitch(event);
+					GameUtils.setSwitch(event.switchOn, true);
 					deferred.resolve('complete');
 				});
 			}

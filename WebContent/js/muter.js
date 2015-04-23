@@ -7,8 +7,10 @@ var Muter = {
 	createMuterIcon: function() {
 		var self = this;
 		
+		var icon = AudioManager.getMute() ? images["sound-off"] : images["sound-on"];
+		
 		var position = {"x": stage.canvas.width - SPEAKER_WIDTH - (10 * DPR), "y": MENU_HEIGHT + (10 * DPR)};
-		var icon = convertImageToScaledBitmap(images["sound-on"], position.x, position.y, SPEAKER_WIDTH, SPEAKER_HEIGHT);
+		var icon = convertImageToScaledBitmap(icon, position.x, position.y, SPEAKER_WIDTH, SPEAKER_HEIGHT);
 		icon.addEventListener("click", function() {
 			self.onclick(self);
 		});
