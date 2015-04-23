@@ -106,7 +106,7 @@ function Clickable(json) {
 			else if (event.type == "GAINED_ITEM") {
 				var item = ItemHandler.items[this.clickable.id];
 				player.addItem(item);
-				ItemContainer.update();
+				ItemContainer.update(player.getHeldItem());
 				PopupHandler.addItem(item).display().then(function() {
 					deferred.resolve('complete');
 				})

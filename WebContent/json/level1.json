@@ -18,6 +18,7 @@
 					},
 					"type" : "EXAMINE",
 					"id": "1-statue",
+					"persist": true,
 					"onclick": [
 						{
 							"priority": 0,
