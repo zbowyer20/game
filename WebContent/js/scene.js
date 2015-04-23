@@ -67,6 +67,8 @@ var Scene = {
 				 self.containers.areaLayer = new createjs.Container();
 				 self.containers.navigationLayer = new createjs.Container();
 				 self.containers.dialogLayer = new createjs.Container();
+			     self.containers.audioContainer = Muter.init().icon;
+
 
 				 self.containers.areaLayer.addChild(self.setupAreas(json));
 			     self.initNavigation();
@@ -75,6 +77,7 @@ var Scene = {
 			     self.containers.globalLayer.addChild(ItemContainer.init().container);
 			     self.containers.globalLayer.addChild(self.containers.navigationLayer);
 			     self.containers.globalLayer.addChild(self.containers.dialogLayer);
+			     self.containers.globalLayer.addChild(self.containers.audioContainer);
 				 layers.sceneLayer.addChild(self.containers.globalLayer);
 				 stage.update();
 			 })
