@@ -41,6 +41,7 @@ var CHARACTER_NAMES = {};
 	CHARACTER_NAMES["ALBERT"] = "Albert";
 	CHARACTER_NAMES["ZAK"] = "Zak";
 	CHARACTER_NAMES["KATE"] = "Kate";
+	CHARACTER_NAMES["TOM"] = "Tom";
 
 var DIALOG_IMAGES = {};
 	DIALOG_IMAGES["ALBERT"] = "albert";
@@ -52,6 +53,13 @@ var DIALOG_IMAGES = {};
 	DIALOG_IMAGES["KATE-HAPPY"] = "kate-happy";
 	DIALOG_IMAGES["KATE-SAD"] = "kate-sad";
 	DIALOG_IMAGES["KATE-CURIOUS"] = "kate-curious";
+	
+	DIALOG_IMAGES["TOM"] = "tom";
+	DIALOG_IMAGES["TOM-HAPPY"] = "tom-happy";
+	DIALOG_IMAGES["TOM-ANGRY"] = "tom-angry";
+	DIALOG_IMAGES["TOM-DEVASTATED"] = "tom-devastated";
+	DIALOG_IMAGES["TOM-SAD"] = "tom-sad";
+	DIALOG_IMAGES["TOM-SMITTEN"] = "tom-smitten";
 	
 	DIALOG_IMAGES["ZAK"] = "zak";
 

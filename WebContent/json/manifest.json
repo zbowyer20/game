@@ -34,6 +34,30 @@
 				"src": "img/dialog/kate-curious.png"
 			},
 			{
+				"id": "tom",
+				"src": "img/dialog/tom.png"
+			},
+			{
+				"id": "tom-happy",
+				"src": "img/dialog/tom-cheerful.png"
+			},
+			{
+				"id": "tom-angry",
+				"src": "img/dialog/tom-angry.png"
+			},
+			{
+				"id": "tom-devastated",
+				"src": "img/dialog/tom-devastated.png"
+			},
+			{
+				"id": "tom-sad",
+				"src": "img/dialog/tom-sad.png"
+			},
+			{
+				"id": "tom-smitten",
+				"src": "img/dialog/tom-smitten.png"
+			},
+			{
 				"id": "zak",
 				"src": "img/dialog/zak.png"
 			},

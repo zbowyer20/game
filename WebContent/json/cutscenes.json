@@ -18,6 +18,12 @@
 						"position": 20000,
 						"volume": 0.1
 					}
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "TOM",
+					"mood": "HAPPY",
+					"text": "Hello, it's me! Surprise!"
 				}, 
 				{
 					"position": "DIALOG_LEFT",
@@ -29,6 +35,11 @@
 					"character": "KATE",
 					"text": "Now I am hungry!"
 				}, 
+				{
+					"position": "DIALOG_LEFT",
+					"character": "TOM",
+					"text": "I am always hungry..."
+				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
@@ -161,6 +172,12 @@
 					"position": "DIALOG_LEFT",
 					"character": "KATE",
 					"text": "That thing gives me the creeps!"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "TOM",
+					"mood": "DEVASTATED",
+					"text": "It's my mum... they turned her to stone!"
 				}
 			]
 		}
