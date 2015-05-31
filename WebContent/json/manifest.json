@@ -84,6 +84,10 @@
 				"src": "img/rsz_scene0.png"
 			},
 			{
+				"id": "hospital-bedroom-0",
+				"src": "img/hospital-bedroom-0.png"
+			},
+			{
 				"id": "bg0-side1",
 				"src": "img/scene0-1.png"
 			},
@@ -97,7 +101,7 @@
 			},
 			{
 				"id": "0-chair",
-				"src": "img/items/chair.jpeg"
+				"src": "img/sceneClickables/chair.png"
 			},
 			{
 				"id": "0-table",
@@ -114,6 +118,38 @@
 			{
 				"id": "0-door",
 				"src": "img/sceneClickables/door.png"
+			},
+			{
+				"id": "0-alphabet",
+				"src": "img/sceneClickables/alphabet.png"
+			},
+			{
+				"id": "0-whiteboard",
+				"src": "img/sceneClickables/whiteboard.png"
+			},
+			{
+				"id": "0-bed",
+				"src": "img/sceneClickables/bed.png"
+			},
+			{
+				"id": "0-bin",
+				"src": "img/sceneClickables/bin.png"
+			},
+			{
+				"id": "0-books",
+				"src": "img/sceneClickables/books.png"
+			},
+			{
+				"id": "0-light",
+				"src": "img/sceneClickables/light.png"
+			},
+			{
+				"id": "0-mirror",
+				"src": "img/sceneClickables/mirror.png"
+			},
+			{
+				"id": "0-table-2",
+				"src": "img/sceneClickables/table.png"
 			}
 		],
 		"audio" : [

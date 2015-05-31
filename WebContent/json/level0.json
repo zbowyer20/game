@@ -3,7 +3,7 @@
 		{
 			"defaultBackground": true,
 			"name" : "front",
-			"id" : "bg0-front",
+			"id" : "hospital-bedroom-0",
 			"movements": [
 				{
 					"name" : "RIGHT",
@@ -16,46 +16,134 @@
 			],
 			"clickables": [
 				{
-					"location" : 
+					"location" :
 					{
-						"x" : 100,
-						"y" : 200
+						"x" : 0,
+						"y" : 50
 					},
 					"dimensions" :
 					{
-						"width" : 100,
-						"height" : 100
+						"width": 1000,
+						"height": 550
 					},
 					"type" : "EXAMINE",
-					"id": "0-lamp",
+					"id": "0-alphabet",
 					"persist": true,
 					"onclick": [
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "2",
-							"switchOn": "lamp-cutscene-1"
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" : 
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-table-2",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "12"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-whiteboard",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "17"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-bin",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "11"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-books",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "13",
+							"switchOn": "books-cutscene-1"
 						},
 						{
 							"priority": 1,
 							"type": "CUTSCENE",
-							"id": "3",
+							"id": "14",
+							"switchOn": "books-cutscene-2",
 							"requires": [
 								{
 									"type": "SWITCH",
-									"id": "lamp-cutscene-1"
+									"id": "books-cutscene-1"
 								}
 							]
 						},
 						{
-							"priority": 1,
+							"priority": 2,
 							"type": "CUTSCENE",
-							"id": "4",
+							"id": "15",
 							"requires": [
 								{
-									"type": "ITEM",
-									"activeItem": true,
-									"id": "0-table"
+									"type": "SWITCH",
+									"id": "books-cutscene-2"
 								}
 							]
 						}
@@ -64,32 +152,88 @@
 				{
 					"location" :
 					{
-						"x" : 300,
-						"y" : 400
+						"x" : 0,
+						"y" : 50
 					},
 					"dimensions" :
 					{
-						"width" : 200,
-						"height" : 100
+						"width": 1000,
+						"height": 550
 					},
-					"type" : "ITEM",
-					"id" : "0-table",
-					"message" : "Picked up tables",
-					"persist" : false,
-					"onclick" : [
-						{
-							"priority": 0,
-							"type": "GAINED_ITEM",
-							"audio": {
-								"id": "foundItem",
-								"type" : "SOUND",
-								"volume": 0.1
-							}
-						},
+					"type" : "EXAMINE",
+					"id": "0-mirror",
+					"persist": true,
+					"onclick": [
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "0"
+							"id": "8"
+						}
+					]
+				},	
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-light",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "16"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-chair",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "10"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-bed",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "9"
 						}
 					]
 				}

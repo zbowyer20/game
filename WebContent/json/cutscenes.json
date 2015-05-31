@@ -180,6 +180,171 @@
 					"text": "It's my mum... they turned her to stone!"
 				}
 			]
+		},
+		{
+			"id": "7",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Numbers from 1 to 26... what could they mean?"
+				}
+			]
+		},
+		{
+			"id": "8",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"text": "The mirror had taken Albert's eye immediately. He approached it."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "It's a full length mirror."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"mood": "FLIRTATIOUS",
+					"text": "Heyy... looking good!"
+				}
+			]
+		},
+		{
+			"id": "9",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "I've slept on more comfortable beds when I've been camping!"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "But still... maybe just five minutes... aaaaaah..."
+				}
+			]
+		},
+		{
+			"id": "10",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Was everything in this room made to be uncomfortable?"
+				}
+			]
+		},
+		{
+			"id": "11",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Oooooh... nothing in this bin."
+				}
+			]
+		},
+		{
+			"id": "12",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "There's loads of stuff on this table! Let's have a look.",
+					"audio": {
+						"id": "living",
+						"type" : "MUSIC",
+						"position": 20000,
+						"volume": 0.1
+					}
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Whoa! It just started playing music!"
+				}
+			]
+		},
+		{
+			"id": "13",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Hey, check out these books! I've read almost all of these. Phantom, The Diary of Anne Frank, Frankenstein... there are some classics here."
+				}
+			]
+		},
+		{
+			"id": "14",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "These books have to mean something! Is this anything in them?"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"text": "Albert flipped through all the books in turn."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Nope. Nothing in them. No messages, no highlighted words, no secret compartments for wedding rings... nothing."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Sigh..."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Maybe one day someone will propose to me using a book."
+				}
+			]
+		},
+		{
+			"id": "15",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Okay, so there's nothing in them, but these weren't put here randomly. I know it!"
+				}
+			]
+		},
+		{
+			"id": "16",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "It's a red glowing light. I don't think this means anything."
+				}
+			]
+		},
+		{
+			"id": "17",
+			"scene": [
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "It's a whiteboard, but there's no pen, so I can't write anything on it."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Not that I would if I had a pen, of course..."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"text": "Then again, a penis could be funny..."
+				}
+			]
 		}
 	]
 }
