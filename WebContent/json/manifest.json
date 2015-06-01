@@ -92,6 +92,10 @@
 				"src": "img/hospital-bedroom-table.png"
 			},
 			{
+				"id": "hospital-bedroom-shelf",
+				"src": "img/hospital-bedroom-shelf.png"
+			},
+			{
 				"id": "bg0-side1",
 				"src": "img/scene0-1.png"
 			},
@@ -178,6 +182,30 @@
 			{
 				"id": "0-table-bin",
 				"src": "img/sceneClickables/table-bin.png"
+			},
+			{
+				"id": "0-shelf-anne-frank",
+				"src": "img/sceneClickables/shelf-anne-frank.png"
+			},
+			{
+				"id": "0-shelf-dracula",
+				"src": "img/sceneClickables/shelf-dracula.png"
+			},
+			{
+				"id": "0-shelf-frankenstein",
+				"src": "img/sceneClickables/shelf-frankenstein.png"
+			},
+			{
+				"id": "0-shelf-hamlet",
+				"src": "img/sceneClickables/shelf-hamlet.png"
+			},
+			{
+				"id": "0-shelf-phantom",
+				"src": "img/sceneClickables/shelf-phantom.png"
+			},
+			{
+				"id": "0-shelf-time-machine",
+				"src": "img/sceneClickables/shelf-time-machine.png"
 			}
 		],
 		"audio" : [

@@ -157,10 +157,22 @@
 							"priority": 2,
 							"type": "CUTSCENE",
 							"id": "15",
+							"switchOn": "books-cutscene-3",
 							"requires": [
 								{
 									"type": "SWITCH",
 									"id": "books-cutscene-2"
+								}
+							]
+						},
+						{
+							"priority": 3,
+							"type": "MOVE",
+							"destination": "hospital-bedroom-shelf",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "books-cutscene-3"
 								}
 							]
 						}
@@ -539,6 +551,151 @@
 					]
 				}
 			]
-		} 
+		},
+		{
+			"defaultBackground": false,
+			"name": "hospital-bedroom-shelf",
+			"id": "hospital-bedroom-shelf", 
+			"movements": [
+				{
+					"name": "BACK",
+					"destination": "front"
+				}
+			],
+			"clickables": [
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-shelf-time-machine",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-shelf-phantom",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-shelf-anne-frank",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-shelf-hamlet",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-shelf-frankenstein",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-shelf-dracula",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				}
+			]
+		}
 	]
 }
