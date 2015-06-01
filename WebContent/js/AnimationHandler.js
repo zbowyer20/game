@@ -24,14 +24,19 @@ var AnimationHandler = {
 		slideBackgroundsAnimation: function() {
 			var movers = this.animations.sliding.movers;
 			var movements = this.animations.sliding.movements;
-			for (var i = 0; i < movers.length; i++) {
-				for (var j = 0; j < movers[i].children.length; j++) {
-					movers[i].children[j].x += movements.x;
-					movers[i].children[j].y += movements.y;
-					stage.update();
+			if (movements) {
+				for (var i = 0; i < movers.length; i++) {
+					for (var j = 0; j < movers[i].children.length; j++) {
+						movers[i].children[j].x += movements.x;
+						movers[i].children[j].y += movements.y;
+						stage.update();
+					}
+				}
+				if ((movers[0].children[0].x <= 0 - (stage.canvas.width)) || (movers[0].children[0].x >= (stage.canvas.width * 2 / DPR))) {
+					this.finishAnimation();
 				}
 			}
-			if ((movers[0].children[0].x <= 0 - (stage.canvas.width)) || (movers[0].children[0].x >= (stage.canvas.width * 2 / DPR))) {
+			else {
 				this.finishAnimation();
 			}
 		},

@@ -230,9 +230,12 @@ var Scene = {
 					movementAnimation.y = 0;
 					break;
 				case DIRECTION_RIGHT :
-				movementAnimation.x = -1 *(stage.canvas.width / (25 * DPR));
-				movementAnimation.y = 0;
-				break;
+					movementAnimation.x = -1 *(stage.canvas.width / (25 * DPR));
+					movementAnimation.y = 0;
+					break;
+				case DIRECTION_BACK :
+					movementAnimation = false;
+					break;
 			}
 			return movementAnimation;
 		},
@@ -260,7 +263,13 @@ var Scene = {
 			this.clearNavigation();
 			var self = this;
 			var backgroundBit = area.getBackground();
-			var offStageMultiplier = movements.x > 0 ? -1 : 1;
+			var offStageMultiplier;
+			if (movements) {
+				offStageMultiplier = movements.x > 0 ? -1 : 1;
+			}
+			else {
+				offStageMultiplier = 0;
+			}
 			backgroundBit.x = stage.canvas.width * offStageMultiplier;
 			
 			var backgroundContainer = this.containers.areaLayer.getChildByName("backgroundContainer");
@@ -283,8 +292,7 @@ var Scene = {
 								self.components.areas["current"] = area;
 								self.initNavigation();
 							});
-		}
-
+		},
 		
 //		var sceneJsonFile = "json/level" + sceneNumber + ".json";
 //		// now we can load all our backgrounds
@@ -470,9 +478,9 @@ function getMovementAnimation(direction) {
 			movementAnimation.changeY = 0;
 			break;
 		case DIRECTION_RIGHT :
-		movementAnimation.changeX = -1 *(stage.canvas.width / (25 * DPR));
-		movementAnimation.changeY = 0;
-		break;
+			movementAnimation.changeX = -1 *(stage.canvas.width / (25 * DPR));
+			movementAnimation.changeY = 0;
+			break;
 	}
 	return movementAnimation;
 }

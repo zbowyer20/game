@@ -15,7 +15,6 @@ function convertImageToScaledBitmap(image, x, y, width, height) {
 function drawArrow(colour, direction) {
 	var arrow = new createjs.Shape();
 	var position = {"x": 0, "y": 0, "angle": 0};
-	console.log(direction);
 	
 	switch (direction) {
 		case DIRECTION_LEFT:
@@ -28,6 +27,10 @@ function drawArrow(colour, direction) {
 			position.y = stage.canvas.height / 2;
 			position.angle = 0;
 			break;
+		case DIRECTION_BACK:
+			position.x = (stage.canvas.width / 2) - (15 * DPR);
+			position.y = stage.canvas.height - (40 * DPR);
+			position.angle = 90;
 	}
 	
 	arrow.graphics.beginFill(colour).drawPolyStar(position.x, position.y , 30 * DPR, 3, 0.5, position.angle);

@@ -56,6 +56,23 @@
 							"priority": 0,
 							"type": "CUTSCENE",
 							"id": "12"
+						},
+						{
+							"priority": 0,
+							"type": "MOVE",
+							"destination": "hospital-bedroom-table",
+							"switchOn": "table-first-look"
+						},
+						{
+							"priority": 1,
+							"type": "MOVE",
+							"destination": "hospital-bedroom-table",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "table-first-look"
+								}
+							]
 						}
 					]
 				},
@@ -377,6 +394,151 @@
 					]
 				}
 			]
-		}
+		},
+		{
+			"defaultBackground": false,
+			"name": "hospital-bedroom-table",
+			"id": "hospital-bedroom-table",
+			"movements": [
+				{
+					"name": "BACK",
+					"destination": "front"
+				}
+			],
+			"clickables": [
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-table-bin",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-table-table",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-table-photos",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-table-nametags",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-table-candles",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-table-radio",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				}
+			]
+		} 
 	]
 }

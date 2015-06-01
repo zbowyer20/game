@@ -97,9 +97,9 @@ function Clickable(json) {
 	this.playClickableClickResult = function(event) {
 		var deferred = $.Deferred();
 		if (event != null) {
+			GameUtils.setSwitch(event.switchOn, true);
 			if (event.type == "CUTSCENE") {
 				CutsceneHandler.initCutscene(CutsceneHandler.findCutscene(event.id)).then(function() {
-					GameUtils.setSwitch(event.switchOn, true);
 					deferred.resolve('complete');
 				});
 			}
@@ -111,6 +111,11 @@ function Clickable(json) {
 					deferred.resolve('complete');
 				})
 				AudioManager.play(event.audio);
+			}
+			else if (event.type == "MOVE") {
+				Scene.turn(Scene.components.areas[event.destination], false);
+				stage.update();
+				deferred.resolve('complete');
 			}
 			else if (event.type == "SCENE_CHANGE") {
 				Scene.nextScene(event.id);

@@ -9,7 +9,6 @@ var AudioManager = {
 			var self = this;
 			try {
 				manifest.forEach(function(file) {
-					console.log('registered sound');
 					self.registerSound(file);
 				});
 				return true;
@@ -20,22 +19,17 @@ var AudioManager = {
 		},
 		
 		registerSound: function(file) {
-			console.log(file.id);
 			createjs.Sound.registerSound({"id": file.id, "src" :file.src});
 			createjs.Sound.play(file.id);
 		},
 		
 		play: function(audio) {
 			try {
-				console.log('here');
 				if (audio.type == "MUSIC") {
 					this.stop();
 				}
 				var sound = createjs.Sound.play(audio.id);
-				console.log(audio.id, audio.volume);
-				console.log(sound);
 				this.setPosition(sound, audio.position).setVolume(sound, audio.volume);
-				console.log('made it here');
 			}
 			catch (e) {
 				console.log(e.message);

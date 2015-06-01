@@ -88,6 +88,10 @@
 				"src": "img/hospital-bedroom-0.png"
 			},
 			{
+				"id": "hospital-bedroom-table",
+				"src": "img/hospital-bedroom-table.png"
+			},
+			{
 				"id": "bg0-side1",
 				"src": "img/scene0-1.png"
 			},
@@ -150,6 +154,30 @@
 			{
 				"id": "0-table-2",
 				"src": "img/sceneClickables/table.png"
+			},
+			{
+				"id": "0-table-table",
+				"src": "img/sceneClickables/table-table.png"
+			},
+			{
+				"id": "0-table-candles",
+				"src": "img/sceneClickables/table-candles.png"
+			},
+			{
+				"id": "0-table-nametags",
+				"src": "img/sceneClickables/table-nametags.png"
+			},
+			{
+				"id": "0-table-photos",
+				"src": "img/sceneClickables/table-photos.png"
+			},
+			{
+				"id": "0-table-radio",
+				"src": "img/sceneClickables/table-radio.png"
+			},
+			{
+				"id": "0-table-bin",
+				"src": "img/sceneClickables/table-bin.png"
 			}
 		],
 		"audio" : [
