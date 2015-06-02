@@ -7,7 +7,7 @@
 			"movements": [
 				{
 					"name" : "RIGHT",
-					"destination" : "side-1"
+					"destination" : "back"
 				},
 				{
 					"name" : "LEFT",
@@ -270,6 +270,177 @@
 		},
 		{
 			"defaultBackground": false,
+			"name" : "back",
+			"id" : "hospital-bedroom-1",
+			"movements": [
+				{
+					"name" : "RIGHT",
+					"destination" : "side-1"
+				},
+				{
+					"name" : "LEFT",
+					"destination" : "front"
+				}
+			],
+			"clickables": [
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-boards",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-mattress-left",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-pillow-left",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-bedframe-left",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-drawers",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-bed-right",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				},
+				{
+					"location" :
+					{
+						"x" : 0,
+						"y" : 50
+					},
+					"dimensions" :
+					{
+						"width": 1000,
+						"height": 550
+					},
+					"type" : "EXAMINE",
+					"id": "0-clipboard-right",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "7"
+						}
+					]
+				}
+			]
+		},
+		{
+			"defaultBackground": false,
 			"name" : "side-1",
 			"id" : "bg0-side1",
 			"movements": [
@@ -279,7 +450,7 @@
 				},
 				{
 					"name" : "LEFT",
-					"destination" : "front"
+					"destination" : "back"
 				}
 			],
 			"clickables": [

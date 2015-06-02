@@ -88,6 +88,10 @@
 				"src": "img/hospital-bedroom-0.png"
 			},
 			{
+				"id": "hospital-bedroom-1",
+				"src": "img/hospital-bedroom-1.png"
+			},
+			{
 				"id": "hospital-bedroom-table",
 				"src": "img/hospital-bedroom-table.png"
 			},
@@ -206,6 +210,34 @@
 			{
 				"id": "0-shelf-time-machine",
 				"src": "img/sceneClickables/shelf-time-machine.png"
+			},
+			{
+				"id": "0-bed-right",
+				"src": "img/sceneClickables/bed-right.png"
+			},
+			{
+				"id": "0-bedframe-left",
+				"src": "img/sceneClickables/bedframe-left.png"
+			},
+			{
+				"id": "0-boards",
+				"src": "img/sceneClickables/boards.png"
+			},
+			{
+				"id": "0-clipboard-right",
+				"src": "img/sceneClickables/clipboard-right.png"
+			},
+			{
+				"id": "0-drawers",
+				"src": "img/sceneClickables/drawers.png"
+			},
+			{
+				"id": "0-mattress-left",
+				"src": "img/sceneClickables/mattress-left.png"
+			},
+			{
+				"id": "0-pillow-left",
+				"src": "img/sceneClickables/pillow-left.png"
 			}
 		],
 		"audio" : [
