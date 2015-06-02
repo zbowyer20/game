@@ -226,11 +226,11 @@ var Scene = {
 			var movementAnimation = {};
 			switch (direction) {
 				case DIRECTION_LEFT :
-					movementAnimation.x = (stage.canvas.width / (25 * DPR));
+					movementAnimation.x = (stage.canvas.width / (4 * DPR));
 					movementAnimation.y = 0;
 					break;
 				case DIRECTION_RIGHT :
-					movementAnimation.x = -1 *(stage.canvas.width / (25 * DPR));
+					movementAnimation.x = -1 *(stage.canvas.width / (4 * DPR));
 					movementAnimation.y = 0;
 					break;
 				case DIRECTION_BACK :
@@ -474,11 +474,11 @@ function getMovementAnimation(direction) {
 	var movementAnimation = {};
 	switch (direction) {
 		case DIRECTION_LEFT :
-			movementAnimation.changeX = (stage.canvas.width / (25 * DPR));
+			movementAnimation.changeX = (stage.canvas.width / (20000 * DPR));
 			movementAnimation.changeY = 0;
 			break;
 		case DIRECTION_RIGHT :
-			movementAnimation.changeX = -1 *(stage.canvas.width / (25 * DPR));
+			movementAnimation.changeX = -1 *(stage.canvas.width / (20000 * DPR));
 			movementAnimation.changeY = 0;
 			break;
 	}
