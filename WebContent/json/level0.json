@@ -21,6 +21,13 @@
 						"x" : 0,
 						"y" : 50
 					},
+					"hitArea" :
+					{
+						"x" : 110,
+						"y" : 150,
+						"width" : 90,
+						"height" : 50
+					},
 					"dimensions" :
 					{
 						"width": 1000,
