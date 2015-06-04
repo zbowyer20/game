@@ -16,22 +16,12 @@
 			],
 			"clickables": [
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
 					"hitArea" :
 					{
 						"x" : 110,
 						"y" : 150,
 						"width" : 90,
 						"height" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
 					},
 					"type" : "EXAMINE",
 					"id": "0-alphabet",
@@ -45,16 +35,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" : 
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-table-2",
 					"persist": true,
@@ -84,16 +64,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-whiteboard",
 					"persist": true,
@@ -106,16 +76,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-bin",
 					"persist": true,
@@ -128,16 +88,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-books",
 					"persist": true,
@@ -186,16 +136,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-mirror",
 					"persist": true,
@@ -208,16 +148,6 @@
 					]
 				},	
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-light",
 					"persist": true,
@@ -230,16 +160,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-chair",
 					"persist": true,
@@ -252,16 +172,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-bed",
 					"persist": true,
@@ -291,16 +201,6 @@
 			],
 			"clickables": [
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-boards",
 					"persist": true,
@@ -313,16 +213,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-mattress-left",
 					"persist": true,
@@ -335,16 +225,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-pillow-left",
 					"persist": true,
@@ -357,16 +237,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-bedframe-left",
 					"persist": true,
@@ -379,16 +249,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-drawers",
 					"persist": true,
@@ -401,16 +261,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-bed-right",
 					"persist": true,
@@ -423,16 +273,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-clipboard-right",
 					"persist": true,
@@ -462,30 +302,10 @@
 			],
 			"clickables": [
 				{
-					"location" : 
-					{
-						"x" : 150,
-						"y" : 200
-					},
-					"dimensions" :
-					{
-						"width" : 100,
-						"height" : 100
-					},
 					"type" : "EXAMINE",
 					"id" : "0-lamp"
 				},
 				{
-					"location" :
-					{
-						"x" : 500,
-						"y" : 400
-					},
-					"dimensions" :
-					{
-						"width" : 200,
-						"height" : 100
-					},
 					"type" : "ITEM",
 					"id" : "0-chair",
 					"persist" : false,
@@ -519,16 +339,6 @@
 			],
 			"clickables" : [
 				{
-					"location" :
-					{
-						"x" : 500,
-						"y" : 400
-					},
-					"dimensions" :
-					{
-						"width" : 200,
-						"height" : 100
-					},
 					"type" : "ITEM",
 					"id" : "0-bed",
 					"persist" : false,
@@ -562,16 +372,6 @@
 			],
 			"clickables": [
 				{
-					"location" : 
-					{
-						"x" : 385,
-						"y" : 100
-					},
-					"dimensions" :
-					{
-						"width" : 250,
-						"height" : 350
-					},
 					"type" : "EXAMINE",
 					"id" : "0-door",
 					"persist": true,
@@ -597,16 +397,6 @@
 			],
 			"clickables": [
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-table-bin",
 					"persist": true,
@@ -619,16 +409,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-table-table",
 					"persist": true,
@@ -641,16 +421,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-table-photos",
 					"persist": true,
@@ -663,16 +433,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-table-nametags",
 					"persist": true,
@@ -685,16 +445,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-table-candles",
 					"persist": true,
@@ -707,16 +457,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-table-radio",
 					"persist": true,
@@ -742,16 +482,6 @@
 			],
 			"clickables": [
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-shelf-time-machine",
 					"persist": true,
@@ -764,16 +494,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-shelf-phantom",
 					"persist": true,
@@ -786,16 +506,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-shelf-anne-frank",
 					"persist": true,
@@ -808,16 +518,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-shelf-hamlet",
 					"persist": true,
@@ -830,16 +530,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-shelf-frankenstein",
 					"persist": true,
@@ -852,16 +542,6 @@
 					]
 				},
 				{
-					"location" :
-					{
-						"x" : 0,
-						"y" : 50
-					},
-					"dimensions" :
-					{
-						"width": 1000,
-						"height": 550
-					},
 					"type" : "EXAMINE",
 					"id": "0-shelf-dracula",
 					"persist": true,

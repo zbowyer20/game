@@ -42,7 +42,18 @@ function Clickable(json) {
 	 */
 	this.createClickableImage = function() {
 		var image = images[this.clickable.id];
-		
+		if (!this.clickable.location) {
+			this.clickable.location = {
+					"x" : 0 / DPR,
+					"y" : MENU_HEIGHT / DPR
+			}
+		}
+		if (!this.clickable.dimensions) {
+			this.clickable.dimensions = {
+					"width" : stage.canvas.width / DPR,
+					"height" : (stage.canvas.height - MENU_HEIGHT) / DPR
+			}
+		}
 		var clickableBit = convertImageToScaledBitmap(image, ((this.clickable.location.x * DPR)), this.clickable.location.y * DPR, this.clickable.dimensions.width * DPR, this.clickable.dimensions.height * DPR);
 		clickableBit.name = this.clickable.id;
 		return clickableBit;
