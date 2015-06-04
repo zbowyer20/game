@@ -35,8 +35,28 @@ function drawArrow(colour, direction) {
 	
 	arrow.graphics.beginFill(colour).drawPolyStar(position.x, position.y , 30 * DPR, 3, 0.5, position.angle);
 	
+	
+	//if (direction.hover) {
+		arrow.alpha = 0;
+	
+		var hoverArea = new createjs.Shape();
+		var hoverAreaHitArea = new createjs.Shape();
+		hoverAreaHitArea.graphics.beginFill("#000").drawRect(position.x - 100, position.y - 100, 100 * DPR, 100 * DPR);
+		hoverArea.hitArea = hoverAreaHitArea;
+		
+		hoverArea.addEventListener("mouseover", function(event) {
+			arrow.alpha = 1;
+			stage.update();
+		})
+		hoverArea.addEventListener("mouseout", function(event) {
+			arrow.alpha = 0;
+			stage.update();
+		})
+	//}
+	
 	var container = new createjs.Container();
 	container.addChild(arrow);
+	container.addChild(hoverArea);
 	
 	return container;
 }

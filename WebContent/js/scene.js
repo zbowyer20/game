@@ -6,6 +6,7 @@ var Scene = {
 		
 		init: function(sceneName) {
 			var self = this;
+			stage.enableMouseOver(20);
 			PopupHandler.init();
 			ItemContainer.init();
 			AnimationHandler.init();
