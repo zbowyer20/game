@@ -42,6 +42,10 @@ var CHARACTER_NAMES = {};
 	CHARACTER_NAMES["ZAK"] = "Zak";
 	CHARACTER_NAMES["KATE"] = "Kate";
 	CHARACTER_NAMES["TOM"] = "Tom";
+	CHARACTER_NAMES["KEVIN"] = "Kevin";
+	CHARACTER_NAMES["SOPHIE"] = "Sophie";
+	CHARACTER_NAMES["VICTORIA"] = "Victoria";
+	CHARACTER_NAMES["JOE"] = "Joe";
 
 var DIALOG_IMAGES = {};
 	DIALOG_IMAGES["ALBERT"] = "albert";
@@ -62,6 +66,17 @@ var DIALOG_IMAGES = {};
 	DIALOG_IMAGES["TOM-SMITTEN"] = "tom-smitten";
 	
 	DIALOG_IMAGES["ZAK"] = "zak";
+	
+	DIALOG_IMAGES["KEVIN"] = "kevin";
+	
+	DIALOG_IMAGES["SOPHIE"] = "sophie";
+	DIALOG_IMAGES["SOPHIE-CURIOUS"] = "sophie-curious";
+	DIALOG_IMAGES["SOPHIE-SLY"] = "sophie-sly";
+	
+	DIALOG_IMAGES["VICTORIA"] = "victoria";
+	DIALOG_IMAGES["VICTORIA-HAPPY"] = "victoria-happy";
+	DIALOG_IMAGES["VICTORIA-POSSESSED"] = "victoria-possessed";
+	DIALOG_IMAGES["VICTORIA-TERRIFIED"] = "victoria-terrified";
 
 var DIRECTION_LEFT = "LEFT";
 var DIRECTION_RIGHT = "RIGHT";

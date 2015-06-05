@@ -343,6 +343,66 @@
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"text": "Then again, a penis could be funny..."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "VICTORIA",
+					"text": "It would have to be a really big one!"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "VICTORIA",
+					"mood": "TERRIFIED",
+					"text": "But not too big!!!"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "KEVIN",
+					"text": "I don't mind a big one"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "SOPHIE",
+					"text": "Neither do I."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "SOPHIE",
+					"mood": "SLY",
+					"text": "A really big one."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ZAK",
+					"text": "Not as big as mine though."
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "KATE",
+					"text": "Are you serious?"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ZAK",
+					"text": "Yes...?"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "KATE",
+					"mood": "CURIOUS",
+					"text": "Hmmmmm"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ALBERT",
+					"mood": "DETERMINED",
+					"text": "Are you guys done?!"
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "TOM",
+					"mood": "DEVASTATED",
+					"text": "You forgot about me!"
 				}
 			]
 		}

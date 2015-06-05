@@ -58,6 +58,38 @@
 				"src": "img/dialog/tom-smitten.png"
 			},
 			{
+				"id": "kevin",
+				"src": "img/dialog/kevin.png"
+			},
+			{
+				"id": "sophie",
+				"src": "img/dialog/sophie.png"
+			},
+			{
+				"id": "sophie-curious",
+				"src": "img/dialog/sophie-curious.png"
+			},
+			{
+				"id": "sophie-sly",
+				"src": "img/dialog/sophie-sly.png"
+			},
+			{
+				"id": "victoria",
+				"src": "img/dialog/victoria.png"
+			},
+			{
+				"id": "victoria-happy",
+				"src": "img/dialog/victoria-happy.png"
+			},
+			{
+				"id": "victoria-possessed",
+				"src": "img/dialog/victoria-possessed.png"
+			},
+			{
+				"id": "victoria-terrified",
+				"src": "img/dialog/victoria-terrified.png"
+			},
+			{
 				"id": "zak",
 				"src": "img/dialog/zak.png"
 			},
