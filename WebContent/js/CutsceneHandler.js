@@ -47,6 +47,9 @@ var CutsceneHandler = {
 		 */
 		dialog: function(dialog) {
 			var container = new Dialog().createSpeech(dialog);
+			if (!dialog.position) {
+				dialog.position = DIALOG_POSITION_DEFAULT;
+			}
 			Scene.updateDialogPosition(dialog.position, container.container);
 			Scene.containers.dialogLayer.addChild(container.container);
 			stage.update();
