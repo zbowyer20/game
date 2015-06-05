@@ -10,6 +10,9 @@ var Scene = {
 			PopupHandler.init();
 			ItemContainer.init();
 			AnimationHandler.init();
+			document.onkeydown = function(e) {
+				self.keyDown(e);
+			}
 			Loader
 				.loadManifest()
 				.then(function(data) { 
@@ -82,6 +85,26 @@ var Scene = {
 				 layers.sceneLayer.addChild(self.containers.globalLayer);
 				 stage.update();
 			 })
+		},
+		
+		keyDown: function(e) {
+			switch (e.keyCode) {
+				case KEYCODES["LEFT"]:
+					if (this.components.areas.current.getDestinationByDirection(DIRECTION_LEFT)) {
+						this.moveInDirection(DIRECTION_LEFT);
+					}
+					break;
+				case KEYCODES["RIGHT"]:
+					if (this.components.areas.current.getDestinationByDirection(DIRECTION_RIGHT)) {
+						this.moveInDirection(DIRECTION_RIGHT);
+					}
+					break;
+				case KEYCODES["DOWN"]:
+					if (this.components.areas.current.getDestinationByDirection(DIRECTION_BACK)) {
+						this.moveInDirection(DIRECTION_BACK);
+					}
+					break;
+			}		
 		},
 		
 		setupAreas: function(json) {

@@ -82,7 +82,7 @@ var CutsceneHandler = {
 		dialogKeyPress: function(cutscene, current, deferred) {
 			var self = this;
 			document.onkeypress = function(e) {
-				if (e.keyCode == 32) {
+				if (e.keyCode == KEYCODES["SPACE"]) {
 					if (Scene.animation.loadingText) {
 						Scene.animation.loadingText = false;
 					}
