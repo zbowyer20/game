@@ -80,6 +80,10 @@ var DIALOG_IMAGES = {};
 	DIALOG_IMAGES["ZAK"] = "zak";
 	
 	DIALOG_IMAGES["KEVIN"] = "kevin";
+	DIALOG_IMAGES["KEVIN-ANGRY"] = "kevin-angry";
+	DIALOG_IMAGES["KEVIN-GUILTY"] = "kevin-guilty";
+	DIALOG_IMAGES["KEVIN-HAPPY"] = "kevin-happy";
+	DIALOG_IMAGES["KEVIN-SASSY"] = "kevin-sassy";
 	
 	DIALOG_IMAGES["SOPHIE"] = "sophie";
 	DIALOG_IMAGES["SOPHIE-CURIOUS"] = "sophie-curious";

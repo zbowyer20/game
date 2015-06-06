@@ -2,6 +2,10 @@
 	"scene-global": {
 		"images": [
 			{
+				"id": "promo",
+				"src": "img/promo/the correction.jpg"
+			},
+			{
 				"id": "albert-happy",
 				"src": "img/dialog/albert-happy.png"
 			},
@@ -60,6 +64,22 @@
 			{
 				"id": "kevin",
 				"src": "img/dialog/kevin.png"
+			},
+			{
+				"id": "kevin-angry",
+				"src": "img/dialog/kevin-angry.png"
+			},
+			{
+				"id": "kevin-guilty",
+				"src": "img/dialog/kevin-guilty.png"
+			},
+			{
+				"id": "kevin-happy",
+				"src": "img/dialog/kevin-happy.png"
+			},
+			{
+				"id": "kevin-sassy",
+				"src": "img/dialog/kevin-sassy.png"
 			},
 			{
 				"id": "sophie",
