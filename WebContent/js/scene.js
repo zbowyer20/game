@@ -137,8 +137,8 @@ var Scene = {
 		initAreaContainer: function(defaultArea) {
 			var container = new createjs.Container();
 			container.name = "backgroundContainer";
-			container.addChild(this.components.areas.current.getBackground());
 			this.addClickablesToContainer(container, this.components.areas.current, 0);
+			container.addChild(this.components.areas.current.getBackground());
 			return container;
 		},
 		
@@ -299,20 +299,25 @@ var Scene = {
 			var backgroundContainer = this.containers.areaLayer.getChildByName("backgroundContainer");
 			
 			var newContainer = new createjs.Container();
+			//this.addClickablesToContainer(newContainer, area, offStageMultiplier);
 			newContainer.addChild(backgroundBit);
-			
-			this.addClickablesToContainer(newContainer, area, offStageMultiplier);
-			
+						
 			this.containers.areaLayer.addChild(newContainer);
 			
 			stage.update();
 			
 			// Start animation
 			priority = FROZEN_PRIORITY;
+			var topContainer = backgroundContainer.getChildAt(backgroundContainer.children.length - 1);
+			backgroundContainer.removeAllChildren();
+			backgroundContainer.addChild(topContainer);
 			AnimationHandler.slideBackgrounds([backgroundContainer, newContainer], movements)
 							.then(function() {
 								self.containers.areaLayer.removeChild(backgroundContainer);
 								newContainer.name = "backgroundContainer";
+								self.addClickablesToContainer(newContainer, area, 0);
+								newContainer.removeChild(backgroundBit);
+								newContainer.addChild(backgroundBit);
 								self.components.areas["current"] = area;
 								self.initNavigation();
 							});
@@ -414,7 +419,7 @@ function loadSceneByNumber(sceneNumber) {
     	globalContainer.addChild(sceneContainer);
     	globalContainer.addChild(itemContainer);
     	globalContainer.addChild(audioContainer);
-		
+    	
     	layers.sceneLayer.addChild(globalContainer);
     	
     	addVeil();
