@@ -5,7 +5,12 @@
 			"scene": [
 				{
 					"position": "DIALOG_LEFT",
-					"text": "Example of non-character speaking for a very long time, what could they be speaking about? Who knows really... it's a massive mystery. I don't know myself and I'm the creator!" 
+					"text": [
+						{
+							"speed": "SLOW",
+							"message": "Example of non-character speaking for a very long time, what could they be speaking about? Who knows really... it's a massive mystery. I don't know myself and I'm the creator!" 
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
@@ -150,18 +155,45 @@
 			"scene": [
 				{
 					"position": "DIALOG_LEFT",
-					"text": "The group approached the statue. Kate shivered, both the chill of the prison and the ominous look the statue appeared to be sending her delivering a frosty grip on her spine."
+					"text": [
+						{
+							"message": "The group approached the statue. Kate shivered, both the chill of the prison and the ominous look the statue appeared to be sending her delivering a frosty grip on her spine."
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "KATE",
-					"text": "Let's just get outta here..."
+					"text": [
+						{
+							"message": "Let's just get outta here...",
+							"speed": "SLOW"
+						},
+						{
+							"message": "I'm feeling really bad.",
+							"speed": "FAST"
+						},
+						{
+							"message": " I am starting to feel "
+						},
+						{
+							"message": ". . .",
+							"speed": "VERY-SLOW"
+						},
+						{
+							"message": " Queasy..."
+						}	
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"mood": "DETERMINED",
-					"text": "I hear ya..."
+					"text": [
+						{
+							"message": "I hear ya..."
+						}
+					]
 				}
 			]
 		},
@@ -331,65 +363,121 @@
 			"scene": [
 				{
 					"character": "ALBERT",
-					"text": "It's a whiteboard, but there's no pen, so I can't write anything on it."
+					"text": [
+						{
+							"message": "It's a whiteboard, but there's no pen, so I can't write anything on it."
+						}
+					]
 				},
 				{
 					"character": "ALBERT",
-					"text": "Not that I would if I had a pen, of course..."
+					"text": [
+						{
+							"message": "Not that I would if I had a pen, of course..."
+						}
+					]
 				},
 				{
 					"character": "ALBERT",
-					"text": "Then again, a penis could be funny..."
+					"text": [
+						{
+							"message": "Then again, a penis could be funny..."
+						}
+					]
 				},
 				{
 					"character": "VICTORIA",
-					"text": "It would have to be a really big one!"
+					"text": [
+						{
+							"message": "It would have to be a really big one!"
+						}
+					]
 				},
 				{
 					"character": "VICTORIA",
 					"mood": "TERRIFIED",
-					"text": "But not too big!!!"
+					"text": [
+						{
+							"message": "But not too big!!!"
+						}
+					]
 				},
 				{
 					"character": "KEVIN",
-					"text": "I don't mind a big one"
+					"text": [
+						{
+							"message": "I don't mind a big one"
+						}
+					]
 				},
 				{
 					"character": "SOPHIE",
-					"text": "Neither do I."
+					"text": [
+						{
+							"message": "Neither do I."
+						}
+					]
 				},
 				{
 					"character": "SOPHIE",
 					"mood": "SLY",
-					"text": "A really big one."
+					"text": [
+						{
+							"message": "A really big one."
+						}
+					]
 				},
 				{
 					"character": "ZAK",
-					"text": "Not as big as mine though."
+					"text": [
+						{
+							"message": "Not as big as mine though."
+						}
+					]
 				},
 				{
 					"character": "KATE",
-					"text": "Are you serious?"
+					"text": [
+						{
+							"message": "Are you serious?"
+						}
+					]
 				},
 				{
 					"character": "ZAK",
-					"text": "Yes...?"
+					"text": [
+						{
+							"message": "Yes...?"
+						}
+					]
 				},
 				{
 					"character": "KATE",
 					"mood": "CURIOUS",
-					"text": "Hmmmmm"
+					"text": [
+						{ 
+							"message": "Hmmmmm"
+						}
+					]
 				},
 				{
 					"character": "ALBERT",
 					"mood": "DETERMINED",
-					"text": "Are you guys done?!"
+					"text": [
+						{
+							"message": "Are you guys done?!"
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "TOM",
 					"mood": "DEVASTATED",
-					"text": "You forgot about me!"
+					"text": [
+						{ 
+							"message": "You forgot about me!"
+						}
+					]
 				}
 			]
 		}

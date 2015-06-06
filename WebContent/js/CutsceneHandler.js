@@ -27,7 +27,7 @@ var CutsceneHandler = {
 			// more to play in the cutscene?
 			if (cutscene.scene[current] != null) {
 				var speech = this.dialog(cutscene.scene[current]);
-				this.showText(speech.text, cutscene.scene[current].text, 0)
+				this.showText(speech.text, cutscene.scene[current].text, 0, 0)
 				// play the next dialog on space
 				this.dialogKeyPress(cutscene, current+1, deferred);
 			}
@@ -60,26 +60,45 @@ var CutsceneHandler = {
 		},
 		
 		// TODO should go in Dialog
-		showText: function(target, text, index) {
-			if (index <= text.length) {
+		showText: function(target, text, segmentIndex, index) {
+			if (text[segmentIndex] && (text[segmentIndex].message.length > index) && (Scene.animation.loadingText)) {
 				var self = this;
-				this.updateText(target, text, index);
+				this.updateText(target, text[segmentIndex].message.substring(index, index+1));
 				stage.update();
 				setTimeout(function() {
-					self.showText(target, text, index+1);
-				}, textSpeed);
+					self.showText(target, text, segmentIndex, index+1);
+				}, self.getTextSpeed(text[segmentIndex].speed));
 			}
 			else {
-				Scene.animation.loadingText = false;
+				if ((segmentIndex < text.length) && (Scene.animation.loadingText)) {
+					this.showText(target, text, segmentIndex + 1, 0)
+				}
+				else {
+					Scene.animation.loadingText = false;
+					this.updateText(target, text);
+				}
 			}
 		},
 		
 
-		updateText: function(target, text, index) {
+		updateText: function(target, text) {
 			if (!Scene.animation.loadingText) {
-				index = text.length;
+				target.text = "";
+				for (var i = 0; i < text.length; i++) {
+					target.text += text[i].message;
+				}
+				stage.update();
 			}
-			target.text = text.substring(0, index);
+			else {
+				target.text += text;
+			}
+		},
+		
+		getTextSpeed: function(speed) {
+			if (!speed) {
+				return DIALOG_TEXT_SPEED["DEFAULT"];
+			}
+			return DIALOG_TEXT_SPEED[speed];
 		},
 		
 		dialogKeyPress: function(cutscene, current, deferred) {
