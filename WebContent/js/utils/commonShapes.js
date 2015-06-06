@@ -37,22 +37,28 @@ function drawArrow(colour, direction) {
 	
 	
 	//if (direction.hover) {
-		arrow.alpha = 0;
+	arrow.alpha = 1;
 	
-		var hoverArea = new createjs.Shape();
-		var hoverAreaHitArea = new createjs.Shape();
-		hoverAreaHitArea.graphics.beginFill("#000").drawRect(position.x - 100, position.y - 100, 100 * DPR, 100 * DPR);
-		hoverArea.hitArea = hoverAreaHitArea;
-		
-		hoverArea.addEventListener("mouseover", function(event) {
-			arrow.alpha = 1;
-			stage.update();
-		})
+	setTimeout(function() {
+		arrow.alpha = 0;
+		stage.update();
 		hoverArea.addEventListener("mouseout", function(event) {
 			arrow.alpha = 0;
 			stage.update();
 		})
-	//}
+	}, NAVIGATION_INITIAL_SHOWTIME);
+	
+	var hoverArea = new createjs.Shape();
+	var hoverAreaHitArea = new createjs.Shape();
+	hoverAreaHitArea.graphics.beginFill("#000").drawRect(position.x - 100, position.y - 100, 100 * DPR, 100 * DPR);
+	hoverArea.hitArea = hoverAreaHitArea;
+	
+	hoverArea.addEventListener("mouseover", function(event) {
+		arrow.alpha = 1;
+		stage.update();
+	})
+
+//}
 	
 	var container = new createjs.Container();
 	container.addChild(arrow);

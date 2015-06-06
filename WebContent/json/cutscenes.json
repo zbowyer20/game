@@ -284,7 +284,11 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "There's loads of stuff on this table! Let's have a look.",
+					"text": [
+						{
+							"message": "There's loads of stuff on this table! Let's have a look."
+						}
+					],
 					"audio": {
 						"id": "living",
 						"type" : "MUSIC",
@@ -295,7 +299,11 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "Whoa! It just started playing music!"
+					"text": [
+						{
+							"message": "Whoa! It just started playing music!"
+						}
+					]
 				}
 			]
 		},
