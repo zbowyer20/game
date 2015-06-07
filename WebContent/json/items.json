@@ -19,6 +19,11 @@
 			"id" : "0-bin",
 			"name" : "bin",
 			"description": "a new bin"
+		},
+		{
+			"id" : "0-books",
+			"name" : "books",
+			"description": "a set of books"
 		}
 	]
 }

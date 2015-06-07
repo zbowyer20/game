@@ -91,15 +91,30 @@
 					]
 				},
 				{
-					"type" : "EXAMINE",
+					"type" : "ITEM",
 					"id": "0-books",
 					"persist": true,
 					"onclick": [
 						{
 							"priority": 0,
+							"type": "GAINED_ITEM",
+							"audio": {
+								"id": "foundItem",
+								"type" : "SOUND",
+								"volume": 0.1
+							}
+						},
+						{
+							"priority": 1,
 							"type": "CUTSCENE",
 							"id": "13",
-							"switchOn": "books-cutscene-1"
+							"switchOn": "books-cutscene-1",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "off-switch"
+								}
+							]
 						},
 						{
 							"priority": 1,

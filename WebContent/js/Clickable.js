@@ -13,9 +13,6 @@ function Clickable(json) {
 					self.setAddToStage(false);
 					self.removeFromStage();
 				}
-				if (self.clickable.type == CLICKABLE_ITEM) {
-					self.addToInventory();
-				}
 				self.loadClickableClickResult();
 			}
 		});
@@ -26,14 +23,6 @@ function Clickable(json) {
 		this.setAddToStage(false);
 		Scene.removeClickableFromContainer(this.bitmap.name);
 		stage.update();
-	}
-	
-	this.addToInventory = function() {
-		var item = items[this.clickable.id];
-		if (item) {
-			player.addItem(item);
-			updateItemContainer();
-		}
 	}
 	
 	/*
