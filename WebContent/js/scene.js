@@ -29,7 +29,6 @@ var Scene = {
 				})
 				.then(function(data) {
 					FileHandler.addFiles(data.files);
-					player.addFile(FileHandler.files['files-sophie']);
 				})
 				.then(function(data) {
 					return Loader.loadItems();

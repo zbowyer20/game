@@ -297,8 +297,12 @@
 					"onclick": [
 						{
 							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "7"
+							"type": "GAINED_FILE",
+							"audio": {
+								"id": "foundItem",
+								"type" : "SOUND",
+								"volume": 0.1
+							}
 						}
 					]
 				}

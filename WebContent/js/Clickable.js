@@ -123,6 +123,14 @@ function Clickable(json) {
 				})
 				AudioManager.play(event.audio);
 			}
+			else if (event.type == "GAINED_FILE") {
+				var file = FileHandler.files[this.clickable.id];
+				player.addFile(file);
+				PopupHandler.addFile(file).display().then(function() {
+					deferred.resolve('complete');
+				})
+				AudioManager.play(event.audio);
+			}
 			else if (event.type == "MOVE") {
 				Scene.turn(Scene.components.areas[event.destination], false);
 				stage.update();

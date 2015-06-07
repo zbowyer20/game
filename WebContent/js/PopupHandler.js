@@ -30,6 +30,16 @@ var PopupHandler = {
 			return this;
 		},
 		
+		addFile: function(file) {
+			this.clear();
+			var image = convertImageToScaledBitmap(file.img, this.position.x + (30*DPR), this.position.y + (10*DPR), this.dimensions.w - (60*DPR), this.dimensions.h / 2);
+			var name = this.createNameText("Gained " + file.name + "!", WHITE, this.position.x + (30 * DPR), this.position.y + (40*DPR) + (this.dimensions.h/2), this.dimensions.w - (60 * DPR));
+			
+			this.container.addChild(image);
+			this.container.addChild(name);
+			return this;
+		},
+		
 		createNameText: function(text, colour, x, y, h, w) {
 			var name = createText(text, colour, x, y, h, w);
 			var b = name.getBounds();
