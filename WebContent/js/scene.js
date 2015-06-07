@@ -77,6 +77,9 @@ var Scene = {
 				 self.containers.areaLayer.addChild(self.setupAreas(json));
 			     self.initNavigation();
 			     			     
+			     veil = new Veil();
+				 self.containers.areaLayer.addChild(veil.container);
+			     
 			     self.containers.globalLayer.addChild(self.containers.areaLayer);
 			     self.containers.globalLayer.addChild(ItemContainer.init().container);
 			     self.containers.globalLayer.addChild(self.containers.navigationLayer);

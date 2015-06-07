@@ -76,14 +76,17 @@
 					]
 				},
 				{
-					"type" : "EXAMINE",
+					"type" : "ITEM",
 					"id": "0-bin",
 					"persist": true,
 					"onclick": [
 						{
-							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "11"
+							"type": "GAINED_ITEM",
+							"audio": {
+								"id": "foundItem",
+								"type" : "SOUND",
+								"volume": 0.1
+							}
 						}
 					]
 				},
