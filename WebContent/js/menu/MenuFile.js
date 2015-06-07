@@ -4,6 +4,16 @@ function MenuFile() {
 	background.x = 0;
 	background.y = 0;
 	
+	var hitArea = new createjs.Shape();
+	hitArea.graphics.beginFill(BLACK).drawRect(0, 0, stage.canvas.width, stage.canvas.height);
+	hitArea.x = 0;
+	hitArea.y = 0;
+	background.hitArea = hitArea;
+	
+	background.addEventListener("click", function() {
+		return;
+	});
+	
 	var container = new createjs.Container();
 	container.addChild(background);
 	
