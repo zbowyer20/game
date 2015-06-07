@@ -2,6 +2,8 @@ function MenuIcon(name, iconDimensions) {
 	var menu;
 	var state = {"open": false};
 
+	var container = new createjs.Container();
+	
 	var shape = new createjs.Shape();	
 	var menuDimensions = {"width": iconDimensions.width, "height": stage.canvas.height / 2};
 	
@@ -27,8 +29,9 @@ function MenuIcon(name, iconDimensions) {
 		menu.prototype.close();
 	}
 	
+	shape.graphics.beginFill(BLACK).drawRect(0, 0, iconDimensions.width, iconDimensions.height);
+	
 	if (name === MENU_INVENTORY) {
-		shape.graphics.beginFill("green").drawRect(0, 0, iconDimensions.width, iconDimensions.height);
 		shape.addEventListener("click", function() {
 			if (priority <= MENU_PRIORITY) {
 				if (menu == null) {
@@ -41,7 +44,6 @@ function MenuIcon(name, iconDimensions) {
 	}
 	
 	if (name === MENU_FILE) {
-		shape.graphics.beginFill("red").drawRect(0, 0, iconDimensions.width, iconDimensions.height);
 		shape.addEventListener("click", function() {
 			if (priority <= MENU_PRIORITY) {
 				stage.addChild(new MenuFile(menuDimensions));
@@ -51,7 +53,6 @@ function MenuIcon(name, iconDimensions) {
 	}
 	
 	if (name === MENU_SAVE) {
-		shape.graphics.beginFill("blue").drawRect(0, 0, iconDimensions.width, iconDimensions.height);
 		shape.addEventListener("click", function() {
 			if (priority <= MENU_PRIORITY) {
 				stage.update();
@@ -59,5 +60,17 @@ function MenuIcon(name, iconDimensions) {
 		});
 	}
 	
-	return shape;
+	var border = drawBorderedRectangle(0, 0, iconDimensions.width, iconDimensions.height, "#FFFFFF");
+	
+	var text = createText(name, WHITE, 0, 50, 200);
+	
+	var b = text.getBounds();
+	text.x = (0.5 * iconDimensions.width) - (0.5 * b.width);
+	text.y = (0.5 * iconDimensions.height) + (0.25 * b.height);
+	
+	container.addChild(shape);
+	container.addChild(border);
+	container.addChild(text);
+	
+	return container;
 }
