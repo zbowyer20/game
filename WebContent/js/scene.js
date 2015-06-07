@@ -76,16 +76,16 @@ var Scene = {
 
 				 self.containers.areaLayer.addChild(self.setupAreas(json));
 			     self.initNavigation();
-			     			     
-			     veil = new Veil();
-				 self.containers.areaLayer.addChild(veil.container);
 			     
 			     self.containers.globalLayer.addChild(self.containers.areaLayer);
 			     self.containers.globalLayer.addChild(ItemContainer.init().container);
 			     self.containers.globalLayer.addChild(self.containers.navigationLayer);
 			     self.containers.globalLayer.addChild(self.containers.dialogLayer);
 			     self.containers.globalLayer.addChild(self.containers.audioContainer);
+
 				 layers.sceneLayer.addChild(self.containers.globalLayer);
+			     veil = new Veil();
+				 layers.sceneLayer.addChild(veil.container);
 				 stage.update();
 			 })
 		},
