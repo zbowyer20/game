@@ -78,12 +78,14 @@ function MenuInventory(dimensions) {
 		var mainItemDimensions = {"width" : dimensions.width / INVENTORY_MAIN_ITEM_RECIPROCAL_WIDTH, "height" : dimensions.height / INVENTORY_MAIN_ITEM_RECIPROCAL_HEIGHT};
 		
 		var currentItem = player.getHeldItem();
-		var itemViewing = convertImageToScaledBitmap(currentItem.inventoryImage, mainItemDimensions.width, itemDimensions.height + 20, mainItemDimensions.width, mainItemDimensions.height);
-		mainItemContainer.addChild(itemViewing);
-		
-		var itemDescriptionTxt = createText(currentItem.description, BLACK, mainItemDimensions.width, itemDimensions.height + mainItemDimensions.height + 50, mainItemDimensions.width);
+		if (currentItem != null) {
+			var itemViewing = convertImageToScaledBitmap(currentItem.inventoryImage, mainItemDimensions.width, itemDimensions.height + 20, mainItemDimensions.width, mainItemDimensions.height);
+			mainItemContainer.addChild(itemViewing);
 			
-		mainItemContainer.addChild(itemDescriptionTxt);
+			var itemDescriptionTxt = createText(currentItem.description, BLACK, mainItemDimensions.width, itemDimensions.height + mainItemDimensions.height + 50, mainItemDimensions.width);
+				
+			mainItemContainer.addChild(itemDescriptionTxt);
+		}
 		
 		stage.update();	
 	}
