@@ -25,6 +25,13 @@ var Scene = {
 					return Loader.loadSceneAssets(self.assets[sceneId]);
 				})
 				.then(function(data) {
+					return Loader.loadFiles();
+				})
+				.then(function(data) {
+					FileHandler.addFiles(data.files);
+					player.addFile(FileHandler.files['files-sophie']);
+				})
+				.then(function(data) {
 					return Loader.loadItems();
 				})
 				.then(function(data) {

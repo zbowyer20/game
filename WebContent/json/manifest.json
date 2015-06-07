@@ -120,6 +120,10 @@
 			{
 				"id": "sound-off",
 				"src": "img/utils/sound-off.png"
+			},
+			{
+				"id": "files-sophie",
+				"src": "img/sceneClickables/clipboard-right.png"
 			}
 		],
 		"audio": [

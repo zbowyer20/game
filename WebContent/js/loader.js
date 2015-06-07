@@ -54,6 +54,10 @@ var Loader = {
 		
 		loadItems: function() {
 			return $.getJSON("json/items.json");
+		},
+		
+		loadFiles: function() {
+			return $.getJSON("json/files.json");
 		}
 		
 }

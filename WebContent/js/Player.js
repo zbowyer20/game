@@ -1,5 +1,6 @@
 function Player() {
 	var inventory = [];
+	var files = [];
 	var heldItem;
 	
 	this.addItem = function(item) {
@@ -44,6 +45,14 @@ function Player() {
 	
 	this.getHeldItem = function() {
 		return heldItem;
+	}
+	
+	this.addFile = function(file) {
+		files.push(file);
+	}
+	
+	this.getFiles = function() {
+		return files;
 	}
 	
 	return this;

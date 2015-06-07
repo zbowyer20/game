@@ -2,7 +2,7 @@ var DPR = 2;
 
 var MENU_HEIGHT = 50 * DPR;
 var MENU_INVENTORY = "INVENTORY";
-var MENU_PARTY = "PARTY";
+var MENU_FILE = "FILE";
 var MENU_SAVE = "SAVE";
 var MENU_ICONS = 3;
 

@@ -40,11 +40,11 @@ function MenuIcon(name, iconDimensions) {
 		});
 	}
 	
-	if (name === MENU_PARTY) {
+	if (name === MENU_FILE) {
 		shape.graphics.beginFill("red").drawRect(0, 0, iconDimensions.width, iconDimensions.height);
 		shape.addEventListener("click", function() {
 			if (priority <= MENU_PRIORITY) {
-				stage.addChild(new MenuParty(menuDimensions));
+				stage.addChild(new MenuFile(menuDimensions));
 				stage.update();
 			}
 		});
