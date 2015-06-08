@@ -92,6 +92,21 @@ var Scene = {
 				 layers.sceneLayer.addChild(self.containers.globalLayer);
 			     veil = new Veil();
 				 layers.sceneLayer.addChild(veil.container);
+				 
+				 console.log(videos);
+				 
+				 var video = document.createElement('video'); 
+				 video.src = 'video/test.mp4'; 
+				 video.autoplay = true; 
+
+				 var b = new createjs.Bitmap(video); 
+				 b.x = 0; 
+				 b.y = 100;
+				 b.scaleX = 3.2;
+				 b.scaleY = 3.1;
+
+				 layers.sceneLayer.addChild(b);
+				 
 				 stage.update();
 			 })
 		},

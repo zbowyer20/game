@@ -15,6 +15,9 @@ function Game() {
 	stage.addChild(layers.menuLayer);
 	stage.addChild(layers.UILayer);
 	
+	createjs.Ticker.addEventListener("tick", tick);
+	function tick() { stage.update(); }
+	
 	Scene.init(0);
 	initMenu();
 	

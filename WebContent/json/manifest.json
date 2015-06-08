@@ -131,6 +131,12 @@
 				"id":"foundItem",
 				"src": "audio/foundItem.wav"
 			}
+		],
+		"video": [
+			{
+				"id": "testVideo",
+				"src": "video/test.mp4"
+			}
 		]
 	},
 	"scene-0": {
