@@ -99,18 +99,24 @@ var Scene = {
 		keyDown: function(e) {
 			switch (e.keyCode) {
 				case KEYCODES["LEFT"]:
-					if (this.components.areas.current.getDestinationByDirection(DIRECTION_LEFT)) {
-						this.moveInDirection(DIRECTION_LEFT);
+					if (checkPriority(NAVIGATION_PRIORITY)) {
+						if (this.components.areas.current.getDestinationByDirection(DIRECTION_LEFT)) {
+							this.moveInDirection(DIRECTION_LEFT);
+						}
 					}
 					break;
 				case KEYCODES["RIGHT"]:
-					if (this.components.areas.current.getDestinationByDirection(DIRECTION_RIGHT)) {
-						this.moveInDirection(DIRECTION_RIGHT);
+					if (checkPriority(NAVIGATION_PRIORITY)) {
+						if (this.components.areas.current.getDestinationByDirection(DIRECTION_RIGHT)) {
+							this.moveInDirection(DIRECTION_RIGHT);
+						}
 					}
 					break;
 				case KEYCODES["DOWN"]:
-					if (this.components.areas.current.getDestinationByDirection(DIRECTION_BACK)) {
-						this.moveInDirection(DIRECTION_BACK);
+					if (checkPriority(NAVIGATION_PRIORITY)) {
+						if (this.components.areas.current.getDestinationByDirection(DIRECTION_BACK)) {
+							this.moveInDirection(DIRECTION_BACK);
+						}
 					}
 					break;
 			}		

@@ -19,6 +19,7 @@ function MenuIcon(name, iconDimensions) {
 	function openMenu() {
 		state.open = true;
 		layers.menuLayer.addChild(menu.prototype.container);
+		priority = MENU_PRIORITY;
 		menu.update();
 		menu.prototype.open();
 		veil.container.addEventListener("click", closeMenu);
@@ -26,6 +27,7 @@ function MenuIcon(name, iconDimensions) {
 	
 	function closeMenu() {
 		state.open = false;
+		priority = LOWEST_PRIORITY;
 		menu.prototype.close();
 	}
 	
