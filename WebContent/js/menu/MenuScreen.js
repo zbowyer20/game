@@ -44,7 +44,6 @@ function MenuScreen(dimensions) {
 		else {
 			self.state.opening = false;
 		}
-		stage.update();
 	}
 	
 	/*
@@ -61,7 +60,6 @@ function MenuScreen(dimensions) {
 			self.container.y = 0 - dimensions.height - MENU_HEIGHT;
 			self.state.closing = false;
 		}
-		stage.update();
 	}
 	
 	/*

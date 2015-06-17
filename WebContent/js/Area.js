@@ -6,7 +6,12 @@ function Area(area) {
 	var self = this;
 
 	this.initBackground = function(area) {
-		self.background = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
+		if (videos[area.id]) {
+			self.background = convertVideoToScaledBitmap(videos[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
+		}
+		else if (images[area.id]) {
+			self.background = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
+		}
 		self.background.name = area.name;
 		self.background.clickables = area.clickables;
 		self.background.defaultBackground = area.defaultBackground;

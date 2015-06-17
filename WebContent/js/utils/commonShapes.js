@@ -5,6 +5,25 @@ function convertImageToBitmap(image, x, y) {
 	return bitmap;
 }
 
+function convertVideoToBitmap(vid, x, y) {
+	var video = document.createElement('video'); 
+	video.src = vid.src; 
+	video.autoplay = true; 
+
+	var b = new createjs.Bitmap(video); 
+	b.x = x; 
+	b.y = y;
+	
+	return b;
+}
+
+function convertVideoToScaledBitmap(video, x, y, width, height) {
+	var bitmap = convertVideoToBitmap(video, x, y);
+	bitmap.scaleX = width / VIDEO_WIDTH;
+	bitmap.scaleY = height / VIDEO_HEIGHT;
+	return bitmap;
+}
+
 function convertImageToScaledBitmap(image, x, y, width, height) {
 	var bitmap = convertImageToBitmap(image, x, y);
 	bitmap.scaleX = width / image.width;
@@ -54,8 +73,10 @@ function drawArrow(colour, direction) {
 	hoverArea.hitArea = hoverAreaHitArea;
 	
 	hoverArea.addEventListener("mouseover", function(event) {
-		arrow.alpha = 1;
-		stage.update();
+		if (checkPriority(NAVIGATION_PRIORITY)) {
+			arrow.alpha = 1;
+			stage.update();
+		}
 	})
 
 //}

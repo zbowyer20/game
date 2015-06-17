@@ -40,7 +40,6 @@ function MenuIcon(name, iconDimensions) {
 					menu = new MenuInventory(menuDimensions);
 				}
 				clickMenuIcon();
-				stage.update();
 			}
 		});
 	}
@@ -49,7 +48,6 @@ function MenuIcon(name, iconDimensions) {
 		shape.addEventListener("click", function() {
 			if (priority <= MENU_PRIORITY) {
 				stage.addChild(new MenuFile(menuDimensions));
-				stage.update();
 			}
 		});
 	}

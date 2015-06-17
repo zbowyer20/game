@@ -93,20 +93,6 @@ var Scene = {
 			     veil = new Veil();
 				 layers.sceneLayer.addChild(veil.container);
 				 
-				 console.log(videos);
-				 
-				 var video = document.createElement('video'); 
-				 video.src = 'video/test.mp4'; 
-				 video.autoplay = true; 
-
-				 var b = new createjs.Bitmap(video); 
-				 b.x = 0; 
-				 b.y = 100;
-				 b.scaleX = 3.2;
-				 b.scaleY = 3.1;
-
-				 layers.sceneLayer.addChild(b);
-				 
 				 stage.update();
 			 })
 		},
@@ -423,7 +409,7 @@ function loadGame(sceneNumber) {
 	loadSceneByNumber(sceneNumber);
 
 	createjs.Ticker.on("tick", tick);
-	createjs.Ticker.setFPS(45);
+	createjs.Ticker.setFPS(60);
 		
 	stage.update();
 }
