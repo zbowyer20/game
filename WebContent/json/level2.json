@@ -1,0 +1,24 @@
+{
+	"UI" : false,
+	"areas": [
+		{
+			"defaultBackground": true,
+			"name" : "main",
+			"id" : "main",
+			"clickables": [
+				{
+					"type" : "EXAMINE",
+					"id": "begin",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "SCENE_CHANGE",
+							"id": "0"
+						}
+					]
+				}
+			]
+		}
+	]
+}

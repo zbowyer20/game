@@ -79,19 +79,24 @@ var Scene = {
 				 self.containers.dialogLayer = new createjs.Container();
 			     self.containers.audioContainer = Muter.init().icon;
 
-
 				 self.containers.areaLayer.addChild(self.setupAreas(json));
 			     self.initNavigation();
 			     
 			     self.containers.globalLayer.addChild(self.containers.areaLayer);
-			     self.containers.globalLayer.addChild(ItemContainer.init().container);
+			     if (json.UI) {
+			    	 self.containers.globalLayer.addChild(ItemContainer.init().container);
+				     self.containers.globalLayer.addChild(self.containers.audioContainer);
+			     }
 			     self.containers.globalLayer.addChild(self.containers.navigationLayer);
 			     self.containers.globalLayer.addChild(self.containers.dialogLayer);
-			     self.containers.globalLayer.addChild(self.containers.audioContainer);
 
 				 layers.sceneLayer.addChild(self.containers.globalLayer);
 			     veil = new Veil();
 				 layers.sceneLayer.addChild(veil.container);
+				 
+				 if (json.UI) {
+					 initMenu();
+				 }
 				 
 				 stage.update();
 			 })

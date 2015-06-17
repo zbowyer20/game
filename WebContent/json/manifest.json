@@ -143,6 +143,20 @@
 			}
 		]
 	},
+	"scene-2": {
+		"images": [
+			{
+				"id": "main",
+				"src": "img/mainmenu.jpg"
+			},
+			{
+				"id": "begin",
+				"src": "img/sceneClickables/mainmenu-begin.png"
+			}
+		],
+		"audio": [],
+		"video": []
+	},
 	"scene-0": {
 		"images": [
 			{

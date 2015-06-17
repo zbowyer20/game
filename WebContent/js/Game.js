@@ -18,7 +18,7 @@ function Game() {
 	createjs.Ticker.addEventListener("tick", tick);
 	function tick() { stage.update(); }
 	
-	Scene.init(0);
-	initMenu();
+	Scene.init(2);
+	//initMenu();
 	
 }
