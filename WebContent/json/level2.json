@@ -18,6 +18,17 @@
 						}
 					]
 				}
+			],
+			"arrive": [
+				{
+					"priority": 0,
+					"type": "AUDIO",
+					"audio": {							
+						"id": "sorrow",
+						"type" : "MUSIC",
+						"volume": 1
+					}
+				}
 			]
 		}
 	]

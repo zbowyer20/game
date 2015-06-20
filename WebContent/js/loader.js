@@ -4,19 +4,12 @@ var Loader = {
 			return $.getJSON("json/manifest.json");
 		},
 		
-		loadSceneAssets: function(assets) {
-			Loader.loadAudio(assets.audio);
-			if (assets.video) {
-				return Loader.loadAssets(assets.images.concat(assets.video));
-			}
-			else {
-				return Loader.loadAssets(assets.images);
-			}
-		},
-		
-		loadAssets: function(manifest) {
+		loadSceneAssets: function(manifest, soundEnabled) {
 			var deferred = $.Deferred();
 			var loadQueue = new createjs.LoadQueue(false);
+			if (soundEnabled) {
+				loadQueue.installPlugin(createjs.Sound);
+			}
 			loadQueue.addEventListener("fileload", handleFileLoad);
 		    loadQueue.addEventListener("complete", handleComplete);
 				
@@ -24,12 +17,16 @@ var Loader = {
 	    
 			loadQueue.addEventListener("progress", handleProgress);
 	    
+			
 		    function handleFileLoad(evt) {
 		        if (evt.item.type == "image") { 
 		        	images[evt.item.id] = evt.result;
 		        }
 		        if (evt.item.type == "video") { 
 		        	videos[evt.item.id] = evt.result;
+		        }
+		        if (evt.item.type == "sound") {
+		        	// no need to store sound
 		        }
 		    }
 	    
@@ -42,10 +39,6 @@ var Loader = {
 		    }
 		    
 		    return deferred.promise();
-		},
-		
-		loadAudio: function(manifest) {
-			AudioManager.init().loadManifest(manifest);
 		},
 		
 		loadLevel: function(sceneNumber) {

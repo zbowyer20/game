@@ -1,6 +1,6 @@
 {
 	"scene-global": {
-		"images": [
+		"nonVideo" : [
 			{
 				"id": "promo",
 				"src": "img/promo/the correction.jpg"
@@ -124,12 +124,14 @@
 			{
 				"id": "files-sophie",
 				"src": "img/sceneClickables/clipboard-right.png"
-			}
-		],
-		"audio": [
+			},
 			{
 				"id":"foundItem",
 				"src": "audio/foundItem.wav"
+			},
+			{
+				"id":"sorrow",
+				"src": "audio/sorrow.mp3"
 			}
 		],
 		"video": [
@@ -144,7 +146,7 @@
 		]
 	},
 	"scene-2": {
-		"images": [
+		"nonVideo" : [
 			{
 				"id": "main",
 				"src": "img/mainmenu.jpg"
@@ -154,193 +156,186 @@
 				"src": "img/sceneClickables/mainmenu-begin.png"
 			}
 		],
-		"audio": [],
 		"video": []
 	},
-	"scene-0": {
-		"images": [
-			{
-				"id": "bg0-front",
-				"src": "img/rsz_scene0.png"
-			},
-			{
-				"id": "hospital-bedroom-0",
-				"src": "img/hospital-bedroom-0.png"
-			},
-			{
-				"id": "hospital-bedroom-1",
-				"src": "img/hospital-bedroom-1.png"
-			},
-			{
-				"id": "hospital-bedroom-table",
-				"src": "img/hospital-bedroom-table.png"
-			},
-			{
-				"id": "hospital-bedroom-shelf",
-				"src": "img/hospital-bedroom-shelf.png"
-			},
-			{
-				"id": "bg0-side1",
-				"src": "img/scene0-1.png"
-			},
-			{
-				"id": "bg0-side2",
-				"src": "img/scene0-2.png"
-			},
-			{
-				"id": "bg0-side4",
-				"src": "img/scene0-3.png"
-			},
-			{
-				"id": "0-chair",
-				"src": "img/sceneClickables/chair.png"
-			},
-			{
-				"id": "0-table",
-				"src": "img/items/table.jpeg"
-			},
-			{
-				"id": "0-lamp",
-				"src": "img/sceneClickables/lamp.jpeg"
-			},
-			{
-				"id": "0-bed",
-				"src": "img/sceneClickables/bed.png"
-			},
-			{
-				"id": "0-door",
-				"src": "img/sceneClickables/door.png"
-			},
-			{
-				"id": "0-alphabet",
-				"src": "img/sceneClickables/alphabet.png"
-			},
-			{
-				"id": "0-whiteboard",
-				"src": "img/sceneClickables/whiteboard.png"
-			},
-			{
-				"id": "0-bed",
-				"src": "img/sceneClickables/bed.png"
-			},
-			{
-				"id": "0-bin",
-				"src": "img/sceneClickables/bin.png"
-			},
-			{
-				"id": "0-books",
-				"src": "img/sceneClickables/books.png"
-			},
-			{
-				"id": "0-light",
-				"src": "img/sceneClickables/light.png"
-			},
-			{
-				"id": "0-mirror",
-				"src": "img/sceneClickables/mirror.png"
-			},
-			{
-				"id": "0-table-2",
-				"src": "img/sceneClickables/table.png"
-			},
-			{
-				"id": "0-table-table",
-				"src": "img/sceneClickables/table-table.png"
-			},
-			{
-				"id": "0-table-candles",
-				"src": "img/sceneClickables/table-candles.png"
-			},
-			{
-				"id": "0-table-nametags",
-				"src": "img/sceneClickables/table-nametags.png"
-			},
-			{
-				"id": "0-table-photos",
-				"src": "img/sceneClickables/table-photos.png"
-			},
-			{
-				"id": "0-table-radio",
-				"src": "img/sceneClickables/table-radio.png"
-			},
-			{
-				"id": "0-table-bin",
-				"src": "img/sceneClickables/table-bin.png"
-			},
-			{
-				"id": "0-shelf-anne-frank",
-				"src": "img/sceneClickables/shelf-anne-frank.png"
-			},
-			{
-				"id": "0-shelf-dracula",
-				"src": "img/sceneClickables/shelf-dracula.png"
-			},
-			{
-				"id": "0-shelf-frankenstein",
-				"src": "img/sceneClickables/shelf-frankenstein.png"
-			},
-			{
-				"id": "0-shelf-hamlet",
-				"src": "img/sceneClickables/shelf-hamlet.png"
-			},
-			{
-				"id": "0-shelf-phantom",
-				"src": "img/sceneClickables/shelf-phantom.png"
-			},
-			{
-				"id": "0-shelf-time-machine",
-				"src": "img/sceneClickables/shelf-time-machine.png"
-			},
-			{
-				"id": "0-bed-right",
-				"src": "img/sceneClickables/bed-right.png"
-			},
-			{
-				"id": "0-bedframe-left",
-				"src": "img/sceneClickables/bedframe-left.png"
-			},
-			{
-				"id": "0-boards",
-				"src": "img/sceneClickables/boards.png"
-			},
-			{
-				"id": "0-clipboard-right",
-				"src": "img/sceneClickables/clipboard-right.png"
-			},
-			{
-				"id": "0-drawers",
-				"src": "img/sceneClickables/drawers.png"
-			},
-			{
-				"id": "0-mattress-left",
-				"src": "img/sceneClickables/mattress-left.png"
-			},
-			{
-				"id": "0-pillow-left",
-				"src": "img/sceneClickables/pillow-left.png"
-			}
-		],
-		"audio" : [
-			{
-				"id":"sad",
-				"src": "audio/sad.mp3"
-			},
-			{
-				"id":"living",
-				"src": "audio/living.mp3"
-			}
-		]
-	},
-	"scene-1": {
-		"images": [
-			{
-				"id": "bg1-hallway",
-				"src": "img/scene1.png"
-			},
-			{
-				"id": "1-statue",
-				"src": "img/sceneClickables/statue.png"
-			}
-		]
-	}
+	"scene-0": [
+		{
+			"id": "bg0-front",
+			"src": "img/rsz_scene0.png"
+		},
+		{
+			"id": "hospital-bedroom-0",
+			"src": "img/hospital-bedroom-0.png"
+		},
+		{
+			"id": "hospital-bedroom-1",
+			"src": "img/hospital-bedroom-1.png"
+		},
+		{
+			"id": "hospital-bedroom-table",
+			"src": "img/hospital-bedroom-table.png"
+		},
+		{
+			"id": "hospital-bedroom-shelf",
+			"src": "img/hospital-bedroom-shelf.png"
+		},
+		{
+			"id": "bg0-side1",
+			"src": "img/scene0-1.png"
+		},
+		{
+			"id": "bg0-side2",
+			"src": "img/scene0-2.png"
+		},
+		{
+			"id": "bg0-side4",
+			"src": "img/scene0-3.png"
+		},
+		{
+			"id": "0-chair",
+			"src": "img/sceneClickables/chair.png"
+		},
+		{
+			"id": "0-table",
+			"src": "img/items/table.jpeg"
+		},
+		{
+			"id": "0-lamp",
+			"src": "img/sceneClickables/lamp.jpeg"
+		},
+		{
+			"id": "0-bed",
+			"src": "img/sceneClickables/bed.png"
+		},
+		{
+			"id": "0-door",
+			"src": "img/sceneClickables/door.png"
+		},
+		{
+			"id": "0-alphabet",
+			"src": "img/sceneClickables/alphabet.png"
+		},
+		{
+			"id": "0-whiteboard",
+			"src": "img/sceneClickables/whiteboard.png"
+		},
+		{
+			"id": "0-bed",
+			"src": "img/sceneClickables/bed.png"
+		},
+		{
+			"id": "0-bin",
+			"src": "img/sceneClickables/bin.png"
+		},
+		{
+			"id": "0-books",
+			"src": "img/sceneClickables/books.png"
+		},
+		{
+			"id": "0-light",
+			"src": "img/sceneClickables/light.png"
+		},
+		{
+			"id": "0-mirror",
+			"src": "img/sceneClickables/mirror.png"
+		},
+		{
+			"id": "0-table-2",
+			"src": "img/sceneClickables/table.png"
+		},
+		{
+			"id": "0-table-table",
+			"src": "img/sceneClickables/table-table.png"
+		},
+		{
+			"id": "0-table-candles",
+			"src": "img/sceneClickables/table-candles.png"
+		},
+		{
+			"id": "0-table-nametags",
+			"src": "img/sceneClickables/table-nametags.png"
+		},
+		{
+			"id": "0-table-photos",
+			"src": "img/sceneClickables/table-photos.png"
+		},
+		{
+			"id": "0-table-radio",
+			"src": "img/sceneClickables/table-radio.png"
+		},
+		{
+			"id": "0-table-bin",
+			"src": "img/sceneClickables/table-bin.png"
+		},
+		{
+			"id": "0-shelf-anne-frank",
+			"src": "img/sceneClickables/shelf-anne-frank.png"
+		},
+		{
+			"id": "0-shelf-dracula",
+			"src": "img/sceneClickables/shelf-dracula.png"
+		},
+		{
+			"id": "0-shelf-frankenstein",
+			"src": "img/sceneClickables/shelf-frankenstein.png"
+		},
+		{
+			"id": "0-shelf-hamlet",
+			"src": "img/sceneClickables/shelf-hamlet.png"
+		},
+		{
+			"id": "0-shelf-phantom",
+			"src": "img/sceneClickables/shelf-phantom.png"
+		},
+		{
+			"id": "0-shelf-time-machine",
+			"src": "img/sceneClickables/shelf-time-machine.png"
+		},
+		{
+			"id": "0-bed-right",
+			"src": "img/sceneClickables/bed-right.png"
+		},
+		{
+			"id": "0-bedframe-left",
+			"src": "img/sceneClickables/bedframe-left.png"
+		},
+		{
+			"id": "0-boards",
+			"src": "img/sceneClickables/boards.png"
+		},
+		{
+			"id": "0-clipboard-right",
+			"src": "img/sceneClickables/clipboard-right.png"
+		},
+		{
+			"id": "0-drawers",
+			"src": "img/sceneClickables/drawers.png"
+		},
+		{
+			"id": "0-mattress-left",
+			"src": "img/sceneClickables/mattress-left.png"
+		},
+		{
+			"id": "0-pillow-left",
+			"src": "img/sceneClickables/pillow-left.png"
+		},
+		{
+			"id":"sad",
+			"src": "audio/sad.mp3"
+		},
+		{
+			"id":"living",
+			"src": "audio/living.mp3"
+		}
+	],
+	"scene-1": [
+		{
+			"id": "bg1-hallway",
+			"src": "img/scene1.png"
+		},
+		{
+			"id": "1-statue",
+			"src": "img/sceneClickables/statue.png"
+		}
+	]
 }

@@ -18,11 +18,23 @@ var Scene = {
 				.then(function(data) { 
 					self.assets = data;
 					var sceneId = self.getSceneId("global");
-					return Loader.loadSceneAssets(self.assets[sceneId]);
+					return Loader.loadSceneAssets(self.assets[sceneId].nonVideo, true);
+				})
+				.then(function(data) {
+					var sceneId = self.getSceneId("global");
+					if (self.assets[sceneId].video.length > 0) {
+						return Loader.loadSceneAssets(self.assets[sceneId].video, false);
+					}
 				})
 				.then(function(data) {
 					var sceneId = self.getSceneId(sceneName);
-					return Loader.loadSceneAssets(self.assets[sceneId]);
+					return Loader.loadSceneAssets(self.assets[sceneId].nonVideo, true);
+				})
+				.then(function(data) {
+					var sceneId = self.getSceneId(sceneName);
+					if (self.assets[sceneId].video.length > 0) {
+						return Loader.loadSceneAssets(self.assets[sceneId].video, false);
+					}
 				})
 				.then(function(data) {
 					return Loader.loadFiles();
@@ -148,9 +160,14 @@ var Scene = {
 				this.components.areas[json.areas[i].name] = new Area(json.areas[i]);
 				if (json.areas[i].defaultBackground) {
 					defaultArea = this.components.areas[json.areas[i].name];
+					 if (json.areas[i].arrive) {
+						 for (var j in json.areas[i].arrive) {
+							 new Clickable("").playClickableClickResult(json.areas[i].arrive[j]);
+						 }
+					 }
 				}
 			}
-						
+			
 			return defaultArea;
 			
 		},

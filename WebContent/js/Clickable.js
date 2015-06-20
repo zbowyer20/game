@@ -109,7 +109,11 @@ function Clickable(json) {
 		var deferred = $.Deferred();
 		if (event != null) {
 			GameUtils.setSwitch(event.switchOn, true);
-			if (event.type == "CUTSCENE") {
+			if (event.type == "AUDIO") {
+				AudioManager.play(event.audio);
+				deferred.resolve('complete');
+			}
+			else if (event.type == "CUTSCENE") {
 				CutsceneHandler.initCutscene(CutsceneHandler.findCutscene(event.id)).then(function() {
 					deferred.resolve('complete');
 				});
