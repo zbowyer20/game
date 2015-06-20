@@ -15,6 +15,12 @@
 					"destination" : "side-3"
 				}
 			],
+			"arrive": [
+				{
+					"priority": 0,
+					"type": "AUDIO-STOP"
+				}
+			],
 			"clickables": [
 				{
 					"hitArea" :

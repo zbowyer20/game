@@ -113,6 +113,10 @@ function Clickable(json) {
 				AudioManager.play(event.audio);
 				deferred.resolve('complete');
 			}
+			else if (event.type == "AUDIO-STOP") {
+				AudioManager.stop();
+				deferred.resolve('complete');
+			}
 			else if (event.type == "CUTSCENE") {
 				CutsceneHandler.initCutscene(CutsceneHandler.findCutscene(event.id)).then(function() {
 					deferred.resolve('complete');
