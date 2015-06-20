@@ -26,6 +26,7 @@
 					"audio": {							
 						"id": "sorrow",
 						"type" : "MUSIC",
+						"loop" : true,
 						"volume": 1
 					}
 				}
