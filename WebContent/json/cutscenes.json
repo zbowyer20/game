@@ -488,6 +488,19 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "18",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What is this place?"
+						}
+					]
+				}
+			]
 		}
 	]
 }

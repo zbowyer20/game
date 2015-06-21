@@ -19,6 +19,11 @@
 				{
 					"priority": 0,
 					"type": "AUDIO-STOP"
+				},
+				{
+					"priority": 0,
+					"type": "CUTSCENE",
+					"id": "18"
 				}
 			],
 			"clickables": [
