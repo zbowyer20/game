@@ -65,12 +65,21 @@ var Scene = {
 		
 		loadScene: function(sceneName) {
 			var sceneId = this.getSceneId(sceneName);
-			return Loader.loadSceneAssets(this.assets[sceneId]);
+			var self = this;
+			Loader.loadSceneAssets(this.assets[sceneId].nonVideo, true).then(function(data) {
+				return Loader.loadSceneAssets(self.assets[sceneId].video, false);
+			});
 		},
 		
+		// TODO fix this
 		nextScene: function(sceneName) {
 			var self = this;
-			self.loadScene(sceneName).then(function() {
+			var sceneId = self.getSceneId(sceneName);
+			Loader.loadSceneAssets(self.assets[sceneId].nonVideo, true).then(function(data) {
+				if (self.assets[sceneId].video.length) {
+					return Loader.loadSceneAssets(self.assets[sceneId].video, false);
+				}
+			}).then(function(data) {
 				self.clear();
 				self.populate(sceneName);
 			});

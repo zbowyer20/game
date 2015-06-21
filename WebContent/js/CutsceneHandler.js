@@ -54,7 +54,9 @@ var CutsceneHandler = {
 			Scene.containers.dialogLayer.addChild(container.container);
 			stage.update();
 			
-			AudioManager.play(dialog.audio);
+			if (dialog.audio) {
+				AudioManager.play(dialog.audio);
+			}
 			
 			return container;
 		},
