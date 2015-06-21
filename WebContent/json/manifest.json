@@ -137,7 +137,7 @@
 		"video": [
 			{
 				"id": "hospital-bedroom-0",
-				"src": "video/test.mp4"
+				"src": "video/hospital-bedroom-0.mp4"
 			},
 			{
 				"id": "bg0-side3",
@@ -162,6 +162,10 @@
 		{
 			"id": "bg0-front",
 			"src": "img/rsz_scene0.png"
+		},
+		{
+			"id": "0-bg",
+			"src": "img/hospital-bedroom-0.png"
 		},
 		{
 			"id": "hospital-bedroom-0",
