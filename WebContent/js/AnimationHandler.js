@@ -4,7 +4,7 @@ var AnimationHandler = {
 		
 		init: function() {
 			var self = this;
-			createjs.Ticker.setFPS(45);
+			createjs.Ticker.setFPS(30);
 			createjs.Ticker.addEventListener("tick", function() {
 				self.tick();
 			});
