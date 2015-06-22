@@ -185,7 +185,11 @@ var Scene = {
 			var container = new createjs.Container();
 			container.name = "backgroundContainer";
 			this.addClickablesToContainer(container, this.components.areas.current, 0);
-			container.addChild(this.components.areas.current.getBackground());
+			var bg = this.components.areas.current.getBackground();
+			container.addChild(bg.image);
+			if (bg.video) {
+				container.addChild(bg.video);
+			}
 			return container;
 		},
 		
@@ -341,14 +345,20 @@ var Scene = {
 			else {
 				offStageMultiplier = 0;
 			}
-			backgroundBit.x = stage.canvas.width * offStageMultiplier;
+			backgroundBit.image.x = stage.canvas.width * offStageMultiplier;
+			if (backgroundBit.video) {
+				backgroundBit.video.x = stage.canvas.width * offStageMultiplier;
+			}
 			
 			var backgroundContainer = this.containers.areaLayer.getChildByName("backgroundContainer");
 			
 			var newContainer = new createjs.Container();
 			//this.addClickablesToContainer(newContainer, area, offStageMultiplier);
-			newContainer.addChild(backgroundBit);
-						
+			newContainer.addChild(backgroundBit.image);
+			if (backgroundBit.video) {
+				newContainer.addChild(backgroundBit.video);
+			}
+			
 			this.containers.areaLayer.addChild(newContainer);
 			
 			stage.update();
@@ -363,8 +373,14 @@ var Scene = {
 								self.containers.areaLayer.removeChild(backgroundContainer);
 								newContainer.name = "backgroundContainer";
 								self.addClickablesToContainer(newContainer, area, 0);
-								newContainer.removeChild(backgroundBit);
-								newContainer.addChild(backgroundBit);
+								newContainer.removeChild(backgroundBit.image);
+								if (backgroundBit.video) {
+									newContainer.removeChild(backgroundBit.video);
+								}
+								newContainer.addChild(backgroundBit.image);
+								if (backgroundBit.video) {
+									newContainer.addChild(backgroundBit.video);
+								}
 								self.components.areas["current"] = area;
 								self.initNavigation();
 							});

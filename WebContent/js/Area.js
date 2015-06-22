@@ -7,10 +7,10 @@ function Area(area) {
 
 	this.initBackground = function(area) {
 		if (videos[area.id]) {
-			self.background = convertVideoToScaledBitmap(videos[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
+			self.background.video = convertVideoToScaledBitmap(videos[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
 		}
-		else if (images[area.id]) {
-			self.background = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
+		if (images[area.id]) {
+			self.background.image = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
 		}
 		self.background.name = area.name;
 		self.background.clickables = area.clickables;
@@ -57,6 +57,7 @@ function Area(area) {
 	
 	this.getClickables = function(visibleOnly) {
 		if (!visibleOnly) {
+			console.log(this.clickables);
 			return this.clickables;
 		}
 		else {
