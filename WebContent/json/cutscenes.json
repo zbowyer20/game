@@ -16,7 +16,11 @@
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"mood": "HAPPY",
-					"text": "I am hungry! Do you think you could get me something to eat? It'd really be good and I'd really, really appreciate it buddy.",
+					"text": [
+						{
+							"message": "I am hungry! Do you think you could get me something to eat? It'd really be good and I'd really, really appreciate it buddy."
+						}
+					],
 					"audio": {
 						"id": "living",
 						"type" : "MUSIC",
@@ -28,52 +32,88 @@
 					"position": "DIALOG_LEFT",
 					"character": "TOM",
 					"mood": "HAPPY",
-					"text": "Hello, it's me! Surprise!"
+					"text": [
+						{
+							"message": "Hello, it's me! Surprise!"
+						}
+					]
 				}, 
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "I am hungry too!"
+					"text": [
+						{
+							"message": "I am hungry too!"
+						}
+					]
 				}, 
 				{
 					"position": "DIALOG_LEFT",
 					"character": "KATE",
-					"text": "Now I am hungry!"
+					"text": [
+						{
+							"message": "Now I am hungry!"
+						}
+					]
 				}, 
 				{
 					"position": "DIALOG_LEFT",
 					"character": "TOM",
-					"text": "I am always hungry..."
+					"text": [
+						{
+							"message": "I am always hungry..."
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"mood": "FLIRTATIOUS",
-					"text": "How you doin'?"
+					"text": [
+						{
+							"message": "How you doin'?"
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "KATE",
 					"mood": "HAPPY",
-					"text": "Oh... you like me..."
+					"text": [
+						{
+							"message": "Oh... you like me..."
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "KATE",
 					"mood": "CURIOUS",
-					"text": "Don't you?"
+					"text": [
+						{
+							"message": "Don't you?"
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"mood": "HAPPY",
-					"text": "Nah not really ya ugly"
+					"text": [
+						{
+							"message": "Nah not really ya ugly"
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "KATE",
 					"mood": "SAD",
-					"text": "Oh...",
+					"text": [
+						{
+							"message": "Oh..."
+						}
+					],
 					"audio": {
 						"id": "sad",
 						"type": "MUSIC",
@@ -90,11 +130,19 @@
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"mood": "HAPPY",
-					"text": "I am hungry now!"
+					"text": [
+						{
+							"message": "I am hungry now!"
+						}
+					]
 				}, {
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "I am hungry too!",
+					"text": [
+						{
+							"message": "I am hungry too!"
+						}
+					],
 					"audio": {
 						"id": "sad",
 						"type": "MUSIC",
@@ -104,12 +152,20 @@
 				}, {
 					"position": "DIALOG_LEFT",
 					"character": "ZAK",
-					"text": "Now I am hungry!"
+					"text": [
+						{
+							"message": "Now I am hungry!"
+						}
+					]
 				}, {
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"mood": "DETERMINED",
-					"text": "I am very angry."
+					"text": [
+						{
+							"message": "I am very angry."
+						}
+					]
 				}
 			]
 		},
@@ -124,7 +180,11 @@
 					"position": "DIALOG_LEFT",
 					"character": "KATE",
 					"mood": "CURIOUS",
-					"text": "I have a lamp like that in my room!"
+					"text": [
+						{
+							"message": "I have a lamp like that in my room!"
+						}
+					]
 				}
 			]
 		},
@@ -135,7 +195,11 @@
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"mood": "DETERMINED",
-					"text": "We could do with some more characters!"
+					"text": [
+						{
+							"message": "We could do with some more characters!"
+						}
+					]
 				}
 			]
 		},
@@ -146,7 +210,11 @@
 					"position": "DIALOG_LEFT",
 					"character": "KATE",
 					"mood": "CURIOUS",
-					"text": "Well, we have the table. Maybe we can do something with that?"
+					"text": [
+						{
+							"message": "Well, we have the table. Maybe we can do something with that?"
+						}
+					]
 				}
 			]
 		},
@@ -203,13 +271,21 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "KATE",
-					"text": "That thing gives me the creeps!"
+					"text": [
+						{
+							"message": "That thing gives me the creeps!"
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "TOM",
 					"mood": "DEVASTATED",
-					"text": "It's my mum... they turned her to stone!"
+					"text": [
+						{
+							"message": "It's my mum... they turned her to stone!"
+						}
+					]
 				}
 			]
 		},
@@ -219,7 +295,11 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "Numbers from 1 to 26... what could they mean?"
+					"text": [
+						{
+							"message": "Numbers from 1 to 26... what could they mean?"
+						}
+					]
 				}
 			]
 		},
@@ -228,18 +308,30 @@
 			"scene": [
 				{
 					"position": "DIALOG_LEFT",
-					"text": "The mirror had taken Albert's eye immediately. He approached it."
+					"text": [
+						{
+							"message": "The mirror had taken Albert's eye immediately. He approached it."
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "It's a full length mirror."
+					"text": [
+						{
+							"message": "It's a full length mirror."
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
 					"mood": "FLIRTATIOUS",
-					"text": "Heyy... looking good!"
+					"text": [
+						{
+							"message": "Heyy... looking good!"
+						}
+					]
 				}
 			]
 		},
@@ -249,12 +341,20 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "I've slept on more comfortable beds when I've been camping!"
+					"text": [
+						{
+							"message": "I've slept on more comfortable beds when I've been camping!"
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "But still... maybe just five minutes... aaaaaah..."
+					"text": [
+						{
+							"message": "But still... maybe just five minutes... aaaaaah..."
+						}
+					]
 				}
 			]
 		},
@@ -264,7 +364,11 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "Was everything in this room made to be uncomfortable?"
+					"text": [
+						{
+							"message": "Was everything in this room made to be uncomfortable?"
+						}
+					]
 				}
 			]
 		},
@@ -274,7 +378,11 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "Oooooh... nothing in this bin."
+					"text": [
+						{
+							"message": "Oooooh... nothing in this bin."
+						}
+					]
 				}
 			]
 		},
@@ -313,7 +421,11 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "Hey, check out these books! I've read almost all of these. Phantom, The Diary of Anne Frank, Frankenstein... there are some classics here."
+					"text": [
+						{
+							"message": "Hey, check out these books! I've read almost all of these. Phantom, The Diary of Anne Frank, Frankenstein... there are some classics here."
+						}
+					]
 				}
 			]
 		},
@@ -323,26 +435,46 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "These books have to mean something! Is this anything in them?"
+					"text": [
+						{
+							"message": "These books have to mean something! Is this anything in them?"
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
-					"text": "Albert flipped through all the books in turn."
+					"text": [
+						{
+							"message": "Albert flipped through all the books in turn."
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "Nope. Nothing in them. No messages, no highlighted words, no secret compartments for wedding rings... nothing."
+					"text": [
+						{
+							"message": "Nope. Nothing in them. No messages, no highlighted words, no secret compartments for wedding rings... nothing."
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "Sigh..."
+					"text": [
+						{
+							"message": "Sigh..."
+						}
+					]
 				},
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "Maybe one day someone will propose to me using a book."
+					"text": [
+						{
+							"message": "Maybe one day someone will propose to me using a book."
+						}
+					]
 				}
 			]
 		},
@@ -352,7 +484,11 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "Okay, so there's nothing in them, but these weren't put here randomly. I know it!"
+					"text": [
+						{
+							"message": "Okay, so there's nothing in them, but these weren't put here randomly. I know it!"
+						}
+					]
 				}
 			]
 		},
@@ -362,7 +498,11 @@
 				{
 					"position": "DIALOG_LEFT",
 					"character": "ALBERT",
-					"text": "It's a red glowing light. I don't think this means anything."
+					"text": [
+						{
+							"message": "It's a red glowing light. I don't think this means anything."
+						}
+					]
 				}
 			]
 		},
