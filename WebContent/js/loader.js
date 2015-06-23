@@ -12,7 +12,7 @@ var Loader = {
 			}
 			loadQueue.addEventListener("fileload", handleFileLoad);
 		    loadQueue.addEventListener("complete", handleComplete);
-				
+		    		    
 			loadQueue.loadManifest(manifest);
 	    
 			loadQueue.addEventListener("progress", handleProgress);

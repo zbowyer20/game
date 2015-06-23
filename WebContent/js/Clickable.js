@@ -117,11 +117,6 @@ function Clickable(json) {
 				AudioManager.stop();
 				deferred.resolve('complete');
 			}
-			else if (event.type == "CUTSCENE") {
-				CutsceneHandler.initCutscene(CutsceneHandler.findCutscene(event.id)).then(function() {
-					deferred.resolve('complete');
-				});
-			}
 			else if (event.type == "GAINED_ITEM") {
 				var item = ItemHandler.items[this.clickable.id];
 				player.addItem(item);
@@ -148,6 +143,9 @@ function Clickable(json) {
 				Scene.nextScene(event.id);
 				stage.update();
 				deferred.resolve('complete');
+			}
+			else {
+				Event.playEvent(event, deferred);
 			}
 		}
 		else {
