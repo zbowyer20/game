@@ -22,6 +22,15 @@
 				},
 				{
 					"priority": 0,
+					"type": "AUDIO",
+					"audio": {
+						"id": "sunny",
+						"type" : "MUSIC",
+						"volume": 0.1
+					}
+				},
+				{
+					"priority": 0,
 					"type": "CUTSCENE",
 					"id": "18"
 				}

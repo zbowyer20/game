@@ -6,6 +6,7 @@ function EventCutscene(json, deferred) {
 	def = deferred;
 	
 	this.playResult = function() {
+		AudioManager.play(json.audio)
 		CutsceneHandler.initCutscene(cutscene).then(function() {
 			def.resolve('complete');
 		});
