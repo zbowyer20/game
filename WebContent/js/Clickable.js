@@ -126,26 +126,8 @@ function Clickable(json) {
 				})
 				AudioManager.play(event.audio);
 			}
-			else if (event.type == "GAINED_FILE") {
-				var file = FileHandler.files[this.clickable.id];
-				player.addFile(file);
-				PopupHandler.addFile(file).display().then(function() {
-					deferred.resolve('complete');
-				})
-				AudioManager.play(event.audio);
-			}
-			else if (event.type == "MOVE") {
-				Scene.turn(Scene.components.areas[event.destination], false);
-				stage.update();
-				deferred.resolve('complete');
-			}
-			else if (event.type == "SCENE_CHANGE") {
-				Scene.nextScene(event.id);
-				stage.update();
-				deferred.resolve('complete');
-			}
 			else {
-				Event.playEvent(event, deferred);
+				EventManager.playEvent(event, deferred);
 			}
 		}
 		else {

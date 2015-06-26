@@ -37,6 +37,7 @@ var Scene = {
 					}
 				})
 				.then(function(data) {
+					// TODO file images dont work
 					return Loader.loadFiles();
 				})
 				.then(function(data) {

@@ -132,6 +132,10 @@
 			{
 				"id":"sorrow",
 				"src": "audio/sorrow.mp3"
+			},
+			{
+				"id": "0-clipboard-right",
+				"src": "img/sceneClickables/clipboard-right.png"
 			}
 		],
 		"video": [
@@ -295,10 +299,6 @@
 			{
 				"id": "0-boards",
 				"src": "img/sceneClickables/boards.png"
-			},
-			{
-				"id": "0-clipboard-right",
-				"src": "img/sceneClickables/clipboard-right.png"
 			},
 			{
 				"id": "0-drawers",

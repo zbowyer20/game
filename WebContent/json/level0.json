@@ -319,6 +319,7 @@
 						{
 							"priority": 0,
 							"type": "GAINED_FILE",
+							"id": "0-clipboard-right",
 							"audio": {
 								"id": "foundItem",
 								"type" : "SOUND",
