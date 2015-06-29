@@ -1,6 +1,7 @@
 var Scene = {
 		assets: {},
 		components: {"areas": {}, "dialogs" : {}},
+		puzzles: {},
 		animation: {},
 		containers: {"globalLayer": null, "areaLayer": null, "navigationLayer": null, "dialogLayer": null},
 		

@@ -21,6 +21,9 @@ var EventManager = {
 				case "AUDIO":
 					event = new EventAudio(json, deferred);
 					break;
+				case "PUZZLE_ATTEMPT":
+					event = new EventPuzzleAttempt(json, deferred);
+					break;
 			}
 			if (event) {
 				AudioManager.play(event.audio);

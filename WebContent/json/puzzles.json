@@ -1,0 +1,25 @@
+{
+	"puzzles": [
+		{
+			"id": "0-combo-lock",
+			"type": "PASSWORD",
+			"defaults": [
+				{
+					"id": "0-combo-lock-0",
+					"value": "0"
+				},
+				{
+					"id": "0-combo-lock-1",
+					"value": "0"
+				},
+				{
+					"id": "0-combo-lock-2",
+					"value": "0"
+				}
+			]
+			"solution": "624",
+			"complete": [
+			]
+		}
+	]
+}
