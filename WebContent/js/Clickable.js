@@ -108,27 +108,7 @@ function Clickable(json) {
 	this.playClickableClickResult = function(event) {
 		var deferred = $.Deferred();
 		if (event != null) {
-			GameUtils.setSwitch(event.switchOn, true);
-			if (event.type == "AUDIO") {
-				AudioManager.play(event.audio);
-				deferred.resolve('complete');
-			}
-			else if (event.type == "AUDIO-STOP") {
-				AudioManager.stop();
-				deferred.resolve('complete');
-			}
-			else if (event.type == "GAINED_ITEM") {
-				var item = ItemHandler.items[this.clickable.id];
-				player.addItem(item);
-				ItemContainer.update(player.getHeldItem());
-				PopupHandler.addItem(item).display().then(function() {
-					deferred.resolve('complete');
-				})
-				AudioManager.play(event.audio);
-			}
-			else {
-				EventManager.playEvent(event, deferred);
-			}
+			EventManager.playEvent(event, deferred);
 		}
 		else {
 			document.onkeypress = null;
