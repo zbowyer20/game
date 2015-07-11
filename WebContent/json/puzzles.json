@@ -1,23 +1,36 @@
 {
 	"puzzles": [
 		{
-			"id": "0-combo-lock-test",
-			"type": "PASSWORD",
+			"id": "combo-lock-puzzle",
+			"type": "COMBINATION",
 			"defaults": [
 				{
-					"id": "0-combo-lock-0",
+					"id": "0",
 					"value": "0"
 				},
 				{
-					"id": "0-combo-lock-1",
+					"id": "1",
 					"value": "0"
 				},
 				{
-					"id": "0-combo-lock-2",
+					"id": "2",
 					"value": "0"
 				}
 			],
-			"solution": "624",
+			"solution": [
+				{
+					"id": "0",
+					"value": "0"
+				},
+				{
+					"id": "1",
+					"value": "5"
+				},
+				{
+					"id": "2",
+					"value" :"0"
+				}
+			],
 			"complete": [
 			]
 		},

@@ -6,7 +6,7 @@ function PuzzleCombination(puzzle) {
 	this.update = function(effect) {
 		if (this.state[effect.componentID]) {
 			if (effect.type == "UPDATE") {
-				this.state[effect.componentID] = parseInt(this.state[effect.componentID]) + parseInt(effect.increment);
+				this.state[effect.componentID] = "" + (parseInt(this.state[effect.componentID]) + parseInt(effect.increment));
 			}
 		}
 	},

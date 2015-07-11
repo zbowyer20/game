@@ -436,6 +436,36 @@
 		},
 		{
 			"defaultBackground": false,
+			"name": "hospital-bedroom-combo-lock",
+			"id": "hospital-bedroom-combo-lock",
+			"movements": [
+				{
+					"name": "BACK",
+					"destination": "hospital-bedroom-table"
+				}
+			],
+			"clickables": [
+				{
+					"type" : "PUZZLE",
+					"id": "0-combo-lock",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "PUZZLE_ATTEMPT",
+							"puzzleID": "combo-lock-puzzle",
+							"effect": {
+								"componentID": "1",
+								"type": "UPDATE",
+								"increment": 1
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"defaultBackground": false,
 			"name": "hospital-bedroom-table",
 			"id": "hospital-bedroom-table",
 			"movements": [
@@ -464,8 +494,8 @@
 					"onclick": [
 						{
 							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "7"
+							"type": "MOVE",
+							"destination": "hospital-bedroom-combo-lock"
 						}
 					]
 				},
