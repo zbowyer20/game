@@ -81,6 +81,9 @@ var DIALOG_IMAGES = {};
 	DIALOG_IMAGES["TOM-SMITTEN"] = "tom-smitten";
 	
 	DIALOG_IMAGES["ZAK"] = "zak";
+	DIALOG_IMAGES["ZAK-FEDUP"] = "zak-fedup";
+	DIALOG_IMAGES["ZAK-SUSPICIOUS"] = "zak-suspicious";
+	DIALOG_IMAGES["ZAK-UNCOMFORTABLE"] = "zak-uncomfortable";
 	
 	DIALOG_IMAGES["KEVIN"] = "kevin";
 	DIALOG_IMAGES["KEVIN-ANGRY"] = "kevin-angry";
@@ -96,6 +99,11 @@ var DIALOG_IMAGES = {};
 	DIALOG_IMAGES["VICTORIA-HAPPY"] = "victoria-happy";
 	DIALOG_IMAGES["VICTORIA-POSSESSED"] = "victoria-possessed";
 	DIALOG_IMAGES["VICTORIA-TERRIFIED"] = "victoria-terrified";
+	
+	DIALOG_IMAGES["JOE"] = "joe";
+	DIALOG_IMAGES["JOE-CONFUSED"] = "joe-confused";
+	DIALOG_IMAGES["JOE-FRUSTRATED"] = "joe-frustrated";
+	DIALOG_IMAGES["JOE-SHOCKED"] = "joe-shocked";
 
 var DIRECTION_LEFT = "LEFT";
 var DIRECTION_RIGHT = "RIGHT";

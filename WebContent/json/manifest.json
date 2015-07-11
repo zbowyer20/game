@@ -114,6 +114,34 @@
 				"src": "img/dialog/zak.png"
 			},
 			{
+				"id": "zak-fedup",
+				"src": "img/dialog/zak-fedup.png"
+			},
+			{
+				"id": "zak-suspicious",
+				"src": "img/dialog/zak-suspicious.png"
+			},
+			{
+				"id": "zak-uncomfortable",
+				"src": "img/dialog/zak-uncomfortable.png"
+			},
+			{
+				"id": "joe",
+				"src": "img/dialog/joe.png"
+			},
+			{
+				"id": "joe-confused",
+				"src": "img/dialog/joe-confused.png"
+			},
+			{
+				"id": "joe-frustrated",
+				"src": "img/dialog/joe-frustrated.png"
+			},
+			{
+				"id": "joe-shocked",
+				"src": "img/dialog/joe-shocked.png"
+			},
+			{
 				"id": "sound-on",
 				"src": "img/utils/sound-on.png"
 			},

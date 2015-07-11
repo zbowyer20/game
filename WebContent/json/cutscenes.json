@@ -626,6 +626,26 @@
 							"message": "You forgot about me!"
 						}
 					]
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "JOE",
+					"mood": "SHOCKED",
+					"text": [
+						{ 
+							"message": "Noooooooooo!"
+						}
+					]
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "ZAK",
+					"mood": "FEDUP",
+					"text": [
+						{ 
+							"message": "Usual..."
+						}
+					]
 				}
 			]
 		},
