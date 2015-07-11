@@ -57,6 +57,10 @@ var Loader = {
 		
 		loadFiles: function() {
 			return $.getJSON("json/files.json");
+		},
+		
+		loadPuzzles: function() {
+			return $.getJSON("json/puzzles.json");
 		}
 		
 }

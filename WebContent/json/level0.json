@@ -44,14 +44,19 @@
 						"width" : 90,
 						"height" : 50
 					},
-					"type" : "EXAMINE",
+					"type" : "PUZZLE",
 					"id": "0-alphabet",
 					"persist": true,
 					"onclick": [
 						{
 							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "7"
+							"type": "PUZZLE_ATTEMPT",
+							"puzzleID": "alphabet-puzzle",
+							"effect": {
+								"componentID": "0",
+								"type": "UPDATE",
+								"increment": 1
+							}
 						}
 					]
 				},

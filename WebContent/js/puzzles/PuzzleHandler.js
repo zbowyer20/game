@@ -1,12 +1,16 @@
 var PuzzleHandler = {
-		puzzles: [],
+		puzzles: {},
 		
-		convertJsonToPuzzles: function(json) {
+		addPuzzles: function(json) {
 			for (jsonPuzzle in json) {
-				if (jsonPuzzle.type == "COMBINATION") {
-					puzzles[jsonPuzzle.id] = new PuzzleCombination(jsonPuzzle);
+				if (json[jsonPuzzle].type == "COMBINATION") {
+					this.puzzles[json[jsonPuzzle].id] = new PuzzleCombination(json[jsonPuzzle]);
 				}
 			}
 			return true;
+		},
+
+		getPuzzle: function(id) {
+			return this.puzzles[id];
 		}
 }

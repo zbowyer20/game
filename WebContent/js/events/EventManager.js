@@ -1,7 +1,7 @@
 var EventManager = {
 		playEvent: function(json, deferred) {
 			var event;
-			GameUtils.setSwitch(event.switchOn, true);
+			GameUtils.setSwitch(json.switchOn, true);
 			switch (json.type) {
 				case "CUTSCENE":
 					event = new EventCutscene(json, deferred);

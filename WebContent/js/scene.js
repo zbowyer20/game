@@ -38,6 +38,12 @@ var Scene = {
 					}
 				})
 				.then(function(data) {
+					return Loader.loadPuzzles();
+				})
+				.then(function(data) {
+					PuzzleHandler.addPuzzles(data.puzzles);
+				})
+				.then(function(data) {
 					// TODO file images dont work
 					return Loader.loadFiles();
 				})
