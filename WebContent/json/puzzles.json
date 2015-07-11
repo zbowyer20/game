@@ -42,7 +42,12 @@
 					"value": "3"
 				}
 			],
-			"complete": [
+			"complete": [ 
+				{
+					"priority": 0,
+					"type": "CUTSCENE",
+					"id": "16"
+				}
 			]
 		}
 	]

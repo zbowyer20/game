@@ -58,12 +58,13 @@ function Clickable(json) {
 		return false;
 	}
 	
-	this.loadClickableClickResult = function() {
-		if (!this.clickable.onclick) {
+	this.loadClickableClickResult = function(ev) {
+		var events = ev ? ev : this.clickable.onclick;
+		if (!events) {
 			return false;
 		}
 		var self = this;
-		var results = this.getClickResults();
+		var results = this.getClickResults(events);
 		var promise = $.when(1);
 		results.forEach(function (element) {
 			promise = promise.then(function() {
@@ -78,13 +79,14 @@ function Clickable(json) {
 	 * @param cutscenes The cutscenes in JSON
 	 * @returns The cutscene that should be played
 	 */
-	this.getClickResults = function() {
-		if (this.clickable.onclick == null) {
+	this.getClickResults = function(ev) {
+		var events = ev ? ev : this.clickable.onclick;
+		if (events == null) {
 			return null;
 		}
 		var results = [];
-		for (var i = 0; i < this.clickable.onclick.length; i++) {
-			results = this.mostRelevantOf(results, this.clickable.onclick[i]);
+		for (var i = 0; i < events.length; i++) {
+			results = this.mostRelevantOf(results, events[i]);
 		}
 		return results;
 	}

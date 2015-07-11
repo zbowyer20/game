@@ -10,6 +10,7 @@ function EventPuzzleAttempt(event, deferred) {
 		def.resolve('complete');
 		if (puzzle.solved()) {
 			console.log('solved');
+			new Clickable().loadClickableClickResult(puzzle.solvedEvent);
 		}
 		else {
 			console.log('not solved');
