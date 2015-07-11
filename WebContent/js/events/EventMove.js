@@ -1,4 +1,4 @@
-function EventSceneChange(event, deferred) {
+function EventMove(event, deferred) {
 	var destination;
 	var def;
 		
