@@ -6,7 +6,7 @@ function EventCutscene(event, deferred) {
 	def = deferred;
 	
 	this.playResult = function() {
-		CutsceneHandler.initCutscene(cutscene).then(function() {
+		CutsceneHandler.initCutscene(cutscene, event.parameters).then(function() {
 			def.resolve('complete');
 		});
 	}

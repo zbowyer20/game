@@ -459,6 +459,13 @@
 								"type": "UPDATE",
 								"increment": 1
 							}
+						},
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "19",
+							"parameters": ["bob","alice","trevor","janet"
+							]
 						}
 					]
 				}

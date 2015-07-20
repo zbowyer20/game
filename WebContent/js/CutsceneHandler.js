@@ -15,19 +15,20 @@ var CutsceneHandler = {
 		 * Play a cutscene
 		 * @param cutscene The cutscene to play
 		 */
-		initCutscene: function(cutscene) {
+		initCutscene: function(cutscene, parameters) {
 			this.deferred = $.Deferred();
 			priority = cutscene != null ? CUTSCENE_PRIORITY: 0;
 			Scene.animation.loadingText = true;
-			this.play(cutscene, 0);
+			this.play(cutscene, 0, null, parameters);
 			return this.deferred.promise();
 		},
 		
-		play: function(cutscene, current, deferred) {
+		play: function(cutscene, current, deferred, parameters) {
 			// more to play in the cutscene?
 			if (cutscene.scene[current] != null) {
 				var speech = this.dialog(cutscene.scene[current]);
-				this.showText(speech.text, cutscene.scene[current].text, 0, 0)
+				var text = parameters ? this.prepareText(cutscene.scene[current].text, parameters) : cutscene.scene[current].text;
+				this.showText(speech.text, text, 0, 0)
 				// play the next dialog on space
 				this.dialogKeyPress(cutscene, current+1, deferred);
 			}
@@ -94,6 +95,15 @@ var CutsceneHandler = {
 			else {
 				target.text += text;
 			}
+		},
+		
+		prepareText: function(text, parameters) {
+			for (var i = 0; i < text.length; i++) {
+				for (var j = 0; j < parameters.length; j++) {
+					text[i].message = text[i].message.replace("{" + j + "}", parameters[j]);
+				}
+			}
+			return text;
 		},
 		
 		getTextSpeed: function(speed) {

@@ -661,6 +661,19 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "19",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "The lock reads {0}-{1}-{2}-{3}"
+						}
+					]
+				}
+			]
 		}
 	]
 }
