@@ -7,13 +7,17 @@ function EventPuzzleAttempt(event, deferred) {
 	
 	this.playResult = function() {
 		puzzle.update(event.effect);
-		def.resolve('complete');
 		if (puzzle.solved()) {
 			console.log('solved');
-			new Clickable().loadClickableClickResult(puzzle.solvedEvent);
+			new Clickable().loadClickableClickResult(puzzle.solvedEvent).then(function() {
+				def.resolve('complete');
+			});
+			
 		}
 		else {
 			console.log('not solved');
+			def.resolve('complete');
+
 		}
 	}
 		
