@@ -27,7 +27,8 @@ var CutsceneHandler = {
 			// more to play in the cutscene?
 			if (cutscene.scene[current] != null) {
 				var speech = this.dialog(cutscene.scene[current]);
-				var text = parameters ? this.prepareText(cutscene.scene[current].text, parameters) : cutscene.scene[current].text;
+				var txt = $.extend(true, [], cutscene.scene[current].text);
+				var text = parameters != null ? this.prepareText(txt, parameters) : txt;
 				this.showText(speech.text, text, 0, 0)
 				// play the next dialog on space
 				this.dialogKeyPress(cutscene, current+1, deferred);

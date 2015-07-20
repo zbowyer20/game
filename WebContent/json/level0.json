@@ -464,7 +464,11 @@
 							"priority": 0,
 							"type": "CUTSCENE",
 							"id": "19",
-							"parameters": ["bob","alice","trevor","janet"
+							"parameters": [
+								{
+									"type": "PUZZLE-STATE",
+									"id": "combo-lock-puzzle"
+								}
 							]
 						}
 					]

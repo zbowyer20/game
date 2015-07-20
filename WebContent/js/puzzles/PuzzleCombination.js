@@ -20,6 +20,10 @@ function PuzzleCombination(puzzle) {
 		return true;
 	}
 	
+	this.getState = function() {
+		return this.state;
+	}
+	
 	for (var stateID in puzzle.defaults) {
 		this.state[stateID] = puzzle.defaults[stateID].value;
 		this.solution[stateID] = puzzle.solution[stateID].value;
