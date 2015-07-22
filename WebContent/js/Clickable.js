@@ -65,12 +65,23 @@ function Clickable(json) {
 		}
 		var self = this;
 		var results = this.getClickResults(events);
-		var promise = $.when(1);
-		results.forEach(function (element) {
-			promise = promise.then(function() {
-				return self.playClickableClickResult(element);
+		var i = 0;
+		var deferred = $.Deferred();
+		console.log(results);
+		self.playResult(results, 0, deferred);
+		return deferred.promise();
+	}
+	
+	this.playResult = function(events, i, deferred) {
+		try {
+			var self = this;
+			this.playClickableClickResult(events[i]).then(function(e) {
+				self.playResult(events, i+1, deferred);
 			});
-		})
+		}
+		catch (e) {
+			deferred.resolve('complete');
+		}
 	}
 	
 	/*
