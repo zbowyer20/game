@@ -1,12 +1,15 @@
 function PuzzleCombination(puzzle) {
 	this.solution = {};
 	this.state = {};
+	this.values = {};
+	this.special = {};
 	this.solvedEvent = [];
 		
 	this.update = function(effect) {
-		if (this.state[effect.componentID]) {
+		if (this.state[effect.componentID] != null) {
 			if (effect.type == "UPDATE") {
-				this.state[effect.componentID] = "" + (parseInt(this.state[effect.componentID]) + parseInt(effect.increment));
+				this.state[effect.componentID] = this.state[effect.componentID] + parseInt(effect.increment);
+				this.state[effect.componentID] = this.special.wraparound ? this.state[effect.componentID] % Object.keys(this.values[effect.componentID].values).length : this.state[effect.componentID];
 			}
 		}
 	},
@@ -21,14 +24,24 @@ function PuzzleCombination(puzzle) {
 	}
 	
 	this.getState = function() {
-		return this.state;
+		var res = {};
+		for (var state in this.state) {
+			res[state] = this.values[state].values[this.state[state]];
+		}
+		return res;
 	}
 	
 	for (var stateID in puzzle.defaults) {
-		this.state[stateID] = puzzle.defaults[stateID].value;
-		this.solution[stateID] = puzzle.solution[stateID].value;
+		this.state[stateID] = parseInt(puzzle.defaults[stateID].value);
+		this.solution[stateID] = parseInt(puzzle.solution[stateID].value);
 	}
 	
+	for (var valueID in puzzle.values) {
+		this.values[valueID] = puzzle.values[valueID];
+	}
+	
+	this.special.wraparound = true;
+		
 	this.solvedEvent = puzzle.complete;
 			
 	return this;
