@@ -73,14 +73,15 @@ function Clickable(json) {
 	}
 	
 	this.playResult = function(events, i, deferred) {
-		try {
+		if (i < events.length) {
 			var self = this;
 			this.playClickableClickResult(events[i]).then(function(e) {
 				self.playResult(events, i+1, deferred);
 			});
 		}
-		catch (e) {
+		else {
 			deferred.resolve('complete');
+			return true;
 		}
 	}
 	
