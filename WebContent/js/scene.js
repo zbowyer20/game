@@ -3,6 +3,7 @@ var Scene = {
 		components: {"areas": {}, "dialogs" : {}},
 		puzzles: {},
 		animation: {},
+		videos: [],
 		containers: {"globalLayer": null, "areaLayer": null, "navigationLayer": null, "dialogLayer": null},
 		
 		init: function(sceneName) {
@@ -94,6 +95,10 @@ var Scene = {
 		},
 		
 		clear: function() {
+			for (var i in this.videos) {
+				this.videos[i].image.pause();
+			}
+			this.videos = [];
 			layers.sceneLayer.removeAllChildren();
 		},
 		
@@ -178,9 +183,7 @@ var Scene = {
 				if (json.areas[i].defaultBackground) {
 					defaultArea = this.components.areas[json.areas[i].name];
 					 if (json.areas[i].arrive) {
-						 for (var j in json.areas[i].arrive) {
-							 new Clickable("").playClickableClickResult(json.areas[i].arrive[j]);
-						 }
+						new Clickable("").loadClickableClickResult(json.areas[i].arrive);
 					 }
 				}
 			}
@@ -196,6 +199,7 @@ var Scene = {
 			var bg = this.components.areas.current.getBackground();
 			container.addChild(bg.image);
 			if (bg.video) {
+				this.videos.push(bg.video);
 				container.addChild(bg.video);
 			}
 			return container;

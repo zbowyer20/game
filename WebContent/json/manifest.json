@@ -186,6 +186,20 @@
 		],
 		"video": []
 	},
+	"scene-3": {
+		"nonVideo": [
+			{
+				"id": "main",
+				"src": "img/mainmenu.jpg"
+			}
+		],
+		"video": [
+			{
+				"id": "dream",
+				"src": "video/scarydream.mp4"
+			}
+		]
+	},
 	"scene-0": {
 		"nonVideo" : [
 			{

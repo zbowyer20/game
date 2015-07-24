@@ -13,8 +13,15 @@
 					"onclick": [
 						{
 							"priority": 0,
+							"type": "AUDIO",
+							"audio": {
+								"stop": true
+							}
+						},
+						{
+							"priority": 0,
 							"type": "SCENE_CHANGE",
-							"id": "0"
+							"id": "3"
 						}
 					]
 				}
