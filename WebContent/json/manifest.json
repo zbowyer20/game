@@ -94,6 +94,10 @@
 				"src": "img/dialog/sophie-sly.png"
 			},
 			{
+				"id": "sophie-asleep",
+				"src": "img/dialog/sophie-asleep.png"
+			},
+			{
 				"id": "victoria",
 				"src": "img/dialog/victoria.png"
 			},

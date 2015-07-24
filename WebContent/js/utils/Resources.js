@@ -94,6 +94,7 @@ var DIALOG_IMAGES = {};
 	DIALOG_IMAGES["SOPHIE"] = "sophie";
 	DIALOG_IMAGES["SOPHIE-CURIOUS"] = "sophie-curious";
 	DIALOG_IMAGES["SOPHIE-SLY"] = "sophie-sly";
+	DIALOG_IMAGES["SOPHIE-ASLEEP"] = "sophie-asleep";
 	
 	DIALOG_IMAGES["VICTORIA"] = "victoria";
 	DIALOG_IMAGES["VICTORIA-HAPPY"] = "victoria-happy";

@@ -646,6 +646,16 @@
 							"message": "Usual..."
 						}
 					]
+				},
+				{
+					"position": "DIALOG_LEFT",
+					"character": "SOPHIE",
+					"mood": "ASLEEP",
+					"text": [
+						{
+							"message": "Zzzzzzzzz"
+						}
+					]
 				}
 			]
 		},
