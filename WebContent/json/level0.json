@@ -446,9 +446,65 @@
 			],
 			"clickables": [
 				{
+					"hitArea" : {
+							"x" : 210,
+							"y" : 120,
+							"width" : 30,
+							"height" : 15
+					},
 					"type" : "PUZZLE",
-					"id": "0-combo-lock",
+					"id": "0-combo-lock-0",
 					"persist": true,
+					"content":  {
+						"text": "1",
+						"x": 445,
+						"y": 312
+					},
+					"type": "PUZZLE-STATE",
+					"puzzleID": "combo-lock-puzzle",
+					"componentID": "0",
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "PUZZLE_ATTEMPT",
+							"puzzleID": "combo-lock-puzzle",
+							"effect": {
+								"componentID": "0",
+								"type": "UPDATE",
+								"increment": 1
+							}
+						},
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "19",
+							"parameters": [
+								{
+									"type": "PUZZLE-STATE",
+									"id": "combo-lock-puzzle"
+								}
+							]
+						}
+					]
+				},
+				{
+					"hitArea" : {
+							"x" : 210,
+							"y" : 140,
+							"width" : 30,
+							"height" : 10
+					},
+					"type" : "PUZZLE",
+					"id": "0-combo-lock-1",
+					"persist": true,
+					"content":  {
+						"text": "2",
+						"x": 445,
+						"y": 335
+					},
+					"type": "PUZZLE-STATE",
+					"puzzleID": "combo-lock-puzzle",
+					"componentID": "1",
 					"onclick": [
 						{
 							"priority": 0,
@@ -456,6 +512,90 @@
 							"puzzleID": "combo-lock-puzzle",
 							"effect": {
 								"componentID": "1",
+								"type": "UPDATE",
+								"increment": 1
+							}
+						},
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "19",
+							"parameters": [
+								{
+									"type": "PUZZLE-STATE",
+									"id": "combo-lock-puzzle"
+								}
+							]
+						}
+					]
+				},
+				{
+					"hitArea" : {
+							"x" : 210,
+							"y" : 150,
+							"width" : 30,
+							"height" : 10
+					},
+					"type" : "PUZZLE",
+					"id": "0-combo-lock-2",
+					"persist": true,
+					"content":  {
+						"text": "3",
+						"x": 445,
+						"y": 358
+					},
+					"type": "PUZZLE-STATE",
+					"puzzleID": "combo-lock-puzzle",
+					"componentID": "2",
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "PUZZLE_ATTEMPT",
+							"puzzleID": "combo-lock-puzzle",
+							"effect": {
+								"componentID": "2",
+								"type": "UPDATE",
+								"increment": 1
+							}
+						},
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "19",
+							"parameters": [
+								{
+									"type": "PUZZLE-STATE",
+									"id": "combo-lock-puzzle"
+								}
+							]
+						}
+					]
+				},
+				{
+					"hitArea" : {
+							"x" : 210,
+							"y" : 160,
+							"width" : 30,
+							"height" : 10
+					},
+					"type" : "PUZZLE",
+					"id": "0-combo-lock-3",
+					"persist": true,
+					"content":  {
+						"text": "3",
+						"x": 445,
+						"y": 385
+					},
+					"type": "PUZZLE-STATE",
+					"puzzleID": "combo-lock-puzzle",
+					"componentID": "3",
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "PUZZLE_ATTEMPT",
+							"puzzleID": "combo-lock-puzzle",
+							"effect": {
+								"componentID": "3",
 								"type": "UPDATE",
 								"increment": 1
 							}

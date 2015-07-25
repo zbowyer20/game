@@ -295,7 +295,19 @@
 				"src": "img/sceneClickables/table-table.png"
 			},
 			{
-				"id": "0-combo-lock",
+				"id": "0-combo-lock-0",
+				"src": "img/sceneClickables/table-combo-lock.png"
+			},
+			{
+				"id": "0-combo-lock-1",
+				"src": "img/sceneClickables/table-combo-lock.png"
+			},			
+			{
+				"id": "0-combo-lock-2",
+				"src": "img/sceneClickables/table-combo-lock.png"
+			},			
+			{
+				"id": "0-combo-lock-3",
 				"src": "img/sceneClickables/table-combo-lock.png"
 			},
 			{

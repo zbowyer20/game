@@ -119,8 +119,9 @@ var Scene = {
 			     self.containers.audioContainer = Muter.init().icon;
 
 				 self.containers.areaLayer.addChild(self.setupAreas(json));
+
 			     self.initNavigation();
-			     
+
 			     self.containers.globalLayer.addChild(self.containers.areaLayer);
 			     if (json.UI) {
 			    	 self.containers.globalLayer.addChild(ItemContainer.init().container);
@@ -129,11 +130,11 @@ var Scene = {
 			     self.containers.globalLayer.addChild(self.containers.navigationLayer);
 			     self.containers.globalLayer.addChild(self.containers.dialogLayer);
 			     self.containers.globalLayer.addChild(self.containers.topLayer);
-			     
+
 				 layers.sceneLayer.addChild(self.containers.globalLayer);
 			     veil = new Veil();
 				 layers.sceneLayer.addChild(veil.container);
-				 
+
 				 if (json.UI) {
 					 initMenu();
 				 }
@@ -201,20 +202,35 @@ var Scene = {
 		initAreaContainer: function(defaultArea) {
 			var container = new createjs.Container();
 			container.name = "backgroundContainer";
-			this.addClickablesToContainer(container, this.components.areas.current, 0);
+			
+			var layers = [new createjs.Container(), new createjs.Container(), new createjs.Container()];
+			for (var i = 0; i < layers.length; i++) {
+				container.addChild(layers[i]);
+			}
+			this.addClickablesToContainer(layers, this.components.areas.current, 0);
 			var bg = this.components.areas.current.getBackground();
-			container.addChild(bg.image);
+			layers[1].addChild(bg.image);
 			if (bg.video) {
 				this.videos.push(bg.video);
-				container.addChild(bg.video);
-			}
+				layers[1].addChild(bg.video);
+			}		
+
 			return container;
 		},
 		
-		addClickablesToContainer: function(container, area, offStageMultiplier) {
+		addClickablesToContainer: function(layers, area, offStageMultiplier) {
 			var clickables = area.getClickables(true);
+
 			for (var id in clickables) {
-				container.addChild(clickables[id].bitmap);
+				if (layers.length) {
+					layers[0].addChild(clickables[id].bitmap);
+					if (clickables[id].text) {
+						layers[2].addChild(clickables[id].text);
+					}
+				}
+				else {
+					layers.addChild(clickables[id].bitmap);
+				}
 				clickables[id].bitmap.x = clickables[id].getPrimaryPosition().x + (stage.canvas.width * offStageMultiplier);
 			}
 		},
@@ -371,10 +387,14 @@ var Scene = {
 			var backgroundContainer = this.containers.areaLayer.getChildByName("backgroundContainer");
 			
 			var newContainer = new createjs.Container();
+			var layers = [new createjs.Container(), new createjs.Container(), new createjs.Container()];
 			//this.addClickablesToContainer(newContainer, area, offStageMultiplier);
-			newContainer.addChild(backgroundBit.image);
+			for (var i = 0; i<layers.length; i++) {
+				newContainer.addChild(layers[i]);
+			}
+			layers[1].addChild(backgroundBit.image);
 			if (backgroundBit.video) {
-				newContainer.addChild(backgroundBit.video);
+				layers[1].addChild(backgroundBit.video);
 			}
 			
 			this.containers.areaLayer.addChild(newContainer);
@@ -390,14 +410,14 @@ var Scene = {
 							.then(function() {
 								self.containers.areaLayer.removeChild(backgroundContainer);
 								newContainer.name = "backgroundContainer";
-								self.addClickablesToContainer(newContainer, area, 0);
-								newContainer.removeChild(backgroundBit.image);
+								self.addClickablesToContainer(layers, area, 0);
+								layers[1].removeChild(backgroundBit.image);
 								if (backgroundBit.video) {
-									newContainer.removeChild(backgroundBit.video);
+									layers[1].removeChild(backgroundBit.video);
 								}
-								newContainer.addChild(backgroundBit.image);
+								layers[1].addChild(backgroundBit.image);
 								if (backgroundBit.video) {
-									newContainer.addChild(backgroundBit.video);
+									layers[1].addChild(backgroundBit.video);
 								}
 								self.components.areas["current"] = area;
 								self.initNavigation();

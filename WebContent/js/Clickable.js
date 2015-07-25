@@ -6,6 +6,9 @@ function Clickable(json) {
 	this.init = function() {
 		var self = this;
 		this.bitmap = this.createClickableImage(this.clickable.type);
+		if (this.clickable.content) {
+			this.text = this.createClickableText();
+		}
 		this.setHitArea();
 		this.bitmap.addEventListener("click", function() {
 			if (checkPriority(ITEM_PRIORITY)) {
@@ -46,6 +49,11 @@ function Clickable(json) {
 		var clickableBit = convertImageToScaledBitmap(image, ((this.clickable.location.x * DPR)), this.clickable.location.y * DPR, this.clickable.dimensions.width * DPR, this.clickable.dimensions.height * DPR);
 		clickableBit.name = this.clickable.id;
 		return clickableBit;
+	}
+	
+	this.createClickableText = function() {
+		var text = createText(this.clickable.content.text, BLACK, this.clickable.content.x * DPR, this.clickable.content.y * DPR, 200);
+		return text;
 	}
 	
 	this.setHitArea = function() {
