@@ -3,15 +3,15 @@
 	"areas": [
 		{
 			"defaultBackground": true,
-			"name" : "dream",
-			"id" : "dream",
+			"name" : "main",
+			"id" : "main",
 			"arrive": [
 				{
 					"priority": 0,
-					"type": "CUTSCENE",
-					"id": "20"
+					"type": "VIDEO",
+					"id": "dream"
 				},
-				{
+				{					
 					"priority": 0,
 					"type": "SCENE_CHANGE",
 					"id": "0"

@@ -24,6 +24,7 @@ var Loader = {
 		        }
 		        if (evt.item.type == "video") { 
 		        	videos[evt.item.id] = evt.result;
+		        	if (evt.item.loop) { videos[evt.item.id].loop = true };
 		        }
 		        if (evt.item.type == "sound") {
 		        	// no need to store sound

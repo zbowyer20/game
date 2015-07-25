@@ -382,7 +382,8 @@
 		"video": [
 			{
 				"id": "hospital-bedroom-0",
-				"src": "video/hospital-bedroom-0.mp4"
+				"src": "video/hospital-bedroom-0.mp4",
+				"loop": true
 			}
 		]
 	},

@@ -4,7 +4,13 @@ var Scene = {
 		puzzles: {},
 		animation: {},
 		videos: [],
-		containers: {"globalLayer": null, "areaLayer": null, "navigationLayer": null, "dialogLayer": null},
+		containers: {
+			"globalLayer": null, 
+			"areaLayer": null, 
+			"navigationLayer": null, 
+			"dialogLayer": null,
+			"topLayer": null
+		},
 		
 		init: function(sceneName) {
 			var self = this;
@@ -107,10 +113,9 @@ var Scene = {
 			$.when(Loader.loadLevel(sceneName))
 			 .then(function(json) {
 				 var containers = {};
-				 self.containers.globalLayer = new createjs.Container();
-				 self.containers.areaLayer = new createjs.Container();
-				 self.containers.navigationLayer = new createjs.Container();
-				 self.containers.dialogLayer = new createjs.Container();
+				 for (var container in self.containers) {
+					 self.containers[container] = new createjs.Container()
+				 }
 			     self.containers.audioContainer = Muter.init().icon;
 
 				 self.containers.areaLayer.addChild(self.setupAreas(json));
@@ -123,7 +128,8 @@ var Scene = {
 			     }
 			     self.containers.globalLayer.addChild(self.containers.navigationLayer);
 			     self.containers.globalLayer.addChild(self.containers.dialogLayer);
-
+			     self.containers.globalLayer.addChild(self.containers.topLayer);
+			     
 				 layers.sceneLayer.addChild(self.containers.globalLayer);
 			     veil = new Veil();
 				 layers.sceneLayer.addChild(veil.container);

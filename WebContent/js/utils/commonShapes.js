@@ -9,7 +9,9 @@ function convertVideoToBitmap(vid, x, y) {
 	var video = document.createElement('video'); 
 	video.src = vid.src; 
 	video.autoplay = true; 
-	video.setAttribute("loop", true);
+	if (vid.loop) {
+		video.setAttribute("loop", false);
+	}
 
 	var b = new createjs.Bitmap(video); 
 	b.x = x; 
