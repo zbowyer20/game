@@ -3,8 +3,8 @@
 	"areas": [
 		{
 			"defaultBackground": true,
-			"name" : "main",
-			"id" : "main",
+			"name" : "black",
+			"id" : "black",
 			"arrive": [
 				{
 					"priority": 0,
@@ -15,6 +15,25 @@
 					"priority": 0,
 					"type": "VIDEO",
 					"id": "dream"
+				},
+				{
+					"priority": 0,
+					"type": "CUTSCENE",
+					"id": 21
+				},
+				{
+					"priority": 0,
+					"type": "AUDIO",
+					"audio": {
+						"id": "drone",
+						"type": "SOUND",
+						"volume": 1
+					}
+				},
+				{
+					"priority": 0,
+					"type": "CUTSCENE",
+					"id": 22
 				},
 				{					
 					"priority": 0,

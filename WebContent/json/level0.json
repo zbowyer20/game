@@ -18,7 +18,8 @@
 			"arrive": [
 				{
 					"priority": 0,
-					"type": "AUDIO-STOP"
+					"type": "AUDIO",
+					"audio": {"stop": true}
 				},
 				{
 					"priority": 0,
@@ -33,6 +34,20 @@
 					"priority": 0,
 					"type": "CUTSCENE",
 					"id": "18"
+				},
+				{
+					"priority": 0,
+					"type": "AUDIO",
+					"audio": {
+						"type": "SOUND",
+						"id": "yawn",
+						"volume": 1
+					}
+				},
+				{
+					"priority": 0,
+					"type": "CUTSCENE",
+					"id": "23"
 				}
 			],
 			"clickables": [

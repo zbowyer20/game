@@ -668,7 +668,15 @@
 					"character": "ALBERT",
 					"text": [
 						{
-							"message": "What is this place?"
+							"message": "........ Qué?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Where the hell am I?!"
 						}
 					]
 				}
@@ -783,6 +791,164 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "21",
+			"unskippable": true,
+			"scene": [
+				{
+					"text": [
+						{
+							"message": "There were many things that could have woken Albert up."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "The bright light beaming straight down at him, making the back of his eyelids glow, could have woken him up, but it didn't."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "22",
+			"unskippable": true,
+			"scene": [
+				{
+					"text": [
+						{
+							"message": "The drone, low and repetitive, that began shortly after Albert was placed in the room and ended a few minutes before he eventually did wake, could have woken him up, but it didn't."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "The nightmare he was having, in which he was being chased by an unknown, phantom man, should have woken it up, but it didn't."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "What did wake Albert up was the chill in the room."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "It was not always so cold, but suddenly the temperature dropped and the air Albert breathed delivered an icy touch as it passed through him."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "This is what woke Albert up."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "23",
+			"scene": [
+				{
+					"text": [
+						{
+							"message": "Albert rubbed his heavy eyes, yawned, and looked around the room. It looked like he was in a bedroom of sorts."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "How the hell did I get here?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "He stretched his arms."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "That must have been a wild night..."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I don't remember anything!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Saying the fact out loud somehow made it all more real. Albert had experienced some heavy nights in the past - especially in his university days --"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "That night with Carlosita...!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "But there'd never been anything quite like this. He always at least remembered preparing to go out for the night. Now, though, he could recall absolutely nothing."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "The heck happened to me?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I gotta get outta here."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert rose from the bed and looked around at his surroundings. There was a door opposite the bed."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Alright then!"
+						}
+					]
+				}
+			]
 		}
+						
 	]
 }

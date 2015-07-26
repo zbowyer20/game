@@ -189,8 +189,12 @@
 	"scene-3": {
 		"nonVideo": [
 			{
-				"id": "main",
-				"src": "img/mainmenu.jpg"
+				"id": "black",
+				"src": "img/black.jpeg"
+			},
+			{
+				"id": "drone",
+				"src": "audio/drone.mp3"
 			}
 		],
 		"video": [
@@ -397,6 +401,10 @@
 			{
 				"id": "victory-0",
 				"src": "audio/victory-0.mp3"
+			},
+			{
+				"id": "yawn",
+				"src": "audio/yawn.mp3"
 			}
 		],
 		"video": [
