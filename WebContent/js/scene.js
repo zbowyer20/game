@@ -210,6 +210,7 @@ var Scene = {
 			this.addClickablesToContainer(layers, this.components.areas.current, 0);
 			var bg = this.components.areas.current.getBackground();
 			layers[1].addChild(bg.image);
+			layers[1].name = "bg";
 			if (bg.video) {
 				this.videos.push(bg.video);
 				layers[1].addChild(bg.video);
@@ -392,6 +393,7 @@ var Scene = {
 			for (var i = 0; i<layers.length; i++) {
 				newContainer.addChild(layers[i]);
 			}
+			layers[1].name = "bg";
 			layers[1].addChild(backgroundBit.image);
 			if (backgroundBit.video) {
 				layers[1].addChild(backgroundBit.video);
@@ -403,10 +405,10 @@ var Scene = {
 			
 			// Start animation
 			priority = FROZEN_PRIORITY;
-			var topContainer = backgroundContainer.getChildAt(backgroundContainer.children.length - 1);
+			var topContainer = backgroundContainer.getChildByName("bg");
 			backgroundContainer.removeAllChildren();
 			backgroundContainer.addChild(topContainer);
-			AnimationHandler.slideBackgrounds([backgroundContainer, newContainer], movements)
+			AnimationHandler.slideBackgrounds([backgroundContainer, layers[1]], movements)
 							.then(function() {
 								self.containers.areaLayer.removeChild(backgroundContainer);
 								newContainer.name = "backgroundContainer";
