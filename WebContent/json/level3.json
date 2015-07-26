@@ -8,6 +8,11 @@
 			"arrive": [
 				{
 					"priority": 0,
+					"type": "CUTSCENE",
+					"id": 20
+				},
+				{
+					"priority": 0,
 					"type": "VIDEO",
 					"id": "dream"
 				},
