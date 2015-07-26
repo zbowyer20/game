@@ -456,7 +456,9 @@
 					"id": "0-combo-lock-0",
 					"persist": true,
 					"content":  {
-						"text": "1",
+						"type": "PUZZLE-STATE",
+						"puzzleID": "combo-lock-puzzle",
+						"componentID": "0",
 						"x": 445,
 						"y": 312
 					},
@@ -464,6 +466,15 @@
 					"puzzleID": "combo-lock-puzzle",
 					"componentID": "0",
 					"onclick": [
+						{
+							"priority": 0,
+							"type": "AUDIO",
+							"audio": {
+								"id": "combination-attempt",
+								"type" : "SOUND",
+								"volume": 1
+							}
+						},
 						{
 							"priority": 0,
 							"type": "PUZZLE_ATTEMPT",
@@ -498,14 +509,22 @@
 					"id": "0-combo-lock-1",
 					"persist": true,
 					"content":  {
-						"text": "2",
+						"type": "PUZZLE-STATE",
+						"puzzleID": "combo-lock-puzzle",
+						"componentID": "1",
 						"x": 445,
 						"y": 335
 					},
-					"type": "PUZZLE-STATE",
-					"puzzleID": "combo-lock-puzzle",
-					"componentID": "1",
 					"onclick": [
+						{
+							"priority": 0,
+							"type": "AUDIO",
+							"audio": {
+								"id": "combination-attempt",
+								"type" : "SOUND",
+								"volume": 1
+							}
+						},
 						{
 							"priority": 0,
 							"type": "PUZZLE_ATTEMPT",
@@ -540,14 +559,22 @@
 					"id": "0-combo-lock-2",
 					"persist": true,
 					"content":  {
-						"text": "3",
+						"type": "PUZZLE-STATE",
+						"puzzleID": "combo-lock-puzzle",
+						"componentID": "2",
 						"x": 445,
 						"y": 358
 					},
-					"type": "PUZZLE-STATE",
-					"puzzleID": "combo-lock-puzzle",
-					"componentID": "2",
 					"onclick": [
+						{
+							"priority": 0,
+							"type": "AUDIO",
+							"audio": {
+								"id": "combination-attempt",
+								"type" : "SOUND",
+								"volume": 1
+							}
+						},
 						{
 							"priority": 0,
 							"type": "PUZZLE_ATTEMPT",
@@ -582,14 +609,22 @@
 					"id": "0-combo-lock-3",
 					"persist": true,
 					"content":  {
-						"text": "3",
+						"type": "PUZZLE-STATE",
+						"puzzleID": "combo-lock-puzzle",
+						"componentID": "3",
 						"x": 445,
 						"y": 385
 					},
-					"type": "PUZZLE-STATE",
-					"puzzleID": "combo-lock-puzzle",
-					"componentID": "3",
 					"onclick": [
+						{
+							"priority": 0,
+							"type": "AUDIO",
+							"audio": {
+								"id": "combination-attempt",
+								"type" : "SOUND",
+								"volume": 1
+							}
+						},
 						{
 							"priority": 0,
 							"type": "PUZZLE_ATTEMPT",

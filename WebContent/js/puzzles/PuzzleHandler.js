@@ -12,5 +12,9 @@ var PuzzleHandler = {
 
 		getPuzzle: function(id) {
 			return this.puzzles[id];
+		},
+		
+		broadcast: function(puzzleID, componentID) {
+			$(document).trigger(puzzleID + "_" + componentID);
 		}
 }

@@ -64,6 +64,15 @@
 			"complete": [
 				{
 					"priority": 0,
+					"type": "AUDIO",
+					"audio": {
+						"type": "SOUND",
+						"id": "victory-0",
+						"volume": 1
+					}
+				},
+				{
+					"priority": 0,
 					"type": "CUTSCENE",
 					"id": "16"
 				}
@@ -91,6 +100,15 @@
 				}
 			],
 			"complete": [ 
+				{
+					"priority": 0,
+					"type": "AUDIO",
+					"audio": {
+						"type": "SOUND",
+						"id": "victory-0",
+						"volume": 1
+					}
+				},
 				{
 					"priority": 0,
 					"type": "CUTSCENE",

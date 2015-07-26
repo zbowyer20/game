@@ -389,6 +389,14 @@
 			{
 				"id": "sunny",
 				"src": "audio/sunny.mp3"
+			},
+			{
+				"id": "combination-attempt",
+				"src": "audio/combination-attempt.mp3"
+			},
+			{
+				"id": "victory-0",
+				"src": "audio/victory-0.mp3"
 			}
 		],
 		"video": [

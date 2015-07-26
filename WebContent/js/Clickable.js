@@ -8,6 +8,12 @@ function Clickable(json) {
 		this.bitmap = this.createClickableImage(this.clickable.type);
 		if (this.clickable.content) {
 			this.text = this.createClickableText();
+			if (this.clickable.content.type == "PUZZLE-STATE") {
+				var self = this;
+				$(document).bind(self.clickable.content.puzzleID + "_" + self.clickable.content.componentID, function() {
+					self.text.text = PuzzleHandler.getPuzzle(self.clickable.content.puzzleID).getStateValue(self.clickable.content.componentID);
+				})
+			}
 		}
 		this.setHitArea();
 		this.bitmap.addEventListener("click", function() {
@@ -52,7 +58,7 @@ function Clickable(json) {
 	}
 	
 	this.createClickableText = function() {
-		var text = createText(this.clickable.content.text, BLACK, this.clickable.content.x * DPR, this.clickable.content.y * DPR, 200);
+		var text = createText(this.clickable.content.text || PuzzleHandler.getPuzzle(this.clickable.content.puzzleID).getStateValue(this.clickable.content.componentID), BLACK, this.clickable.content.x * DPR, this.clickable.content.y * DPR, 200);
 		return text;
 	}
 	

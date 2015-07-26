@@ -1,4 +1,5 @@
 function PuzzleCombination(puzzle) {
+	this.id;
 	this.solution = {};
 	this.state = {};
 	this.values = {};
@@ -10,6 +11,7 @@ function PuzzleCombination(puzzle) {
 			if (effect.type == "UPDATE") {
 				this.state[effect.componentID] = this.state[effect.componentID] + parseInt(effect.increment);
 				this.state[effect.componentID] = this.special.wraparound ? this.state[effect.componentID] % Object.keys(this.values[effect.componentID].values).length : this.state[effect.componentID];
+				PuzzleHandler.broadcast(this.id, effect.componentID);
 			}
 		}
 	},
@@ -30,6 +32,12 @@ function PuzzleCombination(puzzle) {
 		}
 		return res;
 	}
+	
+	this.getStateValue = function(componentID) {
+		return this.getState()[componentID];
+	}
+	
+	this.id = puzzle.id;
 	
 	for (var stateID in puzzle.defaults) {
 		this.state[stateID] = parseInt(puzzle.defaults[stateID].value);
