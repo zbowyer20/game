@@ -119,7 +119,9 @@ var CutsceneHandler = {
 			document.onkeypress = function(e) {
 				if (e.keyCode == KEYCODES["SPACE"]) {
 					if (Scene.animation.loadingText) {
-						Scene.animation.loadingText = false;
+						if (!cutscene.scene[current-1].unskippable) {
+							Scene.animation.loadingText = false;
+						}
 					}
 					else {
 						Scene.animation.loadingText = true;

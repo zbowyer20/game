@@ -502,7 +502,8 @@
 						{
 							"message": "It's a red glowing light. I don't think this means anything."
 						}
-					]
+					],
+					"unskippable": true
 				}
 			]
 		},
@@ -613,9 +614,10 @@
 					"mood": "DETERMINED",
 					"text": [
 						{
-							"message": "Are you guys done?!"
+							"message": "Are you guys done?! I've had it up to here with all your dumb bullshit, you little bastards!"
 						}
-					]
+					],
+					"unskippable": true
 				},
 				{
 					"position": "DIALOG_LEFT",
@@ -693,7 +695,8 @@
 						{
 							"message": "What's in a name?"
 						}
-					]
+					],
+					"unskippable": true
 				},
 				{
 					"text": [
