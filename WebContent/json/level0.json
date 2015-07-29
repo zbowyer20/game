@@ -65,13 +65,8 @@
 					"onclick": [
 						{
 							"priority": 0,
-							"type": "PUZZLE_ATTEMPT",
-							"puzzleID": "alphabet-puzzle",
-							"effect": {
-								"componentID": "0",
-								"type": "UPDATE",
-								"increment": 1
-							}
+							"type": "CUTSCENE",
+							"id": "28"
 						}
 					]
 				},
@@ -83,22 +78,50 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "12"
-						},
-						{
-							"priority": 0,
-							"type": "MOVE",
-							"destination": "hospital-bedroom-table",
+							"id": "24",
 							"switchOn": "table-first-look"
 						},
 						{
 							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "25",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "table-first-look"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "CUTSCENE",
+							"id": "19",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "door-first-look"
+								}
+							]
+						},
+						{
+							"priority": 2,
 							"type": "MOVE",
 							"destination": "hospital-bedroom-table",
 							"requires": [
 								{
 									"type": "SWITCH",
-									"id": "table-first-look"
+									"id": "door-first-look"
+								}
+							]
+						},
+						{
+							"priority": 3,
+							"type": "MOVE",
+							"destination": "hospital-bedroom-table",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "table-first-move"
 								}
 							]
 						}
@@ -138,61 +161,10 @@
 					"onclick": [
 						{
 							"priority": 0,
-							"type": "GAINED_ITEM",
-							"audio": {
-								"id": "foundItem",
-								"type" : "SOUND",
-								"volume": 0.1
-							}
-						},
-						{
-							"priority": 1,
 							"type": "CUTSCENE",
-							"id": "13",
-							"switchOn": "books-cutscene-1",
-							"requires": [
-								{
-									"type": "SWITCH",
-									"id": "off-switch"
-								}
-							]
-						},
-						{
-							"priority": 1,
-							"type": "CUTSCENE",
-							"id": "14",
-							"switchOn": "books-cutscene-2",
-							"requires": [
-								{
-									"type": "SWITCH",
-									"id": "books-cutscene-1"
-								}
-							]
-						},
-						{
-							"priority": 2,
-							"type": "CUTSCENE",
-							"id": "15",
-							"switchOn": "books-cutscene-3",
-							"requires": [
-								{
-									"type": "SWITCH",
-									"id": "books-cutscene-2"
-								}
-							]
-						},
-						{
-							"priority": 3,
-							"type": "MOVE",
-							"destination": "hospital-bedroom-shelf",
-							"requires": [
-								{
-									"type": "SWITCH",
-									"id": "books-cutscene-3"
-								}
-							]
+							"id": "26"
 						}
-					]
+					]	
 				},
 				{
 					"type" : "EXAMINE",
@@ -214,7 +186,7 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "16"
+							"id": "27"
 						}
 					]
 				},
@@ -267,7 +239,7 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "7"
+							"id": "29"
 						}
 					]
 				},
@@ -314,8 +286,8 @@
 					"onclick": [
 						{
 							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "7"
+							"type": "MOVE",
+							"destination": "hospital-bedroom-drawers"
 						}
 					]
 				},
@@ -745,6 +717,36 @@
 							"priority": 0,
 							"type": "CUTSCENE",
 							"id": "7"
+						}
+					]
+				}
+			]
+		},
+		{
+			"defaultBackground": false,
+			"name": "hospital-bedroom-drawers",
+			"id": "hospital-bedroom-drawers",
+			"movements": [
+				{
+					"name": "BACK",
+					"destination": "back"
+				}
+			],
+			"clickables": [
+				{
+					"type" : "ITEM",
+					"id": "0-screwdriver",
+					"top": true,
+					"persist": false,
+					"onclick": [
+						{
+							"type": "GAINED_ITEM",
+							"id": "0-screwdriver",
+							"audio": {
+								"id": "foundItem",
+								"type" : "SOUND",
+								"volume": 0.1
+							}
 						}
 					]
 				}

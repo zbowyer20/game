@@ -24,6 +24,11 @@
 			"id" : "0-books",
 			"name" : "books",
 			"description": "a set of books"
+		},
+		{
+			"id": "0-screwdriver",
+			"name": "screwdriver",
+			"description": "a screwdriver"
 		}
 	]
 }

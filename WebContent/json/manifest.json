@@ -168,6 +168,10 @@
 			{
 				"id": "0-clipboard-right",
 				"src": "img/sceneClickables/clipboard-right.png"
+			},
+			{
+				"id": "0-screwdriver",
+				"src": "img/items/drawer-screwdriver.png"
 			}
 		],
 		"video": [
@@ -241,6 +245,10 @@
 			{
 				"id": "bg0-side3",
 				"src": "img/scene0-3.png"
+			},
+			{
+				"id": "hospital-bedroom-drawers",
+				"src": "img/hospital-bedroom-drawers.png"
 			},
 			{
 				"id": "0-chair",
@@ -381,6 +389,10 @@
 			{
 				"id": "0-pillow-left",
 				"src": "img/sceneClickables/pillow-left.png"
+			},
+			{
+				"id": "0-drawer-screwdriver",
+				"src": "img/sceneClickables/drawer-screwdriver.png"
 			},
 			{
 				"id": "sad",

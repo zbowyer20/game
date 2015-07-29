@@ -948,7 +948,123 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "24",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Hey, a CD player! If only I had my S Club 7 CD!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "There were photos on the desk."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Three randomers. What's with the candles?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "25",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Well, no S Club 7. I'll listen to them later."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "26",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Some books. This shelf is really high up though. I can't reach them."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "27",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Did an ambulance smash into the other side of this wall or somethin'?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "28",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "This is kinda strange to have on your wall?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I think my poster of Mila Kunis is way better!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "29",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Have these windows been boarded up?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I can't even tell if it's day or night outside!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Although... I am sorta sleepy."
+						}
+					]
+				}
+			]
 		}
-						
 	]
 }
