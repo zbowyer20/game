@@ -67,6 +67,9 @@ var CutsceneHandler = {
 		showText: function(target, text, segmentIndex, index) {
 			if (text[segmentIndex] && (text[segmentIndex].message.length > index) && (Scene.animation.loadingText)) {
 				var self = this;
+				if (index == 0 && text[segmentIndex].audio) {
+					AudioManager.play(text[segmentIndex].audio);
+				}
 				this.updateText(target, text[segmentIndex].message.substring(index, index+1));
 				stage.update();
 				setTimeout(function() {

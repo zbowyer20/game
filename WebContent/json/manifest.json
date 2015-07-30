@@ -199,6 +199,62 @@
 			{
 				"id": "drone",
 				"src": "audio/drone.mp3"
+			},
+			{
+				"id": "fido-00",
+				"src": "audio/voice/fido-00.mp3"
+			},
+			{
+				"id": "fido-01",
+				"src": "audio/voice/fido-01.mp3"
+			},
+			{
+				"id": "fido-02",
+				"src": "audio/voice/fido-02.mp3"
+			},
+			{
+				"id": "fido-03",
+				"src": "audio/voice/fido-03.mp3"
+			},			
+			{
+				"id": "fido-04",
+				"src": "audio/voice/fido-04.mp3"
+			},
+			{
+				"id": "fido-05",
+				"src": "audio/voice/fido-05.mp3"
+			},
+			{
+				"id": "fido-06",
+				"src": "audio/voice/fido-06.mp3"
+			},
+			{
+				"id": "fido-07",
+				"src": "audio/voice/fido-07.mp3"
+			},
+			{
+				"id": "fido-08",
+				"src": "audio/voice/fido-08.mp3"
+			},
+			{
+				"id": "fido-09",
+				"src": "audio/voice/fido-09.mp3"
+			},
+			{
+				"id": "fido-10",
+				"src": "audio/voice/fido-10.mp3"
+			},
+			{
+				"id": "fido-11",
+				"src": "audio/voice/fido-11.mp3"
+			},
+			{
+				"id": "fido-12",
+				"src": "audio/voice/fido-12.mp3"
+			},
+			{
+				"id": "floating",
+				"src": "audio/floating.mp3"
 			}
 		],
 		"video": [

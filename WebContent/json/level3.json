@@ -8,8 +8,22 @@
 			"arrive": [
 				{
 					"priority": 0,
+					"type": "AUDIO",
+					"audio": {
+						"type": "MUSIC",
+						"id": "floating",
+						"volume": 0.2
+					}
+				},
+				{
+					"priority": 0,
 					"type": "CUTSCENE",
-					"id": 20
+					"id": "20"
+				},
+				{
+					"priority": 0,
+					"type": "AUDIO",
+					"audio": {"stop": true}
 				},
 				{
 					"priority": 0,

@@ -702,91 +702,143 @@
 				{
 					"text": [
 						{
-							"message": "When I was a child my family owned a dog. That dog was called Fido."
+							"message": "When I was a child my family owned a dog. That dog was called Fido.",
+							"audio": {
+								"id": "fido-00",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "Fido was the most loving dog any family could ask for. He would sit by the front door, waiting for my dad to get home from work, and he would sit there for hours, the whole day sometimes."
+							"message": "Fido was the most loving dog any family could ask for. He would sit by the front door, waiting for my dad to get home from work, and he would sit there for hours, the whole day sometimes.",
+							"audio": {
+								"id": "fido-01",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "Fido was also very protective of us, the children especially. He would follow us around the house in our younger years, and once scared off a cat after it scratched my sister."
+							"message": "Fido was also very protective of us, the children especially. He would follow us around the house in our younger years, and once scared off a cat after it scratched my sister.",
+							"audio": {
+								"id": "fido-02",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "While sitting at the front door, Fido would jump up and bark at the postman and would tear up letters that came through the letterbox. This act would regularly annoy every member of the household."
+							"message": "While sitting at the front door, Fido would jump up and bark at the postman and would tear up letters that came through the letterbox. This act would regularly annoy every member of the household.",
+							"audio": {
+								"id": "fido-03",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "One day, when my 'mama' was in the garden, someone tried to break into the house by putting their arm through the letterbox. Fido was there to bite the person's arm and he - or she - ran away."
+							"message": "One day, when my 'mama' was in the garden, someone tried to break into the house by putting their arm through the letterbox. Fido was there to bite the person's arm and he - or she - ran away.",
+							"audio": {
+								"id": "fido-04",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "I know this because there was a trail of blood that dripped down the front door and if you look closely you can even see the faint stain today."
+							"message": "I know this because there was a trail of blood that dripped down the front door and if you look closely you can even see the faint stain today.",
+							"audio": {
+								"id": "fido-05",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "When I was older, maybe six or seven years old, I chased Fido around the house and accidentally fell over. I fell right on to Fido."
+							"message": "When I was older, maybe six or seven years old, I chased Fido around the house and accidentally fell over. I fell right on to Fido.",
+							"audio": {
+								"id": "fido-06",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "Fido, in defence, bit my arm. He didn't bite it hard. It didn't hurt me too much. I was hurt by the fact that Fido had bitten me rather than the act itself."
+							"message": "Fido, in defence, bit my arm. He didn't bite it hard. It didn't hurt me too much. I was hurt by the fact that Fido had bitten me rather than the act itself.",
+							"audio": {
+								"id": "fido-07",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "However, Fido drew blood and that evening my father took Fido to the vet's. He was put down immediately."
+							"message": "However, Fido drew blood and that evening my father took Fido to the vet's. He was put down immediately.",
+							"audio": {
+								"id": "fido-08",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "I wasn't there to see Fido die, but I have wondered ever since:"
+							"message": "I wasn't there to see Fido die, but I have wondered ever since:",
+							"audio": {
+								"id": "fido-09",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "As my father watched the life leave from Fido's eyes, what did he see there? Did he see malice? Did he see sadness? Did he see ignorance?"
+							"message": "As my father watched the life leave from Fido's eyes, what did he see there? Did he see malice? Did he see sadness? Did he see ignorance?",
+							"audio": {
+								"id": "fido-10",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "I have two questions for you now. Do you think that Fido deserved to die?"
+							"message": "I have two questions for you now. Do you think that Fido deserved to die?",
+							"audio": {
+								"id": "fido-11",
+								"type": "SOUND"
+							}
 						}
 					]
 				},
 				{
 					"text": [
 						{
-							"message": "And, regardless of your answer to that question: Was it right for Fido to die on that day?"
+							"message": "And, regardless of your answer to that question: Was it right for Fido to die on that day?",
+							"audio": {
+								"id": "fido-12",
+								"type": "SOUND"
+							}
 						}
 					]
 				}
