@@ -83,9 +83,11 @@ var CutsceneHandler = {
 				}
 				this.updateText(target, text[segmentIndex].message.substring(index, index+1));
 				stage.update();
+				var timeout = text[segmentIndex].time ? this.getTextSpeedByTime(text[segmentIndex].time, text[segmentIndex].message.length) : this.getTextSpeed(text[segmentIndex].speed);
+				console.log(timeout);
 				setTimeout(function() {
 					self.showText(target, text, segmentIndex, index+1);
-				}, self.getTextSpeed(text[segmentIndex].speed));
+				}, timeout);
 			}
 			else {
 				if ((segmentIndex < text.length) && (Scene.animation.loadingText)) {
@@ -98,7 +100,7 @@ var CutsceneHandler = {
 						Scene.animation.loadingText = true;
 						setTimeout(function() {
 							self.play();
-						}, 3000);
+						}, 1000);
 					}
 				}
 			}
@@ -132,6 +134,10 @@ var CutsceneHandler = {
 				return DIALOG_TEXT_SPEED["DEFAULT"];
 			}
 			return DIALOG_TEXT_SPEED[speed];
+		},
+		
+		getTextSpeedByTime: function(time, characters) {
+			return ((time * 1000) / characters);
 		},
 		
 		dialogKeyPress: function(deferred) {

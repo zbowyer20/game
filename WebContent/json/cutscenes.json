@@ -706,7 +706,8 @@
 							"audio": {
 								"id": "fido-00",
 								"type": "SOUND"
-							}
+							},
+							"time": 7
 						}
 					]
 				},
@@ -717,7 +718,8 @@
 							"audio": {
 								"id": "fido-01",
 								"type": "SOUND"
-							}
+							},
+							"time": 10
 						}
 					]
 				},
@@ -728,7 +730,8 @@
 							"audio": {
 								"id": "fido-02",
 								"type": "SOUND"
-							}
+							},
+							"time": 11
 						}
 					]
 				},
@@ -739,7 +742,8 @@
 							"audio": {
 								"id": "fido-03",
 								"type": "SOUND"
-							}
+							},
+							"time": 12
 						}
 					]
 				},
@@ -750,7 +754,8 @@
 							"audio": {
 								"id": "fido-04",
 								"type": "SOUND"
-							}
+							},
+							"time": 12
 						}
 					]
 				},
@@ -761,7 +766,8 @@
 							"audio": {
 								"id": "fido-05",
 								"type": "SOUND"
-							}
+							},
+							"time": 8
 						}
 					]
 				},
@@ -772,7 +778,8 @@
 							"audio": {
 								"id": "fido-06",
 								"type": "SOUND"
-							}
+							},
+							"time": 9
 						}
 					]
 				},
@@ -783,7 +790,8 @@
 							"audio": {
 								"id": "fido-07",
 								"type": "SOUND"
-							}
+							},
+							"time": 11
 						}
 					]
 				},
@@ -794,7 +802,8 @@
 							"audio": {
 								"id": "fido-08",
 								"type": "SOUND"
-							}
+							},
+							"time": 9
 						}
 					]
 				},
@@ -805,7 +814,8 @@
 							"audio": {
 								"id": "fido-09",
 								"type": "SOUND"
-							}
+							},
+							"time": 6
 						}
 					]
 				},
@@ -816,7 +826,8 @@
 							"audio": {
 								"id": "fido-10",
 								"type": "SOUND"
-							}
+							},
+							"time": 13
 						}
 					]
 				},
@@ -827,7 +838,8 @@
 							"audio": {
 								"id": "fido-11",
 								"type": "SOUND"
-							}
+							},
+							"time": 5
 						}
 					]
 				},
@@ -838,7 +850,8 @@
 							"audio": {
 								"id": "fido-12",
 								"type": "SOUND"
-							}
+							},
+							"time": 7
 						}
 					]
 				}
