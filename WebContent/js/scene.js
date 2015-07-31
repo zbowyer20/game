@@ -224,9 +224,14 @@ var Scene = {
 
 			for (var id in clickables) {
 				if (layers.length) {
-					layers[0].addChild(clickables[id].bitmap);
 					if (clickables[id].text) {
 						layers[2].addChild(clickables[id].text);
+					}
+					if (clickables[id].top) {
+						layers[2].addChild(clickables[id].bitmap);
+					}
+					else {
+						layers[0].addChild(clickables[id].bitmap);
 					}
 				}
 				else {
@@ -238,8 +243,13 @@ var Scene = {
 		
 		removeClickableFromContainer: function(id) {
 			var container = this.containers.areaLayer.getChildByName("backgroundContainer");
-			var clickable = container.getChildByName(id);
-			container.removeChild(clickable);
+			for (var i = 0; i < container.children.length; i++) {
+				var child = container.getChildAt(i);
+				var clickable = child.getChildByName(id);
+				if (clickable != null) {
+					child.removeChild(clickable);
+				}
+			}
 			stage.update();
 		},
 		

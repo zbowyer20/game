@@ -2,6 +2,7 @@ function Clickable(json) {
 	this.clickable = json;
 	this.addToStage = true;
 	this.bitmap;
+	this.top = false;
 	
 	this.init = function() {
 		var self = this;
@@ -16,6 +17,7 @@ function Clickable(json) {
 			}
 		}
 		this.setHitArea();
+		this.top = this.clickable.top;
 		this.bitmap.addEventListener("click", function() {
 			if (checkPriority(ITEM_PRIORITY)) {
 				if (!self.clickable.persist) {
