@@ -1,5 +1,9 @@
 var CutsceneHandler = {
 		cutscenes: {},
+		currentlyPlaying: {
+			"scene": null,
+			"index": 0
+		},
 		
 		addCutscenes: function(cutscenes) {
 			for (var id in cutscenes) {
@@ -19,19 +23,24 @@ var CutsceneHandler = {
 			this.deferred = $.Deferred();
 			priority = cutscene != null ? CUTSCENE_PRIORITY: 0;
 			Scene.animation.loadingText = true;
-			this.play(cutscene, 0, null, parameters);
+			this.currentlyPlaying["scene"] = cutscene;
+			this.currentlyPlaying["index"] = 0;
+			this.play(null, parameters);
 			return this.deferred.promise();
 		},
 		
-		play: function(cutscene, current, deferred, parameters) {
+		play: function(deferred, parameters) {
 			// more to play in the cutscene?
+			var cutscene = this.currentlyPlaying["scene"];
+			var current = this.currentlyPlaying["index"];
 			if (cutscene.scene[current] != null) {
 				var speech = this.dialog(cutscene.scene[current]);
 				var txt = $.extend(true, [], cutscene.scene[current].text);
 				var text = parameters != null ? this.prepareText(txt, parameters) : txt;
 				this.showText(speech.text, text, 0, 0)
 				// play the next dialog on space
-				this.dialogKeyPress(cutscene, current+1, deferred);
+				this.currentlyPlaying["index"]++;
+				this.dialogKeyPress(deferred);
 			}
 			// cutscene is done
 			else {
@@ -39,6 +48,8 @@ var CutsceneHandler = {
 				Scene.initDialogs();
 				priority = 0;
 				stage.update();
+				cutscene = null;
+				current = 0;
 				this.deferred.resolve('cutscene complete');
 			}
 		},
@@ -65,8 +76,8 @@ var CutsceneHandler = {
 		
 		// TODO should go in Dialog
 		showText: function(target, text, segmentIndex, index) {
+			var self = this;
 			if (text[segmentIndex] && (text[segmentIndex].message.length > index) && (Scene.animation.loadingText)) {
-				var self = this;
 				if (index == 0 && text[segmentIndex].audio) {
 					AudioManager.play(text[segmentIndex].audio);
 				}
@@ -83,6 +94,12 @@ var CutsceneHandler = {
 				else {
 					Scene.animation.loadingText = false;
 					this.updateText(target, text);
+					if (this.currentlyPlaying['scene'].unskippable) {
+						Scene.animation.loadingText = true;
+						setTimeout(function() {
+							self.play();
+						}, 3000);
+					}
 				}
 			}
 		},
@@ -117,10 +134,12 @@ var CutsceneHandler = {
 			return DIALOG_TEXT_SPEED[speed];
 		},
 		
-		dialogKeyPress: function(cutscene, current, deferred) {
+		dialogKeyPress: function(deferred) {
 			var self = this;
 			document.onkeypress = function(e) {
 				if (e.keyCode == KEYCODES["SPACE"]) {
+					var cutscene = self.currentlyPlaying["scene"];
+					var current = self.currentlyPlaying["index"];
 					if (Scene.animation.loadingText) {
 						if (!cutscene.unskippable && !cutscene.scene[current-1].unskippable) {
 							Scene.animation.loadingText = false;
@@ -128,7 +147,7 @@ var CutsceneHandler = {
 					}
 					else {
 						Scene.animation.loadingText = true;
-						self.play(cutscene, current, deferred);
+						self.play(deferred);
 					}
 				}
 			}
