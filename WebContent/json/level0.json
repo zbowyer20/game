@@ -286,6 +286,14 @@
 					"onclick": [
 						{
 							"priority": 0,
+							"type": "AUDIO",
+							"audio": {
+								"id": "drawer",
+								"type": "SOUND"
+							}
+						},
+						{
+							"priority": 0,
 							"type": "MOVE",
 							"destination": "hospital-bedroom-drawers"
 						}

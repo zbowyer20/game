@@ -172,6 +172,10 @@
 			{
 				"id": "0-screwdriver",
 				"src": "img/items/drawer-screwdriver.png"
+			},
+			{
+				"id": "drawer",
+				"src": "audio/drawer.mp3"
 			}
 		],
 		"video": [
