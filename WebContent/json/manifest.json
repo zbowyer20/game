@@ -485,6 +485,14 @@
 			{
 				"id": "yawn",
 				"src": "audio/yawn.mp3"
+			},
+			{
+				"id": "locked-door",
+				"src": "audio/locked-door.mp3"
+			},
+			{
+				"id": "whistle",
+				"src": "audio/whistle.mp3"
 			}
 		],
 		"video": [

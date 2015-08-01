@@ -34,6 +34,9 @@ var CutsceneHandler = {
 			var cutscene = this.currentlyPlaying["scene"];
 			var current = this.currentlyPlaying["index"];
 			if (cutscene.scene[current] != null) {
+				if (cutscene.scene[current].audio) {
+					AudioManager.play(cutscene.scene[current].audio);
+				}
 				var speech = this.dialog(cutscene.scene[current]);
 				var txt = $.extend(true, [], cutscene.scene[current].text);
 				var text = parameters != null ? this.prepareText(txt, parameters) : txt;

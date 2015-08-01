@@ -352,6 +352,14 @@
 					"onclick": [
 						{
 							"priority": 0,
+							"type": "AUDIO",
+							"audio": {
+								"type": "SOUND",
+								"id": "locked-door"
+							}
+						},
+						{
+							"priority": 0,
 							"type": "CUTSCENE",
 							"id": "30",
 							"switchOn": "door-first-look"
