@@ -88,7 +88,6 @@ var CutsceneHandler = {
 				if (!timeout) {
 					timeout = text[segmentIndex].time ? this.getTextSpeedByTime(text[segmentIndex].time, text[segmentIndex].message.length) : this.getTextSpeed(text[segmentIndex].speed);
 				}
-				console.log(timeout);
 				setTimeout(function() {
 					self.showText(target, text, segmentIndex, index+1, timeout);
 				}, timeout);

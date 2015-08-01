@@ -65,5 +65,4 @@ var PopupHandler = {
 				self.deferred.resolve("complete");
 			}
 		}
-
 }

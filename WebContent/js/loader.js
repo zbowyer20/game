@@ -1,5 +1,4 @@
 var Loader = {
-		
 		loadManifest: function() {
 			return $.getJSON("json/manifest.json");
 		},
@@ -48,6 +47,15 @@ var Loader = {
 			return $.getJSON(sceneJsonFile);
 		},
 		
+		loadContent: function() {
+			return $.when(
+					$.getJSON("json/cutscenes.json"),
+					$.getJSON("json/items.json"),
+					$.getJSON("json/files.json"),
+					$.getJSON("json/puzzles.json")
+			);
+		},
+		
 		loadCutscenes: function() {
 			return $.getJSON("json/cutscenes.json");
 		},
@@ -63,5 +71,4 @@ var Loader = {
 		loadPuzzles: function() {
 			return $.getJSON("json/puzzles.json");
 		}
-		
 }

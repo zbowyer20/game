@@ -1,8 +1,9 @@
 var stage;
-var layers = {};
-	layers.sceneLayer = new createjs.Container();
-	layers.menuLayer = new createjs.Container();
-	layers.UILayer = new createjs.Container();
+var layers = {
+		sceneLayer: new createjs.Container(),
+		menuLayer: new createjs.Container(),
+		UILayer: new createjs.Container
+};
 	
 var images = {};
 var videos = {};

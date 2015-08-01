@@ -1,72 +1,35 @@
 var Scene = {
 		assets: {},
-		components: {"areas": {}, "dialogs" : {}},
+		components: {areas: {}, dialogs : {}},
 		puzzles: {},
 		animation: {},
 		videos: [],
 		containers: {
-			"globalLayer": null, 
-			"areaLayer": null, 
-			"navigationLayer": null, 
-			"dialogLayer": null,
-			"topLayer": null
+			globalLayer: null, 
+			areaLayer: null, 
+			navigationLayer: null, 
+			dialogLayer: null,
+			topLayer: null
 		},
 		
 		init: function(sceneName) {
 			var self = this;
-			stage.enableMouseOver(20);
-			PopupHandler.init();
-			ItemContainer.init();
-			AnimationHandler.init();
 			document.onkeydown = function(e) {
 				self.keyDown(e);
 			}
-			Loader
-				.loadManifest()
+			Loader.loadManifest()
 				.then(function(data) { 
 					self.assets = data;
-					var sceneId = self.getSceneId("global");
-					return Loader.loadSceneAssets(self.assets[sceneId].nonVideo, true);
+					return $.when(self.loadScene("global"), self.loadScene(sceneName));
 				})
-				.then(function(data) {
-					var sceneId = self.getSceneId("global");
-					if (self.assets[sceneId].video.length > 0) {
-						return Loader.loadSceneAssets(self.assets[sceneId].video, false);
-					}
-				})
-				.then(function(data) {
-					var sceneId = self.getSceneId(sceneName);
-					return Loader.loadSceneAssets(self.assets[sceneId].nonVideo, true);
-				})
-				.then(function(data) {
-					var sceneId = self.getSceneId(sceneName);
-					if (self.assets[sceneId].video.length > 0) {
-						return Loader.loadSceneAssets(self.assets[sceneId].video, false);
-					}
-				})
-				.then(function(data) {
-					return Loader.loadPuzzles();
-				})
-				.then(function(data) {
-					PuzzleHandler.addPuzzles(data.puzzles);
-				})
-				.then(function(data) {
-					// TODO file images dont work
-					return Loader.loadFiles();
-				})
-				.then(function(data) {
-					FileHandler.addFiles(data.files);
-				})
-				.then(function(data) {
-					return Loader.loadItems();
-				})
-				.then(function(data) {
-					ItemHandler.addItems(data.items);
-					return Loader.loadCutscenes();
-				})
-				.done(function(data) {
-					CutsceneHandler.addCutscenes(data.cutscenes);
-					self.populate(sceneName);
+				.then(function() {
+					$.when(Loader.loadContent()).done(function(cutscenes, items, files, puzzles) {
+						PuzzleHandler.addPuzzles(puzzles[0].puzzles);
+						FileHandler.addFiles(files[0].files);
+						ItemHandler.addItems(items[0].items);
+						CutsceneHandler.addCutscenes(cutscenes[0].cutscenes);
+						self.populate(sceneName);
+					})
 				});
 		},
 		
@@ -81,8 +44,10 @@ var Scene = {
 		loadScene: function(sceneName) {
 			var sceneId = this.getSceneId(sceneName);
 			var self = this;
-			Loader.loadSceneAssets(this.assets[sceneId].nonVideo, true).then(function(data) {
-				return Loader.loadSceneAssets(self.assets[sceneId].video, false);
+			return Loader.loadSceneAssets(this.assets[sceneId].nonVideo, true).then(function(data) {
+				if (self.assets[sceneId].video.length > 0) {
+					Loader.loadSceneAssets(self.assets[sceneId].video, false);
+				}
 			});
 		},
 		

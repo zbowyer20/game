@@ -15,6 +15,12 @@ function Game() {
 	stage.addChild(layers.menuLayer);
 	stage.addChild(layers.UILayer);
 	
+	stage.enableMouseOver(20);
+	
+	PopupHandler.init();
+	ItemContainer.init();
+	AnimationHandler.init();
+	
 	createjs.Ticker.addEventListener("tick", tick);
 	function tick() { stage.update(); }
 	
