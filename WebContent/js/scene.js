@@ -117,7 +117,7 @@ var Scene = {
 		
 		setupAreas: function(json) {
 			this.components.areas.current = this.initAreas(json);
-			return this.initAreaContainer();
+			return this.initAreaContainer(this.components.areas.current, true);
 		},
 		
 		/*
@@ -145,15 +145,15 @@ var Scene = {
 			
 		},
 		
-		initAreaContainer: function(defaultArea) {
+		initAreaContainer: function(area, includeClickables) {
 			var container = new createjs.Container();
 			container.name = "backgroundContainer";
 			var layers = [new createjs.Container(), new createjs.Container(), new createjs.Container()];
 			for (var i = 0; i < layers.length; i++) {
 				container.addChild(layers[i]);
 			}
-			this.addClickablesToContainer(layers, this.components.areas.current, 0);
-			var bg = this.components.areas.current.getBackground();
+			if (includeClickables) this.addClickablesToContainer(layers, area, 0);
+			var bg = area.getBackground();
 			layers[1].addChild(bg.image);
 			layers[1].name = "bg";
 			if (bg.video) {
@@ -169,6 +169,7 @@ var Scene = {
 				if (clickables[id].text) {
 					layers[2].addChild(clickables[id].text);
 				}
+				console.log(layers);
 				layers[clickables[id].layer].addChild(clickables[id].bitmap);
 				clickables[id].bitmap.x = clickables[id].getPrimaryPosition().x + (stage.canvas.width * offStageMultiplier);
 			}
@@ -219,12 +220,10 @@ var Scene = {
 		initNavigation: function() {
 			// For every direction for the current background, add an arrow
 			var navigation = this.createNavigation();
-			
 			// Add those arrows to the scene
 			for (var i = 0; i < navigation.length; i++) {
 				this.containers.navigationLayer.addChild(navigation[i]);
-			}
-						
+			}					
 			stage.update();
 		},
 
@@ -303,65 +302,45 @@ var Scene = {
 		
 		/*
 		* Animation for a particular movement from one scene to another
-		* @param newView the view we're moving to
+		* @param area the area we're moving to
+		* @param movements how we're moving there
 		*/
-		turn: function(next, movements) {
-			this.turnToArea(next, movements);
-			//updateClickables(movements);
-			stage.update();
-		},
-		
-		turnToArea: function(area, movements) {
+		turn: function(area, movements) {
 			this.clearNavigation();
 			var self = this;
+			// get the background of the area we're turning to
 			var backgroundBit = area.getBackground();
 			var offStageMultiplier;
+			// if animating movement, put the area to a side
 			if (movements) {
 				offStageMultiplier = movements.x > 0 ? -1 : 1;
 			}
 			else {
+				// otherwise we can jump right to it
 				offStageMultiplier = 0;
 			}
 			backgroundBit.image.x = stage.canvas.width * offStageMultiplier;
 			if (backgroundBit.video) {
 				backgroundBit.video.x = stage.canvas.width * offStageMultiplier;
-			}
-			
-			var backgroundContainer = this.containers.areaLayer.getChildByName("backgroundContainer");
-			
-			var newContainer = new createjs.Container();
-			var layers = [new createjs.Container(), new createjs.Container(), new createjs.Container()];
-			//this.addClickablesToContainer(newContainer, area, offStageMultiplier);
-			for (var i = 0; i<layers.length; i++) {
-				newContainer.addChild(layers[i]);
-			}
-			layers[1].name = "bg";
-			layers[1].addChild(backgroundBit.image);
-			if (backgroundBit.video) {
-				layers[1].addChild(backgroundBit.video);
-			}
-			
+			}			
+			var newContainer = this.initAreaContainer(area, false);
+			var newContainerBg = newContainer.getChildByName("bg");
 			this.containers.areaLayer.addChild(newContainer);
 			stage.update();
-			
 			// Start animation
 			priority = FROZEN_PRIORITY;
+			var backgroundContainer = this.containers.areaLayer.getChildByName("backgroundContainer");
 			var topContainer = backgroundContainer.getChildByName("bg");
+			// discard all hidden clickables from the container
+			// we only need to move the background itself
 			backgroundContainer.removeAllChildren();
 			backgroundContainer.addChild(topContainer);
-			AnimationHandler.slideBackgrounds([backgroundContainer, layers[1]], movements)
+			AnimationHandler.slideBackgrounds([backgroundContainer, newContainerBg], movements)
 							.then(function() {
 								self.containers.areaLayer.removeChild(backgroundContainer);
+								// now set up the new area
 								newContainer.name = "backgroundContainer";
-								self.addClickablesToContainer(layers, area, 0);
-								layers[1].removeChild(backgroundBit.image);
-								if (backgroundBit.video) {
-									layers[1].removeChild(backgroundBit.video);
-								}
-								layers[1].addChild(backgroundBit.image);
-								if (backgroundBit.video) {
-									layers[1].addChild(backgroundBit.video);
-								}
+								self.addClickablesToContainer(newContainer.children, area, 0);
 								self.components.areas["current"] = area;
 								self.initNavigation();
 							});
