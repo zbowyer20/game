@@ -744,7 +744,7 @@
 				{
 					"type" : "ITEM",
 					"id": "0-screwdriver",
-					"top": true,
+					"layer": 2,
 					"persist": false,
 					"onclick": [
 						{

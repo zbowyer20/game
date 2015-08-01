@@ -37,31 +37,21 @@ var Scene = {
 			return "scene-" + sceneName;
 		},
 		
-		loadGame: function() {
-			console.log(images);
-		},
-		
 		loadScene: function(sceneName) {
 			var sceneId = this.getSceneId(sceneName);
 			var self = this;
-			return Loader.loadSceneAssets(this.assets[sceneId].nonVideo, true).then(function(data) {
-				if (self.assets[sceneId].video.length > 0) {
-					Loader.loadSceneAssets(self.assets[sceneId].video, false);
-				}
-			});
+			if ((self.assets[sceneId].video.length) == 0) {
+				return Loader.loadSceneAssets(this.assets[sceneId].nonVideo, true);
+			}
+			else {
+				return $.when(Loader.loadSceneAssets(this.assets[sceneId].nonVideo, true), Loader.loadSceneAssets(self.assets[sceneId].video, false));
+			}
 		},
 		
-		// TODO fix this
 		nextScene: function(sceneName) {
 			var self = this;
-			var sceneId = self.getSceneId(sceneName);
-			Loader.loadSceneAssets(self.assets[sceneId].nonVideo, true).then(function(data) {
-				if (self.assets[sceneId].video.length) {
-					return Loader.loadSceneAssets(self.assets[sceneId].video, false);
-				}
-			}).then(function(data) {
-				self.clear();
-				self.populate(sceneName);
+			$.when(self.loadScene(sceneName)).done(function() {
+				self.clear().populate(sceneName);
 			});
 		},
 		
@@ -71,22 +61,19 @@ var Scene = {
 			}
 			this.videos = [];
 			layers.sceneLayer.removeAllChildren();
+			return this;
 		},
 		
 		populate: function(sceneName) {
 			var self = this;
-			$.when(Loader.loadLevel(sceneName))
+			Loader.loadLevel(sceneName)
 			 .then(function(json) {
-				 var containers = {};
 				 for (var container in self.containers) {
 					 self.containers[container] = new createjs.Container()
 				 }
 			     self.containers.audioContainer = Muter.init().icon;
-
 				 self.containers.areaLayer.addChild(self.setupAreas(json));
-
 			     self.initNavigation();
-
 			     self.containers.globalLayer.addChild(self.containers.areaLayer);
 			     if (json.UI) {
 			    	 self.containers.globalLayer.addChild(ItemContainer.init().container);
@@ -95,16 +82,10 @@ var Scene = {
 			     self.containers.globalLayer.addChild(self.containers.navigationLayer);
 			     self.containers.globalLayer.addChild(self.containers.dialogLayer);
 			     self.containers.globalLayer.addChild(self.containers.topLayer);
-
 				 layers.sceneLayer.addChild(self.containers.globalLayer);
 			     veil = new Veil();
 				 layers.sceneLayer.addChild(veil.container);
-
-				 if (json.UI) {
-					 initMenu();
-				 }
-				 
-				 stage.update();
+				 if (json.UI) initMenu();		 
 			 })
 		},
 		
@@ -167,7 +148,6 @@ var Scene = {
 		initAreaContainer: function(defaultArea) {
 			var container = new createjs.Container();
 			container.name = "backgroundContainer";
-			
 			var layers = [new createjs.Container(), new createjs.Container(), new createjs.Container()];
 			for (var i = 0; i < layers.length; i++) {
 				container.addChild(layers[i]);
@@ -179,29 +159,17 @@ var Scene = {
 			if (bg.video) {
 				this.videos.push(bg.video);
 				layers[1].addChild(bg.video);
-			}		
-
+			}
 			return container;
 		},
 		
 		addClickablesToContainer: function(layers, area, offStageMultiplier) {
 			var clickables = area.getClickables(true);
-
 			for (var id in clickables) {
-				if (layers.length) {
-					if (clickables[id].text) {
-						layers[2].addChild(clickables[id].text);
-					}
-					if (clickables[id].top) {
-						layers[2].addChild(clickables[id].bitmap);
-					}
-					else {
-						layers[0].addChild(clickables[id].bitmap);
-					}
+				if (clickables[id].text) {
+					layers[2].addChild(clickables[id].text);
 				}
-				else {
-					layers.addChild(clickables[id].bitmap);
-				}
+				layers[clickables[id].layer].addChild(clickables[id].bitmap);
 				clickables[id].bitmap.x = clickables[id].getPrimaryPosition().x + (stage.canvas.width * offStageMultiplier);
 			}
 		},
@@ -215,7 +183,6 @@ var Scene = {
 					child.removeChild(clickable);
 				}
 			}
-			stage.update();
 		},
 		
 		initDialogs: function() {
@@ -375,7 +342,6 @@ var Scene = {
 			}
 			
 			this.containers.areaLayer.addChild(newContainer);
-			
 			stage.update();
 			
 			// Start animation
@@ -402,11 +368,6 @@ var Scene = {
 		},
 		
 }
-
-//function isActiveItem(id) {
-//	var heldItem = player.getHeldItem();
-//	return (heldItem && heldItem.id == id);
-//}
 
 function checkPriority(targetPriority) {
 	return priority <= targetPriority;
