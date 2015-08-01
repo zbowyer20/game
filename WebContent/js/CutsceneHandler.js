@@ -75,18 +75,22 @@ var CutsceneHandler = {
 		},
 		
 		// TODO should go in Dialog
-		showText: function(target, text, segmentIndex, index) {
+		showText: function(target, text, segmentIndex, index, timeout) {
 			var self = this;
 			if (text[segmentIndex] && (text[segmentIndex].message.length > index) && (Scene.animation.loadingText)) {
+				var sound;
 				if (index == 0 && text[segmentIndex].audio) {
-					AudioManager.play(text[segmentIndex].audio);
+					sound = AudioManager.play(text[segmentIndex].audio);
+					timeout = (sound.duration - 500) / text[segmentIndex].message.length;
 				}
 				this.updateText(target, text[segmentIndex].message.substring(index, index+1));
 				stage.update();
-				var timeout = text[segmentIndex].time ? this.getTextSpeedByTime(text[segmentIndex].time, text[segmentIndex].message.length) : this.getTextSpeed(text[segmentIndex].speed);
+				if (!timeout) {
+					timeout = text[segmentIndex].time ? this.getTextSpeedByTime(text[segmentIndex].time, text[segmentIndex].message.length) : this.getTextSpeed(text[segmentIndex].speed);
+				}
 				console.log(timeout);
 				setTimeout(function() {
-					self.showText(target, text, segmentIndex, index+1);
+					self.showText(target, text, segmentIndex, index+1, timeout);
 				}, timeout);
 			}
 			else {
@@ -100,7 +104,7 @@ var CutsceneHandler = {
 						Scene.animation.loadingText = true;
 						setTimeout(function() {
 							self.play();
-						}, 1000);
+						}, 1500);
 					}
 				}
 			}

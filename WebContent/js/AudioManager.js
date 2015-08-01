@@ -8,6 +8,7 @@ var AudioManager = {
 				var loop = audio.loop ? -1 : 0;
 				var sound = createjs.Sound.play(audio.id, {loop:loop});
 				this.setPosition(sound, audio.position).setVolume(sound, audio.volume);
+				return sound;
 			}
 			catch (e) {
 				console.log(e.message);
