@@ -283,6 +283,10 @@
 				"src": "img/hospital-bedroom-1.png"
 			},
 			{
+				"id": "hospital-bedroom-2",
+				"src": "img/hospital-bedroom-2.png"
+			},
+			{
 				"id": "hospital-bedroom-table",
 				"src": "img/hospital-bedroom-table.png"
 			},
@@ -309,6 +313,10 @@
 			{
 				"id": "hospital-bedroom-drawers",
 				"src": "img/hospital-bedroom-drawers.png"
+			},
+			{
+				"id": "0-door",
+				"src": "img/sceneClickables/door.png"
 			},
 			{
 				"id": "0-chair",

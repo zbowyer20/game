@@ -12,7 +12,7 @@
 				},
 				{
 					"name" : "LEFT",
-					"destination" : "side-3"
+					"destination" : "door"
 				}
 			],
 			"arrive": [
@@ -223,7 +223,7 @@
 			"movements": [
 				{
 					"name" : "RIGHT",
-					"destination" : "side-1"
+					"destination" : "door"
 				},
 				{
 					"name" : "LEFT",
@@ -325,6 +325,59 @@
 								"type" : "SOUND",
 								"volume": 0.1
 							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"defaultBackground": false,
+			"name": "door",
+			"id": "hospital-bedroom-2",
+			"movements": [
+				{
+					"name": "RIGHT",
+					"destination": "front"
+				},
+				{
+					"name": "LEFT",
+					"destination": "back"
+				}
+			],
+			"clickables": [
+				{
+					"type": "EXAMINE",
+					"id": "0-door",
+					"persist": "true",
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "30",
+							"switchOn": "door-first-look"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "31",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "door-first-look"
+								}
+							],
+							"switchOn": "door-second-look"
+						},
+						{
+							"priority": 2,
+							"type": "CUTSCENE",
+							"id": "32",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "door-second-look"
+								}
+							]
 						}
 					]
 				}

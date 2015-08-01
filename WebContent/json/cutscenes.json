@@ -1130,6 +1130,236 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "30",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Eh? It's not opening?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Thing must be jammed."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert pulled and pulled at the door, but it wasn't budging."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "It must be locked."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "It dawned on Albert that he wasn't in a good situation."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "This is creepy."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Maybe I'm in a dream?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert pinched himself lightly... then pinched himself again, harder."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Ouch!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Ok then. Not a dream."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert peered through the window, but it was pitch black outside."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Hello? IS THERE ANYONE ALIVE OUT THERE?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert whistles."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "There's no response."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Guess I kinda jynxed that one by quoting Titanic."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Oh, jeez... what am I gonna do?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "This is the worst hangover ever."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "....... well, maybe not as bad as the time Spongy pushed me into that lake."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert pressed his face against the glass of the door, straining his eyes to try to look outside, and banged on the door."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "C'mon already! Let me outta here!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "But nobody came to Albert's cries."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What do I do now?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "31",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Still locked. Still nobody out there."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Wait a sec!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "SPONGY? IS THIS YOU? LOOK, I'M SORRY ABOUT THE SOUP THING... I DIDN'T REALISE YOU'D EAT IT ALL BEFORE REALISING WHAT WAS IN THERE!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "There's still no answer."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Hmm..."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "32",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Well I'm not getting anywhere by standing here waiting. Let's check out the room."
+						}
+					]
+				}
+			]
 		}
 	]
 }
