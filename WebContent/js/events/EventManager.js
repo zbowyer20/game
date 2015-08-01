@@ -1,6 +1,7 @@
 var EventManager = {
 		playEvent: function(json, deferred) {
 			var event;
+			GameUtils.incrementPlayedCount(json.id);
 			GameUtils.setSwitch(json.switchOn, true);
 			switch (json.type) {
 				case "CUTSCENE":

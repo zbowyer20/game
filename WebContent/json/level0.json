@@ -67,6 +67,17 @@
 							"priority": 0,
 							"type": "CUTSCENE",
 							"id": "28"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "33",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "door-first-look"
+								}
+							]
 						}
 					]
 				},
@@ -145,12 +156,81 @@
 					"persist": true,
 					"onclick": [
 						{
-							"type": "GAINED_ITEM",
-							"audio": {
-								"id": "foundItem",
-								"type" : "SOUND",
-								"volume": 0.1
-							}
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "34"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "35",
+							"switchOn": "bin-0",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "door-first-look"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "CUTSCENE",
+							"id": "36",
+							"switchOn": "bin-1",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "bin-0"
+								}
+							]
+						},
+						{
+							"priority": 3,
+							"type": "CUTSCENE",
+							"id": "37",
+							"switchOn": "bin-2",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "bin-1"
+								}
+							]
+						},
+						{
+							"priority": 4,
+							"type": "CUTSCENE",
+							"id": "38",
+							"switchOn": "bin-3",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "bin-2"
+								}
+							]
+						},
+						{
+							"priority": 5,
+							"type": "CUTSCENE",
+							"id": "39",
+							"switchOn": "bin-4",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "bin-3"
+								}
+							]
+						},
+						{
+							"priority": 6,
+							"type": "CUTSCENE",
+							"id": "40",
+							"switchOn": "bin-5",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "bin-4"
+								}
+							]
 						}
 					]
 				},
@@ -162,7 +242,8 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "26"
+							"id": "26",
+							"switchOn": "books-first-look"
 						}
 					]	
 				},
@@ -199,6 +280,21 @@
 							"priority": 0,
 							"type": "CUTSCENE",
 							"id": "10"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "44",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "door-first-look"
+								},
+								{
+									"type": "SWITCH",
+									"id": "books-first-look"
+								}
+							]
 						}
 					]
 				},
@@ -734,6 +830,12 @@
 					"id": "0-table-table",
 					"persist": true,
 					"onclick": [
+						{
+							"priority": "0",
+							"type": "CUTSCENE",
+							"id": "45",
+							"maxPlays": 1
+						},
 						{
 							"priority": 0,
 							"type": "MOVE",

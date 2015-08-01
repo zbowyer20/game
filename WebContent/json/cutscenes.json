@@ -1364,6 +1364,305 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "33",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Why ARE there numbers here anyways?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "34",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "It's a bin. Yay?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "35",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I might be trapped in this room, but nothing - NOTHING - will make me a bin raider."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "36",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Look, I'm not doing it. I'm not looking through someone's bin."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "37",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I'm not doing it! Stop asking already!"
+						}
+					]
+				}
+			]
+		},
+		{	
+			"id": "38",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Please don't make me do it."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "39",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What's wrong with you?! Fine!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I'll do it!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert looks into the bin, except..."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [	
+						{
+							"message": "It's empty. Completely empty!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I hope you're pleased."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "40",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Nothing's gonna magically appear in that bin! Leave it already!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "41",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Eh? This radiator's turned on but it's freezing in here!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "42",
+			"scene": [
+				{
+					"text": [
+						{
+							"message": "Shivering, Albert touched the radiator."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "YOUCH!!!!"
+						}
+					],
+					"audio": {
+						"type": "SOUND",
+						"id": "scream"
+					}
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "It's red hot!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert, feeling sorry for himself, stuck his fingers in his mouth to lick his wounds."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "This room has some crazy heat loss going on!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "43",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I'm not touching that again! :("
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "44",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Hey, I can use this chair to look up at that shelf!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Oh, I am such a genius."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "This is why Profe Fonseca put me in that classroom with that tutor all for myself!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "45",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "This drawer is being kept shut by two locks! TWO!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "There must be something very secret inside! Something somebody wants nobody to see!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What if there's a hundred thousand euros inside?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What about secret government documents about UFOs???"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "OR MAYBE.......... A girl's nude pictures???"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I have to get in here!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Uh, for the secret government documents..."
+						}
+					]
+				}
+			]
 		}
+					
 	]
 }

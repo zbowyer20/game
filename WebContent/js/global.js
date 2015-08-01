@@ -10,4 +10,3 @@ var videos = {};
 	
 var player;
 var priority = 0;
-var switches = [];

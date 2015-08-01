@@ -493,6 +493,10 @@
 			{
 				"id": "whistle",
 				"src": "audio/whistle.mp3"
+			},
+			{
+				"id": "scream",
+				"src": "audio/scream.mp3"
 			}
 		],
 		"video": [
