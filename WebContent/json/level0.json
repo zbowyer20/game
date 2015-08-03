@@ -244,6 +244,17 @@
 							"type": "CUTSCENE",
 							"id": "26",
 							"switchOn": "books-first-look"
+						},
+						{
+							"priority": 1,
+							"type": "MOVE",
+							"destination": "hospital-bedroom-shelf",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "use-chair-books"
+								}
+							]
 						}
 					]	
 				},
@@ -285,6 +296,23 @@
 							"priority": 1,
 							"type": "CUTSCENE",
 							"id": "44",
+							"switchOn": "use-chair-books",
+							"maxPlays": 1,
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "door-first-look"
+								},
+								{
+									"type": "SWITCH",
+									"id": "books-first-look"
+								}
+							]
+						},
+						{
+							"priority": 1,
+							"type": "MOVE",
+							"destination": "hospital-bedroom-shelf",
 							"requires": [
 								{
 									"type": "SWITCH",
@@ -936,73 +964,31 @@
 			"clickables": [
 				{
 					"type" : "EXAMINE",
-					"id": "0-shelf-time-machine",
+					"id": "0-shelf-books",
 					"persist": true,
 					"onclick": [
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "7"
-						}
-					]
-				},
-				{
-					"type" : "EXAMINE",
-					"id": "0-shelf-phantom",
-					"persist": true,
-					"onclick": [
+							"id": "46"
+						},
 						{
-							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "7"
-						}
-					]
-				},
-				{
-					"type" : "EXAMINE",
-					"id": "0-shelf-anne-frank",
-					"persist": true,
-					"onclick": [
+							"priority": "0",
+							"type": "AUDIO",
+							"audio": {
+								"type": "SOUND",
+								"id": "fall"
+							}
+						},
 						{
-							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "7"
-						}
-					]
-				},
-				{
-					"type" : "EXAMINE",
-					"id": "0-shelf-hamlet",
-					"persist": true,
-					"onclick": [
+							"priority": "0",
+							"type": "MOVE",
+							"destination": "front"
+						},
 						{
-							"priority": 0,
+							"priority": "0",
 							"type": "CUTSCENE",
-							"id": "7"
-						}
-					]
-				},
-				{
-					"type" : "EXAMINE",
-					"id": "0-shelf-frankenstein",
-					"persist": true,
-					"onclick": [
-						{
-							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "7"
-						}
-					]
-				},
-				{
-					"type" : "EXAMINE",
-					"id": "0-shelf-dracula",
-					"persist": true,
-					"onclick": [
-						{
-							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "7"
+							"id": "47"
 						}
 					]
 				}

@@ -435,6 +435,10 @@
 				"src": "img/sceneClickables/shelf-time-machine.png"
 			},
 			{
+				"id": "0-shelf-books",
+				"src": "img/sceneClickables/shelf-books.png"
+			},
+			{
 				"id": "0-bed-right",
 				"src": "img/sceneClickables/bed-right.png"
 			},
@@ -497,6 +501,10 @@
 			{
 				"id": "scream",
 				"src": "audio/scream.mp3"
+			},
+			{
+				"id": "fall",
+				"src": "audio/fall.mp3"
 			}
 		],
 		"video": [

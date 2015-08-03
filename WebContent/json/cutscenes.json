@@ -1662,7 +1662,99 @@
 					]
 				}
 			]
-		}
-					
+		},
+		{
+			"id": "46",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Huh. Just a few books."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I was kinda hoping to find something else up here?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Wait! There must be something inside the books!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Proud of himself, Albert picked up each book in turn and flipped through it, expecting perhaps a key or a code to fall out. Maybe a page number would be circled, or a word highlighted, but..."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Nothing at all!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Maybe there's something in the--"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "As Albert leaned over to pick up a pick he lost his balance, and..."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "WHOA!!!",
+							"speed": "FAST"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "47",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "My face... it "
+						},
+						{
+							"message": "hurts",
+							"speed": "SLOW"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Let's... try that again..."
+						}
+					]
+				}
+			]
+		}		
 	]
 }
