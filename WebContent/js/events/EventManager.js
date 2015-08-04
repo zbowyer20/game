@@ -3,6 +3,14 @@ var EventManager = {
 			var event;
 			GameUtils.incrementPlayedCount(json.id);
 			GameUtils.setSwitch(json.switchOn, true);
+			if (json.plays) {
+				for (var i = 0; i < json.plays.length; i++) {
+					var playEvent = json.plays[i];
+					if (playEvent.number == GameUtils.getPlayedCount(json.id)) {
+						GameUtils.setSwitch(playEvent.switchOn, true);
+					}
+				}
+			}
 			switch (json.type) {
 				case "CUTSCENE":
 					event = new EventCutscene(json, deferred);

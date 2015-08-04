@@ -1755,6 +1755,101 @@
 					]
 				}
 			]
-		}		
+		},
+		{
+			"id": "48",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "There's nothing in any of these books. Do they mean anything at all?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "There's Dracula, Frankenstein, Hamlet, The Diary of Anne Frank, The Phantom of the Opera, The Time Machine..."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I've read most of these, apart from The Time Machine."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Maybe I need to make something from the titles? The Diary of Dracula? The Phantom of the Machine?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "WAIT ONE SECOND!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Anne Frankenstein!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "That has to be it!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Okay, so maybe not... but what then?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "49",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "These books HAVE to mean something!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "50",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Wait, aren't these books ordered alphabetically?"
+						}
+					]
+				}
+			]
+		}
 	]
 }

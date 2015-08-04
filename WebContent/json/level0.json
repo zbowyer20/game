@@ -988,7 +988,48 @@
 						{
 							"priority": "0",
 							"type": "CUTSCENE",
-							"id": "47"
+							"id": "47",
+							"switchOn": "books-fall"
+						},
+						{
+							"priority": "1",
+							"type": "CUTSCENE",
+							"id": "48",
+							"switchOn": "books-second-look",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "books-fall"
+								}
+							]
+						},
+						{
+							"priority": "2",
+							"type": "CUTSCENE",
+							"id": "49",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "books-second-look"
+								}
+							],
+							"plays": [
+								{
+									"number": 5,
+									"switchOn": "books-third-look"
+								}
+							]	
+						},
+						{
+							"priority": "3",
+							"type": "CUTSCENE",
+							"id": "50",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "books-third-look"
+								}
+							]
 						}
 					]
 				}
