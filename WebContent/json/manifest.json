@@ -291,8 +291,8 @@
 				"src": "img/hospital-bedroom-table.png"
 			},
 			{
-				"id": "hospital-bedroom-table-combo-unlocked",
-				"src": "img/hospital-bedroom-combo-lock.png"
+				"id": "hospital-bedroom-drawers-combo-unlocked",
+				"src": "img/hospital-bedroom-drawers-combo-unlocked.png"
 			},
 			{
 				"id": "hospital-bedroom-combo-lock",
@@ -317,6 +317,10 @@
 			{
 				"id": "hospital-bedroom-drawers",
 				"src": "img/hospital-bedroom-drawers.png"
+			},
+			{
+				"id": "hospital-bedroom-bedframe-wheel",
+				"src": "img/hospital-bedroom-bedframe-wheel.png"
 			},
 			{
 				"id": "0-door",
@@ -369,6 +373,14 @@
 			{
 				"id": "0-mirror",
 				"src": "img/sceneClickables/mirror.png"
+			},
+			{
+				"id": "0-radiator",
+				"src": "img/sceneClickables/radiator.png"
+			},
+			{
+				"id": "0-socket",
+				"src": "img/sceneClickables/socket.png"
 			},
 			{
 				"id": "0-table-2",
@@ -465,6 +477,10 @@
 			{
 				"id": "0-pillow-left",
 				"src": "img/sceneClickables/pillow-left.png"
+			},
+			{
+				"id": "0-bedframe-wheel",
+				"src": "img/sceneClickables/bedframe-wheel.png"
 			},
 			{
 				"id": "0-drawer-screwdriver",

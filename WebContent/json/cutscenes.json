@@ -2021,6 +2021,78 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "63",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "The radiator's plugged into this socket."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "64",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "These wheels are barely moving!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "65",
+			"scene": [
+				{
+					"text": [
+						{
+							"message": "Albert went to sit on the bed and it slid slightly on the floor."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Maybe when I get out I can find a long hallway and speed all the way down it on this bed!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "66",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Nope... nothing under the pillow or mattress."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "67",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Weird. The other bed swings about like crazy, but this one doesn't budge an inch."
+						}
+					]
+				}
+			]
 		}
-	]
+	]	
 }

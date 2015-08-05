@@ -316,7 +316,6 @@
 						}
 					]
 				}
-			]
 		},
 		{
 			"defaultBackground": false,
@@ -353,7 +352,8 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "7"
+							"id": "65",
+							"switchOn": "left-bed-first-look"
 						}
 					]
 				},
@@ -365,7 +365,8 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "7"
+							"id": "65",
+							"switchOn": "left-bed-first-look"
 						}
 					]
 				},
@@ -377,7 +378,8 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "7"
+							"id": "65",
+							"switchOn": "left-bed-first-look"
 						}
 					]
 				},
@@ -409,7 +411,34 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "7"
+							"id": "66"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "67",
+							"switchOn": "bed-right-no-move",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "left-bed-first-look"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "MOVE",
+							"destination": "hospital-bedroom-bedframe-wheel",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "bed-right-no-move"
+								},
+								{
+									"type": "SWITCH",
+									"id": "door-first-look"
+								}
+							]
 						}
 					]
 				},
@@ -1025,6 +1054,31 @@
 								"type" : "SOUND",
 								"volume": 0.1
 							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"defaultBackground": false,
+			"name": "hospital-bedroom-bedframe-wheel",
+			"id": "hospital-bedroom-bedframe-wheel",
+			"movements": [
+				{
+					"name": "BACK",
+					"destination": "back"
+				}
+			],
+			"clickables": [
+				{
+					"type": "EXAMINE",
+					"id": "0-bedframe-wheel",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "64"
 						}
 					]
 				}
