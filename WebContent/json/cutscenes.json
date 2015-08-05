@@ -1850,6 +1850,177 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "51",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Three photos of three different people. I've never seen them before?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "52",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Viola is pretty cute!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "53",
+			"scene": [
+				{
+					"text": [
+						{
+							"message": "Albert picks up the photo frames, opens them up, and looks at the backs of the photos and the frames. There's nothing there."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Aww... that's where I'd hide a secret code."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "54",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What are these photos here for?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "55",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "These nametags read 'Elizabeth', 'Viola' and 'Danielle'"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "56",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Three nametags, three girls - I guess these are the names of the girls in the photos?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "57",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "The first letter of each name is in a different font. E for Elizabeth, V for Viola, D for Danielle."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "58",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Candles... Somebody must have lit these recently."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "So maybe someone will be back soon! Yay!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "59",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Three candles, three girls... What's going on here?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "60",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Huh, radio. What's going on with that radio?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "61",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I can't access any radio stations on it at all! There go my hopes of finding an S Club song on."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "62",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "There's a CD slot in this stereo. Hmmmm..."
+						}
+					]
+				}
+			]
 		}
 	]
 }

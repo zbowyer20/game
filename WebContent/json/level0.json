@@ -105,34 +105,12 @@
 						},
 						{
 							"priority": 2,
-							"type": "CUTSCENE",
-							"id": "19",
-							"requires": [
-								{
-									"type": "SWITCH",
-									"id": "door-first-look"
-								}
-							]
-						},
-						{
-							"priority": 2,
 							"type": "MOVE",
 							"destination": "hospital-bedroom-table",
 							"requires": [
 								{
 									"type": "SWITCH",
 									"id": "door-first-look"
-								}
-							]
-						},
-						{
-							"priority": 3,
-							"type": "MOVE",
-							"destination": "hospital-bedroom-table",
-							"requires": [
-								{
-									"type": "SWITCH",
-									"id": "table-first-move"
 								}
 							]
 						}
@@ -879,7 +857,43 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "7"
+							"id": "51",
+							"switchOn": "photos-first-look"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "52",
+							"switchOn": "photos-second-look",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "photos-first-look"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "CUTSCENE",
+							"id": "53",
+							"switchOn": "photos-third-look",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "photos-second-look"
+								}
+							]
+						},
+						{
+							"priority": 4,
+							"type": "CUTSCENE",
+							"id": "54",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "photos-third-look"
+								}
+							]
 						}
 					]
 				},
@@ -891,7 +905,36 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "7"
+							"id": "55",
+							"switchOn": "nametags-first-look"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "56",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "nametags-first-look"
+								}
+							],
+							"plays": [
+								{
+									"number": 8,
+									"switchOn": "nametags-second-look"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "CUTSCENE",
+							"id": "57",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "nametags-second-look"
+								}
+							]
 						}
 					]
 				},
@@ -903,7 +946,19 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "7"
+							"id": "58",
+							"switchOn": "candles-first-look"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "59",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "candles-first-look"
+								}
+							]
 						}
 					]
 				},
@@ -915,7 +970,31 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "7"
+							"id": "60",
+							"switchOn": "radio-first-look"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "61",
+							"switchOn": "radio-second-look",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "radio-first-look"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "CUTSCENE",
+							"id": "62",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "radio-second-look"
+								}
+							]
 						}
 					]
 				}
