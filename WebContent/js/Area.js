@@ -6,12 +6,7 @@ function Area(area) {
 	var self = this;
 
 	this.initBackground = function(area) {
-		if (videos[area.id]) {
-			self.background.video = convertVideoToScaledBitmap(videos[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
-		}
-		if (images[area.id]) {
-			self.background.image = convertImageToScaledBitmap(images[area.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
-		}
+		this.setBackground(area.id);
 		self.background.name = area.name;
 		self.background.clickables = area.clickables;
 		self.background.defaultBackground = area.defaultBackground;
@@ -21,8 +16,34 @@ function Area(area) {
 		return self.background;
 	}
 
-	this.setBackground = function(background) {
-		self.background = background;
+	this.setBackgroundVideo = function(video) {
+		self.background.video = convertVideoToScaledBitmap(video, 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);;
+	}
+	
+	this.setBackgroundImage = function(image) {
+		self.background.image = convertImageToScaledBitmap(image, 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
+	}
+	
+	this.setBackground = function(id) {
+		if (videos[id]) {
+			this.setBackgroundVideo(videos[id]);
+		}
+		if (images[id]) {
+			this.setBackgroundImage(images[id]);
+		}
+	}
+	
+	this.removeBackgroundVideo = function() {
+		self.background.video = null;
+	}
+	
+	this.removeBackgroundImage = function() {
+		self.background.image = null;
+	}
+	
+	this.clearBackground = function() {
+		this.removeBackgroundVideo();
+		this.removeBackgroundImage();
 	}
 	
 	this.getDestinationByDirection = function(direction) {

@@ -46,7 +46,7 @@
 			"solution": [
 				{
 					"id": "0",
-					"value": "3"
+					"value": "4"
 				},
 				{
 					"id": "1",
@@ -54,11 +54,11 @@
 				},
 				{
 					"id": "2",
-					"value" :"7"
+					"value" :"2"
 				},
 				{
 					"id": "3",
-					"value": "10"
+					"value": "2"
 				}
 			],
 			"complete": [
@@ -75,6 +75,12 @@
 					"priority": 0,
 					"type": "CUTSCENE",
 					"id": "16"
+				},
+				{
+					"priority": 0,
+					"type": "UPDATE_BACKGROUND",
+					"id": "hospital-bedroom-table",
+					"newId": "hospital-bedroom-table-combo-unlocked"
 				}
 			]
 		},

@@ -291,6 +291,10 @@
 				"src": "img/hospital-bedroom-table.png"
 			},
 			{
+				"id": "hospital-bedroom-table-combo-unlocked",
+				"src": "img/hospital-bedroom-combo-lock.png"
+			},
+			{
 				"id": "hospital-bedroom-combo-lock",
 				"src": "img/hospital-bedroom-combo-lock.png"
 			},

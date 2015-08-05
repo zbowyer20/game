@@ -36,6 +36,9 @@ var EventManager = {
 				case "VIDEO":
 					event = new EventVideo(json, deferred);
 					break;
+				case "UPDATE_BACKGROUND":
+					event = new EventUpdateBackground(json, deferred);
+					break;
 			}
 			if (event) {
 				AudioManager.play(event.audio);
