@@ -79,8 +79,8 @@
 				{
 					"priority": 0,
 					"type": "UPDATE_BACKGROUND",
-					"id": "hospital-bedroom-table",
-					"newId": "hospital-bedroom-table-combo-unlocked"
+					"id": "hospital-bedroom-combo-lock",
+					"newId": "hospital-bedroom-drawers-combo-unlocked"
 				}
 			]
 		},

@@ -525,6 +525,14 @@
 			{
 				"id": "fall",
 				"src": "audio/fall.mp3"
+			},
+			{
+				"id": "mystery",
+				"src": "audio/mystery.mp3"
+			},
+			{
+				"id": "whispers",
+				"src": "audio/whispers.mp3"
 			}
 		],
 		"video": [

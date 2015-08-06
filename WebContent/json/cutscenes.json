@@ -2093,6 +2093,447 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "68",
+			"unskippable": true,
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I'll turn this off... my poor fingers are so sore!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert bent over and turned off the radiator at the plug socket."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "He turned and sat on the bed behind him, pondering now about how he had reached his place. He searched his memory, but it was as though he'd had a very heavy night of drinking."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "It was in the evening... I was coming back from the cinema..."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Yeah, that's right...! I'd gone to see Jurassic World with the guys."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I was... on my own... it was late. I was walking home."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Did I get home?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "His memory was fragmented, even of his walk back home that night. He remembered the sound of a car skidding around a corner, and remembered the glare of a streetlight through raindrops."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Had something happened to him then?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What if, maybe, I was hit by a car, and I'm dead?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert could almost see the concerned faces that people would make at him."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Uh... maybe not then."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I have to find a way out of here."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "At that moment, there was a sound from the corner of the room."
+						}
+					],
+					"audio": {
+						"type": "SOUND",
+						"id": "whispers",
+						"volume": 0.1
+					}
+				},
+				{
+					"text": [
+						{
+							"message": "It was quiet, like whispers riding on gusts of wind swirling around the room."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Nevertheless, it made Albert jump and he almost instinctively scurried to the back of the bed."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "He sat there, listening to the sound, goosebumps raising on his arms."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What... the... fuck...",
+							"speed": "SLOW"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "The sound was coming from the corner of the room, by the mirror. Albert stared over at the place but could see nothing. Gradually he put his shaking feet on the floor and walked over to the mirror."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "The voice was louder here, and Albert peered into the mirror. All he saw was his own frightened face staring back at him. He placed his ear against the mirror, wondering if there was perhaps a speaker behind it."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Then, suddenly, the voice got clearer."
+						}
+					]
+				},
+				{
+					"name": "Distorted Voice",
+					"text": [
+						{
+							"message": "Th.......omth.........d...",
+							"speed": "SLOW"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert gulped."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "H..hello?",
+							"speed": "SLOW"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Silence."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Then..."
+						}
+					]
+				},
+				{
+					"name": "Distorted Voice",
+					"text": [
+						{
+							"message": "Hel...."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Hello?? Hello?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "The image in the mirror looked strange. Streaks of dark blue seemed to drip like heavy droplets of blood over objects in the reflection."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert looked back at the room, expecting to see the strange blue phenonemon, but the room was the same as ever. He looked back into the mirror to see that the blue was dripping everywhere now, crawling even across the bed as though it was being dragged along by some unseen force."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What the hell is going on?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Soon the entire reflection of the room was covered in blue, as though it was a crime scene with blue blood splattered everywhere, and then another image faded into view in the center of the mirror."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "It was blurred at first but gradually became clearer, like an object rising from the depths of the ocean. An object --- or a person."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "HELLO?!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "It was the face of a man, but he didn't seem to hear Albert. He stared straight back into Albert's paralyzed eyes for what seemed like eternity... and then he opened his mouth."
+						}
+					]
+				},
+				{
+					"character": "KEVIN",
+					"name": "Mirror Man",
+					"text": [
+						{
+							"message": ".......oo........are...oo?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Hello??? What???"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "The man stared at him, squinting, before his face began to fade away in much the same way as it had originally appeared."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Wait! What?! No!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "But the man's face faded quickly, and the image left behind in the mirror was just a normal reflection: any trace of the blue substance was gone."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Hello? Can you hear me?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "There was no answer."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert felt tears welling up in his eyes. The idea that he was being pranked was long gone now. There was something very, very wrong about where he was and he was sure that he wasn't dreaming."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Somehow, Albert found that he was backed up against the bed, and fell back on to it, cupping his head in his hands."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I..... what am I gonna do?",
+							"speed": "SLOW"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Fuck."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert stood up, a rush of anger and adrenaline surging through him."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Look! Whoever's doing this.... stop! Seriously! Let me out!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Please..."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert fell back on to the bed. He looked down at his hands to see that they were shaking."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "F-f-fuck..."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Angry at himself for no reason other than to be angry, he grabbed his right hand with his left in order to stop them both from shaking."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Fuck... fuck it... I've got to get out of here..."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Maybe I can..."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "There's got to be a way out of here."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "69",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "The radiator's turned off. It's cooled down now."
+						}
+					]
+				}
+			]
 		}
 	]	
 }

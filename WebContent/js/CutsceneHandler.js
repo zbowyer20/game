@@ -87,7 +87,6 @@ var CutsceneHandler = {
 					timeout = (sound.duration - 500) / text[segmentIndex].message.length;
 				}
 				this.updateText(target, text[segmentIndex].message.substring(index, index+1));
-				stage.update();
 				if (!timeout) {
 					timeout = text[segmentIndex].time ? this.getTextSpeedByTime(text[segmentIndex].time, text[segmentIndex].message.length) : this.getTextSpeed(text[segmentIndex].speed);
 				}

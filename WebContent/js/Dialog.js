@@ -50,10 +50,18 @@ function Dialog() {
 		return thisImage;
 	}
 	
-	this.createText = function() {
+	this.createText = function(name) {
 		var txtDimensions = {};
 		txtDimensions.y = image == null ? stage.canvas.height - (320 * DPR) : (image.image.height * image.scaleY) * (9/16);
-		txtDimensions.x = image == null? 0 : (image.image.width * image.scaleX);
+		if (image) {
+			txtDimensions.x = image.image.width * image.scaleX;
+		}
+		else if (name) {
+			txtDimensions.x = 320;
+		}
+		else {
+			txtDimensions.x = 0;
+		}
 		txtDimensions.lineWidth = image == null ? stage.canvas.width - (20 * DPR) : stage.canvas.width - (image.image.width * image.scaleX * (2/3)) * DPR;
 		
 		var txt = createText("", "#FFFFFF", txtDimensions.x, txtDimensions.y, txtDimensions.lineWidth);
@@ -64,7 +72,7 @@ function Dialog() {
 	this.createName = function(name) {
 		var txtDimensions = {};
 		txtDimensions.y = stage.canvas.height - DIALOG_HEIGHT - (0.5 * DIALOG_NAME_HEIGHT) + (7 * DPR);
-		txtDimensions.x = image == null ? 0 : (image.image.width * image.scaleX);
+		txtDimensions.x = image == null ? 320 : (image.image.width * image.scaleX);
 
 		var txt = createText(name, "#FFFFFF", txtDimensions.x, txtDimensions.y, stage.canvas.width - 805);
 		
@@ -76,19 +84,16 @@ function Dialog() {
 		var txtBackgroundX;
 		var txtBackgroundWidth;
 		
-		if (image == null) {
-			txtBackgroundX = DIALOG_SCRIPT_X;
-			txtBackgroundWidth = stage.canvas.width + (10 * DPR);
-		}
-		else {
-			var calculatedImageWidth = image.image.width * image.scaleX;
+		if (includeName) {
+			var calculatedImageWidth = image ? image.image.width * image.scaleX : 600;
 			txtBackgroundX = calculatedImageWidth / 2;
 			txtBackgroundWidth = stage.canvas.width - (calculatedImageWidth * (2/3));
-		}
-				
-		if (includeName) {
 			var nameBackground = drawBorderedRectangle(txtBackgroundX, stage.canvas.height - DIALOG_HEIGHT - DIALOG_NAME_HEIGHT, stage.canvas.width - (600 * DPR), DIALOG_NAME_HEIGHT, "#FFFFFF");
 			container.addChild(nameBackground);
+		}
+		else {
+			txtBackgroundX = DIALOG_SCRIPT_X;
+			txtBackgroundWidth = stage.canvas.width + (10 * DPR);
 		}
 		
 		var textBackground = drawBorderedRectangle(txtBackgroundX, stage.canvas.height - DIALOG_HEIGHT, txtBackgroundWidth, DIALOG_HEIGHT, "#FFFFFF");
@@ -99,12 +104,12 @@ function Dialog() {
 	this.createSpeech = function(dialog) {
 		var position = this.getCutscenePosition(dialog.position);
 		var dialogImage = this.getCutsceneImage(dialog.character, dialog.mood);
-		var charName = CHARACTER_NAMES[dialog.character];
+		var charName = dialog.name || CHARACTER_NAMES[dialog.character];
 		
 		container = new createjs.Container();
 		image = this.createImage(dialogImage);
 		var background = this.createBackground(charName != null);
-		text = this.createText();
+		text = this.createText(charName);
 		name = this.createName(charName);
 		container.addChild(background);
 		container.addChild(image);

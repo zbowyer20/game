@@ -315,7 +315,79 @@
 							"id": "9"
 						}
 					]
+				},
+				{
+					"type": "EXAMINE",
+					"id": "0-radiator",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "42",
+							"switchOn": "radiator-first-look"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "43",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "radiator-first-look"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "EXAMINE",
+					"id": "0-socket",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "63"
+						},
+						{
+							"priority": 1,
+							"type": "AUDIO",
+							"audio": {
+								"type": "MUSIC",
+								"id": "mystery"
+							}
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "68",
+							"switchOn": "mirror-cutscene",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "radiator-first-look"
+								},
+								{
+									"type": "SWITCH",
+									"id": "door-first-look"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "CUTSCENE",
+							"id": "69",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "mirror-cutscene"
+								}
+							]
+						}
+					]
 				}
+			]
 		},
 		{
 			"defaultBackground": false,
