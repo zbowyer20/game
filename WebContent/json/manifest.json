@@ -184,15 +184,20 @@
 	"scene-2": {
 		"nonVideo" : [
 			{
-				"id": "main",
-				"src": "img/mainmenu.jpg"
+				"id": "title",
+				"src": "img/sceneClickables/prelude.png"
 			},
 			{
 				"id": "begin",
-				"src": "img/sceneClickables/mainmenu-begin.png"
+				"src": "img/sceneClickables/play.png"
 			}
 		],
-		"video": []
+		"video": [
+			{
+				"id": "main",
+				"src": "video/main.mp4"
+			}
+		]
 	},
 	"scene-3": {
 		"nonVideo": [

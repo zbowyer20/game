@@ -10,6 +10,7 @@
 					"type" : "EXAMINE",
 					"id": "begin",
 					"persist": true,
+					"layer": 2,
 					"onclick": [
 						{
 							"priority": 0,
@@ -24,18 +25,12 @@
 							"id": "0"
 						}
 					]
-				}
-			],
-			"arrive": [
+				},
 				{
-					"priority": 0,
-					"type": "AUDIO",
-					"audio": {							
-						"id": "sorrow",
-						"type" : "MUSIC",
-						"loop" : true,
-						"volume": 1
-					}
+					"type" : "EXAMINE",
+					"id": "title",
+					"persist": true,
+					"layer": 2
 				}
 			]
 		}
