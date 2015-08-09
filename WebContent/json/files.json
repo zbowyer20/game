@@ -1,9 +1,16 @@
 {
 	"files": [
 		{
-			"id": "0-clipboard-right",
+			"id": "0-clipboard-rightt",
 			"name": "Clipboard",
 			"text": "PATIENT NAME: SOPHIE REID\n\nSophie is a strong-tempered girl with a tendancy to jump off of beds and walls. She is"
+		}
+	],
+	"files": [
+		{
+			"id": "0-clipboard-right",
+			"name": "List of names",
+			"text": "POSSIBLE CANDIDATES\n\nI have identified the following candidates as those showing the highest potential for our specific requirements. Those with an asterisk next to their names are of particular interest, and we will discuss them at our next meeting.\n\nKatherine O.\nJade A.\nErin N.\nMaya L*\nThomas M\nJoseph Z.**\nSophie H.**\nJasmine H.\nLouise M.\nGrace H.*\nPeter C.\nKatie M.\nAlbert O.\nZabierek M.\nLouise H.\nKirsten D.\nAlice N.\nYvonne K.\nVictoria R.*\n\nSee you on Friday.\nK."
 		}
 	]
 }
