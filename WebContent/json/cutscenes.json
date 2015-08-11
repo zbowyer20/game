@@ -2096,7 +2096,7 @@
 		},
 		{
 			"id": "68",
-			"unskippable": true,
+			"unskippable": false,
 			"scene": [
 				{
 					"character": "ALBERT",
@@ -2534,6 +2534,215 @@
 					]
 				}
 			]
-		}
+		},
+		{
+			"id": "70",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "The screws on the side of this radiator don't match it at all."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "71",
+			"scene": [
+				{
+					"text": [
+						{
+							"message": "Albert started unscrewing the screws on the radiator and as he did so, a sticky, thick, black substance started to leak from it."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Whoa! What is this?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert put his nose close to the lukewarm radiator and sniffed."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Is it... oil?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert screwed the screw back into the radiator."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Maybe I can find something to collect this oil?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "72",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I should find something to collect the oil that's in this radiator."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "73",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Maybe I can use these to collect the oil."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert picked up the three candles and blew them out. The flames on each flickered once, taking a dying breath, before vanishing."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "He scooped out the wax in each candle and looked around the room for where he could stick it."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Eh... this will do..."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "He stuck the wax on the underside of the table. His fingers hit something sticky there."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Hey, gross!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "There was a huge wad of gum stuck on the underside of the table!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "74",
+			"scene": [
+				{
+					"text": [
+						{
+							"message": "Albert used the screwdriver to once more unscrew the radiator, and collected the oil that dripped out of it in the candles."
+						}
+					]
+				},
+				{							
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Okay, I've got the oil. Is there anything around here that needs oiling up?"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "C'mon, there's gotta be something..."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "75",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I think I'm all done with this radiator now."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "76",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Wait, I can use the oil to loosen up this wheel!"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "........",
+							"speed": "SLOW"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Huhuhuhuh! Yeah! YEAH, BABY!!! YEAH!",
+							"speed": "SLOW"
+						}
+					],
+					"audio": {
+						"id": "yeahbaby",
+						"type" : "SOUND"
+					}
+				}
+			]
+		}		
 	]	
 }

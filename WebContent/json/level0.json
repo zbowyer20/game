@@ -337,6 +337,17 @@
 									"id": "radiator-first-look"
 								}
 							]
+						},
+						{
+							"priority": 2,
+							"type": "MOVE",
+							"destination": "hospital-bedroom-radiator",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "mirror-cutscene"
+								}
+							]
 						}
 					]
 				},
@@ -1060,6 +1071,27 @@
 									"id": "candles-first-look"
 								}
 							]
+						},
+						{
+							"priority": 2,
+							"type": "CUTSCENE",
+							"id": "73",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "radiator-screwdriver"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "GAINED_ITEM",
+							"id": "0-candles",
+							"audio": {
+								"id": "foundItem",
+								"type" : "SOUND",
+								"volume": 0.1
+							}
 						}
 					]
 				},
@@ -1133,6 +1165,90 @@
 		},
 		{
 			"defaultBackground": false,
+			"name": "hospital-bedroom-radiator",
+			"id": "hospital-bedroom-radiator",
+			"movements": [
+				{
+					"name": "BACK",
+					"destination": "front"
+				}
+			],
+			"clickables": [
+				{
+					"type": "EXAMINE",
+					"id": "0-radiator-radiator",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "CUTSCENE",
+							"id": "70"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "71",
+							"switchOn": "radiator-screwdriver",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-screwdriver"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "CUTSCENE",
+							"id": "72",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "radiator-screwdriver"
+								}
+							]
+						},
+						{
+							"priority": 3,
+							"type": "CUTSCENE",
+							"id": "74",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-candles"
+								}
+							]
+						},
+						{
+							"priority": 3,
+							"type": "GAINED_ITEM",
+							"id": "0-candles-oiled",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-candles"
+								}
+							]
+						},
+						{
+							"priority": 4,
+							"type": "CUTSCENE",
+							"id": "75",
+							"requires": [
+								{
+									"type": "ITEM",
+									"id": "0-candles-oiled"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"defaultBackground": false,
 			"name": "hospital-bedroom-bedframe-wheel",
 			"id": "hospital-bedroom-bedframe-wheel",
 			"movements": [
@@ -1151,6 +1267,18 @@
 							"priority": 0,
 							"type": "CUTSCENE",
 							"id": "64"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "76",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-candles-oiled"
+								}
+							]
 						}
 					]
 				}

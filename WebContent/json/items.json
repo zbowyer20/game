@@ -29,6 +29,16 @@
 			"id": "0-screwdriver",
 			"name": "screwdriver",
 			"description": "a screwdriver"
+		},
+		{
+			"id": "0-candles",
+			"name": "candles",
+			"description": "three candles"
+		},
+		{
+			"id": "0-candles-oiled",
+			"name": "candles with oil in them",
+			"description": "three candles with oil in them instead of wax"
 		}
 	]
 }
