@@ -79,16 +79,18 @@ function Dialog() {
 		return txt;
 	}
 	
-	this.createBackground = function(includeName) {
+	this.createBackground = function(name) {
 		var container = new createjs.Container();
 		var txtBackgroundX;
 		var txtBackgroundWidth;
 		
-		if (includeName) {
+		if (name != null) {
 			var calculatedImageWidth = image ? image.image.width * image.scaleX : 600;
 			txtBackgroundX = calculatedImageWidth / 2;
 			txtBackgroundWidth = stage.canvas.width - (calculatedImageWidth * (2/3));
-			var nameBackground = drawBorderedRectangle(txtBackgroundX, stage.canvas.height - DIALOG_HEIGHT - DIALOG_NAME_HEIGHT, stage.canvas.width - (600 * DPR), DIALOG_NAME_HEIGHT, "#FFFFFF");
+			console.log(name);
+			console.log(DIALOG_BACKGROUNDS[name]);
+			var nameBackground = drawBorderedRectangle(txtBackgroundX, stage.canvas.height - DIALOG_HEIGHT - DIALOG_NAME_HEIGHT, stage.canvas.width - (600 * DPR), DIALOG_NAME_HEIGHT, this.getBackgroundColour(name));
 			container.addChild(nameBackground);
 		}
 		else {
@@ -96,9 +98,13 @@ function Dialog() {
 			txtBackgroundWidth = stage.canvas.width + (10 * DPR);
 		}
 		
-		var textBackground = drawBorderedRectangle(txtBackgroundX, stage.canvas.height - DIALOG_HEIGHT, txtBackgroundWidth, DIALOG_HEIGHT, "#FFFFFF");
+		var textBackground = drawBorderedRectangle(txtBackgroundX, stage.canvas.height - DIALOG_HEIGHT, txtBackgroundWidth, DIALOG_HEIGHT, this.getBackgroundColour(name));
 		container.addChild(textBackground);
 		return container;
+	}
+	
+	this.getBackgroundColour = function(name) {
+		return name ? {background: DIALOG_BACKGROUNDS[name.toUpperCase()] || "rgba(0, 0, 0, 0.5)"} : {};
 	}
 	
 	this.createSpeech = function(dialog) {
@@ -108,7 +114,7 @@ function Dialog() {
 		
 		container = new createjs.Container();
 		image = this.createImage(dialogImage);
-		var background = this.createBackground(charName != null);
+		var background = this.createBackground(charName);
 		text = this.createText(charName);
 		name = this.createName(charName);
 		container.addChild(background);

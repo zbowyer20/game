@@ -60,7 +60,7 @@ function MenuIcon(name, iconDimensions) {
 		});
 	}
 	
-	var border = drawBorderedRectangle(0, 0, iconDimensions.width, iconDimensions.height, "#FFFFFF");
+	var border = drawBorderedRectangle(0, 0, iconDimensions.width, iconDimensions.height, {background: BLACK, stroke: WHITE});
 	
 	var text = createText(name, WHITE, 0, 50, 200);
 	

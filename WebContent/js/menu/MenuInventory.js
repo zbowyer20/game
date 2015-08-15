@@ -65,7 +65,7 @@ function MenuInventory(dimensions) {
 		
 		// for each possible item in the inventory, add in a item slot with an item, if necessary
 		for (var i = 0; i < MAX_INVENTORY_SIZE; i++) {
-			miniItemContainer.addChild(drawBorderedRectangle(current.x, current.y, itemDimensions.width, itemDimensions.height, BLACK));
+			miniItemContainer.addChild(drawBorderedRectangle(current.x, current.y, itemDimensions.width, itemDimensions.height, {background: WHITE, stroke: BLACK}));
 			if (i < inventory.length) {
 				var item = inventory[i];
 				miniItemContainer.addChild(createInventoryItemContainer(item, current, itemDimensions));

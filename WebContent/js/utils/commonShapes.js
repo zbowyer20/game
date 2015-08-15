@@ -100,12 +100,12 @@ function createText(content, colour, x, y, lineWidth) {
 	return text;
 }
 
-function drawBorderedRectangle(x, y, width, height, colour) {
+function drawBorderedRectangle(x, y, width, height, colours) {
 	var shape = new createjs.Shape();
-	shape.graphics.beginStroke(colour);
+	shape.graphics.beginStroke(colours.stroke || "#FFFFFF");
 	shape.graphics.setStrokeStyle(1);
 	shape.snapToPixel = true;
-	shape.graphics.beginFill("rgba(0,0,0,0.5)").drawRect(0, 0, width, height);
+	shape.graphics.beginFill(colours.background || "rgba(0, 0, 0, 0.5)").drawRect(0, 0, width, height);
 	shape.x = x;
 	shape.y = y;
 	

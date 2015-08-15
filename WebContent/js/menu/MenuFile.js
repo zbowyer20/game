@@ -20,11 +20,11 @@ function MenuFile() {
 	var currentWidth = 0;
 	var currentHeight = 0;
 		
-	container.addChild(drawBorderedRectangle(currentWidth, currentHeight, stage.canvas.width, 100, "#000"));
+	container.addChild(drawBorderedRectangle(currentWidth, currentHeight, stage.canvas.width, 100, {background: WHITE, stroke: BLACK}));
 	
 	currentHeight += 100;
 
-	var fileViewer = drawBorderedRectangle(stage.canvas.width / 4, currentHeight, 3 *(stage.canvas.width / 4), stage.canvas.height - currentHeight, BLACK);
+	var fileViewer = drawBorderedRectangle(stage.canvas.width / 4, currentHeight, 3 *(stage.canvas.width / 4), stage.canvas.height - currentHeight, {background: WHITE, stroke: BLACK});
 	
 	var mainFileContainer = new createjs.Container();
 	mainFileContainer.addChild(fileViewer);
@@ -39,7 +39,7 @@ function MenuFile() {
 	console.log(files[0]);
 	
 	for (var i = 0; i < MENU_FILE_PAGE_SIZE; i++) {
-		container.addChild(drawBorderedRectangle(currentWidth, currentHeight, stage.canvas.width / 4, elemHeight, "#000"));
+		container.addChild(drawBorderedRectangle(currentWidth, currentHeight, stage.canvas.width / 4, elemHeight, {background: WHITE, stroke: BLACK}));
 		if (i < files.length) {
 			var file = files[i];
 			var fileTxt = createText(file.name, BLACK, stage.canvas.width / 8, currentHeight + (elemHeight / 2), 500);

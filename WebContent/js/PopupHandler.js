@@ -8,7 +8,7 @@ var PopupHandler = {
 			this.container = new createjs.Container();
 			this.dimensions = {"w": stage.canvas.width * (1/3), "h": stage.canvas.height * (5/8)};
 			this.position = {"x": stage.canvas.width * (1/3), "y": MENU_HEIGHT * 2};
-			this.background = drawBorderedRectangle(this.position.x, this.position.y, this.dimensions.w, this.dimensions.h, WHITE);
+			this.background = drawBorderedRectangle(this.position.x, this.position.y, this.dimensions.w, this.dimensions.h, {});
 			return this;
 		},
 		

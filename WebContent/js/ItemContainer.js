@@ -2,7 +2,7 @@ var ItemContainer = {
 		container : {},
 		
 		init: function() {
-			var border = drawBorderedRectangle(10 * DPR, stage.canvas.height - (80 * DPR), ITEM_CONTAINER_WIDTH, ITEM_CONTAINER_HEIGHT, WHITE);
+			var border = drawBorderedRectangle(10 * DPR, stage.canvas.height - (80 * DPR), ITEM_CONTAINER_WIDTH, ITEM_CONTAINER_HEIGHT, {});
 			this.container = new createjs.Container();
 			
 			this.container.addChild(border);
