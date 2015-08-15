@@ -39,6 +39,16 @@
 			"id": "0-candles-oiled",
 			"name": "candles with oil in them",
 			"description": "three candles with oil in them instead of wax"
+		},
+		{
+			"id": "0-key",
+			"name": "key",
+			"description": "A key... where could this go?"
+		},
+		{
+			"id": "0-cd",
+			"name": "cd",
+			"description": "a cd"
 		}
 	]
 }

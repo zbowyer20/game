@@ -74,7 +74,8 @@
 				{
 					"priority": 0,
 					"type": "CUTSCENE",
-					"id": "16"
+					"id": "16",
+					"switchOn": "combo-lock-solved"
 				},
 				{
 					"priority": 0,
@@ -118,7 +119,8 @@
 				{
 					"priority": 0,
 					"type": "CUTSCENE",
-					"id": "16"
+					"id": "17",
+					"switchOn": "combo-lock-solved"
 				}
 			]
 		}

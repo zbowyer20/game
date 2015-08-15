@@ -958,6 +958,34 @@
 							"priority": 0,
 							"type": "MOVE",
 							"destination": "hospital-bedroom-combo-lock"
+						},
+						{
+							"priority": 1,
+							"type": "CUTSCENE",
+							"id": "77",
+							"switchOn": "padlock-opened",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-key"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "MOVE",
+							"destination": "hospital-bedroom-table-drawer",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "padlock-opened"
+								},
+								{
+									"type": "SWITCH",
+									"id": "combo-lock-solved"
+								}
+							]
 						}
 					]
 				},
@@ -1076,6 +1104,7 @@
 							"priority": 2,
 							"type": "CUTSCENE",
 							"id": "73",
+							"switchOn": "candles-gained",
 							"requires": [
 								{
 									"type": "SWITCH",
@@ -1092,6 +1121,17 @@
 								"type" : "SOUND",
 								"volume": 0.1
 							}
+						},
+						{
+							"priority": 3,
+							"type": "CUTSCENE",
+							"id": "80",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "candles-gained"
+								}
+							]
 						}
 					]
 				},
@@ -1128,6 +1168,59 @@
 									"id": "radio-second-look"
 								}
 							]
+						},
+						{
+							"priority": 3,
+							"type": "CUTSCENE",
+							"id": "81",
+							"switchOn": "radio-on",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-cd"
+								}
+							]
+						},
+						{
+							"priority": 3,
+							"type": "AUDIO",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-cd"
+								}
+							],
+							"audio": {
+								"type": "MUSIC",
+								"id": "living"
+							}
+						},
+						{
+							"priority": 4,
+							"type": "CUTSCENE",
+							"id": "78",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "radio-on"
+								}
+							]
+						},
+						{
+							"priority": 4,
+							"type": "AUDIO",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "radio-on"
+								}
+							],
+							"audio": {
+								"type": "MUSIC",
+								"id": "living"
+							}
 						}
 					]
 				}
@@ -1222,8 +1315,24 @@
 						},
 						{
 							"priority": 3,
+							"type": "REMOVED_ITEM",
+							"id": "0-candles",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-candles"
+								}
+							]
+						},
+						{
+							"priority": 3,
 							"type": "GAINED_ITEM",
 							"id": "0-candles-oiled",
+							"audio": {
+									"type": "SOUND",
+									"id": "foundItem"
+							},
 							"requires": [
 								{
 									"type": "ITEM",
@@ -1272,6 +1381,7 @@
 							"priority": 1,
 							"type": "CUTSCENE",
 							"id": "76",
+							"switchOn": "bed-right-moved",
 							"requires": [
 								{
 									"type": "ITEM",
@@ -1279,6 +1389,77 @@
 									"id": "0-candles-oiled"
 								}
 							]
+						},
+						{
+							"priority": 1,
+							"type": "REMOVED_ITEM",
+							"id": "0-candles-oiled",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-candles-oiled"
+								}
+							]
+						},
+						{
+							"priority": 1,
+							"type": "GAINED_ITEM",
+							"id": "0-key",
+							"audio": {
+								"id": "foundItem",
+								"type" : "SOUND",
+								"volume": 0.1
+							},
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-candles-oiled"
+								}
+							]
+						},
+						{
+							"priority": 2,
+							"type": "CUTSCENE",
+							"id": "79",
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "bed-right-moved"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"defaultBackground": false,
+			"name": "hospital-bedroom-table-drawer",
+			"id": "hospital-bedroom-table-drawer",
+			"movements": [
+				{
+					"name": "BACK",
+					"destination": "hospital-bedroom-table"
+				}
+			],
+			"clickables": [
+				{
+					"type": "EXAMINE",
+					"id": "0-cd",
+					"persist": false,
+					"layer": 2,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "GAINED_ITEM",
+							"id": "0-cd",
+							"audio": {
+								"id": "foundItem",
+								"type" : "SOUND",
+								"volume": 0.1
+							}
 						}
 					]
 				}

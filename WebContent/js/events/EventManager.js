@@ -27,6 +27,9 @@ var EventManager = {
 				case "GAINED_ITEM":
 					event = new EventGainedItem(json, deferred);
 					break;
+				case "REMOVED_ITEM": 
+					event = new EventRemovedItem(json, deferred);
+					break;
 				case "AUDIO":
 					event = new EventAudio(json, deferred);
 					break;

@@ -182,6 +182,14 @@
 				"src": "img/items/candles.png"
 			},
 			{
+				"id": "0-key",
+				"src": "img/items/key.png"
+			},
+			{
+				"id": "0-cd",
+				"src": "img/items/cd.png"
+			},
+			{
 				"id": "drawer",
 				"src": "audio/drawer.mp3"
 			}
@@ -302,6 +310,10 @@
 			{
 				"id": "hospital-bedroom-table",
 				"src": "img/hospital-bedroom-table.png"
+			},
+			{
+				"id": "hospital-bedroom-table-drawer",
+				"src": "img/hospital-bedroom-table-drawer.png"
 			},
 			{
 				"id": "hospital-bedroom-drawers-combo-unlocked",
@@ -442,6 +454,10 @@
 			{
 				"id": "0-table-bin",
 				"src": "img/sceneClickables/table-bin.png"
+			},
+			{
+				"id": "0-table-cd",
+				"src": "img/sceneClickables/cd.png"
 			},
 			{
 				"id": "0-shelf-anne-frank",

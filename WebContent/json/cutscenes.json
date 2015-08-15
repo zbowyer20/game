@@ -2741,8 +2741,87 @@
 						"id": "yeahbaby",
 						"type" : "SOUND"
 					}
+				},
+				{
+					"text": [
+						{
+							"message": "Albert oiled the wheel up and the bed immediately shifted. Something dropped down next to Albert."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Huh? Must've been trapped against the bed..."
+						}
+					]
 				}
 			]
-		}		
+		},
+		{
+			"id": "77",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "YES! It fits!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "78",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I'm going to restart the CD from the beginning."
+						}	
+					]
+				}
+			]
+		},
+		{
+			"id": "79",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I don't think I need to do anything more with this wheel."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "80",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I wonder if the candles were put there for me to use them?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "81",
+			"scene": [
+				{
+					"text": [
+						{
+							"message": "Albert placed the CD in the CD slot of the radio and immediately music began to play."
+						}
+					]
+				}
+			]
+		}
 	]	
 }
