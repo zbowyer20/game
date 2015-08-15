@@ -237,7 +237,7 @@ var Scene = {
 		},
 		
 		createNavigationIcon: function(movement) {
-			var arrow = drawArrow("red", movement);
+			var arrow = drawArrow("rgba(0,0,0,0.5)", "white", movement);
 			arrow.addEventListener("click", this.moveInDirectionDelegate(movement));
 			return arrow;
 		},

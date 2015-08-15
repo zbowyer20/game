@@ -34,7 +34,7 @@ function convertImageToScaledBitmap(image, x, y, width, height) {
 	return bitmap;
 }
 
-function drawArrow(colour, direction) {
+function drawArrow(colour, stroke, direction) {
 	var arrow = new createjs.Shape();
 	var position = {"x": 0, "y": 0, "angle": 0};
 	
@@ -55,7 +55,7 @@ function drawArrow(colour, direction) {
 			position.angle = 90;
 	}
 	
-	arrow.graphics.beginFill(colour).drawPolyStar(position.x, position.y , 30 * DPR, 3, 0.5, position.angle);
+	arrow.graphics.setStrokeStyle(1).beginStroke(stroke).beginFill(colour).drawPolyStar(position.x, position.y , 25 * DPR, 3, 0.5, position.angle);
 	
 	
 	//if (direction.hover) {
@@ -105,7 +105,7 @@ function drawBorderedRectangle(x, y, width, height, colour) {
 	shape.graphics.beginStroke(colour);
 	shape.graphics.setStrokeStyle(1);
 	shape.snapToPixel = true;
-	shape.graphics.drawRect(0, 0, width, height);
+	shape.graphics.beginFill("rgba(0,0,0,0.5)").drawRect(0, 0, width, height);
 	shape.x = x;
 	shape.y = y;
 	
