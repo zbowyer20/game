@@ -72,8 +72,6 @@ var Scene = {
 					 self.containers[container] = new createjs.Container()
 				 }
 			     self.containers.audioContainer = Muter.init().icon;
-				 self.containers.areaLayer.addChild(self.setupAreas(json));
-			     self.initNavigation();
 			     self.containers.globalLayer.addChild(self.containers.areaLayer);
 			     if (json.UI) {
 			    	 self.containers.globalLayer.addChild(ItemContainer.init().container);
@@ -85,7 +83,9 @@ var Scene = {
 				 layers.sceneLayer.addChild(self.containers.globalLayer);
 			     veil = new Veil();
 				 layers.sceneLayer.addChild(veil.container);
-				 if (json.UI) initMenu();		 
+				 if (json.UI) initMenu();		
+				 self.containers.areaLayer.addChild(self.setupAreas(json));
+			     self.initNavigation();
 			 })
 		},
 		

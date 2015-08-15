@@ -6,8 +6,10 @@ function EventCutscene(event, deferred) {
 	def = deferred;
 	
 	this.playResult = function() {
+		ItemContainer.hide();
 		var parameters = event.parameters ? this.loadParameters(event.parameters) : null;
 		CutsceneHandler.initCutscene(cutscene, parameters).then(function() {
+			ItemContainer.show();
 			def.resolve('complete');
 		});
 	}

@@ -30,6 +30,14 @@ var ItemContainer = {
 			return hit;
 		},
 		
+		hide: function() {
+			this.container.visible = false;
+		},
+		
+		show: function() {
+			this.container.visible = true;
+		},
+		
 		clear: function() {
 			this.container.removeChildAt(1);
 		},
