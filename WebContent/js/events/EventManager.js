@@ -12,6 +12,9 @@ var EventManager = {
 				}
 			}
 			switch (json.type) {
+				case "MULTIPLE":
+					event = new EventMultiple(json, deferred);
+					break;
 				case "CUTSCENE":
 					event = new EventCutscene(json, deferred);
 					break;
@@ -48,4 +51,19 @@ var EventManager = {
 				return event.playResult();
 			}
 		}
+}
+
+var EventMultiple = function(event, deferred) {
+	var def = deferred;
+	
+	this.playResult = function() {
+		for (var i = 0; i < event.events.length; i++) {
+			if (event.events[i].finisher) {
+				ret = EventManager.playEvent(event.events[i], def);
+			}
+			else {
+				EventManager.playEvent(event.events[i], $.Deferred());
+			}
+		}
+	}
 }

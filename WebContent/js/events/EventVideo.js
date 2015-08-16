@@ -7,10 +7,10 @@ function EventVideo(event, deferred) {
 	
 	this.playResult = function() {
 		var vid = convertVideoToScaledBitmap(videos[event.id], 0, MENU_HEIGHT, stage.canvas.width, stage.canvas.height - MENU_HEIGHT);
-		Scene.containers.topLayer.addChild(vid);
+		Scene.containers.videoLayer.addChild(vid);
 		vid.image.onended = function() {
 			vid.image.pause();
-			Scene.containers.topLayer.removeChild(vid);
+			Scene.containers.videoLayer.removeChild(vid);
 			def.resolve('complete');
 		};
 	}

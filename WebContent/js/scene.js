@@ -8,6 +8,7 @@ var Scene = {
 			globalLayer: null, 
 			areaLayer: null, 
 			navigationLayer: null, 
+			videoLayer: null,
 			dialogLayer: null,
 			topLayer: null
 		},
@@ -78,6 +79,7 @@ var Scene = {
 				     self.containers.globalLayer.addChild(self.containers.audioContainer);
 			     }
 			     self.containers.globalLayer.addChild(self.containers.navigationLayer);
+			     self.containers.globalLayer.addChild(self.containers.videoLayer);
 			     self.containers.globalLayer.addChild(self.containers.dialogLayer);
 			     self.containers.globalLayer.addChild(self.containers.topLayer);
 				 layers.sceneLayer.addChild(self.containers.globalLayer);
@@ -126,6 +128,7 @@ var Scene = {
 		*/
 		initAreas: function(json) {
 			var defaultArea; 
+			var self = this;
 			
 			if (!this.components.areas) {
 				this.components.areas = {};
@@ -169,7 +172,6 @@ var Scene = {
 				if (clickables[id].text) {
 					layers[2].addChild(clickables[id].text);
 				}
-				console.log(layers);
 				layers[clickables[id].layer].addChild(clickables[id].bitmap);
 				clickables[id].bitmap.x = clickables[id].getPrimaryPosition().x + (stage.canvas.width * offStageMultiplier);
 			}

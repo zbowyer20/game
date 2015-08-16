@@ -17,8 +17,18 @@
 				},
 				{
 					"priority": 0,
-					"type": "CUTSCENE",
-					"id": "20"
+					"type": "MULTIPLE",
+					"events": [
+						{
+							"type": "VIDEO",
+							"id": "dog",
+							"finisher": true
+						},
+						{
+							"type": "CUTSCENE",
+							"id": "20"
+						}
+					]
 				},
 				{
 					"priority": 0,

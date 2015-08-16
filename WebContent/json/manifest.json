@@ -285,6 +285,10 @@
 		],
 		"video": [
 			{
+				"id": "dog",
+				"src": "video/dog.mp4"
+			},
+			{
 				"id": "dream",
 				"src": "video/scarydream.mp4"
 			}

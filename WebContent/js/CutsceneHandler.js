@@ -67,7 +67,9 @@ var CutsceneHandler = {
 				dialog.position = DIALOG_POSITION_DEFAULT;
 			}
 			Scene.updateDialogPosition(dialog.position, container.container);
-			Scene.containers.dialogLayer.addChild(container.container);
+			if (!dialog.invisible) {
+				Scene.containers.dialogLayer.addChild(container.container);
+			}
 			stage.update();
 			
 			if (dialog.audio) {
@@ -86,7 +88,7 @@ var CutsceneHandler = {
 					sound = AudioManager.play(text[segmentIndex].audio);
 					timeout = (sound.duration - 500) / text[segmentIndex].message.length;
 				}
-				this.updateText(target, text[segmentIndex].message.substring(index, index+1));
+				this.updateText(target, text[segmentIndex].message.substring(index, index+1), text[segmentIndex]);
 				if (!timeout) {
 					timeout = text[segmentIndex].time ? this.getTextSpeedByTime(text[segmentIndex].time, text[segmentIndex].message.length) : this.getTextSpeed(text[segmentIndex].speed);
 				}
