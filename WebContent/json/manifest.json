@@ -211,7 +211,8 @@
 		"video": [
 			{
 				"id": "main",
-				"src": "video/main.mp4"
+				"src": "video/main.mp4",
+				"loop": true
 			}
 		]
 	},
