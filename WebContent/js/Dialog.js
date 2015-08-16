@@ -90,7 +90,7 @@ function Dialog() {
 			txtBackgroundWidth = stage.canvas.width - (calculatedImageWidth * (2/3));
 			console.log(name);
 			console.log(DIALOG_BACKGROUNDS[name]);
-			var nameBackground = drawBorderedRectangle(txtBackgroundX, stage.canvas.height - DIALOG_HEIGHT - DIALOG_NAME_HEIGHT, stage.canvas.width - (600 * DPR), DIALOG_NAME_HEIGHT, this.getBackgroundColour(name));
+			var nameBackground = drawBorderedRectangle(txtBackgroundX, stage.canvas.height - DIALOG_HEIGHT - DIALOG_NAME_HEIGHT, 350 + (name.length * 40), DIALOG_NAME_HEIGHT, this.getBackgroundColour(name));
 			container.addChild(nameBackground);
 		}
 		else {
