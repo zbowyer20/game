@@ -6,6 +6,9 @@ var PuzzleHandler = {
 				if (json[jsonPuzzle].type == "COMBINATION") {
 					this.puzzles[json[jsonPuzzle].id] = new PuzzleCombination(json[jsonPuzzle]);
 				}
+				if (json[jsonPuzzle].type == "PASSWORD") {
+					this.puzzles[json[jsonPuzzle].id] = new PuzzlePassword(json[jsonPuzzle]);
+				}
 			}
 			return true;
 		},

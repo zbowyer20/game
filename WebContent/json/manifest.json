@@ -333,6 +333,10 @@
 				"src": "img/hospital-bedroom-shelf.png"
 			},
 			{
+				"id": "hospital-bedroom-keypad",
+				"src": "img/hospital-bedroom-keypad.png"
+			},
+			{
 				"id": "bg0-side1",
 				"src": "img/scene0-1.png"
 			},
@@ -529,6 +533,46 @@
 				"src": "img/sceneClickables/radiator-radiator.png"
 			},
 			{
+				"id": "0-keypad",
+				"src": "img/sceneClickables/keypad.png"
+			},
+			{
+				"id": "0-keypad-1",
+				"src": "img/sceneClickables/keypad-1.png"
+			},
+			{
+				"id": "0-keypad-2",
+				"src": "img/sceneClickables/keypad-2.png"
+			},
+			{
+				"id": "0-keypad-3",
+				"src": "img/sceneClickables/keypad-3.png"
+			},
+			{
+				"id": "0-keypad-4",
+				"src": "img/sceneClickables/keypad-4.png"
+			},
+			{
+				"id": "0-keypad-5",
+				"src": "img/sceneClickables/keypad-5.png"
+			},
+			{
+				"id": "0-keypad-6",
+				"src": "img/sceneClickables/keypad-6.png"
+			},
+			{
+				"id": "0-keypad-7",
+				"src": "img/sceneClickables/keypad-7.png"
+			},
+			{
+				"id": "0-keypad-8",
+				"src": "img/sceneClickables/keypad-8.png"
+			},
+			{
+				"id": "0-keypad-9",
+				"src": "img/sceneClickables/keypad-9.png"
+			},
+			{
 				"id": "sad",
 				"src": "audio/sad.mp3"
 			},
@@ -543,6 +587,10 @@
 			{
 				"id": "combination-attempt",
 				"src": "audio/combination-attempt.mp3"
+			},
+			{
+				"id": "beep",
+				"src": "audio/beep.mp3"
 			},
 			{
 				"id": "victory-0",

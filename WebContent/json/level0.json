@@ -546,6 +546,43 @@
 		},
 		{
 			"defaultBackground": false,
+			"name": "hospital-bedroom-keypad",
+			"id": "hospital-bedroom-keypad",
+			"movements": [
+				{
+					"name": "BACK",
+					"destination": "door"
+				}
+			],
+			"clickables": [
+				{
+					"type": "EXAMINE",
+					"id": "0-keypad-1",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "AUDIO",
+							"audio": {
+								"id": "beep",
+								"type": "SOUND"
+							}
+						},
+						{
+							"priority": 0,
+							"type": "PUZZLE_ATTEMPT",
+							"puzzleID": "keypad-puzzle",
+							"effect": {
+								"type": "APPEND",
+								"value": "1"
+							}
+						}
+					]
+				}
+			]	
+		},
+		{
+			"defaultBackground": false,
 			"name": "door",
 			"id": "hospital-bedroom-2",
 			"movements": [
@@ -559,6 +596,17 @@
 				}
 			],
 			"clickables": [
+				{
+					"type": "EXAMINE",
+					"id": "0-keypad",
+					"persist": true,
+					"onclick": [
+						{
+							"type": "MOVE",
+							"destination": "hospital-bedroom-keypad"
+						}
+					]
+				},
 				{
 					"type": "EXAMINE",
 					"id": "0-door",

@@ -1,6 +1,18 @@
 {
 	"puzzles": [
 		{
+			"id": "keypad-puzzle",
+			"type": "PASSWORD",
+			"solution": "1111",
+			"complete": [
+				{
+					"priority": 0,
+					"type": "CUTSCENE",
+					"id": "46"
+				}
+			]
+		},
+		{
 			"id": "combo-lock-puzzle",
 			"type": "COMBINATION",
 			"defaults": [

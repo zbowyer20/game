@@ -6,6 +6,7 @@ function EventPuzzleAttempt(event, deferred) {
 	def = deferred;
 	
 	this.playResult = function() {
+		console.log('att');
 		puzzle.update(event.effect);
 		if (puzzle.solved()) {
 			console.log('solved');

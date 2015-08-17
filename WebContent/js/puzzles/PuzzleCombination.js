@@ -11,7 +11,7 @@ function PuzzleCombination(puzzle) {
 			if (effect.type == "UPDATE") {
 				this.state[effect.componentID] = this.state[effect.componentID] + parseInt(effect.increment);
 				this.state[effect.componentID] = this.special.wraparound ? this.state[effect.componentID] % Object.keys(this.values[effect.componentID].values).length : this.state[effect.componentID];
-				PuzzleHandler.broadcast(this.id, effect.componentID);
+				PuzzleHandler.broadcast(this.id, effect.value);
 			}
 		}
 	},
