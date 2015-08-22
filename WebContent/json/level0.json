@@ -124,7 +124,7 @@
 						{
 							"priority": 0,
 							"type": "CUTSCENE",
-							"id": "17"
+							"id": "82"
 						}
 					]
 				},
@@ -367,7 +367,17 @@
 							"audio": {
 								"type": "MUSIC",
 								"id": "mystery"
-							}
+							},
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "radiator-first-look"
+								},
+								{
+									"type": "SWITCH",
+									"id": "door-first-look"
+								}
+							]
 						},
 						{
 							"priority": 1,
@@ -575,6 +585,30 @@
 							"effect": {
 								"type": "APPEND",
 								"value": "1"
+							}
+						}
+					]
+				},
+				{
+					"type": "EXAMINE",
+					"id": "0-keypad-2",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": 0,
+							"type": "AUDIO",
+							"audio": {
+								"id": "beep",
+								"type": "SOUND"
+							}
+						},
+						{
+							"priority": 0,
+							"type": "PUZZLE_ATTEMPT",
+							"puzzleID": "keypad-puzzle",
+							"effect": {
+								"type": "APPEND",
+								"value": "2"
 							}
 						}
 					]
@@ -1021,6 +1055,18 @@
 							]
 						},
 						{
+							"priority": 1,
+							"type": "REMOVED_ITEM",
+							"id": "0-key",
+							"requires": [
+								{
+									"type": "ITEM",
+									"activeItem": true,
+									"id": "0-key"
+								}
+							]
+						},
+						{
 							"priority": 2,
 							"type": "MOVE",
 							"destination": "hospital-bedroom-table-drawer",
@@ -1168,7 +1214,13 @@
 								"id": "foundItem",
 								"type" : "SOUND",
 								"volume": 0.1
-							}
+							},
+							"requires": [
+								{
+									"type": "SWITCH",
+									"id": "radiator-screwdriver"
+								}
+							]
 						},
 						{
 							"priority": 3,

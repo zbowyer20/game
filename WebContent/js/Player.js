@@ -13,6 +13,8 @@ function Player() {
 		var index = this.itemIndexInInventory(item.id);
 		if (index != null) {
 			inventory.splice(index, 1);
+			var newItem = inventory.length >= index ? inventory[index-1] : inventory[0];
+			this.setHeldItem(newItem);
 		}
 		return this;
 	}

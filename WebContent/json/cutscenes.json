@@ -2110,7 +2110,7 @@
 		},
 		{
 			"id": "68",
-			"unskippable": false,
+			"unskippable": true,
 			"scene": [
 				{
 					"character": "ALBERT",
@@ -2832,6 +2832,35 @@
 					"text": [
 						{
 							"message": "Albert placed the CD in the CD slot of the radio and immediately music began to play."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "82",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "It's a whiteboard, but there's no pen, so I can't write anything on it."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Not that I would if I had a pen, of course..."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Then again, a penis could be funny..."
 						}
 					]
 				}
