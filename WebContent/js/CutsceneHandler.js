@@ -73,7 +73,12 @@ var CutsceneHandler = {
 			stage.update();
 			
 			if (dialog.audio) {
-				AudioManager.play(dialog.audio);
+				if (dialog.audio.type == "STOP") {
+					AudioManager.stop();
+				}
+				else { 
+					AudioManager.play(dialog.audio);
+				}
 			}
 			
 			return container;

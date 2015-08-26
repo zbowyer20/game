@@ -2865,6 +2865,259 @@
 					]
 				}
 			]
-		}
+		},
+		{
+			"id": "83",
+			"unskippable": true,
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "It worked?"
+						}
+					],
+					"audio": {
+						"type": "SOUND",
+						"id": "ding"
+					}
+				},
+				{
+					"text": [
+						{
+							"message": "There was a clunk from the door."
+						}
+					],
+					"audio": {
+						"type": "SOUND",
+						"id": "unlock"
+					}
+				},
+				{
+					"text": [
+						{
+							"message": "Albert pulled the handle down on the door and, somewhat to his surprise, the door gave way. It shifted, meaning..."
+						}
+					],
+					"audio": {
+						"type": "STOP"
+					}
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "I can go."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert opened the door and looked out. It was completely dark, but as he took as step outside he could see... what was that...? A wheel...?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert was unable to take another step forward before a low drone filled the air."
+						}
+					],
+					"audio": {
+						"type": "SOUND",
+						"id": "drone"
+					}
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What the..."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "A voice came from behind Albert - from inside the room."
+						}
+					],
+					"audio": {
+						"type": "MUSIC",
+						"id": "rain"
+					}
+				},
+				{
+					"name": "Voice",
+					"text": [
+						{
+							"message": "I  s e e  y o u",
+							"speed": "VERY-SLOW"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert turned."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "83",
+			"unskippable": true,
+			"scene": [
+				{
+					"text": [
+						{
+							"message": "There was a man, tall and thin, whose bones didn't seem to fit together right, suddenly standing there beside the mirror."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "What the fuck?"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert saw now that the man was holding a sort of hunting knife."
+						}
+					]
+				},
+				{
+					"character": "KATE",
+					"text": [
+						{
+							"message": "You come here."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "FUCK THIS!",
+							"speed": "FAST"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Albert turned to flee out of the room but he couldn't take one step before the man, swift, was on his back."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "He felt a sharp blow to the back of his head and fell straight down."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Agh!"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "His head hit the floor hard."
+						}
+					],
+					"audio": {
+						"id": "crack",
+						"type": "SOUND"
+					}
+				},
+				{
+					"text": [
+						{
+							"message": "There was an intense pain to his forehead and shades of red saturated his vision."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{	
+							"message": "   n o  ",
+							"speed": "VERY-SLOW"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "A heavy weight pressed down on Albert's spine. The man was sitting on his back."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "The man tore Albert's cap off his head and threw it across the room, then pulled his head back by the hair."
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "wh"
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "The man drew his knife back and in one motion swung it around, effortlessly piercing Albert's cheek. The knife stabbed through the middle of his tongue. The man did not flinch and immediately withdrew the knife."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "Blood ruptured through Albert's mouth as his screamed."
+						}
+					],
+					"audio": {
+						"id": "scream2",
+						"type": "SOUND"
+					}
+				},
+				{
+					"character": "KATE",
+					"text": [
+						{
+							"message": "You're only the first."
+						}
+					]
+				},
+				{
+					"text": [
+						{
+							"message": "The man shot Albert's head down against the floor. Albert's nose crashed into the hard flooring, the cartillage shattering, and then everything stopped and all was dark."
+						}
+					],
+					"audio": {
+						"type": "SOUND",
+						"id": "CRACK"
+					}
+				}
+			]
+		}					
 	]	
 }

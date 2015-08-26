@@ -8,7 +8,17 @@
 				{
 					"priority": 0,
 					"type": "CUTSCENE",
-					"id": "46"
+					"id": "83"
+				},
+				{
+					"priority": 0,
+					"type": "MOVE",
+					"destination": "front"
+				},
+				{
+					"priority": 0,
+					"type": "CUTSCENE",
+					"id": "84"
 				}
 			]
 		},

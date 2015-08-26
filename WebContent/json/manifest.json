@@ -593,6 +593,14 @@
 				"src": "audio/beep.mp3"
 			},
 			{
+				"id": "ding",
+				"src": "audio/ding.mp3"
+			},
+			{
+				"id": "unlock",
+				"src": "audio/unlock.mp3"
+			},
+			{
 				"id": "victory-0",
 				"src": "audio/victory-0.mp3"
 			},
@@ -613,6 +621,10 @@
 				"src": "audio/scream.mp3"
 			},
 			{
+				"id": "scream2",
+				"src": "audio/scream-2.mp3"
+			},
+			{
 				"id": "fall",
 				"src": "audio/fall.mp3"
 			},
@@ -627,6 +639,18 @@
 			{
 				"id": "yeahbaby",
 				"src": "audio/yeahbaby.mp3"
+			},
+			{
+				"id": "drone",
+				"src": "audio/drone.mp3"
+			},
+			{
+				"id": "rain",
+				"src": "audio/rain.mp3"
+			},
+			{
+				"id": "crack",
+				"src": "audio/crack.mp3"
 			}
 		],
 		"video": [
