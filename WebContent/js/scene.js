@@ -21,7 +21,7 @@ var Scene = {
 			Loader.loadManifest()
 				.then(function(data) { 
 					self.assets = data;
-					return $.when(self.loadScene("global"), self.loadScene(sceneName));
+					return $.when(self.loadScene(GLOBAL_ASSETS), self.loadScene(sceneName));
 				})
 				.then(function() {
 					$.when(Loader.loadContent()).done(function(cutscenes, items, files, puzzles) {
@@ -35,17 +35,18 @@ var Scene = {
 		},
 		
 		getSceneId: function(sceneName) {
-			return "scene-" + sceneName;
+			return ASSETS_PREFIX + sceneName;
 		},
 		
 		loadScene: function(sceneName) {
 			var sceneId = this.getSceneId(sceneName);
-			var self = this;
-			if ((self.assets[sceneId].video.length) == 0) {
+			// If there aren't any videos, load the non video assets
+			if ((this.assets[sceneId].video.length) == 0) {
 				return Loader.loadSceneAssets(this.assets[sceneId].nonVideo, true);
 			}
 			else {
-				return $.when(Loader.loadSceneAssets(this.assets[sceneId].nonVideo, true), Loader.loadSceneAssets(self.assets[sceneId].video, false));
+				// Otherwise, load the non-video and video assets
+				return $.when(Loader.loadSceneAssets(this.assets[sceneId].nonVideo, true), Loader.loadSceneAssets(this.assets[sceneId].video, false));
 			}
 		},
 		
@@ -56,6 +57,9 @@ var Scene = {
 			});
 		},
 		
+		/*
+		 * Remove all elements of the scene
+		 */
 		clear: function() {
 			for (var i in this.videos) {
 				this.videos[i].image.pause();
@@ -65,6 +69,9 @@ var Scene = {
 			return this;
 		},
 		
+		/*
+		 * Populate the scene
+		 */
 		populate: function(sceneName) {
 			var self = this;
 			Loader.loadLevel(sceneName)
@@ -125,6 +132,7 @@ var Scene = {
 		/*
 		* Store the received JSON backgrounds
 		* @param json The backgrounds in json
+		* @returns The area to be used as the default
 		*/
 		initAreas: function(json) {
 			var defaultArea; 
@@ -139,7 +147,7 @@ var Scene = {
 				if (json.areas[i].defaultBackground) {
 					defaultArea = this.components.areas[json.areas[i].name];
 					 if (json.areas[i].arrive) {
-						new Clickable("").loadClickableClickResult(json.areas[i].arrive);
+						EventManager.playRelevantEvents(json.areas[i].arrive);
 					 }
 				}
 			}
@@ -150,7 +158,7 @@ var Scene = {
 		
 		initAreaContainer: function(area, includeClickables) {
 			var container = new createjs.Container();
-			container.name = "backgroundContainer";
+			container.name = BACKGROUND_CONTAINER_NAME;
 			var layers = [new createjs.Container(), new createjs.Container(), new createjs.Container()];
 			for (var i = 0; i < layers.length; i++) {
 				container.addChild(layers[i]);
@@ -178,7 +186,7 @@ var Scene = {
 		},
 		
 		removeClickableFromContainer: function(id) {
-			var container = this.containers.areaLayer.getChildByName("backgroundContainer");
+			var container = this.containers.areaLayer.getChildByName(BACKGROUND_CONTAINER_NAME);
 			for (var i = 0; i < container.children.length; i++) {
 				var child = container.getChildAt(i);
 				var clickable = child.getChildByName(id);
@@ -283,7 +291,7 @@ var Scene = {
 					movementAnimation.y = 0;
 					break;
 				case DIRECTION_RIGHT :
-					movementAnimation.x = -1 *(stage.canvas.width / (4 * DPR));
+					movementAnimation.x = -1 * (stage.canvas.width / (4 * DPR));
 					movementAnimation.y = 0;
 					break;
 				case DIRECTION_BACK :
@@ -331,7 +339,7 @@ var Scene = {
 			stage.update();
 			// Start animation
 			priority = FROZEN_PRIORITY;
-			var backgroundContainer = this.containers.areaLayer.getChildByName("backgroundContainer");
+			var backgroundContainer = this.containers.areaLayer.getChildByName(BACKGROUND_CONTAINER_NAME);
 			var topContainer = backgroundContainer.getChildByName("bg");
 			// discard all hidden clickables from the container
 			// we only need to move the background itself
@@ -341,9 +349,9 @@ var Scene = {
 							.then(function() {
 								self.containers.areaLayer.removeChild(backgroundContainer);
 								// now set up the new area
-								newContainer.name = "backgroundContainer";
+								newContainer.name = BACKGROUND_CONTAINER_NAME;
 								self.addClickablesToContainer(newContainer.children, area, 0);
-								self.components.areas["current"] = area;
+								self.components.areas.current = area;
 								self.initNavigation();
 							});
 		},

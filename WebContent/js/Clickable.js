@@ -109,31 +109,8 @@ function Clickable(json) {
 	 */
 	this.getClickResults = function(ev) {
 		var events = ev ? ev : this.clickable.onclick;
-		if (events == null) {
-			return null;
-		}
-		var results = [];
-		for (var i = 0; i < events.length; i++) {
-			results = this.mostRelevantOf(results, events[i]);
-		}
-		return results;
+		return EventManager.getRelevantEvents(events);
 	}
-	
-	this.mostRelevantOf = function(current, compare) {
-		if (current.length == 0 || (compare.priority >= current[0].priority)) {
-			if (GameUtils.validToPlay(compare)) {
-				if (current.length > 0 && compare.priority == current[0].priority) {
-					current.push(compare);
-				}
-				else {
-					var result = [];
-					result.push(compare);
-					return result;
-				}
-			}
-		}
-		return current;
-	},
 	
 	this.playClickableClickResult = function(event) {
 		var deferred = $.Deferred();
