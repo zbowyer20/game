@@ -87,7 +87,6 @@ var EventManager = {
 	},
 	
 	playRelevantEvents: function(events) {
-		console.log(events);
 		var events = this.getRelevantEvents(events);
 		var deferred = $.Deferred();
 		this.playEvents(events, deferred);
@@ -95,7 +94,6 @@ var EventManager = {
 	},
 	
 	playEvents: function(events, def) {
-		console.log(events);
 		if (events.length > 0) {
 			var self = this;
 			var evDef = $.Deferred();
