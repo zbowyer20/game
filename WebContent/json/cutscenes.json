@@ -2993,7 +2993,7 @@
 					]
 				},
 				{
-					"character": "KATE",
+					"character": "STRANGER",
 					"text": [
 						{
 							"message": "You come here."
@@ -3099,7 +3099,7 @@
 					}
 				},
 				{
-					"character": "KATE",
+					"character": "STRANGER",
 					"text": [
 						{
 							"message": "You're only the first."

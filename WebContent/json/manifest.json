@@ -146,6 +146,10 @@
 				"src": "img/dialog/joe-shocked.png"
 			},
 			{
+				"id": "stranger",
+				"src": "img/dialog/stranger.png"
+			},
+			{
 				"id": "sound-on",
 				"src": "img/utils/sound-on.png"
 			},
