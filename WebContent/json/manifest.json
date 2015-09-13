@@ -373,6 +373,10 @@
 				"src": "img/hospital-bedroom-radiator.png"
 			},
 			{
+				"id": "hospital-bedroom-whiteboard",
+				"src": "img/hospital-bedroom-whiteboard.png"
+			},
+			{
 				"id": "0-door",
 				"src": "img/sceneClickables/door.png"
 			},
@@ -583,6 +587,10 @@
 			{
 				"id": "0-keypad-9",
 				"src": "img/sceneClickables/keypad-9.png"
+			},
+			{
+				"id": "0-whiteboard-whiteboard",
+				"src": "img/hospital-bedroom-whiteboard.png"
 			},
 			{
 				"id": "sad",

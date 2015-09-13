@@ -2967,7 +2967,7 @@
 			]
 		},
 		{
-			"id": "83",
+			"id": "84",
 			"unskippable": true,
 			"scene": [
 				{
@@ -3117,6 +3117,35 @@
 						"type": "SOUND",
 						"id": "CRACK"
 					}
+				}
+			]
+		},
+		{
+			"id": "85",
+			"scene": [
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "'He who controls the past controls the future.'"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "'Who controls the present controls the past.'"
+						}
+					]
+				},
+				{
+					"character": "ALBERT",
+					"text": [
+						{
+							"message": "Haven't I read that in a book somewhere?"
+						}
+					]
 				}
 			]
 		}					

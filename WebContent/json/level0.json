@@ -123,8 +123,8 @@
 					"onclick": [
 						{
 							"priority": 0,
-							"type": "CUTSCENE",
-							"id": "82"
+							"type": "MOVE",
+							"destination": "hospital-bedroom-whiteboard"
 						}
 					]
 				},
@@ -1644,6 +1644,31 @@
 									"id": "books-third-look"
 								}
 							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"defaultBackground": false,
+			"name": "hospital-bedroom-whiteboard",
+			"id": "hospital-bedroom-whiteboard",
+			"movements": [
+				{
+					"name": "BACK",
+					"destination": "front"
+				}
+			],
+			"clickables": [
+				{
+					"type": "EXAMINE",
+					"id": "0-whiteboard-whiteboard",
+					"persist": true,
+					"onclick": [
+						{
+							"priority": "0",
+							"type": "CUTSCENE",
+							"id": "85"
 						}
 					]
 				}

@@ -54,10 +54,12 @@ function drawArrow(colour, stroke, direction, persist) {
 			position.x = (stage.canvas.width / 2) - (15 * DPR);
 			position.y = stage.canvas.height - (40 * DPR);
 			position.angle = 90;
+			break;
 		case DIRECTION_MENU_BACK:
 			position.x = 30 * DPR;
 			position.y = 25 * DPR;
 			position.angle = 180;
+			break;
 	}
 	
 	arrow.graphics.setStrokeStyle(1).beginStroke(stroke).beginFill(colour).drawPolyStar(position.x, position.y , 25 * DPR, 3, 0.5, position.angle);
@@ -67,6 +69,7 @@ function drawArrow(colour, stroke, direction, persist) {
 	arrow.alpha = 1;
 	
 	if (!persist) {
+		console.log(persist);
 		setTimeout(function() {
 			arrow.alpha = 0;
 			stage.update();
