@@ -150,6 +150,10 @@
 				"src": "img/dialog/stranger.png"
 			},
 			{
+				"id": "stranger-attacking",
+				"src": "img/dialog/stranger-attack.png"
+			},
+			{
 				"id": "sound-on",
 				"src": "img/utils/sound-on.png"
 			},

@@ -3100,6 +3100,7 @@
 				},
 				{
 					"character": "STRANGER",
+					"mood": "ATTACKING",
 					"text": [
 						{
 							"message": "You're only the first."

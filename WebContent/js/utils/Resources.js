@@ -111,6 +111,7 @@ var DIALOG_IMAGES = {};
 	DIALOG_IMAGES["JOE-SHOCKED"] = "joe-shocked";
 	
 	DIALOG_IMAGES["STRANGER"] = "stranger";
+	DIALOG_IMAGES["STRANGER-ATTACKING"] = "stranger-attacking";
 	
 var DIALOG_BACKGROUNDS = {};
 	DIALOG_BACKGROUNDS["ALBERT"] = "rgba(54, 113, 136, 0.5)";
