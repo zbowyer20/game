@@ -34,7 +34,7 @@ function convertImageToScaledBitmap(image, x, y, width, height) {
 	return bitmap;
 }
 
-function drawArrow(colour, stroke, direction) {
+function drawArrow(colour, stroke, direction, persist) {
 	var arrow = new createjs.Shape();
 	var position = {"x": 0, "y": 0, "angle": 0};
 	
@@ -43,6 +43,7 @@ function drawArrow(colour, stroke, direction) {
 			position.x = 40 * DPR;
 			position.y = stage.canvas.height / 2;
 			position.angle = 180;
+			console.log(position); 
 			break;
 		case DIRECTION_RIGHT:
 			position.x = stage.canvas.width - (40 * DPR);
@@ -53,6 +54,10 @@ function drawArrow(colour, stroke, direction) {
 			position.x = (stage.canvas.width / 2) - (15 * DPR);
 			position.y = stage.canvas.height - (40 * DPR);
 			position.angle = 90;
+		case DIRECTION_MENU_BACK:
+			position.x = 30 * DPR;
+			position.y = 25 * DPR;
+			position.angle = 180;
 	}
 	
 	arrow.graphics.setStrokeStyle(1).beginStroke(stroke).beginFill(colour).drawPolyStar(position.x, position.y , 25 * DPR, 3, 0.5, position.angle);
@@ -61,26 +66,28 @@ function drawArrow(colour, stroke, direction) {
 	//if (direction.hover) {
 	arrow.alpha = 1;
 	
-	setTimeout(function() {
-		arrow.alpha = 0;
-		stage.update();
-		hoverArea.addEventListener("mouseout", function(event) {
+	if (!persist) {
+		setTimeout(function() {
 			arrow.alpha = 0;
 			stage.update();
+			hoverArea.addEventListener("mouseout", function(event) {
+				arrow.alpha = 0;
+				stage.update();
+			})
+		}, NAVIGATION_INITIAL_SHOWTIME);
+		
+		var hoverArea = new createjs.Shape();
+		var hoverAreaHitArea = new createjs.Shape();
+		hoverAreaHitArea.graphics.beginFill("#000").drawRect(position.x - 100, position.y - 100, 100 * DPR, 100 * DPR);
+		hoverArea.hitArea = hoverAreaHitArea;
+				
+		hoverArea.addEventListener("mouseover", function(event) {
+			if (checkPriority(NAVIGATION_PRIORITY)) {
+				arrow.alpha = 1;
+				stage.update();
+			}
 		})
-	}, NAVIGATION_INITIAL_SHOWTIME);
-	
-	var hoverArea = new createjs.Shape();
-	var hoverAreaHitArea = new createjs.Shape();
-	hoverAreaHitArea.graphics.beginFill("#000").drawRect(position.x - 100, position.y - 100, 100 * DPR, 100 * DPR);
-	hoverArea.hitArea = hoverAreaHitArea;
-	
-	hoverArea.addEventListener("mouseover", function(event) {
-		if (checkPriority(NAVIGATION_PRIORITY)) {
-			arrow.alpha = 1;
-			stage.update();
-		}
-	})
+	}
 
 //}
 	

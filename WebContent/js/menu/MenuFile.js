@@ -1,5 +1,5 @@
 function MenuFile() {
-	var graphics = new createjs.Graphics().beginFill("white").drawRect(0, 0, stage.canvas.width, stage.canvas.height);
+	var graphics = new createjs.Graphics().beginFill("BLACK").drawRect(0, 0, stage.canvas.width, stage.canvas.height);
 	var background = new createjs.Shape(graphics);
 	background.x = 0;
 	background.y = 0;
@@ -20,11 +20,13 @@ function MenuFile() {
 	var currentWidth = 0;
 	var currentHeight = 0;
 		
-	container.addChild(drawBorderedRectangle(currentWidth, currentHeight, stage.canvas.width, 100, {background: WHITE, stroke: BLACK}));
+	container.addChild(drawBorderedRectangle(currentWidth, currentHeight, stage.canvas.width, 100, {background: BLACK, stroke: WHITE}));
+	
+	container.addChild(createText("FILE", WHITE, stage.canvas.width / 2, 30*DPR, 500));
 	
 	currentHeight += 100;
 
-	var fileViewer = drawBorderedRectangle(stage.canvas.width / 4, currentHeight, 3 *(stage.canvas.width / 4), stage.canvas.height - currentHeight, {background: WHITE, stroke: BLACK});
+	var fileViewer = drawBorderedRectangle(stage.canvas.width / 4, currentHeight, 3 *(stage.canvas.width / 4), stage.canvas.height - currentHeight, {background: BLACK, stroke: WHITE});
 	
 	var mainFileContainer = new createjs.Container();
 	mainFileContainer.addChild(fileViewer);
@@ -36,22 +38,20 @@ function MenuFile() {
 	var elemHeight = (stage.canvas.height - 100) / MENU_FILE_PAGE_SIZE;
 	
 	var files = player.getFiles();
-	console.log(files[0]);
+	console.log(files);
 	
 	for (var i = 0; i < MENU_FILE_PAGE_SIZE; i++) {
-		container.addChild(drawBorderedRectangle(currentWidth, currentHeight, stage.canvas.width / 4, elemHeight, {background: WHITE, stroke: BLACK}));
+		container.addChild(drawBorderedRectangle(currentWidth, currentHeight, stage.canvas.width / 4, elemHeight, {background: BLACK, stroke: WHITE}));
 		if (i < files.length) {
 			var file = files[i];
-			var fileTxt = createText(file.name, BLACK, stage.canvas.width / 8, currentHeight + (elemHeight / 2), 500);
-			fileTxt.addEventListener("click", updateCurrentFileDelegate(file));
-			container.addChild(fileTxt);
+			var fileBanner = convertImageToScaledBitmap(file.banner, 0, currentHeight, stage.canvas.width / 4, elemHeight);
+			fileBanner.addEventListener("click", updateCurrentFileDelegate(file));
+			container.addChild(fileBanner);
 		}
 		currentHeight += elemHeight;
 	}
-	
-	var backArrow = createText("BACK", BLACK, 0, 50, 500);
-	
-	//var backArrow = drawArrow("blue", 40, stage.canvas.height/2, 30, 180);
+		
+	var backArrow = drawArrow("rgba(0,0,0,0.5)", "white", DIRECTION_MENU_BACK, true);
 
 	backArrow.addEventListener("click", function(evt) {
 		container.removeAllChildren();
@@ -71,7 +71,7 @@ function MenuFile() {
 		var img = convertImageToScaledBitmap(file.img, stage.canvas.width / 4, 100, 3*(stage.canvas.width/4), stage.canvas.height - 100);
 		mainFileContainer.addChild(img);
 		
-		var txt = createText(file.text, BLACK, stage.canvas.width / 4, 170, 3*(stage.canvas.width/4), stage.canvas.width - 100);
+		var txt = createText(file.text, WHITE, stage.canvas.width / 4, 170, 3*(stage.canvas.width/4), stage.canvas.width - 100);
 		mainFileContainer.addChild(txt);
 		stage.update();
 	}
